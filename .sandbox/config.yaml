@@ -1,0 +1,10 @@
+mounts:
+  - $HOME/.m2
+  - $HOME/.clojure
+  - $HOME/.cache
+  - $HOME/.config/polylith/config.edn
+
+env:
+  NREPL_PORT: 7888
+
+# pre_start: "clojure -M:nrepl:dev:test &"
