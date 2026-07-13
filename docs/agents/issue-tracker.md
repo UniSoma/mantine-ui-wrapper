@@ -32,6 +32,18 @@ Specs live as knot tickets too — use type `epic` or `feature` and record the
 spec body via `-d`/`--design`, with implementation tickets created as children
 (`--parent <epic-id>`).
 
+## Patching a ticket body
+
+To rewrite a ticket's whole body (e.g. a wayfinder map's Destination /
+Decisions-so-far / Not-yet-specified sections), use `knot update <id> --body
+"<full markdown>"`. It replaces the entire `body` field.
+
+Do **not** use `--description` / `-d` for this: those replace only a
+`## Description` *sub-section*, and if the body has none, knot **appends** a
+`## Description` section — duplicating the content instead of replacing it.
+`--description` / `--design` are for their named sub-sections only; `--body`
+owns the whole thing (it's destructive — git is the undo path).
+
 ## For decision logic, use --json
 
 Every read and write command accepts `--json` and emits a stable envelope
