@@ -6,7 +6,7 @@ type: epic
 priority: 2
 mode: hitl
 created: '2026-07-13T17:30:43.630608089Z'
-updated: '2026-07-13T19:24:51.505797277Z'
+updated: '2026-07-13T20:34:25.723843973Z'
 tags:
 - wayfinder:map
 ---
@@ -33,10 +33,10 @@ A locked design + de-risked wrapping pipeline for `mantine-ui-wrapper`: a framew
 - Research: Mantine CSS + npm-interop ([docs/research/mantine-css-interop.md](docs/research/mantine-css-interop.md)) — pre-compiled plain CSS per package (@mantine/<pkg>/styles.css, core first; layered variant available; modals ships none); PostCSS NOT needed by consumers; shadow-cljs does NOT process CSS imports — deliver via <link> from node_modules in the harness; wrapper itself imports no CSS.
 - Research: imperative + hooks API surface ([docs/research/imperative-and-hooks-api.md](docs/research/imperative-and-hooks-api.md)) — 3 imperative packages share one shape (callable singleton + a renderer mounted once); 79 hooks enumerable from package barrel, with a load-bearing tuple-vs-object return split.
 - [Decide: props-conversion semantics](mnt-01kxe8gzn6bt) — ONE public converter fn: hybrid kebab->camel keys (data-/aria- exempt, round-trip-safe); shallow-default values + curated deep-convert set {style,styles,classNames,vars} (map->convert, fn->passthrough); style leaf (--* verbatim, numeric passthrough) + class leaf (collection space-join); :class alias+merge; children path (prune nil / flatten collections / render-prop passthrough, :key rides in child props); component/renderRoot/section props pure passthrough; raw JS SyntheticEvent to handlers; reserved escape-hatch merge key (plain clj->js, wins last). Deliberate divergence from SUIW's bare clj->js. Controlled-input wrapping + factory call convention pushed to the codegen ticket.
+- [Decide: codegen pipeline & generated output](mnt-01kxe8gzrhy6) — Generator = headless/CI-runnable/pinned plain-Clojure transform of a COMMITTED docgen.json + installed node_modules -> ONE .cljc ns per package (mantine.core/dates/charts, NO aggregate). Component defs: kebab-case, no prefix, per-component named-export requires (tree-shakeable under :advanced); within-pkg kebab collisions HARD-ERROR; auto (:refer-clojure :exclude); package + require-string resolved from node_modules exports (unresolvable logged+skipped). Docstring-ONLY at runtime (metadata stays generator-side); docstring = docgen prop-list + best-effort mantine.dev URL. Thin generated files delegate to hand-written mantine.impl.props (converter) + mantine.impl.factory (variadic-def factory + controlled-input React shim on a curated set + not-implemented). Generated nses .cljc & JVM-loadable — :cljs = real factory, :clj = call-time not-implemented throw. Optional props via map? first-arg detection. Handoffs to build-tooling: concrete react/createElement require form + generator runner mechanism (lean bb).
 
 ## Not yet specified
 
-- Where rich factory DOCSTRINGS come from: docgen.json strips component descriptions, so per-component doc text needs another source (or we ship prop-list-only docstrings). Sharp enough to fold into the codegen-pipeline decision.
 - The mechanical fan-out itself: full coverage of every core component + full dates/charts.
 - Full imperative-API coverage (all notifications/modals/spotlight fns).
 - Full hooks coverage (all 79).
