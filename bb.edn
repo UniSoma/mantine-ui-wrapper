@@ -1,0 +1,5 @@
+{:tasks
+ {generate {:doc "Regenerate src/main/mantine/*.cljc from the committed codegen inputs"
+            :task (load-file "codegen/generate.clj")}
+  extract {:doc "Refresh committed codegen inputs from a Mantine 9.4.1 checkout: bb extract <clone-dir>"
+           :task (load-file "codegen/extract.clj")}}}

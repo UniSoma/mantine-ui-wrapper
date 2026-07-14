@@ -1,0 +1,5 @@
+;; JVM-loadability surface for the shipped wrapper source (clj-kondo, cljdoc, JVM tests).
+;; The browser build is driven by shadow-cljs.edn (standalone), not this file.
+{:paths ["src/main"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.1"}}
+ :aliases {:demo {:extra-paths ["demo"]}}}

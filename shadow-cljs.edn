@@ -1,0 +1,8 @@
+;; Single shadow-cljs project: src/main = wrapper (ships source), demo/ = dev-only harness.
+{:source-paths ["src/main" "demo"]
+ :dependencies []
+ :dev-http {8090 {:root "public"}}
+ :builds {:demo {:target :browser
+                 :output-dir "public/js"
+                 :asset-path "/js"
+                 :modules {:main {:init-fn mantine.demo/init}}}}}

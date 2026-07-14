@@ -1,12 +1,12 @@
 ---
 id: mnt-01kxe8h04teh
 title: Build the four-pattern PoC (destination)
-status: open
+status: in_progress
 type: task
 priority: 2
 mode: hitl
 created: '2026-07-13T17:31:17.530183297Z'
-updated: '2026-07-13T17:31:26.621158319Z'
+updated: '2026-07-14T17:31:44.753851896Z'
 parent: mnt-01kxe8fz1ert
 tags:
 - wayfinder:prototype
@@ -15,6 +15,7 @@ deps:
 - mnt-01kxe8gzvp9e
 - mnt-01kxe8gzyj13
 - mnt-01kxe8h01n5p
+assignee: jonasrodrigues
 ---
 
 ## Description

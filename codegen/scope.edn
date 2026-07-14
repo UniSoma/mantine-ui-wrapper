@@ -1,0 +1,6 @@
+;; Generation scope. The four-pattern PoC proves the pipeline on this subset;
+;; full fan-out (every core component, dates/charts, all hooks, modals/spotlight)
+;; is post-map mechanical work — widen these sets to take it on.
+{:components #{"Button" "TextInput" "Group" "Stack" "Text" "Badge" "Collapse"
+               "Notifications"}
+ :hooks #{"useDisclosure" "useToggle" "useClipboard"}}

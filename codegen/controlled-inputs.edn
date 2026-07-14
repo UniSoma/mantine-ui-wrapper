@@ -1,0 +1,5 @@
+;; Curated component set wrapped with mantine.impl.factory/controlled (cursor-jump
+;; prevention for text-editing inputs). Names absent from the resolved components
+;; are logged by the generator so this set can't silently rot.
+#{"TextInput" "Textarea" "PasswordInput" "JsonInput" "Autocomplete" "Select"
+  "NumberInput" "TagsInput"}

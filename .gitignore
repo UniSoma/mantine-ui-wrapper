@@ -15,3 +15,11 @@ pom.xml.asc
 /.nrepl-port
 /.prepl-port
 /.cpcache
+
+node_modules/
+.shadow-cljs/
+public/js/
+public/node_modules
+.clj-kondo/.cache/
+.lsp/.cache/
+.clj-kondo/imports/
