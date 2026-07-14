@@ -28,6 +28,26 @@ Widening `codegen/scope.edn` fans the same pipeline out across the rest of Manti
 - `npx shadow-cljs watch demo` — dev harness at http://localhost:8090.
 - `npx shadow-cljs release demo && node scripts/verify-demo.mjs` — build `:advanced`
   and verify the four patterns in jsdom.
+- `bb ci` — run the full CI pipeline locally (same commands as CI, see below).
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs on every push/PR; each step is a plain command that runs
+identically locally (`bb ci` chains them). There is no test framework — the release-bundle
+jsdom harness is the single behavioral seam, and the generator-side checks are bb tasks:
+
+1. `npm ci` — install deps.
+2. `bb drift` — regenerate and fail on any git diff vs the committed generated sources.
+3. `bb build` — `:advanced` release build; fails on any shadow-cljs warning (the JVM
+   `sun.misc.Unsafe` deprecation lines are not build warnings and are ignored).
+4. `node scripts/verify-demo.mjs` — jsdom verification of the release bundle.
+5. `bb jvm-load` — JVM-load every generated namespace, sampling the call-time named throw.
+6. `bb coverage` — per-package def-count coverage: scoped docgen entries vs generated defs,
+   failing if a scope/resolution bug silently dropped components.
+
+**Manual caveat:** pixel paint (that the linked stylesheets visually apply) is NOT asserted
+in CI — jsdom has no layout/paint engine. Check it in a real browser via
+`npx shadow-cljs watch demo`.
 
 ## Consumers
 

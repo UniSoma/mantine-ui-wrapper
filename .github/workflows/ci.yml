@@ -1,0 +1,51 @@
+# CI for the generated Mantine wrappers. Every step is a plain command that runs
+# identically locally (see `bb ci`): the release-bundle jsdom harness is the single
+# behavioral seam; the generator-side checks are bb tasks. No test framework.
+#
+# NOTE: pixel paint (that the linked Mantine stylesheets visually apply) is NOT
+# asserted here — jsdom has no layout/paint engine. It stays a manual caveat,
+# checked in a real browser via `npx shadow-cljs watch demo` (see README).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: DeLaGuardo/setup-clojure@12.5
+        with:
+          bb: latest
+          cli: latest
+
+      # 1. install deps
+      - run: npm ci
+
+      # 2. regenerate + FAIL on any drift vs committed generated sources
+      - run: bb drift
+
+      # 3. release-build the demo; FAIL on any shadow-cljs warning
+      - run: bb build
+
+      # 4. run the jsdom verification against the release bundle
+      - run: node scripts/verify-demo.mjs
+
+      # 5. JVM-load every generated ns, sampling the call-time named throw
+      - run: bb jvm-load
+
+      # 6. per-package def-count coverage: scoped docgen entries vs generated defs
+      - run: bb coverage
