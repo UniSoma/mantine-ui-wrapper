@@ -5,6 +5,18 @@
 ;; :components — {:all true} covers every docgen entry exported by a wrapped
 ;;   @mantine/* package (core, notifications, ...; never @mantine/hooks), minus
 ;;   :exclude. That is the whole @mantine/core surface today.
-;; :hooks — stays an explicit use* set until its own slice flips it to {:all true}.
+;; :hooks — {:all true} covers every use* export of the @mantine/hooks barrel.
+;;   Non-hook barrel utilities (randomId, mergeRefs, ...) are already filtered out
+;;   (they don't start with "use"). The excludes are the companion use* hooks that
+;;   share another hook's docs page and so carry no description in hook-docs.edn
+;;   (useFullscreenDocument/Element under use-fullscreen, useSessionStorage under
+;;   use-local-storage, useMousePosition under use-mouse, etc.).
 {:components {:all true :exclude #{}}
- :hooks #{"useDisclosure" "useToggle" "useClipboard"}}
+ :hooks {:all true
+         :exclude #{"useCallbackRef"
+                    "useFullscreenDocument"
+                    "useFullscreenElement"
+                    "useHorizontalCollapse"
+                    "useMousePosition"
+                    "useMutationObserverTarget"
+                    "useSessionStorage"}}}

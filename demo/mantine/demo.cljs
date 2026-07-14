@@ -2,7 +2,8 @@
   "Dev-only harness proving the four wrapping patterns end-to-end:
   1. codegen'd core components (kebab props, sections, styles/classNames, polymorphic :component)
   2. controlled input (mantine.impl.factory/controlled shim on TextInput)
-  3. hook (mantine.hooks/use-disclosure, raw tuple destructured positionally)
+  3. hooks (mantine.hooks) sampled across the return-shape split: tuple
+     (use-disclosure/use-counter), object via ^js interop (use-viewport-size), scalar (use-id)
   4. imperative API (mantine.notifications/show + its provider)"
   (:require ["react" :as react]
             ["react-dom/client" :as rdom]
@@ -19,7 +20,11 @@
   (let [[opened handlers] (mh/use-disclosure false)
         [value set-value] (react/useState "hello")
         [fruit set-fruit] (react/useState "apple")
-        [date set-date] (react/useState "2026-07-14")]
+        [date set-date] (react/useState "2026-07-14")
+        ;; hooks return-shape split, one sample each (raw JS returns, zero conversion):
+        [count counter-handlers] (mh/use-counter 5) ; tuple, destructured positionally
+        viewport (mh/use-viewport-size)             ; object, read via interop (^js)
+        generated-id (mh/use-id)]                   ; scalar (string)
     (mc/stack
      {:gap "md" :p "xl" :id "demo-root"}
      (mc/text {:size "lg" :fw 700} "mantine-ui-wrapper — four-pattern PoC")
@@ -93,6 +98,16 @@
       {:id "collapse" :expanded opened}
       (for [i (range 3)]
         (mc/badge {:key i :id (str "badge-" i) :component "span"} (str "Disclosed " i))))
+
+     ;; hooks return-shape split: tuple (use-counter), object via ^js interop
+     ;; (use-viewport-size), scalar (use-id). Proves the raw-JS interop path, not
+     ;; just that the aliases compile.
+     (mc/button
+      {:id "btn-count" :variant "default" :on-click (fn [_] (.increment ^js counter-handlers))}
+      (str "Count: " count))
+     (mc/text {:id "viewport-size"}
+              (str "Viewport: " (.-width ^js viewport) "x" (.-height ^js viewport)))
+     (mc/text {:id "generated-id"} (str "ID: " generated-id))
 
      ;; imperative modals API: open drives the ModalsProvider, close by modal id
      (mc/button

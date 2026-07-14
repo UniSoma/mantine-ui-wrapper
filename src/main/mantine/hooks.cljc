@@ -7,8 +7,19 @@ Rules of hooks are NOT enforced here; they are delegated to React (call
 only inside function components / other hooks). Object returns need ^js
 or js-interop access under :advanced compilation."
   (:require
-   #?@(:cljs [["@mantine/hooks" :refer [useClipboard useDisclosure useToggle]]])
+   #?@(:cljs [["@mantine/hooks" :refer [useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useHash useHeadroom useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMove useMutationObserver useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
    #?@(:clj [[mantine.impl.factory :as f]])))
+
+(def use-click-outside
+  "useClickOutside — Detects click and touch events outside of given element or elements group
+
+https://mantine.dev/hooks/use-click-outside
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useClickOutside
+     :clj (f/not-implemented "mantine.hooks/use-click-outside")))
 
 (def use-clipboard
   "useClipboard — Copy to clipboard with feedback timeout
@@ -21,6 +32,83 @@ via interop — use ^js under :advanced)."
   #?(:cljs useClipboard
      :clj (f/not-implemented "mantine.hooks/use-clipboard")))
 
+(def use-collapse
+  "useCollapse — Animate height from 0 to auto and vice versa
+
+https://mantine.dev/hooks/use-collapse
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useCollapse
+     :clj (f/not-implemented "mantine.hooks/use-collapse")))
+
+(def use-color-scheme
+  "useColorScheme — Returns OS color scheme preference and subscribes to changes
+
+https://mantine.dev/hooks/use-color-scheme
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useColorScheme
+     :clj (f/not-implemented "mantine.hooks/use-color-scheme")))
+
+(def use-counter
+  "useCounter — Increments/decrements state within given boundaries
+
+https://mantine.dev/hooks/use-counter
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useCounter
+     :clj (f/not-implemented "mantine.hooks/use-counter")))
+
+(def use-debounced-callback
+  "useDebouncedCallback — Creates debounced version of the given function
+
+https://mantine.dev/hooks/use-debounced-callback
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDebouncedCallback
+     :clj (f/not-implemented "mantine.hooks/use-debounced-callback")))
+
+(def use-debounced-state
+  "useDebouncedState — Debounces value changes
+
+https://mantine.dev/hooks/use-debounced-state
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDebouncedState
+     :clj (f/not-implemented "mantine.hooks/use-debounced-state")))
+
+(def use-debounced-value
+  "useDebouncedValue — Debounces value changes
+
+https://mantine.dev/hooks/use-debounced-value
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDebouncedValue
+     :clj (f/not-implemented "mantine.hooks/use-debounced-value")))
+
+(def use-did-update
+  "useDidUpdate — Calls given function in useEffect when value changes, but not when the component mounts
+
+https://mantine.dev/hooks/use-did-update
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDidUpdate
+     :clj (f/not-implemented "mantine.hooks/use-did-update")))
+
 (def use-disclosure
   "useDisclosure — Manages boolean state, provides open, close and toggle handlers, usually used with modals, drawers and popovers
 
@@ -32,6 +120,710 @@ via interop — use ^js under :advanced)."
   #?(:cljs useDisclosure
      :clj (f/not-implemented "mantine.hooks/use-disclosure")))
 
+(def use-document-title
+  "useDocumentTitle — Sets document.title to given string
+
+https://mantine.dev/hooks/use-document-title
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDocumentTitle
+     :clj (f/not-implemented "mantine.hooks/use-document-title")))
+
+(def use-document-visibility
+  "useDocumentVisibility — Detects if the current tab is active
+
+https://mantine.dev/hooks/use-document-visibility
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDocumentVisibility
+     :clj (f/not-implemented "mantine.hooks/use-document-visibility")))
+
+(def use-drag
+  "useDrag — Handle pointer drag gestures with movement, velocity, direction and axis constraints
+
+https://mantine.dev/hooks/use-drag
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useDrag
+     :clj (f/not-implemented "mantine.hooks/use-drag")))
+
+(def use-element-size
+  "useElementSize — Returns element width and height and observes changes with ResizeObserver
+
+https://mantine.dev/hooks/use-element-size
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useElementSize
+     :clj (f/not-implemented "mantine.hooks/use-element-size")))
+
+(def use-event-listener
+  "useEventListener — Subscribes to events of a given element with a ref
+
+https://mantine.dev/hooks/use-event-listener
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useEventListener
+     :clj (f/not-implemented "mantine.hooks/use-event-listener")))
+
+(def use-eye-dropper
+  "useEyeDropper — Pick color from any pixel on the screen
+
+https://mantine.dev/hooks/use-eye-dropper
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useEyeDropper
+     :clj (f/not-implemented "mantine.hooks/use-eye-dropper")))
+
+(def use-favicon
+  "useFavicon — Changes favicon
+
+https://mantine.dev/hooks/use-favicon
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFavicon
+     :clj (f/not-implemented "mantine.hooks/use-favicon")))
+
+(def use-fetch
+  "useFetch — Fetch data with built-in loading and error states
+
+https://mantine.dev/hooks/use-fetch
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFetch
+     :clj (f/not-implemented "mantine.hooks/use-fetch")))
+
+(def use-file-dialog
+  "useFileDialog — Capture one or more files from the user
+
+https://mantine.dev/hooks/use-file-dialog
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFileDialog
+     :clj (f/not-implemented "mantine.hooks/use-file-dialog")))
+
+(def use-floating-window
+  "useFloatingWindow — Create draggable floating area
+
+https://mantine.dev/hooks/use-floating-window
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFloatingWindow
+     :clj (f/not-implemented "mantine.hooks/use-floating-window")))
+
+(def use-focus-return
+  "useFocusReturn — Captures last focused element on the page and returns focus to it once given condition is met
+
+https://mantine.dev/hooks/use-focus-return
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFocusReturn
+     :clj (f/not-implemented "mantine.hooks/use-focus-return")))
+
+(def use-focus-trap
+  "useFocusTrap — Traps focus inside given element
+
+https://mantine.dev/hooks/use-focus-trap
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFocusTrap
+     :clj (f/not-implemented "mantine.hooks/use-focus-trap")))
+
+(def use-focus-within
+  "useFocusWithin — Detects if any element within the given element has focus
+
+https://mantine.dev/hooks/use-focus-within
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFocusWithin
+     :clj (f/not-implemented "mantine.hooks/use-focus-within")))
+
+(def use-force-update
+  "useForceUpdate — Forces the component to rerender without state change
+
+https://mantine.dev/hooks/use-force-update
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useForceUpdate
+     :clj (f/not-implemented "mantine.hooks/use-force-update")))
+
+(def use-hash
+  "useHash — Get and set hash value in the URL
+
+https://mantine.dev/hooks/use-hash
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useHash
+     :clj (f/not-implemented "mantine.hooks/use-hash")))
+
+(def use-headroom
+  "useHeadroom — Create headers that are hidden after user scrolls past given distance
+
+https://mantine.dev/hooks/use-headroom
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useHeadroom
+     :clj (f/not-implemented "mantine.hooks/use-headroom")))
+
+(def use-hotkeys
+  "useHotkeys — Listen for keys combinations on document element
+
+https://mantine.dev/hooks/use-hotkeys
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useHotkeys
+     :clj (f/not-implemented "mantine.hooks/use-hotkeys")))
+
+(def use-hover
+  "useHover — Detects if given element is hovered
+
+https://mantine.dev/hooks/use-hover
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useHover
+     :clj (f/not-implemented "mantine.hooks/use-hover")))
+
+(def use-id
+  "useId — Generates memoized random id
+
+https://mantine.dev/hooks/use-id
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useId
+     :clj (f/not-implemented "mantine.hooks/use-id")))
+
+(def use-idle
+  "useIdle — Detects if the user does nothing on the page
+
+https://mantine.dev/hooks/use-idle
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useIdle
+     :clj (f/not-implemented "mantine.hooks/use-idle")))
+
+(def use-in-viewport
+  "useInViewport — Detects if element is visible in the viewport
+
+https://mantine.dev/hooks/use-in-viewport
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useInViewport
+     :clj (f/not-implemented "mantine.hooks/use-in-viewport")))
+
+(def use-input-state
+  "useInputState — Manages input state
+
+https://mantine.dev/hooks/use-input-state
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useInputState
+     :clj (f/not-implemented "mantine.hooks/use-input-state")))
+
+(def use-intersection
+  "useIntersection — Detects if given element is visible in the viewport or other element with IntersectionObserver
+
+https://mantine.dev/hooks/use-intersection
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useIntersection
+     :clj (f/not-implemented "mantine.hooks/use-intersection")))
+
+(def use-interval
+  "useInterval — Calls function with a given interval
+
+https://mantine.dev/hooks/use-interval
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useInterval
+     :clj (f/not-implemented "mantine.hooks/use-interval")))
+
+(def use-is-first-render
+  "useIsFirstRender — Detects if the component is rendered for the first time
+
+https://mantine.dev/hooks/use-is-first-render
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useIsFirstRender
+     :clj (f/not-implemented "mantine.hooks/use-is-first-render")))
+
+(def use-isomorphic-effect
+  "useIsomorphicEffect — useLayoutEffect replacement
+
+https://mantine.dev/hooks/use-isomorphic-effect
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useIsomorphicEffect
+     :clj (f/not-implemented "mantine.hooks/use-isomorphic-effect")))
+
+(def use-list-state
+  "useListState — Manages array state
+
+https://mantine.dev/hooks/use-list-state
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useListState
+     :clj (f/not-implemented "mantine.hooks/use-list-state")))
+
+(def use-local-storage
+  "useLocalStorage — Exposes localStorage value as react state, syncs state across opened tabs
+
+https://mantine.dev/hooks/use-local-storage
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useLocalStorage
+     :clj (f/not-implemented "mantine.hooks/use-local-storage")))
+
+(def use-logger
+  "useLogger — Logs given values to console when component renders
+
+https://mantine.dev/hooks/use-logger
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useLogger
+     :clj (f/not-implemented "mantine.hooks/use-logger")))
+
+(def use-long-press
+  "useLongPress — Call function on long press
+
+https://mantine.dev/hooks/use-long-press
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useLongPress
+     :clj (f/not-implemented "mantine.hooks/use-long-press")))
+
+(def use-map
+  "useMap — Use Map as React state
+
+https://mantine.dev/hooks/use-map
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMap
+     :clj (f/not-implemented "mantine.hooks/use-map")))
+
+(def use-mask
+  "useMask — Attach real-time input masking to any input element
+
+https://mantine.dev/hooks/use-mask
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMask
+     :clj (f/not-implemented "mantine.hooks/use-mask")))
+
+(def use-media-query
+  "useMediaQuery — Subscribes to media queries with window.matchMedia
+
+https://mantine.dev/hooks/use-media-query
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMediaQuery
+     :clj (f/not-implemented "mantine.hooks/use-media-query")))
+
+(def use-merged-ref
+  "useMergedRef — Merges multiple refs objects or functions into one ref callback
+
+https://mantine.dev/hooks/use-merged-ref
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMergedRef
+     :clj (f/not-implemented "mantine.hooks/use-merged-ref")))
+
+(def use-mounted
+  "useMounted — Returns true if the component is mounted
+
+https://mantine.dev/hooks/use-mounted
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMounted
+     :clj (f/not-implemented "mantine.hooks/use-mounted")))
+
+(def use-mouse
+  "useMouse — Tracks mouse position over the viewport or given element
+
+https://mantine.dev/hooks/use-mouse
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMouse
+     :clj (f/not-implemented "mantine.hooks/use-mouse")))
+
+(def use-move
+  "useMove — Handles move behavior over given element, can be used to build custom sliders
+
+https://mantine.dev/hooks/use-move
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMove
+     :clj (f/not-implemented "mantine.hooks/use-move")))
+
+(def use-mutation-observer
+  "useMutationObserver — Subscribe to changes being made to the DOM tree
+
+https://mantine.dev/hooks/use-mutation-observer
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMutationObserver
+     :clj (f/not-implemented "mantine.hooks/use-mutation-observer")))
+
+(def use-network
+  "useNetwork — Returns current connection status
+
+https://mantine.dev/hooks/use-network
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useNetwork
+     :clj (f/not-implemented "mantine.hooks/use-network")))
+
+(def use-orientation
+  "useOrientation — Detects device orientation and subscribe to its changes
+
+https://mantine.dev/hooks/use-orientation
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useOrientation
+     :clj (f/not-implemented "mantine.hooks/use-orientation")))
+
+(def use-os
+  "useOs — Detects user operating system
+
+https://mantine.dev/hooks/use-os
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useOs
+     :clj (f/not-implemented "mantine.hooks/use-os")))
+
+(def use-page-leave
+  "usePageLeave — Calls given function when the mouse leaves the page
+
+https://mantine.dev/hooks/use-page-leave
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs usePageLeave
+     :clj (f/not-implemented "mantine.hooks/use-page-leave")))
+
+(def use-pagination
+  "usePagination — Manages pagination state
+
+https://mantine.dev/hooks/use-pagination
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs usePagination
+     :clj (f/not-implemented "mantine.hooks/use-pagination")))
+
+(def use-previous
+  "usePrevious — Returns previous value of given state
+
+https://mantine.dev/hooks/use-previous
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs usePrevious
+     :clj (f/not-implemented "mantine.hooks/use-previous")))
+
+(def use-queue
+  "useQueue — Manages queue of values
+
+https://mantine.dev/hooks/use-queue
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useQueue
+     :clj (f/not-implemented "mantine.hooks/use-queue")))
+
+(def use-radial-move
+  "useRadialMove — Handles radial move behavior over given element, can be used to build custom radial sliders
+
+https://mantine.dev/hooks/use-radial-move
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useRadialMove
+     :clj (f/not-implemented "mantine.hooks/use-radial-move")))
+
+(def use-reduced-motion
+  "useReducedMotion — Detects if user prefers to reduce motion
+
+https://mantine.dev/hooks/use-reduced-motion
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useReducedMotion
+     :clj (f/not-implemented "mantine.hooks/use-reduced-motion")))
+
+(def use-resize-observer
+  "useResizeObserver — Tracks element size and position changes with ResizeObserver
+
+https://mantine.dev/hooks/use-resize-observer
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useResizeObserver
+     :clj (f/not-implemented "mantine.hooks/use-resize-observer")))
+
+(def use-roving-index
+  "useRovingIndex — Implement roving tabindex keyboard navigation pattern
+
+https://mantine.dev/hooks/use-roving-index
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useRovingIndex
+     :clj (f/not-implemented "mantine.hooks/use-roving-index")))
+
+(def use-scroll-direction
+  "useScrollDirection — Detects whether the user is scrolling up or down
+
+https://mantine.dev/hooks/use-scroll-direction
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useScrollDirection
+     :clj (f/not-implemented "mantine.hooks/use-scroll-direction")))
+
+(def use-scroll-into-view
+  "useScrollIntoView — Scrolls given element into view
+
+https://mantine.dev/hooks/use-scroll-into-view
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useScrollIntoView
+     :clj (f/not-implemented "mantine.hooks/use-scroll-into-view")))
+
+(def use-scroll-spy
+  "useScrollSpy — Track scroll position and detect which heading is currently in the viewport, can be used for table of contents
+
+https://mantine.dev/hooks/use-scroll-spy
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useScrollSpy
+     :clj (f/not-implemented "mantine.hooks/use-scroll-spy")))
+
+(def use-scroller
+  "useScroller — Manages horizontal scroll behavior with scroll state tracking and drag-to-scroll functionality
+
+https://mantine.dev/hooks/use-scroller
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useScroller
+     :clj (f/not-implemented "mantine.hooks/use-scroller")))
+
+(def use-selection
+  "useSelection — Manages selection state of given dataset
+
+https://mantine.dev/hooks/use-selection
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useSelection
+     :clj (f/not-implemented "mantine.hooks/use-selection")))
+
+(def use-set
+  "useSet — Use Set as React state
+
+https://mantine.dev/hooks/use-set
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useSet
+     :clj (f/not-implemented "mantine.hooks/use-set")))
+
+(def use-set-state
+  "useSetState — Manages state with setState-like API
+
+https://mantine.dev/hooks/use-set-state
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useSetState
+     :clj (f/not-implemented "mantine.hooks/use-set-state")))
+
+(def use-shallow-effect
+  "useShallowEffect — useEffect drop in replacement with dependencies shallow comparison
+
+https://mantine.dev/hooks/use-shallow-effect
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useShallowEffect
+     :clj (f/not-implemented "mantine.hooks/use-shallow-effect")))
+
+(def use-splitter
+  "useSplitter — Create resizable split pane layouts with keyboard support, collapsible panels and constraints
+
+https://mantine.dev/hooks/use-splitter
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useSplitter
+     :clj (f/not-implemented "mantine.hooks/use-splitter")))
+
+(def use-state-history
+  "useStateHistory — Move back/forward in state history
+
+https://mantine.dev/hooks/use-state-history
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useStateHistory
+     :clj (f/not-implemented "mantine.hooks/use-state-history")))
+
+(def use-text-selection
+  "useTextSelection — Returns current selected text on the page
+
+https://mantine.dev/hooks/use-text-selection
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useTextSelection
+     :clj (f/not-implemented "mantine.hooks/use-text-selection")))
+
+(def use-throttled-callback
+  "useThrottledCallback — Throttles function calls
+
+https://mantine.dev/hooks/use-throttled-callback
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useThrottledCallback
+     :clj (f/not-implemented "mantine.hooks/use-throttled-callback")))
+
+(def use-throttled-state
+  "useThrottledState — Throttles state changes
+
+https://mantine.dev/hooks/use-throttled-state
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useThrottledState
+     :clj (f/not-implemented "mantine.hooks/use-throttled-state")))
+
+(def use-throttled-value
+  "useThrottledValue — Throttles value changes
+
+https://mantine.dev/hooks/use-throttled-value
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useThrottledValue
+     :clj (f/not-implemented "mantine.hooks/use-throttled-value")))
+
+(def use-timeout
+  "useTimeout — Calls function in given timeout
+
+https://mantine.dev/hooks/use-timeout
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useTimeout
+     :clj (f/not-implemented "mantine.hooks/use-timeout")))
+
 (def use-toggle
   "useToggle — Switches between given values
 
@@ -42,3 +834,58 @@ the raw JS value (tuples destructure positionally, object returns are read
 via interop — use ^js under :advanced)."
   #?(:cljs useToggle
      :clj (f/not-implemented "mantine.hooks/use-toggle")))
+
+(def use-uncontrolled
+  "useUncontrolled — Manage state of both controlled and uncontrolled components
+
+https://mantine.dev/hooks/use-uncontrolled
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useUncontrolled
+     :clj (f/not-implemented "mantine.hooks/use-uncontrolled")))
+
+(def use-validated-state
+  "useValidatedState — Manages state with validation
+
+https://mantine.dev/hooks/use-validated-state
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useValidatedState
+     :clj (f/not-implemented "mantine.hooks/use-validated-state")))
+
+(def use-viewport-size
+  "useViewportSize — Returns viewport width and height and subscribes to changes
+
+https://mantine.dev/hooks/use-viewport-size
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useViewportSize
+     :clj (f/not-implemented "mantine.hooks/use-viewport-size")))
+
+(def use-window-event
+  "useWindowEvent — Adds event listener to the window object on component mount and removes the event when the component unmounts
+
+https://mantine.dev/hooks/use-window-event
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useWindowEvent
+     :clj (f/not-implemented "mantine.hooks/use-window-event")))
+
+(def use-window-scroll
+  "useWindowScroll — Tracks window scroll position
+
+https://mantine.dev/hooks/use-window-scroll
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useWindowScroll
+     :clj (f/not-implemented "mantine.hooks/use-window-scroll")))

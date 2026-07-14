@@ -112,6 +112,26 @@ try {
   await poll('collapse becomes visible', () => collapse.getAttribute('aria-hidden') === 'false');
   assert(true, 'use-disclosure tuple destructured; .toggle drives Collapse :expanded');
 
+  // -------------------------------------------------- 3b. hooks return-shape split
+  // tuple: use-counter -> [count, handlers]; count destructured positionally, handler
+  // object method (.increment) drives a re-render.
+  const countBtn = doc.getElementById('btn-count');
+  assert(countBtn.textContent === 'Count: 5', 'use-counter tuple: count destructured positionally (initial 5)');
+  countBtn.click();
+  await poll('count increments', () => countBtn.textContent === 'Count: 6');
+  assert(countBtn.textContent === 'Count: 6', 'use-counter handlers object .increment re-renders (raw JS return)');
+
+  // object: use-viewport-size -> {width, height} read via ^js interop.
+  const viewport = doc.getElementById('viewport-size');
+  const vpMatch = viewport.textContent.match(/^Viewport: (\d+)x(\d+)$/);
+  assert(vpMatch && Number(vpMatch[1]) > 0 && Number(vpMatch[2]) > 0,
+    'use-viewport-size object read via ^js interop (width/height > 0)');
+
+  // scalar: use-id -> non-empty string.
+  const genId = doc.getElementById('generated-id');
+  assert(/^ID: .+/.test(genId.textContent) && genId.textContent !== 'ID: ',
+    'use-id scalar return rendered (non-empty string id)');
+
   // -------------------------------------------------- 4. imperative notifications
   btn.click();
   const note = await poll('notification appears', () =>
