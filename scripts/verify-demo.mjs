@@ -69,10 +69,14 @@ try {
 
   // -------------------------------------------------- 3. hook: use-disclosure
   const toggle = doc.getElementById('btn-toggle');
+  const collapse = doc.getElementById('collapse');
   assert(toggle.textContent.includes('Show details'), 'disclosure starts closed');
+  assert(collapse.getAttribute('aria-hidden') === 'true',
+    'Collapse starts hidden (:expanded false actually reaches the component)');
   toggle.click();
   await poll('toggle label flips', () => toggle.textContent.includes('Hide details'));
-  assert(true, 'use-disclosure tuple destructured; .toggle handler drives re-render');
+  await poll('collapse becomes visible', () => collapse.getAttribute('aria-hidden') === 'false');
+  assert(true, 'use-disclosure tuple destructured; .toggle drives Collapse :expanded');
 
   // -------------------------------------------------- 4. imperative notifications
   btn.click();

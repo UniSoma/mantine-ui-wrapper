@@ -51,7 +51,7 @@
       {:id "btn-toggle" :variant "light" :on-click (fn [_] (.toggle ^js handlers))}
       (if opened "Hide details" "Show details"))
      (mc/collapse
-      {:id "collapse" :in opened}
+      {:id "collapse" :expanded opened}
       (for [i (range 3)]
         (mc/badge {:key i :id (str "badge-" i) :component "span"} (str "Disclosed " i)))))))
 
