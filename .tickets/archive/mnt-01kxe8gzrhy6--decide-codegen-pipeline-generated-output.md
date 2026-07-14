@@ -6,7 +6,7 @@ type: task
 priority: 2
 mode: hitl
 created: '2026-07-13T17:31:17.137540377Z'
-updated: '2026-07-13T20:31:46.195995038Z'
+updated: '2026-07-14T17:12:56.767842043Z'
 closed: '2026-07-13T20:31:46.195995038Z'
 parent: mnt-01kxe8fz1ert
 tags:
@@ -69,3 +69,7 @@ Deliberate divergence from SUIW: SUIW does bare clj->js + REPL-run codegen + one
 **2026-07-13T20:31:46.195995038Z**
 
 Generator = headless/CI-runnable/pinned plain-Clojure transform of committed docgen.json + node_modules -> one .cljc ns per package (core/dates/charts, no aggregate). kebab no-prefix defs, per-component named-export requires (tree-shakeable), package+require resolved from node_modules exports. Docstring-only runtime (metadata generator-side) = docgen prop-list + best-effort mantine.dev URL. Thin gen files -> mantine.impl.props (converter) + mantine.impl.factory (variadic-def factory + controlled-input shim on curated set). .cljc JVM-loadable, :clj throws on call. Optional props via map? first-arg. Handoffs to build-tooling: react/createElement require form + runner (lean bb).
+
+**2026-07-14T17:12:56.767842043Z**
+
+CORRECTION from build-tooling ticket (mnt-01kxe8gzvp9e): this ticket's rationale that per-component named-export requires are 'tree-shakeable under :advanced' is FALSE. Confirmed by PoC (docs/prototypes/build-tooling-poc.md): the :advanced bundle is ~1MB — the whole @mantine/core barrel. shadow-cljs does NOT tree-shake npm deps (thheller #412/#21); Closure DCE does not cross the CommonJS npm boundary; :refer vs :as is bundle-neutral. The named-requires decision STILL STANDS on clarity/correctness grounds, and the whole-barrel inclusion is an accepted cost (the wrapper exposes the full surface anyway). Only a deep subpath require would reduce inclusion, and @mantine/core ships no per-component JS subpaths.
