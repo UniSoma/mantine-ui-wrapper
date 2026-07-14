@@ -8,7 +8,7 @@ only inside function components / other hooks). Object returns need ^js
 or js-interop access under :advanced compilation."
   (:require
    #?@(:cljs [["@mantine/hooks" :refer [useClipboard useDisclosure useToggle]]])
-   [mantine.impl.factory :as f]))
+   #?@(:clj [[mantine.impl.factory :as f]])))
 
 (def use-clipboard
   "useClipboard — Copy to clipboard with feedback timeout

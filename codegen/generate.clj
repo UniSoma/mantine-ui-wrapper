@@ -109,10 +109,30 @@
 
 ;; ---------------------------------------------------------------- supplements
 
+(defn- drop-satisfied-declares
+  "Remove top-level (declare ...) lines whose every symbol is among satisfied-names —
+  they exist only to make the standalone supplement compile and are redundant once
+  hoisted after the generated defs. Collapses the blank line left behind."
+  [lines body-start-row body-forms satisfied-names]
+  (let [rows-to-drop (set (mapcat (fn [form]
+                                    (let [{:keys [row end-row]} (meta form)]
+                                      (when (and (seq? form)
+                                                 (= 'declare (first form))
+                                                 (every? #(satisfied-names (str %)) (rest form)))
+                                        (range row (inc end-row)))))
+                                  body-forms))]
+    (->> (map-indexed (fn [i line] [(+ body-start-row i) line]) lines)
+         (remove (fn [[row line]]
+                   (or (rows-to-drop row)
+                       ;; also the blank line a dropped form leaves behind
+                       (and (str/blank? line) (rows-to-drop (dec row))))))
+         (map second))))
+
 (defn parse-supplement
   "Parse codegen/supplements/<pkg-suffix>.cljc. Returns nil when absent, else
-  {:cljs-requires [...] :requires [...] :def-names [...] :body \"<verbatim text>\"}."
-  [suffix]
+  {:cljs-requires [...] :requires [...] :def-names [...] :body \"<verbatim text>\"}.
+  Declares fully satisfied by `satisfied-names` are dropped from the body."
+  [suffix satisfied-names]
   (let [path (str "codegen/supplements/" suffix ".cljc")]
     (when (fs/exists? path)
       (let [text (slurp path)
@@ -139,7 +159,9 @@
             ;; body = verbatim text from the first form after the ns form
             body-start-row (:row (meta (first body-forms)))
             body (when body-start-row
-                   (str/join "\n" (drop (dec body-start-row) (str/split-lines text))))]
+                   (-> (drop (dec body-start-row) (str/split-lines text))
+                       (drop-satisfied-declares body-start-row body-forms satisfied-names)
+                       (->> (str/join "\n"))))]
         {:cljs-requires cljs
          :requires unconditional
          :def-names (vec def-names)
@@ -171,15 +193,20 @@
 
 ;; ---------------------------------------------------------------- emission
 
-(defn emit-ns-form [{:keys [ns-name docstring exclude cljs-requires requires]}]
-  (str "(ns " ns-name "\n"
-       "  \"" (esc docstring) "\"\n"
-       (when (seq exclude)
-         (str "  (:refer-clojure :exclude [" (str/join " " (sort exclude)) "])\n"))
-       "  (:require\n"
-       "   #?@(:cljs [" (str/join "\n              " (map pr-str cljs-requires)) "])\n"
-       (str/join "\n" (map #(str "   " (pr-str %)) requires))
-       "))\n"))
+(defn emit-ns-form [{:keys [ns-name docstring exclude cljs-requires clj-requires requires]}]
+  (let [require-lines
+        (concat
+         [(str "#?@(:cljs [" (str/join "\n              " (map pr-str cljs-requires)) "])")]
+         (when (seq clj-requires)
+           [(str "#?@(:clj [" (str/join "\n             " (map pr-str clj-requires)) "])")])
+         (map pr-str requires))]
+    (str "(ns " ns-name "\n"
+         "  \"" (esc docstring) "\"\n"
+         (when (seq exclude)
+           (str "  (:refer-clojure :exclude [" (str/join " " (sort exclude)) "])\n"))
+         "  (:require\n   "
+         (str/join "\n   " require-lines)
+         "))\n")))
 
 (defn emit-component-def [{:keys [ns-name js-name controlled?]}]
   (let [kb (kebab js-name)]
@@ -212,7 +239,7 @@
   "One generated ns for `pkg` with its resolved component names (+ optional supplement)."
   [pkg component-names]
   (let [ns-name (pkg->ns pkg)
-        supplement (parse-supplement (pkg-suffix pkg))
+        supplement (parse-supplement (pkg-suffix pkg) (set (map kebab component-names)))
         _ (check-collisions! ns-name component-names)
         def-names (concat (map kebab component-names) (:def-names supplement))
         docstring (str "Mantine " pkg " " mantine-version " wrappers (generated"
@@ -254,7 +281,9 @@
                                :docstring docstring
                                :exclude (derive-exclude (map kebab hook-names))
                                :cljs-requires [(into ["@mantine/hooks" :refer (mapv symbol (sort hook-names))])]
-                               :requires '[[mantine.impl.factory :as f]]})
+                               ;; hook defs are bare aliases on :cljs; f is only used by
+                               ;; the :clj not-implemented branch
+                               :clj-requires '[[mantine.impl.factory :as f]]})
                 "\n"
                 (str/join "\n" (for [nm (sort hook-names)]
                                  (emit-hook-def {:ns-name ns-name :js-name nm}))))}))

@@ -33,8 +33,6 @@ Optional leading props map; remaining args are children."
 
 ;; ---- hoisted from codegen/supplements/notifications.cljc ----
 
-(declare notifications)
-
 (def provider
   "Alias for `notifications` — the renderer component that must be mounted once
   (inside MantineProvider) for the imperative notification fns to display anything."
