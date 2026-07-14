@@ -25,6 +25,7 @@ Widening `codegen/scope.edn` fans the same pipeline out across the rest of Manti
 - `bb generate` — regenerate `src/main/mantine/*.cljc` from the committed inputs.
 - `bb extract <mantine-clone>` — refresh the committed inputs on a Mantine version bump
   (clone the pinned tag, `yarn install`, `yarn tsx scripts/docgen`, then extract).
+  See [`docs/version-bump.md`](docs/version-bump.md) for the full bump procedure.
 - `npx shadow-cljs watch demo` — dev harness at http://localhost:8090.
 - `npx shadow-cljs release demo && node scripts/verify-demo.mjs` — build `:advanced`
   and verify the four patterns in jsdom.
