@@ -67,6 +67,28 @@ try {
   await poll('echo updates', () => doc.getElementById('input-echo').textContent === 'Echo: world');
   assert(input.value === 'world', 'typing flows shim -> onChange -> state -> back into input');
 
+  // -------------------------------------------------- 2b. widened core surface
+  const alert = doc.getElementById('alert');
+  assert(alert.className.includes('mantine-Alert-root') && alert.textContent.includes('Widened core coverage'),
+    'newly-generated mc/alert renders with Mantine classes');
+  const anchorEl = doc.getElementById('anchor');
+  assert(anchorEl.tagName === 'A' && anchorEl.className.includes('mantine-Anchor-root'),
+    'newly-generated mc/anchor renders an <a> with Mantine classes');
+  const kbd = doc.getElementById('kbd');
+  assert(kbd.tagName === 'KBD' && kbd.textContent.includes('Ctrl'),
+    'newly-generated mc/kbd renders a <kbd>');
+
+  // -------------------------------------------------- 2c. newly-curated controlled input
+  const select = doc.getElementById('fruit-select');
+  assert(select.tagName === 'SELECT' && select.value === 'apple',
+    'controlled NativeSelect renders external :value');
+  const selectSetter = Object.getOwnPropertyDescriptor(
+    dom.window.HTMLSelectElement.prototype, 'value').set;
+  selectSetter.call(select, 'cherry');
+  select.dispatchEvent(new dom.window.Event('change', { bubbles: true }));
+  await poll('fruit echo updates', () => doc.getElementById('fruit-echo').textContent === 'Fruit: cherry');
+  assert(select.value === 'cherry', 'NativeSelect change flows shim -> onChange -> state -> back (shape-agnostic value read)');
+
   // -------------------------------------------------- 3. hook: use-disclosure
   const toggle = doc.getElementById('btn-toggle');
   const collapse = doc.getElementById('collapse');

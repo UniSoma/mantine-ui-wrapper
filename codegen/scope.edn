@@ -1,6 +1,10 @@
-;; Generation scope. The four-pattern PoC proves the pipeline on this subset;
-;; full fan-out (every core component, dates/charts, all hooks, modals/spotlight)
-;; is post-map mechanical work — widen these sets to take it on.
-{:components #{"Button" "TextInput" "Group" "Stack" "Text" "Badge" "Collapse"
-               "Notifications"}
+;; Generation scope, expressed per dimension as everything-minus-excludes.
+;; Each dimension is EITHER an explicit name set (#{...}) OR
+;; {:all true :exclude #{...}} = "every resolvable entry minus these excludes".
+;;
+;; :components — {:all true} covers every docgen entry exported by a wrapped
+;;   @mantine/* package (core, notifications, ...; never @mantine/hooks), minus
+;;   :exclude. That is the whole @mantine/core surface today.
+;; :hooks — stays an explicit use* set until its own slice flips it to {:all true}.
+{:components {:all true :exclude #{}}
  :hooks #{"useDisclosure" "useToggle" "useClipboard"}}

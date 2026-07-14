@@ -1,5 +1,18 @@
-;; Curated component set wrapped with mantine.impl.factory/controlled (cursor-jump
-;; prevention for text-editing inputs). Names absent from the resolved components
-;; are logged by the generator so this set can't silently rot.
-#{"TextInput" "Textarea" "PasswordInput" "JsonInput" "Autocomplete" "Select"
-  "NumberInput" "TagsInput"}
+;; Core components wrapped with mantine.impl.factory/controlled — the value/onChange
+;; input family, where local-state buffering keeps the cursor from jumping when the
+;; owner re-renders. The shim is shape-agnostic (DOM-event .target OR bare value), so
+;; text, select/combobox, numeric, slider, color and rating inputs all fit. Deliberately
+;; excludes checked-based toggles (Checkbox/Switch/Radio/Chip) and value-as-navigation
+;; controls (Tabs/Accordion/Stepper/Pagination), whose controlled interface is not
+;; value/onChange. Names absent from the resolved components are logged by the generator
+;; so this set can't silently rot.
+#{;; text-editing
+  "TextInput" "Textarea" "PasswordInput" "JsonInput" "MaskInput" "NumberInput" "PinInput"
+  ;; select / combobox family
+  "Autocomplete" "Select" "MultiSelect" "NativeSelect" "TagsInput" "TreeSelect"
+  ;; file / color
+  "FileInput" "ColorInput" "ColorPicker"
+  ;; sliders
+  "Slider" "RangeSlider" "AngleSlider" "HueSlider" "AlphaSlider"
+  ;; other value/onChange inputs
+  "Rating" "SegmentedControl"}

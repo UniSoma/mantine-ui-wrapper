@@ -41,6 +41,24 @@
           {}
           mantine-packages))
 
+;; Every docgen entry exported by a wrapped @mantine/* package other than
+;; @mantine/hooks — the universe the :components dimension draws from when {:all true}.
+(def wrapped-component-universe
+  (filter (fn [nm]
+            (and (get docgen nm)
+                 (some #(not= % "@mantine/hooks") (get exports-index nm []))))
+          (keys exports-index)))
+
+(defn dimension-names
+  "Resolve a scope dimension to a concrete name seq. Either an explicit name set,
+  or {:all true :exclude #{...}} = every name in `universe` minus the excludes."
+  [spec universe]
+  (if (set? spec)
+    spec
+    (do (assert (:all spec)
+                "scope dimension must be a set or {:all true :exclude #{...}}")
+        (remove (:exclude spec #{}) universe))))
+
 ;; ---------------------------------------------------------------- naming
 
 (defn kebab [s]
@@ -308,10 +326,12 @@
           (println "WARN component" nm "exported by" (str/join ", " pkgs) "— using" pkg))
         [nm pkg]))))
 
-(let [resolved (keep resolve-component (sort (:components scope)))
+(let [components (dimension-names (:components scope) wrapped-component-universe)
+      resolved (keep resolve-component (sort components))
       by-pkg (group-by second resolved)
       hook-exports (set (package-exports "@mantine/hooks"))
-      hooks (vec (for [nm (sort (:hooks scope))
+      hook-universe (filter #(str/starts-with? % "use") hook-exports)
+      hooks (vec (for [nm (sort (dimension-names (:hooks scope) hook-universe))
                        :when (or (and (str/starts-with? nm "use") (hook-exports nm))
                                  (do (println "SKIP hook" nm "— not a use* export of @mantine/hooks") false))]
                    nm))
