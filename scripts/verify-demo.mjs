@@ -56,8 +56,11 @@ try {
   assert(anchor.tagName === 'A' && anchor.getAttribute('href') === 'https://mantine.dev',
     'polymorphic :component "a" renders an anchor with href');
 
-  const badges = doc.querySelectorAll('[id^="badge-"]');
-  assert(badges.length === 3 && badges[0].tagName === 'SPAN',
+  const badges = await poll('badges rendered', () => {
+    const b = doc.querySelectorAll('[id^="badge-"]');
+    return b.length === 3 ? b : null;
+  });
+  assert(badges[0].tagName === 'SPAN',
     'children seq flattened; Badge polymorphic :component "span"');
 
   // -------------------------------------------------- 2. controlled input (shim)
@@ -110,7 +113,57 @@ try {
   const styleTags = doc.querySelectorAll('style[data-mantine-styles]');
   assert(styleTags.length > 0, 'MantineProvider injected its style/CSS-variable tags');
 
-  console.log('\nALL FOUR PATTERNS VERIFIED ✅');
+  // -------------------------------------------------- 5. @mantine/dates + @mantine/charts
+  // Selector sets for the stylesheets public/index.html links (core first, packages after).
+  const pkgSelectors = (pkg) =>
+    new Set((fs.readFileSync(`node_modules/@mantine/${pkg}/styles.css`, 'utf8')
+      .match(/\.m_[0-9a-f]+/g) || []).map((s) => s.slice(1)));
+  const linked = ['core', 'notifications', 'dates', 'charts'];
+  const perPkg = Object.fromEntries(linked.map((p) => [p, pkgSelectors(p)]));
+  const linkedUnion = new Set(linked.flatMap((p) => [...perPkg[p]]));
+  const hashedClasses = (root) => {
+    const out = new Set();
+    (function walk(n) {
+      if (n.classList) n.classList.forEach((c) => { if (/^m_[0-9a-f]+$/.test(c)) out.add(c); });
+      for (const c of n.children) walk(c);
+    })(root);
+    return [...out];
+  };
+
+  const datePicker = doc.getElementById('date-picker');
+  assert(datePicker && datePicker.querySelector('[class*="mantine-DatePicker-"]'),
+    'mantine.dates/date-picker renders with Mantine classes');
+  const dateClasses = hashedClasses(datePicker);
+  assert(dateClasses.every((c) => linkedUnion.has(c)),
+    'every hashed class in the DatePicker subtree pairs with a linked stylesheet selector');
+  assert(dateClasses.some((c) => perPkg.dates.has(c)),
+    'DatePicker subtree uses selectors defined in @mantine/dates/styles.css (dates CSS paired)');
+
+  // controlled DatePicker end-to-end: external :value selects the day, clicking another
+  // day flows through the shim -> onChange -> state -> back into :value.
+  assert(doc.getElementById('date-echo').textContent === 'Date: 2026-07-14',
+    'controlled DatePicker renders external :value (day 14 selected)');
+  const days = [...datePicker.querySelectorAll('.mantine-DatePicker-day')];
+  const target = days.find((d) => d.getAttribute('data-selected') !== 'true'
+    && d.getAttribute('data-outside') !== 'true' && !d.disabled);
+  const targetDay = target.textContent;
+  const echoBefore = doc.getElementById('date-echo').textContent;
+  target.click();
+  await poll('date echo updates', () => doc.getElementById('date-echo').textContent !== echoBefore);
+  assert([...datePicker.querySelectorAll('.mantine-DatePicker-day')]
+    .find((d) => d.getAttribute('data-selected') === 'true').textContent === targetDay,
+    'clicking a day flows shim -> onChange -> state -> back into DatePicker :value');
+
+  const lineChart = doc.getElementById('line-chart');
+  assert(lineChart && lineChart.className.includes('mantine-LineChart-'),
+    'mantine.charts/line-chart renders with Mantine classes');
+  const chartClasses = hashedClasses(lineChart);
+  assert(chartClasses.every((c) => linkedUnion.has(c)),
+    'every hashed class in the LineChart subtree pairs with a linked stylesheet selector');
+  assert(chartClasses.some((c) => perPkg.charts.has(c)),
+    'LineChart subtree uses selectors defined in @mantine/charts/styles.css (charts CSS paired)');
+
+  console.log('\nALL PATTERNS + DATES/CHARTS VERIFIED ✅');
   process.exit(0);
 } catch (e) {
   console.error('\n' + e.message);

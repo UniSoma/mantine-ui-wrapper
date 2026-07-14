@@ -8,13 +8,16 @@
             ["react-dom/client" :as rdom]
             ["@mantine/core" :refer [MantineProvider]]
             [mantine.core :as mc]
+            [mantine.dates :as md]
+            [mantine.charts :as mch]
             [mantine.hooks :as mh]
             [mantine.notifications :as mn]))
 
 (defn demo []
   (let [[opened handlers] (mh/use-disclosure false)
         [value set-value] (react/useState "hello")
-        [fruit set-fruit] (react/useState "apple")]
+        [fruit set-fruit] (react/useState "apple")
+        [date set-date] (react/useState "2026-07-14")]
     (mc/stack
      {:gap "md" :p "xl" :id "demo-root"}
      (mc/text {:size "lg" :fw 700} "mantine-ui-wrapper — four-pattern PoC")
@@ -61,6 +64,24 @@
        :value fruit
        :on-change (fn [e] (set-fruit (.. ^js e -target -value)))})
      (mc/text {:id "fruit-echo"} (str "Fruit: " fruit))
+
+     ;; @mantine/dates: controlled DatePicker (inline calendar, bare-value onChange
+     ;; through the same shim) verified end-to-end
+     (md/date-picker
+      {:id "date-picker"
+       :value date
+       :on-change (fn [v] (set-date v))})
+     (mc/text {:id "date-echo"} (str "Date: " date))
+
+     ;; @mantine/charts: representative rendered chart
+     (mch/line-chart
+      {:id "line-chart"
+       :h 200
+       :data #js [#js {:month "Jan" :sales 100}
+                  #js {:month "Feb" :sales 140}
+                  #js {:month "Mar" :sales 120}]
+       :data-key "month"
+       :series #js [#js {:name "sales" :color "blue.6"}]})
 
      ;; hook-driven disclosure toggling a Collapse; children from a seq get flattened
      (mc/button

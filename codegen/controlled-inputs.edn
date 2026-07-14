@@ -15,4 +15,9 @@
   ;; sliders
   "Slider" "RangeSlider" "AngleSlider" "HueSlider" "AlphaSlider"
   ;; other value/onChange inputs
-  "Rating" "SegmentedControl"}
+  "Rating" "SegmentedControl"
+  ;; @mantine/dates — the date/time value/onChange picker family (bare-value onChange,
+  ;; handled by the same shape-agnostic shim)
+  "DateInput" "DatePicker" "DatePickerInput" "DateTimePicker" "InlineDateTimePicker"
+  "MiniCalendar" "MonthPicker" "MonthPickerInput" "TimeGrid" "TimePicker"
+  "YearPicker" "YearPickerInput"}
