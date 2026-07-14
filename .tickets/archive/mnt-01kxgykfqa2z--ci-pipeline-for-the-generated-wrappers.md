@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgykfqa2z
 title: CI pipeline for the generated wrappers
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-14T18:35:36.547684050Z'
-updated: '2026-07-14T18:35:36.547684050Z'
+updated: '2026-07-14T20:22:17.418559210Z'
+closed: '2026-07-14T20:22:17.418559210Z'
 parent: mnt-01kxgy8apnws
 acceptance:
 - title: 'CI runs on every change: install deps, regenerate and fail on git diff (drift check), release-build the demo failing on any warning, run the jsdom verification, JVM-load every generated ns, run the per-package def-count coverage check'
@@ -36,3 +37,9 @@ Generated code can never silently drift, regress, or lose coverage. One CI pipel
 - mnt-01kxgyjccn57 (dates + charts)
 - mnt-01kxgyjnpzrj (modals + spotlight)
 - mnt-01kxgyk1rsfn (all hooks)
+
+## Notes
+
+**2026-07-14T20:22:17.418559210Z**
+
+One CI pipeline (.github/workflows/ci.yml + bb ci): drift, zero-warning build, jsdom verify, JVM-load, per-package coverage — all plain commands, green on the full surface. Committed 2c330e9.

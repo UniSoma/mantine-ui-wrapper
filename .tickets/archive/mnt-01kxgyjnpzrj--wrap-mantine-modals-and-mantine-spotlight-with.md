@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgyjnpzrj
 title: Wrap @mantine/modals and @mantine/spotlight with standalone-exports supplements
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-14T18:35:09.917631040Z'
-updated: '2026-07-14T18:35:09.917631040Z'
+updated: '2026-07-14T20:22:17.220000803Z'
+closed: '2026-07-14T20:22:17.220000803Z'
 parent: mnt-01kxgy8apnws
 acceptance:
 - title: mantine.modals exposes open, open-confirm-modal, open-context-modal, close, close-all, update-modal, update-context-modal plus modals-provider with a provider alias and use-modals
@@ -38,3 +39,9 @@ Verification loop: bb generate → npx shadow-cljs release demo → node scripts
 ## Blocked by
 
 - mnt-01kxgyhzgc0f (scope inversion + full core)
+
+## Notes
+
+**2026-07-14T20:22:17.220000803Z**
+
+mantine.modals + mantine.spotlight via standalone-exports supplements (never the singletons); imperative fns + provider alias + reactive hooks; modal open/close and spotlight toggle verified through the release bundle. Committed 5d1c3b5.

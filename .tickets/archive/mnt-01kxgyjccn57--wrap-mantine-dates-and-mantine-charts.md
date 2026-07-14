@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgyjccn57
 title: Wrap @mantine/dates and @mantine/charts
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-14T18:35:00.371203965Z'
-updated: '2026-07-14T18:35:00.371203965Z'
+updated: '2026-07-14T20:22:17.133793796Z'
+closed: '2026-07-14T20:22:17.133793796Z'
 parent: mnt-01kxgy8apnws
 acceptance:
 - title: mantine.dates and mantine.charts generated with full docgen coverage and rich docstrings; dayjs and recharts shipped caret-ranged in npm-deps and pinned exact in devDependencies
@@ -34,3 +35,9 @@ Verification loop: bb generate → npx shadow-cljs release demo → node scripts
 ## Blocked by
 
 - mnt-01kxgyhzgc0f (scope inversion + full core)
+
+## Notes
+
+**2026-07-14T20:22:17.133793796Z**
+
+mantine.dates (31) + mantine.charts (18) generated; dayjs/recharts shipped caret-ranged + pinned exact; DatePicker verified controlled; CSS pairing asserted. Committed fc6519e.

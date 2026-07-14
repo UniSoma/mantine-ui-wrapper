@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgy8apnws
 title: Fan out the wrapping pipeline to full Mantine 9.4.1 coverage
-status: open
+status: closed
 type: feature
 priority: 2
 mode: afk
 created: '2026-07-14T18:29:30.965520099Z'
-updated: '2026-07-14T18:41:58.292316748Z'
+updated: '2026-07-14T20:22:17.605375078Z'
+closed: '2026-07-14T20:22:17.605375078Z'
 ---
 
 ## Description
@@ -99,3 +100,9 @@ All locked decisions from map mnt-01kxe8fz1ert carry over unchanged — the prop
 - PoC findings that bind this work: standalone-exports supplements (finding 2), declare-then-def provider alias (finding 3), shape-agnostic controlled shim (finding 4), extension MDX data location (finding 5), cheap input refresh (finding 1).
 - The hooks input already carries 81 descriptions and the component docs input ~150 entries including extension packages, so slices 2–4 likely need no input refresh — treat a refresh as contingency, not a planned step.
 - If Mantine 9.4.1's docgen surfaces components whose packages aren't installed/wrapped, they fall out of scope naturally (scope is keyed to wrapped packages), not via the exclude list.
+
+## Notes
+
+**2026-07-14T20:22:17.605375078Z**
+
+Full Mantine 9.4.1 coverage delivered across 6 slices; verify loop + bb ci green (188 core + 32 dates + 18 charts + 80 hooks + modals/spotlight/notifications supplements); tree verified.

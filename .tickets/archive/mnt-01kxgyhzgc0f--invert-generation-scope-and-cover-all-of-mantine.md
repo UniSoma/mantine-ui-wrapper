@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgyhzgc0f
 title: Invert generation scope and cover all of @mantine/core
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-14T18:34:47.180557399Z'
-updated: '2026-07-14T18:34:47.180557399Z'
+updated: '2026-07-14T20:22:17.038050126Z'
+closed: '2026-07-14T20:22:17.038050126Z'
 parent: mnt-01kxgy8apnws
 acceptance:
 - title: Scope config expresses everything-minus-excludes for both components and hooks; mantine.core covers every @mantine/core docgen entry minus explicit excludes
@@ -34,3 +35,9 @@ Verification loop: bb generate → npx shadow-cljs release demo → node scripts
 ## Blocked by
 
 None — can start immediately.
+
+## Notes
+
+**2026-07-14T20:22:17.038050126Z**
+
+Scope inverted to everything-minus-excludes; mantine.core covers all 188 @mantine/core docgen entries; controlled-input curation widened to 23 core inputs (NativeSelect verified). Committed 0030e1b; verify loop green.

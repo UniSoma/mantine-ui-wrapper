@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgykp56fz
 title: Document the Mantine version-bump procedure
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-14T18:35:43.135367607Z'
-updated: '2026-07-14T18:35:43.135367607Z'
+updated: '2026-07-14T20:22:17.514146053Z'
+closed: '2026-07-14T20:22:17.514146053Z'
 parent: mnt-01kxgy8apnws
 acceptance:
 - title: 'A repo docs page walks the full bump: clone the target Mantine tag, install + run its docgen script, run the input-extraction task against the clone, bump every pin (package manifest, shipped npm-deps incl. dayjs/recharts ranges, generator version constant), regenerate, run the verification loop, review the generated diff'
@@ -36,3 +37,9 @@ A maintainer can move the wrapper to a newer Mantine version as a scripted after
 - mnt-01kxgyjccn57 (dates + charts)
 - mnt-01kxgyjnpzrj (modals + spotlight)
 - mnt-01kxgyk1rsfn (all hooks)
+
+## Notes
+
+**2026-07-14T20:22:17.514146053Z**
+
+docs/version-bump.md documents the full bump (clone tag, docgen, bb extract, bump pins, regenerate, verify, review diff) + exclude-list escape hatch + when to refresh inputs. Committed 75af018.

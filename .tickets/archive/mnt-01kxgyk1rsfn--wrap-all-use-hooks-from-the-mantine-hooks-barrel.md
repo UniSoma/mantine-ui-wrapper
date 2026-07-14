@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxgyk1rsfn
 title: Wrap all use* hooks from the @mantine/hooks barrel
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-14T18:35:22.263640675Z'
-updated: '2026-07-14T18:35:22.263640675Z'
+updated: '2026-07-14T20:22:17.322914915Z'
+closed: '2026-07-14T20:22:17.322914915Z'
 parent: mnt-01kxgy8apnws
 acceptance:
 - title: mantine.hooks covers every use* export of the @mantine/hooks barrel minus explicit excludes (~81), each a def-alias with description + mantine.dev URL docstring
@@ -36,3 +37,9 @@ Verification loop: bb generate → npx shadow-cljs release demo → node scripts
 ## Blocked by
 
 - mnt-01kxgyhzgc0f (scope inversion + full core)
+
+## Notes
+
+**2026-07-14T20:22:17.322914915Z**
+
+mantine.hooks wraps all 80 use* barrel exports as def-aliases with rich docstrings; return-shape split (tuple/object-^js/scalar) exercised; 0 warnings, JVM-loads. Committed 7bb2fd9.
