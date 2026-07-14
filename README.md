@@ -36,7 +36,7 @@ the npm packages; `react`/`react-dom` are deliberately NOT declared — your app
 React. With other CLJS tooling, install manually:
 
 ```
-npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
+npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/modals@^9.4.1 @mantine/spotlight@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
 ```
 
 The wrapper imports **no CSS**. Load Mantine's stylesheets yourself — for bundlers use
@@ -45,9 +45,14 @@ the layered variant so your app CSS wins regardless of import order:
 ```js
 import '@mantine/core/styles.layer.css';          // core first
 import '@mantine/notifications/styles.layer.css'; // other packages after
+import '@mantine/spotlight/styles.layer.css';
 import '@mantine/dates/styles.layer.css';
 import '@mantine/charts/styles.layer.css';
 ```
+
+`@mantine/modals` ships **no CSS** (its modals are styled by `@mantine/core`), so there is
+nothing extra to link for it. `@mantine/spotlight` ships its own stylesheet — link it after
+core like the other packages.
 
 Note: `(:require ["@mantine/core/styles.css"])` does **not** work under shadow-cljs —
 shadow-cljs doesn't process CSS. `<link>` the files or run a CSS bundling step, and

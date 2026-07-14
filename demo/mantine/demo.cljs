@@ -11,7 +11,9 @@
             [mantine.dates :as md]
             [mantine.charts :as mch]
             [mantine.hooks :as mh]
-            [mantine.notifications :as mn]))
+            [mantine.notifications :as mn]
+            [mantine.modals :as mm]
+            [mantine.spotlight :as ms]))
 
 (defn demo []
   (let [[opened handlers] (mh/use-disclosure false)
@@ -90,13 +92,34 @@
      (mc/collapse
       {:id "collapse" :expanded opened}
       (for [i (range 3)]
-        (mc/badge {:key i :id (str "badge-" i) :component "span"} (str "Disclosed " i)))))))
+        (mc/badge {:key i :id (str "badge-" i) :component "span"} (str "Disclosed " i))))
+
+     ;; imperative modals API: open drives the ModalsProvider, close by modal id
+     (mc/button
+      {:id "btn-open-modal"
+       :on-click (fn [_]
+                   (mm/open {:modal-id "demo-modal"
+                             :title "Demo modal"
+                             :children (mc/text {:id "modal-body"} "Imperative modal body")}))}
+      "Open modal")
+     (mc/button
+      {:id "btn-close-modal" :on-click (fn [_] (mm/close "demo-modal"))}
+      "Close modal")
+
+     ;; @mantine/spotlight: the Spotlight component is the UI; toggle drives the store
+     (ms/spotlight
+      {:actions #js [#js {:id "act-1"
+                          :label "First action"
+                          :description "Spotlight action rendered from actions prop"}]})
+     (mc/button
+      {:id "btn-toggle-spotlight" :on-click (fn [_] (ms/toggle))}
+      "Toggle spotlight"))))
 
 (defn app []
   (react/createElement
    MantineProvider #js {}
    (mn/provider {:position "top-right"})
-   (react/createElement demo)))
+   (mm/provider {} (react/createElement demo))))
 
 (defn init []
   (.render (rdom/createRoot (js/document.getElementById "app"))

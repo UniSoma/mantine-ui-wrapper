@@ -13,6 +13,15 @@ const dom = new JSDOM('<!doctype html><html><body><div id="app"></div></body></h
   runScripts: 'outside-only',
 });
 
+// jsdom has no ResizeObserver / Element.scrollIntoView; Spotlight (ScrollArea +
+// keyboard action selection) needs both to render and to toggle.
+dom.window.ResizeObserver = class {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
+dom.window.Element.prototype.scrollIntoView = function () {};
+
 const bundle = fs.readFileSync('public/js/main.js', 'utf8');
 dom.window.eval(bundle);
 
@@ -118,7 +127,7 @@ try {
   const pkgSelectors = (pkg) =>
     new Set((fs.readFileSync(`node_modules/@mantine/${pkg}/styles.css`, 'utf8')
       .match(/\.m_[0-9a-f]+/g) || []).map((s) => s.slice(1)));
-  const linked = ['core', 'notifications', 'dates', 'charts'];
+  const linked = ['core', 'notifications', 'spotlight', 'dates', 'charts'];
   const perPkg = Object.fromEntries(linked.map((p) => [p, pkgSelectors(p)]));
   const linkedUnion = new Set(linked.flatMap((p) => [...perPkg[p]]));
   const hashedClasses = (root) => {
@@ -163,7 +172,37 @@ try {
   assert(chartClasses.some((c) => perPkg.charts.has(c)),
     'LineChart subtree uses selectors defined in @mantine/charts/styles.css (charts CSS paired)');
 
-  console.log('\nALL PATTERNS + DATES/CHARTS VERIFIED ✅');
+  // -------------------------------------------------- 6. imperative modals + spotlight
+  // modals: open drives the ModalsProvider (converted :title + :children), close by id.
+  doc.getElementById('btn-open-modal').click();
+  const modalBody = await poll('modal opens', () => {
+    const el = doc.getElementById('modal-body');
+    return el && el.textContent.includes('Imperative modal body') ? el : null;
+  });
+  assert(!!modalBody, 'mantine.modals/open renders the modal (converted :title + :children)');
+  assert([...doc.querySelectorAll('[class*="mantine-Modal-title"]')]
+    .some((el) => el.textContent.includes('Demo modal')),
+    'modal title from converted :title prop rendered');
+  doc.getElementById('btn-close-modal').click();
+  await poll('modal closes', () => !doc.getElementById('modal-body'));
+  assert(!doc.getElementById('modal-body'), 'mantine.modals/close (by raw id) removes the modal');
+
+  // spotlight: its component is the UI; toggle opens it (actions rendered), toggle again closes.
+  doc.getElementById('btn-toggle-spotlight').click();
+  const spotlightAction = await poll('spotlight opens', () =>
+    [...doc.querySelectorAll('[class*="mantine-Spotlight-"]')]
+      .find((el) => el.textContent.includes('First action')));
+  assert(!!spotlightAction, 'mantine.spotlight/toggle opens the Spotlight (actions prop rendered)');
+  const spotUsed = hashedClasses(doc.body).filter((c) => perPkg.spotlight.has(c));
+  assert(spotUsed.length > 0,
+    'opened Spotlight paints selectors from @mantine/spotlight/styles.css (stylesheet linked after core)');
+  doc.getElementById('btn-toggle-spotlight').click();
+  await poll('spotlight closes', () =>
+    ![...doc.querySelectorAll('[class*="mantine-Spotlight-"]')]
+      .some((el) => el.textContent.includes('First action')));
+  assert(true, 'mantine.spotlight/toggle closes the Spotlight');
+
+  console.log('\nALL PATTERNS + DATES/CHARTS + MODALS/SPOTLIGHT VERIFIED ✅');
   process.exit(0);
 } catch (e) {
   console.error('\n' + e.message);
