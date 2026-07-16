@@ -52,6 +52,16 @@ in CI — jsdom has no layout/paint engine. Check it in a real browser via
 
 ## Consumers
 
+Published to Clojars as **`io.github.unisoma/mantine-ui-wrapper`**. The version is
+Mantine-anchored — `9.4.1.N`, where the first three segments are the wrapped Mantine
+version and `N` is the wrapper revision against it (see
+[`docs/adr/0001-clojars-release-process.md`](docs/adr/0001-clojars-release-process.md)).
+
+```clojure
+;; deps.edn
+io.github.unisoma/mantine-ui-wrapper {:mvn/version "9.4.1.0-SNAPSHOT"}
+```
+
 The jar ships `deps.cljs` (`:npm-deps` on `@mantine/*`), so shadow-cljs auto-installs
 the npm packages; `react`/`react-dom` are deliberately NOT declared — your app owns
 React. With other CLJS tooling, install manually:
@@ -78,3 +88,13 @@ core like the other packages.
 Note: `(:require ["@mantine/core/styles.css"])` does **not** work under shadow-cljs —
 shadow-cljs doesn't process CSS. `<link>` the files or run a CSS bundling step, and
 mount `MantineProvider` once at your app root.
+
+## Releasing
+
+Build and publish are `tools.build` + `deps-deploy`, wrapped as `bb` tasks. See
+[`docs/release.md`](docs/release.md) for the full procedure.
+
+## License
+
+MIT — see [`LICENSE`](LICENSE). This project wraps [Mantine](https://mantine.dev)
+(also MIT); generated docstrings are derived from Mantine's documentation.
