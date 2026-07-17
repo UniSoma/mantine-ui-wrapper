@@ -259,6 +259,11 @@
   (let [ns-name (pkg->ns pkg)
         supplement (parse-supplement (pkg-suffix pkg) (set (map kebab component-names)))
         _ (check-collisions! ns-name component-names)
+        _ (when-let [clash (seq (filter (set (map kebab component-names))
+                                        (:def-names supplement)))]
+            (throw (ex-info (str ns-name ": supplement def(s) " (str/join ", " clash)
+                                 " collide with generated defs — docgen now covers this; delete the supplement entry.")
+                            {:ns ns-name :collisions (vec clash)})))
         def-names (concat (map kebab component-names) (:def-names supplement))
         docstring (str "Mantine " pkg " " mantine-version " wrappers (generated"
                        (when supplement ", supplement hoisted from codegen/supplements/")

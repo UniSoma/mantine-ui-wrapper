@@ -2,7 +2,7 @@
 (ns mantine.spotlight
   "Mantine @mantine/spotlight 9.4.1 wrappers (generated, supplement hoisted from codegen/supplements/)."
   (:require
-   #?@(:cljs [["@mantine/spotlight" :refer [Spotlight SpotlightAction SpotlightActionsGroup SpotlightRoot SpotlightSearch openSpotlight closeSpotlight toggleSpotlight useSpotlight]]])
+   #?@(:cljs [["@mantine/spotlight" :refer [Spotlight SpotlightAction SpotlightActionsGroup SpotlightRoot SpotlightSearch openSpotlight closeSpotlight toggleSpotlight useSpotlight SpotlightActionsList SpotlightEmpty SpotlightFooter]]])
    [mantine.impl.factory :as f]))
 
 (def spotlight
@@ -213,3 +213,23 @@ Optional leading props map; remaining args are children."
   JS spotlight store value (read via interop: .-opened, .-open, ...)."
   #?(:cljs useSpotlight
      :clj (f/not-implemented "mantine.spotlight/use-spotlight")))
+
+;; ---- compound parts (dot-notation subcomponents docgen omits) ----
+
+(def spotlight-actions-list
+  "Spotlight.ActionsList — compound part of Spotlight (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory SpotlightActionsList)
+     :clj (f/not-implemented "mantine.spotlight/spotlight-actions-list")))
+
+(def spotlight-empty
+  "Spotlight.Empty — compound part of Spotlight (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory SpotlightEmpty)
+     :clj (f/not-implemented "mantine.spotlight/spotlight-empty")))
+
+(def spotlight-footer
+  "Spotlight.Footer — compound part of Spotlight (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory SpotlightFooter)
+     :clj (f/not-implemented "mantine.spotlight/spotlight-footer")))

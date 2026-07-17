@@ -6,7 +6,9 @@
   (:require
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/spotlight" :refer [openSpotlight closeSpotlight
-                                            toggleSpotlight useSpotlight]]])))
+                                            toggleSpotlight useSpotlight
+                                            SpotlightActionsList SpotlightEmpty
+                                            SpotlightFooter]]])))
 
 (defn open
   "Open the spotlight command palette (single default instance)."
@@ -31,3 +33,23 @@
   JS spotlight store value (read via interop: .-opened, .-open, ...)."
   #?(:cljs useSpotlight
      :clj (f/not-implemented "mantine.spotlight/use-spotlight")))
+
+;; ---- compound parts (dot-notation subcomponents docgen omits) ----
+
+(def spotlight-actions-list
+  "Spotlight.ActionsList — compound part of Spotlight (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory SpotlightActionsList)
+     :clj (f/not-implemented "mantine.spotlight/spotlight-actions-list")))
+
+(def spotlight-empty
+  "Spotlight.Empty — compound part of Spotlight (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory SpotlightEmpty)
+     :clj (f/not-implemented "mantine.spotlight/spotlight-empty")))
+
+(def spotlight-footer
+  "Spotlight.Footer — compound part of Spotlight (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory SpotlightFooter)
+     :clj (f/not-implemented "mantine.spotlight/spotlight-footer")))

@@ -51,11 +51,38 @@
 
 (defn pkg-suffix [pkg] (subs pkg (count "@mantine/")))
 
+;; {pkg -> #{export-name ...}} — the real top-level export surface of each package.
+(def pkg-export-set
+  (reduce (fn [m [nm pkgs]] (reduce #(update %1 %2 (fnil conj #{}) nm) m pkgs))
+          {} exports-index))
+
+;; Static keys on a component that are Mantine machinery, not compound subcomponents.
+(def compound-machinery #{"extend" "withProps" "displayName" "classes" "varsResolver"})
+
+(defn component-statics
+  "{component -> [Capitalized static keys]} for `comps` in `pkg` (one node call)."
+  [pkg comps]
+  (-> (shell {:out :string} "node" "-e"
+             (str "const m=require('" pkg "');const out={};"
+                  "for(const c of " (json/generate-string comps) "){"
+                  "const v=m[c];if(v==null||(typeof v!=='object'&&typeof v!=='function'))continue;"
+                  "out[c]=Object.keys(v).filter(k=>/^[A-Z]/.test(k));}"
+                  "console.log(JSON.stringify(out));"))
+      :out
+      json/parse-string))
+
 ;; {pkg-suffix -> #{kebab-name ...}} the scope intends to land in that package.
 (def expected-by-suffix
   (->> (dimension-names (:components scope) wrapped-component-universe)
        (keep (fn [nm] (when-let [pkg (resolve-package nm)] [(pkg-suffix pkg) (kebab nm)])))
        (reduce (fn [m [suffix kb]] (update m suffix (fnil conj #{}) kb)) {})))
+
+;; {pkg-suffix -> #{JS-component-name ...}} — the wrapped docgen components per package,
+;; the roots whose Capitalized static parts the compound-part check enumerates.
+(def js-names-by-suffix
+  (->> (dimension-names (:components scope) wrapped-component-universe)
+       (keep (fn [nm] (when-let [pkg (resolve-package nm)] [(pkg-suffix pkg) nm])))
+       (reduce (fn [m [suffix nm]] (update m suffix (fnil conj #{}) nm)) {})))
 
 (def hook-exports (set (package-exports "@mantine/hooks")))
 (def expected-hooks
@@ -72,6 +99,28 @@
        (keep #(second (re-matches #"\(def ([^\s]+)" %)))
        set))
 
+(defn check-compound-parts
+  "Every Capitalized static part of a wrapped component (minus machinery) that is a
+  real package export must land as a def — via docgen or a supplement. A miss is a
+  silently-unwrapped compound part (e.g. Menu.Dropdown); fail loud so it gets wrapped
+  in a supplement or explicitly removed from scope."
+  [suffix comps]
+  (let [pkg (str "@mantine/" suffix)
+        exports (get pkg-export-set pkg #{})
+        present (def-lines (str "src/main/mantine/" suffix ".cljc"))
+        statics (component-statics pkg (vec (sort comps)))
+        missing (sort (for [c (sort comps)
+                            s (get statics c)
+                            :when (not (compound-machinery s))
+                            :let [exp (str c s)]
+                            :when (contains? exports exp)   ; real compound part, not React ctx internals
+                            :let [kb (kebab exp)]
+                            :when (not (present kb))]
+                        kb))]
+    (when (seq missing)
+      (println (format "  %-14s UNCOVERED compound parts: %s" suffix (str/join ", " missing))))
+    (empty? missing)))
+
 (defn check-package [suffix expected]
   (let [file (str "src/main/mantine/" suffix ".cljc")
         present (def-lines file)
@@ -87,9 +136,12 @@
                             (check-package suffix expected)))
       hooks-ok (check-package "hooks" expected-hooks)
       total-expected (+ (reduce + (map count (vals expected-by-suffix)))
-                        (count expected-hooks))]
-  (if (every? true? (conj component-ok hooks-ok))
-    (do (println (format "COVERAGE OK — %d scoped entries all present." total-expected))
+                        (count expected-hooks))
+      _ (println "\nCompound-part coverage (Capitalized static subcomponents vs generated defs):")
+      compound-ok (doall (for [[suffix comps] (sort-by key js-names-by-suffix)]
+                           (check-compound-parts suffix comps)))]
+  (if (every? true? (concat component-ok [hooks-ok] compound-ok))
+    (do (println (format "COVERAGE OK — %d scoped entries all present; all compound parts wrapped." total-expected))
         (System/exit 0))
-    (do (println "COVERAGE FAILED — scoped entries missing from generated source.")
+    (do (println "COVERAGE FAILED — scoped entries or compound parts missing from generated source.")
         (System/exit 1))))

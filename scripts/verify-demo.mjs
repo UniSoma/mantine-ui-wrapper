@@ -72,6 +72,29 @@ try {
   assert(badges[0].tagName === 'SPAN',
     'children seq flattened; Badge polymorphic :component "span"');
 
+  // ---------------------------------- 1b. full screen: backfilled non-docgen core surface
+  // wrapped mantine-provider (app root) + AppShell page shell + a Menu whose Dropdown/
+  // Label/Divider are supplement-backfilled compound parts.
+  const shellMain = doc.getElementById('app-shell-main');
+  assert(shellMain && shellMain.tagName === 'MAIN'
+    && shellMain.className.includes('mantine-AppShell-main'),
+    'app-shell-main (supplement compound part) renders the <main> shell body');
+  assert(doc.getElementById('app-shell-header')
+    && doc.getElementById('app-shell-header').className.includes('mantine-AppShell-header'),
+    'app-shell + app-shell-header render inside the wrapped mantine-provider');
+  const menuDropdown = await poll('menu dropdown rendered', () => {
+    const el = doc.getElementById('menu-dropdown');
+    return el && el.className.includes('mantine-Menu-dropdown') ? el : null;
+  });
+  assert(menuDropdown.querySelector('#menu-label')
+    && menuDropdown.querySelector('#menu-label').className.includes('mantine-Menu-label'),
+    'menu-label (supplement compound part) renders inside Menu.Dropdown');
+  assert(menuDropdown.querySelector('#menu-divider')
+    && menuDropdown.querySelector('#menu-divider').className.includes('mantine-Menu-divider'),
+    'menu-divider (supplement compound part) renders inside Menu.Dropdown');
+  assert(menuDropdown.textContent.includes('Settings') && menuDropdown.textContent.includes('Log out'),
+    'Menu.Dropdown children (menu-item) render — a full Menu is usable');
+
   // -------------------------------------------------- 2. controlled input (shim)
   const input = doc.getElementById('input-name');
   assert(input.value === 'hello', 'controlled TextInput renders external :value');
