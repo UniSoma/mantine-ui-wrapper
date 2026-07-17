@@ -3,7 +3,9 @@
 ;; Version scheme 9.4.1.N — first three segments ARE the wrapped Mantine version,
 ;; N is the wrapper revision against it (see docs/adr/0001-clojars-release-process.md).
 (ns build
-  (:require [clojure.tools.build.api :as b]
+  (:require [clojure.java.shell :as sh]
+            [clojure.string :as str]
+            [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'io.github.unisoma/mantine-ui-wrapper)
@@ -11,6 +13,15 @@
 (def class-dir "target/classes")
 (def basis (delay (b/create-basis {:project "deps.edn"})))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
+
+(defn- scm-tag
+  "The git revision cljdoc checks out to read sources + doc/cljdoc.edn. SNAPSHOTs have
+  no `v<version>` tag, so use the built commit SHA (must be pushed to GitHub); releases
+  use the immutable `v<version>` tag (cut + pushed per docs/release.md)."
+  []
+  (if (str/ends-with? version "-SNAPSHOT")
+    (str/trim (:out (sh/sh "git" "rev-parse" "HEAD")))
+    (str "v" version)))
 
 (defn clean [_]
   (b/delete {:path "target"}))
@@ -27,7 +38,7 @@
                 :scm {:url "https://github.com/unisoma/mantine-ui-wrapper"
                       :connection "scm:git:git://github.com/unisoma/mantine-ui-wrapper.git"
                       :developerConnection "scm:git:ssh://git@github.com/unisoma/mantine-ui-wrapper.git"
-                      :tag (str "v" version)}
+                      :tag (scm-tag)}
                 :pom-data [[:licenses
                             [:license
                              [:name "MIT License"]

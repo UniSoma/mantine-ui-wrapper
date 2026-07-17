@@ -51,6 +51,14 @@ Verify the round-trip from a scratch CLJS project that has only the Clojars dep:
 auto-installs the `@mantine/*` npm packages from the shipped `deps.cljs`. Bring your own
 `react`/`react-dom`.
 
+**cljdoc + the SCM tag.** cljdoc checks out the pom's `<scm><tag>` to read sources, so it
+must be a revision that exists on GitHub. A SNAPSHOT has no `v<version>` tag, so `build.clj`
+sets the tag to the **built commit SHA** — which means you must `git push` before `bb deploy`
+so that SHA is on GitHub. (Releases keep `v<version>`, cut and pushed per the section below.)
+Redeploying to Clojars re-triggers a cljdoc build; if it doesn't pick up, request one for the
+exact version at <https://cljdoc.org/> (or `POST https://cljdoc.org/api/request-build2` with
+`project` + `version`).
+
 ## The first official cut (deferred)
 
 When the surface is stable, cut the immutable release:
