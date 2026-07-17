@@ -8,5 +8,6 @@
             "@mantine/spotlight" "^9.4.1"
             "@mantine/dates" "^9.4.1"
             "@mantine/charts" "^9.4.1"
+            "@mantine/dropzone" "^9.4.1"
             "dayjs" "^1.11.21"
             "recharts" "^3.9.2"}}
