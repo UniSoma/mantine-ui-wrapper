@@ -36,6 +36,15 @@ mapped to that shared page via `codegen/input/hook-docs-page.edn` instead of the
 default per-hook slug. The hooks analogue of a compound part.
 _Avoid_: alias hook, sub-hook.
 
+**Barrel utility**:
+A non-hook plain function exported from the `@mantine/hooks` barrel (`randomId`,
+`mergeRefs`, `getHotkeyHandler`, the `*Mask` family, `read*StorageValue`, …),
+wrapped as a raw-passthrough def-alias in `mantine.hooks` alongside the hooks.
+docgen never describes it and it carries no JSDoc, so its docstring is hand-sourced
+from `codegen/input/util-docs.edn` — either the functions-reference guide or a
+sibling hook's docs page. The plain-function analogue of a Companion hook.
+_Avoid_: helper, util fn.
+
 **Supplement**:
 A hand-written `codegen/supplements/<pkg>.cljc` whose forms the generator hoists,
 verbatim, into the end of the matching generated namespace. The one path for
