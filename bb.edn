@@ -41,6 +41,10 @@
   jvm-load {:doc "JVM-load every generated ns; sample the call-time named throw"
             :task (clojure "-M" "-e" "(load-file \"scripts/jvm-load.clj\")")}
 
+  test {:doc "Compile + run the cljs behavioral test suite (converter invariants) on node"
+        :task (do (shell "npx" "shadow-cljs" "compile" "test")
+                  (shell "node" "target/node-test.js"))}
+
   coverage {:doc "Per-package def-count coverage: scoped docgen entries vs generated defs"
             :task (load-file "scripts/coverage-check.clj")}
 
@@ -51,4 +55,5 @@
                 (shell "node" "scripts/verify-demo.mjs")
                 (shell "bb" "jvm-load")
                 (shell "bb" "coverage")
+                (shell "bb" "test")
                 (println "\nCI PIPELINE GREEN ✅"))}}}

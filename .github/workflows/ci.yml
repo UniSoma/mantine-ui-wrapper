@@ -1,6 +1,7 @@
 # CI for the generated Mantine wrappers. Every step is a plain command that runs
 # identically locally (see `bb ci`): the release-bundle jsdom harness is the single
-# behavioral seam; the generator-side checks are bb tasks. No test framework.
+# behavioral seam; the generator-side checks are bb tasks. The converter invariants
+# are locked by a cljs/node test suite (bb test).
 #
 # NOTE: pixel paint (that the linked Mantine stylesheets visually apply) is NOT
 # asserted here — jsdom has no layout/paint engine. It stays a manual caveat,
@@ -49,3 +50,6 @@ jobs:
 
       # 6. per-package def-count coverage: scoped docgen entries vs generated defs
       - run: bb coverage
+
+      # 7. behavioral test suite: converter invariants (cljs, node)
+      - run: bb test

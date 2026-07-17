@@ -9,11 +9,12 @@ Usable from Fulcro, Reagent/re-frame, UIx, Helix, or raw React interop. The wrap
 depends only on `react/createElement`.
 
 Status: **full Mantine 9.4.1 surface**, published to Clojars. The pipeline covers all
-seven wrapped packages: `@mantine/core` (188 components), `dates` (32), `charts` (18),
-`hooks` (80 `use*` hooks), plus `modals`, `notifications`, and `spotlight` (their
-components and imperative APIs). The only behavioral check is a single jsdom seam over
-the `:advanced` release bundle; there is no unit-test suite, and pixel paint is not
-asserted in CI (see [Continuous integration](#continuous-integration)).
+nine wrapped packages: `@mantine/core` (188 components), `dates` (32), `charts` (18),
+`hooks` (80 `use*` hooks), plus `modals`, `notifications`, `spotlight`, `dropzone`, and
+`form` (their components and imperative APIs). The behavioral checks are a single jsdom
+seam over the `:advanced` release bundle and a cljs unit-test suite locking the
+prop-converter invariants; pixel paint is not asserted in CI (see
+[Continuous integration](#continuous-integration)).
 
 ## Installation
 
@@ -132,8 +133,8 @@ cljdoc works. A runnable end-to-end sample of all patterns lives in
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on every push/PR; each step is a plain command that runs
-identically locally (`bb ci` chains them). There is no test framework; the release-bundle
-jsdom harness is the single behavioral seam, and the generator-side checks are bb tasks:
+identically locally (`bb ci` chains them). The release-bundle jsdom harness and a cljs
+unit-test suite are the behavioral seams, and the generator-side checks are bb tasks:
 
 1. `npm ci`: install deps.
 2. `bb drift`: regenerate and fail on any git diff vs the committed generated sources.
@@ -143,6 +144,7 @@ jsdom harness is the single behavioral seam, and the generator-side checks are b
 5. `bb jvm-load`: JVM-load every generated namespace, sampling the call-time named throw.
 6. `bb coverage`: per-package def-count coverage comparing scoped docgen entries vs
    generated defs, failing if a scope/resolution bug silently dropped components.
+7. `bb test`: cljs/node behavioral suite locking the prop-converter invariants.
 
 **Manual caveat:** pixel paint (that the linked stylesheets visually apply) is NOT asserted
 in CI. jsdom has no layout/paint engine. Check it in a real browser via

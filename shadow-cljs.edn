@@ -1,8 +1,12 @@
-;; Single shadow-cljs project: src/main = wrapper (ships source), demo/ = dev-only harness.
-{:source-paths ["src/main" "demo"]
+;; Single shadow-cljs project: src/main = wrapper (ships source), demo/ = dev-only
+;; harness, src/test = behavioral tests (node).
+{:source-paths ["src/main" "demo" "src/test"]
  :dependencies []
  :dev-http {8090 {:root "public"}}
  :builds {:demo {:target :browser
                  :output-dir "public/js"
                  :asset-path "/js"
-                 :modules {:main {:init-fn mantine.demo/init}}}}}
+                 :modules {:main {:init-fn mantine.demo/init}}}
+          :test {:target :node-test
+                 :output-to "target/node-test.js"
+                 :ns-regexp "-test$"}}}
