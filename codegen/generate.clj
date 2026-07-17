@@ -340,9 +340,14 @@
                        :when (or (and (str/starts-with? nm "use") (hook-exports nm))
                                  (do (println "SKIP hook" nm "— not a use* export of @mantine/hooks") false))]
                    nm))
-      outputs (conj (vec (for [[pkg entries] (sort-by key by-pkg)]
-                           (emit-package-ns pkg (mapv first entries))))
-                    (emit-hooks-ns hooks))]
+      supplement-only-pkgs (:supplement-only-packages scope #{})
+      outputs (-> (vec (for [[pkg entries] (sort-by key by-pkg)]
+                         (emit-package-ns pkg (mapv first entries))))
+                  ;; declared supplement-only packages: no docgen components, ns body
+                  ;; is entirely the hoisted supplement.
+                  (into (for [pkg (sort supplement-only-pkgs)]
+                          (emit-package-ns pkg [])))
+                  (conj (emit-hooks-ns hooks)))]
   ;; controlled-inputs rot check
   (doseq [nm controlled-inputs
           :when (not-any? #(= nm (first %)) resolved)]

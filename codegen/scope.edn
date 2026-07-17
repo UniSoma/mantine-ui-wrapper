@@ -11,7 +11,12 @@
 ;;   share another hook's docs page and so carry no description in hook-docs.edn
 ;;   (useFullscreenDocument/Element under use-fullscreen, useSessionStorage under
 ;;   use-local-storage, useMousePosition under use-mouse, etc.).
+;; :supplement-only-packages — packages with NO docgen entries, so they never enter
+;;   the component grouping and get no generated ns from docgen. Each named package
+;;   gets a generated ns whose body is entirely its hoisted codegen/supplements/
+;;   <suffix>.cljc (no components). @mantine/form is pure hooks + functions.
 {:components {:all true :exclude #{}}
+ :supplement-only-packages #{"@mantine/form"}
  :hooks {:all true
          :exclude #{"useCallbackRef"
                     "useFullscreenDocument"

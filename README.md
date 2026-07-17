@@ -32,7 +32,7 @@ the npm packages; `react`/`react-dom` are deliberately NOT declared. Your app ow
 React. With other CLJS tooling, install manually:
 
 ```
-npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/modals@^9.4.1 @mantine/spotlight@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 @mantine/dropzone@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
+npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/modals@^9.4.1 @mantine/form@^9.4.1 @mantine/spotlight@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 @mantine/dropzone@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
 ```
 
 The wrapper imports **no CSS**. Load Mantine's stylesheets yourself. For bundlers, use

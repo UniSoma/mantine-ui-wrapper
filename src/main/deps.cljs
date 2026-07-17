@@ -5,6 +5,7 @@
             "@mantine/hooks" "^9.4.1"
             "@mantine/notifications" "^9.4.1"
             "@mantine/modals" "^9.4.1"
+            "@mantine/form" "^9.4.1"
             "@mantine/spotlight" "^9.4.1"
             "@mantine/dates" "^9.4.1"
             "@mantine/charts" "^9.4.1"
