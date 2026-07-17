@@ -1,5 +1,6 @@
 {
   "autoMemoryEnabled": false,
+  "worktree": { "bgIsolation": "none" },
   "hooks": {
     "SessionStart": [
       {
