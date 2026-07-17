@@ -28,6 +28,14 @@ static property on its parent component object rather than a top-level export.
 docgen describes these inconsistently, so some are covered and sibling parts are not.
 _Avoid_: subcomponent, dotted component, compound subcomponent.
 
+**Companion hook**:
+A `use*` export documented on a *sibling* hook's docs page rather than its own
+(`useFullscreenElement` on the use-fullscreen page, `useSessionStorage` on
+use-local-storage). It carries no standalone description, so its docstring is
+mapped to that shared page via `codegen/input/hook-docs-page.edn` instead of the
+default per-hook slug. The hooks analogue of a compound part.
+_Avoid_: alias hook, sub-hook.
+
 **Supplement**:
 A hand-written `codegen/supplements/<pkg>.cljc` whose forms the generator hoists,
 verbatim, into the end of the matching generated namespace. The one path for

@@ -7,8 +7,19 @@ Rules of hooks are NOT enforced here; they are delegated to React (call
 only inside function components / other hooks). Object returns need ^js
 or js-interop access under :advanced compilation."
   (:require
-   #?@(:cljs [["@mantine/hooks" :refer [useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useHash useHeadroom useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMove useMutationObserver useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
+   #?@(:cljs [["@mantine/hooks" :refer [useCallbackRef useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useFullscreenDocument useFullscreenElement useHash useHeadroom useHorizontalCollapse useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMousePosition useMove useMutationObserver useMutationObserverTarget useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSessionStorage useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
    #?@(:clj [[mantine.impl.factory :as f]])))
+
+(def use-callback-ref
+  "useCallbackRef
+
+https://mantine.dev/hooks/package
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useCallbackRef
+     :clj (f/not-implemented "mantine.hooks/use-callback-ref")))
 
 (def use-click-outside
   "useClickOutside — Detects click and touch events outside of given element or elements group
@@ -274,6 +285,28 @@ via interop — use ^js under :advanced)."
   #?(:cljs useForceUpdate
      :clj (f/not-implemented "mantine.hooks/use-force-update")))
 
+(def use-fullscreen-document
+  "useFullscreenDocument
+
+https://mantine.dev/hooks/use-fullscreen
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFullscreenDocument
+     :clj (f/not-implemented "mantine.hooks/use-fullscreen-document")))
+
+(def use-fullscreen-element
+  "useFullscreenElement
+
+https://mantine.dev/hooks/use-fullscreen
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useFullscreenElement
+     :clj (f/not-implemented "mantine.hooks/use-fullscreen-element")))
+
 (def use-hash
   "useHash — Get and set hash value in the URL
 
@@ -295,6 +328,17 @@ the raw JS value (tuples destructure positionally, object returns are read
 via interop — use ^js under :advanced)."
   #?(:cljs useHeadroom
      :clj (f/not-implemented "mantine.hooks/use-headroom")))
+
+(def use-horizontal-collapse
+  "useHorizontalCollapse
+
+https://mantine.dev/hooks/use-collapse
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useHorizontalCollapse
+     :clj (f/not-implemented "mantine.hooks/use-horizontal-collapse")))
 
 (def use-hotkeys
   "useHotkeys — Listen for keys combinations on document element
@@ -516,6 +560,17 @@ via interop — use ^js under :advanced)."
   #?(:cljs useMouse
      :clj (f/not-implemented "mantine.hooks/use-mouse")))
 
+(def use-mouse-position
+  "useMousePosition
+
+https://mantine.dev/hooks/use-mouse
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMousePosition
+     :clj (f/not-implemented "mantine.hooks/use-mouse-position")))
+
 (def use-move
   "useMove — Handles move behavior over given element, can be used to build custom sliders
 
@@ -537,6 +592,17 @@ the raw JS value (tuples destructure positionally, object returns are read
 via interop — use ^js under :advanced)."
   #?(:cljs useMutationObserver
      :clj (f/not-implemented "mantine.hooks/use-mutation-observer")))
+
+(def use-mutation-observer-target
+  "useMutationObserverTarget
+
+https://mantine.dev/hooks/use-mutation-observer
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useMutationObserverTarget
+     :clj (f/not-implemented "mantine.hooks/use-mutation-observer-target")))
 
 (def use-network
   "useNetwork — Returns current connection status
@@ -713,6 +779,17 @@ the raw JS value (tuples destructure positionally, object returns are read
 via interop — use ^js under :advanced)."
   #?(:cljs useSelection
      :clj (f/not-implemented "mantine.hooks/use-selection")))
+
+(def use-session-storage
+  "useSessionStorage
+
+https://mantine.dev/hooks/use-local-storage
+
+Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns
+the raw JS value (tuples destructure positionally, object returns are read
+via interop — use ^js under :advanced)."
+  #?(:cljs useSessionStorage
+     :clj (f/not-implemented "mantine.hooks/use-session-storage")))
 
 (def use-set
   "useSet — Use Set as React state

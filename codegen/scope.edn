@@ -7,21 +7,15 @@
 ;;   :exclude. That is the whole @mantine/core surface today.
 ;; :hooks — {:all true} covers every use* export of the @mantine/hooks barrel.
 ;;   Non-hook barrel utilities (randomId, mergeRefs, ...) are already filtered out
-;;   (they don't start with "use"). The excludes are the companion use* hooks that
-;;   share another hook's docs page and so carry no description in hook-docs.edn
-;;   (useFullscreenDocument/Element under use-fullscreen, useSessionStorage under
-;;   use-local-storage, useMousePosition under use-mouse, etc.).
+;;   (they don't start with "use"). Companion hooks — use* exports documented on a
+;;   sibling's docs page, so they carry no description in hook-docs.edn — are still
+;;   generated; codegen/input/hook-docs-page.edn maps each to its shared docs page
+;;   (useFullscreenDocument/Element -> use-fullscreen, useSessionStorage ->
+;;   use-local-storage, useMousePosition -> use-mouse, etc.).
 ;; :supplement-only-packages — packages with NO docgen entries, so they never enter
 ;;   the component grouping and get no generated ns from docgen. Each named package
 ;;   gets a generated ns whose body is entirely its hoisted codegen/supplements/
 ;;   <suffix>.cljc (no components). @mantine/form is pure hooks + functions.
 {:components {:all true :exclude #{}}
  :supplement-only-packages #{"@mantine/form"}
- :hooks {:all true
-         :exclude #{"useCallbackRef"
-                    "useFullscreenDocument"
-                    "useFullscreenElement"
-                    "useHorizontalCollapse"
-                    "useMousePosition"
-                    "useMutationObserverTarget"
-                    "useSessionStorage"}}}
+ :hooks {:all true :exclude #{}}}

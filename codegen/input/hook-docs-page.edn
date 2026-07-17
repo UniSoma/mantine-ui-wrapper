@@ -1,0 +1,17 @@
+;; Companion-hook docs-page overrides: JS hook name -> docs slug under
+;; https://mantine.dev/hooks/<slug>.
+;;
+;; A companion hook is a use* export documented on a SIBLING hook's docs page
+;; rather than its own, so it carries no standalone description in hook-docs.edn
+;; and its kebab-derived slug 404s. hook-docstring consults this map first and
+;; falls back to (kebab name) for the ~80 hooks that own their page.
+;;
+;; useCallbackRef is a utils/ helper with no public page at all -> the hooks
+;; package index (/hooks/package/). All slugs verified against Mantine 9.4.1 docs.
+{"useCallbackRef" "package"
+ "useFullscreenDocument" "use-fullscreen"
+ "useFullscreenElement" "use-fullscreen"
+ "useHorizontalCollapse" "use-collapse"
+ "useMousePosition" "use-mouse"
+ "useMutationObserverTarget" "use-mutation-observer"
+ "useSessionStorage" "use-local-storage"}

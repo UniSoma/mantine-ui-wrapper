@@ -19,6 +19,7 @@
 (def docgen (json/parse-string (slurp "codegen/input/docgen.json")))
 (def component-docs (edn/read-string (slurp "codegen/input/component-docs.edn")))
 (def hook-docs (edn/read-string (slurp "codegen/input/hook-docs.edn")))
+(def hook-docs-page (edn/read-string (slurp "codegen/input/hook-docs-page.edn")))
 (def scope (edn/read-string (slurp "codegen/scope.edn")))
 (def controlled-inputs (edn/read-string (slurp "codegen/controlled-inputs.edn")))
 
@@ -114,11 +115,11 @@
          (str/join "\n"))))
 
 (defn hook-docstring [nm]
-  (let [kb (kebab nm)]
+  (let [slug (get hook-docs-page nm (kebab nm))]
     (->> (concat
           [(str nm (when-let [d (get hook-docs nm)] (str " — " d)))
            ""
-           (str "https://mantine.dev/hooks/" kb)
+           (str "https://mantine.dev/hooks/" slug)
            ""
            "Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns"
            "the raw JS value (tuples destructure positionally, object returns are read"
