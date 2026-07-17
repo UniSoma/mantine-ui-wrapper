@@ -14,6 +14,14 @@
 (def basis (delay (b/create-basis {:project "deps.edn"})))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 
+(defn- pom-basis
+  "The deployed pom's dependency list. The published artifact is CLJS source only —
+  consumers bring their own ClojureScript/Clojure — so it has NO runtime deps. The
+  org.clojure/clojure in deps.edn is for local JVM tooling only (clj-kondo, cljdoc,
+  jvm-load); keep it OUT of the pom so we don't pin consumers to a Clojure version."
+  []
+  (b/create-basis {:root nil :user nil :project {:deps {}}}))
+
 (defn- scm-tag
   "The git revision cljdoc checks out to read sources + doc/cljdoc.edn. SNAPSHOTs have
   no `v<version>` tag, so use the built commit SHA (must be pushed to GitHub); releases
@@ -33,7 +41,7 @@
   (b/write-pom {:class-dir class-dir
                 :lib lib
                 :version version
-                :basis @basis
+                :basis (pom-basis)
                 :src-dirs ["src/main"]
                 :scm {:url "https://github.com/unisoma/mantine-ui-wrapper"
                       :connection "scm:git:git://github.com/unisoma/mantine-ui-wrapper.git"
