@@ -1,0 +1,45 @@
+;; Hand-authored docs for the non-hook plain functions of the @mantine/hooks
+;; barrel (mnt-01kxh6gf6ny3). Upstream ships no docgen/JSDoc for these — the
+;; descriptions below are distilled from the hand-written MDX docs.
+;;
+;; JS-name -> {:desc "<one-line>" :page "<docs path>"}. util-docstring derives the
+;; anchored URL as https://mantine.dev/<page>/#<js-name lowercased, separators
+;; stripped> (e.g. randomId -> guides/functions-reference/#randomid).
+;;
+;; :page is either "guides/functions-reference" (the standalone Functions
+;; reference guide) or "hooks/<slug>" for a utility documented on a sibling
+;; hook's page. Every enumerated barrel utility MUST have an entry here — a
+;; missing one fails `bb generate` (the drift guard). The only barrel export
+;; with no upstream docs, normalizeRadialValue, is excluded in codegen/scope.edn.
+{"assignRef"              {:desc "Assigns a value to a single ref (function or object ref) without a hook"
+                           :page "hooks/use-merged-ref"}
+ "clamp"                  {:desc "Clamps a number within inclusive lower and upper bounds"
+                           :page "guides/functions-reference"}
+ "clampUseMovePosition"   {:desc "Clamps a {x, y} position to the 0-1 range"
+                           :page "hooks/use-move"}
+ "formatMask"             {:desc "Applies a mask to a raw value string"
+                           :page "hooks/use-mask"}
+ "generatePattern"        {:desc "Generates a regex string for the HTML pattern attribute from a mask"
+                           :page "hooks/use-mask"}
+ "getHotkeyHandler"       {:desc "Builds an onKeyDown handler from a list of hotkey/handler pairs"
+                           :page "hooks/use-hotkeys"}
+ "isMaskComplete"         {:desc "Checks whether all required mask slots are filled"
+                           :page "hooks/use-mask"}
+ "lowerFirst"             {:desc "Lowercases the first character of a string"
+                           :page "guides/functions-reference"}
+ "mergeRefs"              {:desc "Merges multiple refs into one ref callback without a hook"
+                           :page "hooks/use-merged-ref"}
+ "randomId"               {:desc "Generates a random id with the mantine- prefix"
+                           :page "guides/functions-reference"}
+ "range"                  {:desc "Generates an array of numbers from start to end, inclusive"
+                           :page "guides/functions-reference"}
+ "readLocalStorageValue"  {:desc "Reads a value from localStorage without a hook"
+                           :page "hooks/use-local-storage"}
+ "readSessionStorageValue" {:desc "Reads a value from sessionStorage without a hook"
+                            :page "hooks/use-local-storage"}
+ "shallowEqual"           {:desc "Performs a shallow equality check of two values"
+                           :page "guides/functions-reference"}
+ "unformatMask"           {:desc "Strips all mask literals from a masked value"
+                           :page "hooks/use-mask"}
+ "upperFirst"             {:desc "Uppercases the first character of a string"
+                           :page "guides/functions-reference"}}

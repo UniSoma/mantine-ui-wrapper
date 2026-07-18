@@ -23,7 +23,9 @@
         ;; hooks return-shape split, one sample each (raw JS returns, zero conversion):
         [count counter-handlers] (mh/use-counter 5) ; tuple, destructured positionally
         viewport (mh/use-viewport-size)             ; object, read via interop (^js)
-        generated-id (mh/use-id)]                   ; scalar (string)
+        generated-id (mh/use-id)                    ; scalar (string)
+        ;; non-hook barrel utility: plain fn call, raw passthrough (mnt-01kxh6gf6ny3)
+        random-id (mh/random-id "demo-")]           ; -> "demo-xxxxx"
     ;; full screen built from backfilled non-docgen core surface: the wrapped
     ;; mantine-provider (app root, in `app`), AppShell page shell (+ app-shell-main),
     ;; and a Menu whose Menu.Dropdown / Label / Divider are supplement-backfilled parts.
@@ -125,6 +127,8 @@
        (mc/text {:id "viewport-size"}
                 (str "Viewport: " (.-width ^js viewport) "x" (.-height ^js viewport)))
        (mc/text {:id "generated-id"} (str "ID: " generated-id))
+       ;; non-hook barrel utility exercised end-to-end (plain fn, raw passthrough)
+       (mc/text {:id "random-id"} (str "RandomId: " random-id))
 
        ;; imperative modals API: open drives the ModalsProvider, close by modal id
        (mc/button

@@ -5,9 +5,14 @@
 ;; :components — {:all true} covers every docgen entry exported by a wrapped
 ;;   @mantine/* package (core, notifications, ...; never @mantine/hooks), minus
 ;;   :exclude. That is the whole @mantine/core surface today.
-;; :hooks — {:all true} covers every use* export of the @mantine/hooks barrel.
-;;   Non-hook barrel utilities (randomId, mergeRefs, ...) are already filtered out
-;;   (they don't start with "use"). Companion hooks — use* exports documented on a
+;; :hooks — {:all true} covers EVERY export of the @mantine/hooks barrel: use* hooks
+;;   AND the non-hook plain utilities (randomId, mergeRefs, clamp, the *Mask
+;;   family, ...). hooks-ns-plan routes each: use* -> hook-docstring, else ->
+;;   util-docstring (drift-guarded against codegen/input/util-docs.edn).
+;;   `range` collides with clojure.core and is refer-clojure-excluded automatically.
+;;   The lone exclude is normalizeRadialValue, the one barrel export with no
+;;   upstream docs; any further undocumented export fails the build until it is
+;;   documented or listed here. Companion hooks — use* exports documented on a
 ;;   sibling's docs page, so they carry no description in hook-docs.edn — are still
 ;;   generated; codegen/input/hook-docs-page.edn maps each to its shared docs page
 ;;   (useFullscreenDocument/Element -> use-fullscreen, useSessionStorage ->
@@ -18,4 +23,4 @@
 ;;   <suffix>.cljc (no components). @mantine/form is pure hooks + functions.
 {:components {:all true :exclude #{}}
  :supplement-only-packages #{"@mantine/form"}
- :hooks {:all true :exclude #{}}}
+ :hooks {:all true :exclude #{"normalizeRadialValue"}}}

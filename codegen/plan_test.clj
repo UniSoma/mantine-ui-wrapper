@@ -23,6 +23,8 @@
                               :props ["Button" "ButtonGroup"]}}
    :hook-docs {"useDisclosure" "Manages boolean state"}
    :hook-docs-page {"useMousePosition" "use-mouse"}
+   :util-docs {"randomId" {:desc "Generates a random id" :page "guides/functions-reference"}
+               "getHotkeyHandler" {:desc "Builds an onKeyDown handler" :page "hooks/use-hotkeys"}}
    :controlled #{"Slider"}
    :scope {:components #{"Button" "Alert" "Slider" "Chart" "List" "Ghost" "NotInDocgen"}
            :hooks #{"useDisclosure" "useMousePosition" "randomId"}
@@ -38,6 +40,13 @@
 
 (defn- def-plan [np sym]
   (some #(when (= sym (:symbol %)) %) (:defs np)))
+
+;; Add a barrel export to both the observed :exports and the explicit :hooks scope
+;; set — the two must agree for a name to flow through hooks-ns-plan.
+(defn- add-barrel [sources nm]
+  (-> sources
+      (update-in [:exports "@mantine/hooks"] conj nm)
+      (update-in [:scope :hooks] conj nm)))
 
 ;; ---------------------------------------------------------------- classification
 
@@ -68,9 +77,17 @@
     (is (= "not present in docgen.json" (:reason (skip "NotInDocgen"))))
     (is (= "no installed @mantine package exports it" (:reason (skip "Ghost"))))
     (is (nil? (def-plan (ns-plan plan "mantine.core") "ghost")))
-    (testing "non-use* name in the :hooks dimension is skipped"
-      (is (= :hook (:kind (skip "randomId"))))
-      (is (= "not a use* export of @mantine/hooks" (:reason (skip "randomId")))))))
+    (testing "a non-use* barrel export is now a generated :util def, not a skip"
+      (is (nil? (skip "randomId")))
+      (let [rid (def-plan (ns-plan plan "mantine.hooks") "random-id")]
+        (is (= :util (:kind rid)))
+        (is (= "randomId" (:js-name rid)))))))
+
+(deftest scoped-name-absent-from-barrel-is-skipped
+  (let [plan (plan/build (update-in base-sources [:scope :hooks] conj "useNotExported"))
+        skip (fn [nm] (some #(when (= nm (:js-name %)) %) (:skipped plan)))]
+    (is (= :barrel (:kind (skip "useNotExported"))))
+    (is (= "not an export of @mantine/hooks" (:reason (skip "useNotExported"))))))
 
 (deftest controlled-input-rot-is-a-note
   (let [plan (plan/build (assoc base-sources :controlled #{"Slider" "Rotten"}))]
@@ -98,10 +115,34 @@
     (testing "Companion hook maps to its shared docs page via hook-docs-page"
       (is (str/includes? (:docstring (def-plan hooks "use-mouse-position"))
                          "https://mantine.dev/hooks/use-mouse")))
-    (testing "hooks ns requires: cljs refer + clj-only factory"
-      (is (= [["@mantine/hooks" :refer '[useDisclosure useMousePosition]]]
+    (testing "hooks ns requires: cljs refer (hooks + utils) + clj-only factory"
+      (is (= [["@mantine/hooks" :refer '[randomId useDisclosure useMousePosition]]]
              (get-in hooks [:requires :cljs])))
       (is (= '[[mantine.impl.factory :as f]] (get-in hooks [:requires :clj]))))))
+
+(deftest util-docstrings-and-routing
+  (let [plan (plan/build base-sources)
+        hooks (ns-plan plan "mantine.hooks")]
+    (testing "a functions-reference util links to the guide with a stripped anchor"
+      (let [ds (:docstring (def-plan hooks "random-id"))]
+        (is (str/includes? ds "randomId — Generates a random id"))
+        (is (str/includes? ds "https://mantine.dev/guides/functions-reference/#randomid"))))
+    (testing "a util documented on a sibling hook page links to that page"
+      (let [plan (plan/build (add-barrel base-sources "getHotkeyHandler"))
+            ds (:docstring (def-plan (ns-plan plan "mantine.hooks") "get-hotkey-handler"))]
+        (is (str/includes? ds "https://mantine.dev/hooks/use-hotkeys/#gethotkeyhandler"))))))
+
+(deftest util-missing-docs-fails-build
+  (let [sources (add-barrel base-sources "mergeRefs")]
+    (is (thrown-with-msg? Exception #"mergeRefs has no codegen/input/util-docs.edn entry"
+                          (plan/build sources)))))
+
+(deftest range-util-is-refer-clojure-excluded
+  (let [sources (-> (add-barrel base-sources "range")
+                    (assoc-in [:util-docs "range"] {:desc "Range" :page "guides/functions-reference"}))
+        hooks (ns-plan (plan/build sources) "mantine.hooks")]
+    (is (= :util (:kind (def-plan hooks "range"))))
+    (is (some #{"range"} (:refer-clojure-exclude hooks)))))
 
 ;; ---------------------------------------------------------------- supplements
 
@@ -203,6 +244,9 @@
         text (:text (plan/emit-ns (ns-plan plan "mantine.hooks")))]
     (is (str/includes? text "(def use-disclosure\n"))
     (is (str/includes? text "#?(:cljs useDisclosure\n     :clj (f/not-implemented \"mantine.hooks/use-disclosure\")))"))
+    (testing "a util emits the same raw-passthrough alias shape"
+      (is (str/includes? text "(def random-id\n"))
+      (is (str/includes? text "#?(:cljs randomId\n     :clj (f/not-implemented \"mantine.hooks/random-id\")))")))
     (testing "clj-only require block for the hooks ns"
       (is (str/includes? text "#?@(:clj [[mantine.impl.factory :as f]])")))))
 

@@ -21,6 +21,7 @@
 ;;  :component-docs  {}          ; parsed codegen/input/component-docs.edn
 ;;  :hook-docs       {}          ; parsed codegen/input/hook-docs.edn
 ;;  :hook-docs-page  {}          ; parsed codegen/input/hook-docs-page.edn (Companion hooks)
+;;  :util-docs       {}          ; parsed codegen/input/util-docs.edn (non-hook barrel utils)
 ;;  :controlled      #{}         ; parsed codegen/controlled-inputs.edn
 ;;  :scope           {:components ... :hooks ... :supplement-only-packages ...}
 ;;  :supplements     {"core" "<verbatim .cljc text>" ...}  ; suffix -> file text (unparsed)
@@ -31,7 +32,7 @@
 ;; plan — the domain artifact. Entirely data: no text, no I/O, JVM-serializable.
 ;; {:mantine-version "9.4.1"
 ;;  :namespaces [ns-plan ...]    ; sorted by :ns-name
-;;  :skipped    [{:kind :component|:hook :js-name "X" :reason "..."} ...]
+;;  :skipped    [{:kind :component|:hook|:barrel :js-name "X" :reason "..."} ...]
 ;;  :notes      [{:kind :controlled-input-rot :js-name "X"}          ; stale controlled-inputs.edn entry
 ;;               {:kind :multi-package :js-name "X" :packages [...] :chosen "@mantine/core"} ...]}
 ;;
@@ -47,8 +48,9 @@
 ;;  :supplement {:suffix "core" :body "<verbatim, satisfied-declares dropped>"}} ; or nil
 ;;
 ;; def-plan
-;; {:kind :component            ; :component | :hook (:util reserved for Barrel
-;;                              ;  utilities, mnt-01kxh6gf6ny3 — no util-docs.edn yet)
+;; {:kind :component            ; :component | :hook | :util (non-hook @mantine/hooks
+;;                              ;  barrel utility — raw-passthrough alias, same emit
+;;                              ;  shape as :hook; docstring from util-docs.edn)
 ;;  :js-name "Button"
 ;;  :symbol  "button"           ; kebab — PRE-COMPUTED (naming is a domain decision)
 ;;  :docstring "Button — ..."   ; plain human text, UN-escaped; emit-ns escapes
@@ -77,6 +79,7 @@
      :component-docs (edn/read-string (slurp "codegen/input/component-docs.edn"))
      :hook-docs (edn/read-string (slurp "codegen/input/hook-docs.edn"))
      :hook-docs-page (edn/read-string (slurp "codegen/input/hook-docs-page.edn"))
+     :util-docs (edn/read-string (slurp "codegen/input/util-docs.edn"))
      :controlled (edn/read-string (slurp "codegen/controlled-inputs.edn"))
      :scope (edn/read-string (slurp "codegen/scope.edn"))
      :supplements (into {} (for [f (fs/list-dir "codegen/supplements")]
@@ -162,6 +165,26 @@
            "Raw passthrough of the JS hook: pass JS-shaped args (#js {...}); returns"
            "the raw JS value (tuples destructure positionally, object returns are read"
            "via interop — use ^js under :advanced)."])
+         (str/join "\n"))))
+
+(defn- util-docstring
+  "Docstring for a non-hook barrel utility. Fails the build (drift guard) when the
+  utility has no codegen/input/util-docs.edn entry — every enumerated barrel util
+  must be documented. The anchored URL is derived from the JS name (lowercased,
+  separators stripped) under the entry's :page."
+  [{:keys [util-docs]} nm]
+  (let [{:keys [desc page]} (or (get util-docs nm)
+                                (throw (ex-info (str "barrel utility " nm
+                                                     " has no codegen/input/util-docs.edn entry"
+                                                     " — document it or exclude it in codegen/scope.edn")
+                                                {:js-name nm})))
+        anchor (str/lower-case (str/replace nm #"[^A-Za-z0-9]" ""))]
+    (->> [(str nm " — " desc)
+          ""
+          (str "https://mantine.dev/" page "/#" anchor)
+          ""
+          "Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns"
+          "the raw JS value (read object returns via interop — use ^js under :advanced)."]
          (str/join "\n"))))
 
 ;; ---------------------------------------------------------------- supplements (pure parse)
@@ -320,28 +343,34 @@
                    :controlled? (contains? controlled nm)}))
      :supplement (when supplement {:suffix suffix :body (:body supplement)})}))
 
-(defn- hooks-ns-plan [{:keys [mantine-version] :as sources} hook-names]
+(defn- hooks-ns-plan
+  "Plan for the mantine.hooks ns. `barrel-names` mixes use* hooks and non-hook
+  plain utilities (randomId, clamp, mergeRefs, ...); each def is routed by name —
+  use* -> :hook (hook-docstring), else -> :util (util-docstring, drift-guarded)."
+  [{:keys [mantine-version] :as sources} barrel-names]
   (let [ns-name "mantine.hooks"
-        _ (check-collisions! ns-name hook-names)]
+        _ (check-collisions! ns-name barrel-names)]
     {:pkg "@mantine/hooks"
      :ns-name ns-name
      :file "src/main/mantine/hooks.cljc"
      :mantine-version mantine-version
      :docstring (str "Mantine @mantine/hooks " mantine-version " wrappers (generated).\n\n"
-                     "Thin def-aliases over the JS hooks — raw passthrough in both directions.\n"
-                     "Rules of hooks are NOT enforced here; they are delegated to React (call\n"
-                     "only inside function components / other hooks). Object returns need ^js\n"
-                     "or js-interop access under :advanced compilation.")
-     :refer-clojure-exclude (vec (sort (filter clojure-core-names (map kebab hook-names))))
-     :requires {:cljs [(into ["@mantine/hooks" :refer (mapv symbol (sort hook-names))])]
-                ;; hook defs are bare aliases on :cljs; f is only used by
+                     "Thin def-aliases over the JS hooks and plain utilities — raw passthrough\n"
+                     "in both directions. Rules of hooks are NOT enforced here; they are\n"
+                     "delegated to React (call hooks only inside function components / other\n"
+                     "hooks). Object returns need ^js or js-interop access under :advanced\n"
+                     "compilation.")
+     :refer-clojure-exclude (vec (sort (filter clojure-core-names (map kebab barrel-names))))
+     :requires {:cljs [(into ["@mantine/hooks" :refer (mapv symbol (sort barrel-names))])]
+                ;; defs are bare aliases on :cljs; f is only used by
                 ;; the :clj not-implemented branch
                 :clj '[[mantine.impl.factory :as f]]}
-     :defs (vec (for [nm (sort hook-names)]
-                  {:kind :hook
-                   :js-name nm
-                   :symbol (kebab nm)
-                   :docstring (hook-docstring sources nm)}))
+     :defs (vec (for [nm (sort barrel-names)]
+                  (let [hook? (str/starts-with? nm "use")]
+                    {:kind (if hook? :hook :util)
+                     :js-name nm
+                     :symbol (kebab nm)
+                     :docstring ((if hook? hook-docstring util-docstring) sources nm)})))
      :supplement nil}))
 
 ;; ---------------------------------------------------------------- build
@@ -371,13 +400,15 @@
                          (sort (dimension-names (:components scope) component-universe)))
         resolved (keep :resolved resolutions)
         by-pkg (group-by second resolved)
+        ;; the barrel is enumerated as everything-minus-excludes: every export
+        ;; (use* hooks AND non-hook utilities) flows through hooks-ns-plan, which
+        ;; routes each by name. Undocumented exports must be excluded in scope.edn.
         hook-exports (set (get exports "@mantine/hooks"))
-        hook-universe (filter #(str/starts-with? % "use") hook-exports)
-        hook-names (sort (dimension-names (:hooks scope) hook-universe))
-        hooks (filter #(and (str/starts-with? % "use") (hook-exports %)) hook-names)
-        hook-skips (for [nm hook-names
-                         :when (not (and (str/starts-with? nm "use") (hook-exports nm)))]
-                     {:kind :hook :js-name nm :reason "not a use* export of @mantine/hooks"})
+        barrel-names (sort (dimension-names (:hooks scope) hook-exports))
+        barrel (filter hook-exports barrel-names)
+        barrel-skips (for [nm barrel-names
+                           :when (not (hook-exports nm))]
+                       {:kind :barrel :js-name nm :reason "not an export of @mantine/hooks"})
         rot (for [nm (sort controlled)
                   :when (not-any? #(= nm (first %)) resolved)]
               {:kind :controlled-input-rot :js-name nm})
@@ -387,10 +418,10 @@
                        ;; is entirely the hoisted supplement.
                        (into (for [pkg (sort (:supplement-only-packages scope #{}))]
                                (package-ns-plan sources pkg [])))
-                       (conj (hooks-ns-plan sources hooks)))]
+                       (conj (hooks-ns-plan sources barrel)))]
     {:mantine-version (:mantine-version sources)
      :namespaces (vec (sort-by :ns-name namespaces))
-     :skipped (vec (concat (keep :skipped resolutions) hook-skips))
+     :skipped (vec (concat (keep :skipped resolutions) barrel-skips))
      :notes (vec (concat (keep :note resolutions) rot))}))
 
 ;; ---------------------------------------------------------------- emit-ns (thin)
@@ -424,7 +455,8 @@
          "  #?(:cljs (f/factory " (if controlled? (str "(f/controlled " js-name ")") js-name) ")\n"
          "     :clj (f/not-implemented \"" ns-name "/" sym "\")))\n")
 
-    :hook
+    ;; hooks and plain utilities share the raw-passthrough alias shape
+    (:hook :util)
     (str "(def " sym "\n"
          "  \"" (esc docstring) "\"\n"
          "  #?(:cljs " js-name "\n"

@@ -155,6 +155,11 @@ try {
   assert(/^ID: .+/.test(genId.textContent) && genId.textContent !== 'ID: ',
     'use-id scalar return rendered (non-empty string id)');
 
+  // non-hook barrel utility: random-id plain fn call, raw passthrough (mnt-01kxh6gf6ny3).
+  const randomId = doc.getElementById('random-id');
+  assert(/^RandomId: demo-.+/.test(randomId.textContent),
+    'mh/random-id utility called (raw passthrough) — honors the "demo-" prefix arg');
+
   // -------------------------------------------------- 4. imperative notifications
   btn.click();
   const note = await poll('notification appears', () =>

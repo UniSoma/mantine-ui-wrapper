@@ -2,13 +2,175 @@
 (ns mantine.hooks
   "Mantine @mantine/hooks 9.4.1 wrappers (generated).
 
-Thin def-aliases over the JS hooks — raw passthrough in both directions.
-Rules of hooks are NOT enforced here; they are delegated to React (call
-only inside function components / other hooks). Object returns need ^js
-or js-interop access under :advanced compilation."
+Thin def-aliases over the JS hooks and plain utilities — raw passthrough
+in both directions. Rules of hooks are NOT enforced here; they are
+delegated to React (call hooks only inside function components / other
+hooks). Object returns need ^js or js-interop access under :advanced
+compilation."
+  (:refer-clojure :exclude [range])
   (:require
-   #?@(:cljs [["@mantine/hooks" :refer [useCallbackRef useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useFullscreenDocument useFullscreenElement useHash useHeadroom useHorizontalCollapse useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMousePosition useMove useMutationObserver useMutationObserverTarget useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSessionStorage useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
+   #?@(:cljs [["@mantine/hooks" :refer [assignRef clamp clampUseMovePosition formatMask generatePattern getHotkeyHandler isMaskComplete lowerFirst mergeRefs randomId range readLocalStorageValue readSessionStorageValue shallowEqual unformatMask upperFirst useCallbackRef useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useFullscreenDocument useFullscreenElement useHash useHeadroom useHorizontalCollapse useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMousePosition useMove useMutationObserver useMutationObserverTarget useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSessionStorage useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
    #?@(:clj [[mantine.impl.factory :as f]])))
+
+(def assign-ref
+  "assignRef — Assigns a value to a single ref (function or object ref) without a hook
+
+https://mantine.dev/hooks/use-merged-ref/#assignref
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs assignRef
+     :clj (f/not-implemented "mantine.hooks/assign-ref")))
+
+(def clamp
+  "clamp — Clamps a number within inclusive lower and upper bounds
+
+https://mantine.dev/guides/functions-reference/#clamp
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs clamp
+     :clj (f/not-implemented "mantine.hooks/clamp")))
+
+(def clamp-use-move-position
+  "clampUseMovePosition — Clamps a {x, y} position to the 0-1 range
+
+https://mantine.dev/hooks/use-move/#clampusemoveposition
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs clampUseMovePosition
+     :clj (f/not-implemented "mantine.hooks/clamp-use-move-position")))
+
+(def format-mask
+  "formatMask — Applies a mask to a raw value string
+
+https://mantine.dev/hooks/use-mask/#formatmask
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs formatMask
+     :clj (f/not-implemented "mantine.hooks/format-mask")))
+
+(def generate-pattern
+  "generatePattern — Generates a regex string for the HTML pattern attribute from a mask
+
+https://mantine.dev/hooks/use-mask/#generatepattern
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs generatePattern
+     :clj (f/not-implemented "mantine.hooks/generate-pattern")))
+
+(def get-hotkey-handler
+  "getHotkeyHandler — Builds an onKeyDown handler from a list of hotkey/handler pairs
+
+https://mantine.dev/hooks/use-hotkeys/#gethotkeyhandler
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs getHotkeyHandler
+     :clj (f/not-implemented "mantine.hooks/get-hotkey-handler")))
+
+(def is-mask-complete
+  "isMaskComplete — Checks whether all required mask slots are filled
+
+https://mantine.dev/hooks/use-mask/#ismaskcomplete
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs isMaskComplete
+     :clj (f/not-implemented "mantine.hooks/is-mask-complete")))
+
+(def lower-first
+  "lowerFirst — Lowercases the first character of a string
+
+https://mantine.dev/guides/functions-reference/#lowerfirst
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs lowerFirst
+     :clj (f/not-implemented "mantine.hooks/lower-first")))
+
+(def merge-refs
+  "mergeRefs — Merges multiple refs into one ref callback without a hook
+
+https://mantine.dev/hooks/use-merged-ref/#mergerefs
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs mergeRefs
+     :clj (f/not-implemented "mantine.hooks/merge-refs")))
+
+(def random-id
+  "randomId — Generates a random id with the mantine- prefix
+
+https://mantine.dev/guides/functions-reference/#randomid
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs randomId
+     :clj (f/not-implemented "mantine.hooks/random-id")))
+
+(def range
+  "range — Generates an array of numbers from start to end, inclusive
+
+https://mantine.dev/guides/functions-reference/#range
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs range
+     :clj (f/not-implemented "mantine.hooks/range")))
+
+(def read-local-storage-value
+  "readLocalStorageValue — Reads a value from localStorage without a hook
+
+https://mantine.dev/hooks/use-local-storage/#readlocalstoragevalue
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs readLocalStorageValue
+     :clj (f/not-implemented "mantine.hooks/read-local-storage-value")))
+
+(def read-session-storage-value
+  "readSessionStorageValue — Reads a value from sessionStorage without a hook
+
+https://mantine.dev/hooks/use-local-storage/#readsessionstoragevalue
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs readSessionStorageValue
+     :clj (f/not-implemented "mantine.hooks/read-session-storage-value")))
+
+(def shallow-equal
+  "shallowEqual — Performs a shallow equality check of two values
+
+https://mantine.dev/guides/functions-reference/#shallowequal
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs shallowEqual
+     :clj (f/not-implemented "mantine.hooks/shallow-equal")))
+
+(def unformat-mask
+  "unformatMask — Strips all mask literals from a masked value
+
+https://mantine.dev/hooks/use-mask/#unformatmask
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs unformatMask
+     :clj (f/not-implemented "mantine.hooks/unformat-mask")))
+
+(def upper-first
+  "upperFirst — Uppercases the first character of a string
+
+https://mantine.dev/guides/functions-reference/#upperfirst
+
+Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
+the raw JS value (read object returns via interop — use ^js under :advanced)."
+  #?(:cljs upperFirst
+     :clj (f/not-implemented "mantine.hooks/upper-first")))
 
 (def use-callback-ref
   "useCallbackRef
