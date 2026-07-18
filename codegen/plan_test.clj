@@ -144,6 +144,27 @@
     (is (= :util (:kind (def-plan hooks "range"))))
     (is (some #{"range"} (:refer-clojure-exclude hooks)))))
 
+(deftest single-word-util-reached-via-alias
+  ;; clamp kebabs to itself; :refer-ing AND def-ing "clamp" would shadow the refer,
+  ;; so it is reached via the hooks-js alias and dropped from the :refer list.
+  (let [sources (-> (add-barrel base-sources "clamp")
+                    (assoc-in [:util-docs "clamp"] {:desc "Clamp" :page "guides/functions-reference"}))
+        plan (plan/build sources)
+        hooks (ns-plan plan "mantine.hooks")
+        [[_lib & clause]] (get-in hooks [:requires :cljs])
+        opts (apply hash-map clause)]
+    (testing "clamp is aliased, not referred"
+      (is (= 'hooks-js (:as opts)))
+      (is (not (some #{'clamp} (:refer opts))))
+      (is (= "hooks-js/clamp" (:cljs-ref (def-plan hooks "clamp")))))
+    (testing "referred hooks keep the bare-symbol RHS (no alias when nothing collides)"
+      (let [plain (ns-plan (plan/build base-sources) "mantine.hooks")
+            [[_ & c]] (get-in plain [:requires :cljs])]
+        (is (not (some #{:as} c)))))
+    (testing "emitted text uses the alias-qualified RHS"
+      (is (str/includes? (:text (plan/emit-ns hooks))
+                         "#?(:cljs hooks-js/clamp\n     :clj (f/not-implemented \"mantine.hooks/clamp\")))")))))
+
 ;; ---------------------------------------------------------------- supplements
 
 (def core-supplement

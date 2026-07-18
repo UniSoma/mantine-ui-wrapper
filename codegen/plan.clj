@@ -349,7 +349,15 @@
   use* -> :hook (hook-docstring), else -> :util (util-docstring, drift-guarded)."
   [{:keys [mantine-version] :as sources} barrel-names]
   (let [ns-name "mantine.hooks"
-        _ (check-collisions! ns-name barrel-names)]
+        _ (check-collisions! ns-name barrel-names)
+        names (sort barrel-names)
+        ;; a single-word util kebabs to its own JS name (clamp, range): :refer-ing it
+        ;; while def-ing the same symbol would shadow the refer, so reach those via a
+        ;; module alias (hooks-js/clamp) and keep them out of the :refer list.
+        alias-sym 'hooks-js
+        self-ref? (fn [nm] (= (kebab nm) nm))
+        referred (remove self-ref? names)
+        aliased? (boolean (some self-ref? names))]
     {:pkg "@mantine/hooks"
      :ns-name ns-name
      :file "src/main/mantine/hooks.cljc"
@@ -361,16 +369,20 @@
                      "hooks). Object returns need ^js or js-interop access under :advanced\n"
                      "compilation.")
      :refer-clojure-exclude (vec (sort (filter clojure-core-names (map kebab barrel-names))))
-     :requires {:cljs [(into ["@mantine/hooks" :refer (mapv symbol (sort barrel-names))])]
+     :requires {:cljs [(into (if aliased?
+                               ["@mantine/hooks" :as alias-sym]
+                               ["@mantine/hooks"])
+                             [:refer (mapv symbol referred)])]
                 ;; defs are bare aliases on :cljs; f is only used by
                 ;; the :clj not-implemented branch
                 :clj '[[mantine.impl.factory :as f]]}
-     :defs (vec (for [nm (sort barrel-names)]
+     :defs (vec (for [nm names]
                   (let [hook? (str/starts-with? nm "use")]
-                    {:kind (if hook? :hook :util)
-                     :js-name nm
-                     :symbol (kebab nm)
-                     :docstring ((if hook? hook-docstring util-docstring) sources nm)})))
+                    (cond-> {:kind (if hook? :hook :util)
+                             :js-name nm
+                             :symbol (kebab nm)
+                             :docstring ((if hook? hook-docstring util-docstring) sources nm)}
+                      (self-ref? nm) (assoc :cljs-ref (str alias-sym "/" nm))))))
      :supplement nil}))
 
 ;; ---------------------------------------------------------------- build
@@ -447,7 +459,7 @@
          (str/join "\n   " require-lines)
          "))\n")))
 
-(defn- emit-def [ns-name {:keys [kind js-name docstring controlled?] sym :symbol}]
+(defn- emit-def [ns-name {:keys [kind js-name docstring controlled? cljs-ref] sym :symbol}]
   (case kind
     :component
     (str "(def " sym "\n"
@@ -455,11 +467,13 @@
          "  #?(:cljs (f/factory " (if controlled? (str "(f/controlled " js-name ")") js-name) ")\n"
          "     :clj (f/not-implemented \"" ns-name "/" sym "\")))\n")
 
-    ;; hooks and plain utilities share the raw-passthrough alias shape
+    ;; hooks and plain utilities share the raw-passthrough alias shape; a
+    ;; single-word util reaches its JS export via :cljs-ref (hooks-js/clamp) to
+    ;; avoid shadowing its own :refer.
     (:hook :util)
     (str "(def " sym "\n"
          "  \"" (esc docstring) "\"\n"
-         "  #?(:cljs " js-name "\n"
+         "  #?(:cljs " (or cljs-ref js-name) "\n"
          "     :clj (f/not-implemented \"" ns-name "/" sym "\")))\n")))
 
 (defn- header [mantine-version]

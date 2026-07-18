@@ -9,7 +9,7 @@ hooks). Object returns need ^js or js-interop access under :advanced
 compilation."
   (:refer-clojure :exclude [range])
   (:require
-   #?@(:cljs [["@mantine/hooks" :refer [assignRef clamp clampUseMovePosition formatMask generatePattern getHotkeyHandler isMaskComplete lowerFirst mergeRefs randomId range readLocalStorageValue readSessionStorageValue shallowEqual unformatMask upperFirst useCallbackRef useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useFullscreenDocument useFullscreenElement useHash useHeadroom useHorizontalCollapse useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMousePosition useMove useMutationObserver useMutationObserverTarget useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSessionStorage useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
+   #?@(:cljs [["@mantine/hooks" :as hooks-js :refer [assignRef clampUseMovePosition formatMask generatePattern getHotkeyHandler isMaskComplete lowerFirst mergeRefs randomId readLocalStorageValue readSessionStorageValue shallowEqual unformatMask upperFirst useCallbackRef useClickOutside useClipboard useCollapse useColorScheme useCounter useDebouncedCallback useDebouncedState useDebouncedValue useDidUpdate useDisclosure useDocumentTitle useDocumentVisibility useDrag useElementSize useEventListener useEyeDropper useFavicon useFetch useFileDialog useFloatingWindow useFocusReturn useFocusTrap useFocusWithin useForceUpdate useFullscreenDocument useFullscreenElement useHash useHeadroom useHorizontalCollapse useHotkeys useHover useId useIdle useInViewport useInputState useIntersection useInterval useIsFirstRender useIsomorphicEffect useListState useLocalStorage useLogger useLongPress useMap useMask useMediaQuery useMergedRef useMounted useMouse useMousePosition useMove useMutationObserver useMutationObserverTarget useNetwork useOrientation useOs usePageLeave usePagination usePrevious useQueue useRadialMove useReducedMotion useResizeObserver useRovingIndex useScrollDirection useScrollIntoView useScrollSpy useScroller useSelection useSessionStorage useSet useSetState useShallowEffect useSplitter useStateHistory useTextSelection useThrottledCallback useThrottledState useThrottledValue useTimeout useToggle useUncontrolled useValidatedState useViewportSize useWindowEvent useWindowScroll]]])
    #?@(:clj [[mantine.impl.factory :as f]])))
 
 (def assign-ref
@@ -29,7 +29,7 @@ https://mantine.dev/guides/functions-reference/#clamp
 
 Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
 the raw JS value (read object returns via interop — use ^js under :advanced)."
-  #?(:cljs clamp
+  #?(:cljs hooks-js/clamp
      :clj (f/not-implemented "mantine.hooks/clamp")))
 
 (def clamp-use-move-position
@@ -119,7 +119,7 @@ https://mantine.dev/guides/functions-reference/#range
 
 Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns
 the raw JS value (read object returns via interop — use ^js under :advanced)."
-  #?(:cljs range
+  #?(:cljs hooks-js/range
      :clj (f/not-implemented "mantine.hooks/range")))
 
 (def read-local-storage-value
