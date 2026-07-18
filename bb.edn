@@ -53,6 +53,10 @@
   plan-test {:doc "Plan-level fixture tests for the Wrapper plan (no Node, no writes)"
              :task (load-file "codegen/plan_test.clj")}
 
+  release-check {:doc "Validate deps.cljs ranges + build.clj prefix + package.json pins agree with the anchor (ADR 0005)"
+                 :requires ([release-check])
+                 :task (release-check/-main)}
+
   ci {:doc "Run the full CI pipeline locally (mirrors .github/workflows/ci.yml)"
       :task (do (shell "npm" "ci")
                 (shell "bb" "drift")
@@ -61,5 +65,6 @@
                 (shell "bb" "jvm-load")
                 (shell "bb" "coverage")
                 (shell "bb" "plan-test")
+                (shell "bb" "release-check")
                 (shell "bb" "test")
                 (println "\nCI PIPELINE GREEN ✅"))}}}

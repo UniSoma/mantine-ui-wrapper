@@ -7,7 +7,8 @@
 ;;   emit-ns       : thin — one ns-plan -> {:file :text}; owns escaping + templating only
 ;;   write-plan!   : thin — the `bb generate` driver (emit-ns + spit + summary)
 (ns plan
-  (:require [babashka.fs :as fs]
+  (:require [anchor]
+            [babashka.fs :as fs]
             [babashka.process :refer [shell]]
             [cheshire.core :as json]
             [clojure.edn :as edn]
@@ -56,9 +57,22 @@
 ;;  :docstring "Button — ..."   ; plain human text, UN-escaped; emit-ns escapes
 ;;  :controlled? false}         ; components only
 
-(def mantine-version "9.4.1")
-
 ;; ---------------------------------------------------------------- read-sources (all I/O)
+
+(defn- assert-installed-versions!
+  "Reality-check (ADR 0005): every installed node_modules/@mantine/*/package.json
+  version must equal the anchor, catching a stray local npm install."
+  [mantine-packages version]
+  (let [mismatches (for [pkg mantine-packages
+                         :let [installed (get (json/parse-string
+                                               (slurp (str "node_modules/" pkg "/package.json")))
+                                              "version")]
+                         :when (not= installed version)]
+                     (str pkg " " installed))]
+    (when (seq mismatches)
+      (throw (ex-info (str "installed @mantine/* versions disagree with the anchor " version ": "
+                           (str/join ", " mismatches))
+                      {:anchor version :mismatches (vec mismatches)})))))
 
 (defn- package-exports [pkg]
   (-> (shell {:out :string} "node" "-e"
@@ -74,7 +88,8 @@
   (let [mantine-packages (->> (get (json/parse-string (slurp "package.json")) "devDependencies")
                               keys
                               (filter #(str/starts-with? % "@mantine/"))
-                              sort)]
+                              sort)
+        _ (assert-installed-versions! mantine-packages (anchor/anchor-version))]
     {:docgen (json/parse-string (slurp "codegen/input/docgen.json"))
      :component-docs (edn/read-string (slurp "codegen/input/component-docs.edn"))
      :hook-docs (edn/read-string (slurp "codegen/input/hook-docs.edn"))
@@ -86,7 +101,7 @@
                              [(str/replace (fs/file-name f) #"\.cljc$" "")
                               (slurp (fs/file f))]))
      :exports (into {} (for [pkg mantine-packages] [pkg (package-exports pkg)]))
-     :mantine-version mantine-version}))
+     :mantine-version (anchor/anchor-version)}))
 
 ;; ---------------------------------------------------------------- build helpers (pure)
 

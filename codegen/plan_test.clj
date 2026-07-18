@@ -3,9 +3,11 @@
 ;;
 ;; Run with: bb plan-test
 (ns plan-test
-  (:require [clojure.string :as str]
+  (:require [anchor]
+            [clojure.string :as str]
             [clojure.test :refer [deftest is testing run-tests]]
-            [plan]))
+            [plan]
+            [release-check]))
 
 (def base-sources
   {:docgen {"Button" {"props" {"color" {"type" {"name" "string"}
@@ -47,6 +49,47 @@
   (-> sources
       (update-in [:exports "@mantine/hooks"] conj nm)
       (update-in [:scope :hooks] conj nm)))
+
+;; ---------------------------------------------------------------- anchor
+
+(deftest anchor-version-from-uniform-pins
+  (let [pins {"@mantine/core" "9.4.1" "@mantine/hooks" "9.4.1" "@mantine/charts" "9.4.1"}]
+    (is (= "9.4.1" (anchor/anchor-version pins)))))
+
+(deftest anchor-version-disagreeing-pins-throws
+  (let [pins {"@mantine/core" "9.4.1" "@mantine/hooks" "9.4.2"}]
+    (is (thrown-with-msg? Exception #"pins disagree"
+                          (anchor/anchor-version pins)))))
+
+;; ---------------------------------------------------------------- release-check
+
+(def rc-ok
+  {:anchor "9.4.1"
+   :pins {"@mantine/core" "9.4.1" "@mantine/hooks" "9.4.1"}
+   :deps-ranges {"@mantine/core" "^9.4.1" "@mantine/hooks" "^9.4.1"}
+   :build-version "9.4.1.0-SNAPSHOT"
+   :witness "9.4.1"})
+
+(deftest release-check-clean-input-has-no-violations
+  (is (empty? (release-check/violations rc-ok))))
+
+(deftest release-check-flags-stale-deps-range
+  (let [probs (release-check/violations (assoc-in rc-ok [:deps-ranges "@mantine/core"] "^9.4.0"))]
+    (is (some #(str/includes? % "@mantine/core") probs))
+    (is (some #(str/includes? % "^9.4.0") probs))))
+
+(deftest release-check-flags-stale-build-prefix
+  (let [probs (release-check/violations (assoc rc-ok :build-version "9.4.0.2-SNAPSHOT"))]
+    (is (some #(str/includes? % "build.clj") probs))
+    (is (some #(str/includes? % "9.4.0") probs))))
+
+(deftest release-check-witness-matching-anchor-has-no-violation
+  (is (not-any? #(str/includes? % "witness") (release-check/violations rc-ok))))
+
+(deftest release-check-flags-stale-witness
+  (let [probs (release-check/violations (assoc rc-ok :witness "9.4.0"))]
+    (is (some #(str/includes? % "witness") probs))
+    (is (some #(str/includes? % "9.4.0") probs))))
 
 ;; ---------------------------------------------------------------- classification
 
