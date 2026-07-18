@@ -74,3 +74,10 @@ now covers this, delete the supplement entry."
 A generate-time assertion that every real compound part of every wrapped component
 is covered by either docgen or a supplement — turning a silently-unwrapped part
 into a loud "wrap it or explicitly exclude it."
+
+**Corpus collision guard**:
+An extract-time assertion that no PascalCase component key appears in more than one
+component corpus (`:core` / `:dates` / `:charts` / `:others`) — turning the old silent
+last-wins `apply merge` over the corpora into a loud throw. Component inputs are kept
+corpus-keyed (not flattened) precisely so this guard can fire; a future review must not
+collapse the map back into a silent merge.

@@ -51,5 +51,8 @@ jobs:
       # 6. per-package def-count coverage: scoped docgen entries vs generated defs
       - run: bb coverage
 
-      # 7. behavioral test suite: converter invariants (cljs, node)
+      # 7. extract-level fixture tests: the MDX parsers (no clone, no writes)
+      - run: bb extract-test
+
+      # 8. behavioral test suite: converter invariants (cljs, node)
       - run: bb test

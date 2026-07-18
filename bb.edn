@@ -4,7 +4,8 @@
             :requires ([plan])
             :task (plan/write-plan! (plan/build (plan/read-sources)))}
   extract {:doc "Refresh committed codegen inputs from a Mantine 9.4.1 checkout: bb extract <clone-dir>"
-           :task (load-file "codegen/extract.clj")}
+           :requires ([extract])
+           :task (apply extract/-main *command-line-args*)}
 
   ;; ---- Release (source-only jar -> Clojars; see build.clj, docs/release.md) ----
   jar {:doc "Build the source-only jar into target/"
@@ -53,6 +54,9 @@
   plan-test {:doc "Plan-level fixture tests for the Wrapper plan (no Node, no writes)"
              :task (load-file "codegen/plan_test.clj")}
 
+  extract-test {:doc "Extract-level fixture tests for the MDX parsers (no clone, no writes)"
+                :task (load-file "codegen/extract_test.clj")}
+
   release-check {:doc "Validate deps.cljs ranges + build.clj prefix + package.json pins agree with the anchor (ADR 0005)"
                  :requires ([release-check])
                  :task (release-check/-main)}
@@ -65,6 +69,7 @@
                 (shell "bb" "jvm-load")
                 (shell "bb" "coverage")
                 (shell "bb" "plan-test")
+                (shell "bb" "extract-test")
                 (shell "bb" "release-check")
                 (shell "bb" "test")
                 (println "\nCI PIPELINE GREEN ✅"))}}}
