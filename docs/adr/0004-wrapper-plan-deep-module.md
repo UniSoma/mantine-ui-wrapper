@@ -79,7 +79,8 @@ plain data in `sources`, so fixtures are hand-written maps with no Node and no w
 
 - **A pluggable kind registry** — model classification as an ordered list of
   `{:claims? :resolve :collision}` kinds so new surface is added by `conj`. Rejected:
-  the surface is a closed, tiny set — **three def kinds** (`:component`, `:hook`, `:util`)
+  the surface is a closed, tiny set — **three def kinds** (`:component`, `:hook`, and
+  `:util`, the latter reserved until Barrel utilities land — mnt-01kxh6gf6ny3)
   plus **one degenerate package shape** (supplement-only, which emits zero defs and whose
   body is entirely its hoisted Supplement) — against one emission target. A `kinds`
   parameter is a one-adapter hypothetical seam — indirection, not a real seam. Inline the
@@ -105,11 +106,13 @@ plain data in `sources`, so fixtures are hand-written maps with no Node and no w
   assertions with no Node and no writes.
 - Deterministic ordering becomes a plan invariant, so drift stability no longer depends on
   emitter accident: `:namespaces` sorted by `:ns-name`, and within a namespace `:defs` — and
-  the `:refer` list and `refer-clojure` excludes derived from them — sorted by **`:js-name`**
+  the `:refer` list derived from them — sorted by **`:js-name`**
   (the Mantine export name), matching the current emitter byte-for-byte. Ordering is keyed on
   `:js-name`, not the kebab `:symbol`: the two diverge under ASCII sort (`-` vs. case
   boundaries), and `:js-name` both preserves byte-identity and mirrors the upstream naming a
-  reader cross-references.
+  reader cross-references. The one exception is `refer-clojure` excludes, which sort by
+  **def-name** (kebab): they mix generated kebabs with Supplement def-names, which have no
+  `:js-name` at all — and that is what the emitter has always done byte-for-byte.
 - Preserves ADR 0001 (source-only, Mantine-anchored artifact), ADR 0002 (supplements for
   docgen-omitted surface), and ADR 0003 (Barrel utilities generated, not supplemented) —
   this ADR relocates existing policy behind a seam; it does not change any of it.

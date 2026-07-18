@@ -1,6 +1,8 @@
-{:tasks
+{:paths ["codegen"]
+ :tasks
  {generate {:doc "Regenerate src/main/mantine/*.cljc from the committed codegen inputs"
-            :task (load-file "codegen/generate.clj")}
+            :requires ([plan])
+            :task (plan/write-plan! (plan/build (plan/read-sources)))}
   extract {:doc "Refresh committed codegen inputs from a Mantine 9.4.1 checkout: bb extract <clone-dir>"
            :task (load-file "codegen/extract.clj")}
 
@@ -48,6 +50,9 @@
   coverage {:doc "Per-package def-count coverage: scoped docgen entries vs generated defs"
             :task (load-file "scripts/coverage-check.clj")}
 
+  plan-test {:doc "Plan-level fixture tests for the Wrapper plan (no Node, no writes)"
+             :task (load-file "codegen/plan_test.clj")}
+
   ci {:doc "Run the full CI pipeline locally (mirrors .github/workflows/ci.yml)"
       :task (do (shell "npm" "ci")
                 (shell "bb" "drift")
@@ -55,5 +60,6 @@
                 (shell "node" "scripts/verify-demo.mjs")
                 (shell "bb" "jvm-load")
                 (shell "bb" "coverage")
+                (shell "bb" "plan-test")
                 (shell "bb" "test")
                 (println "\nCI PIPELINE GREEN ✅"))}}}

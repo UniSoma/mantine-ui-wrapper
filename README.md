@@ -114,7 +114,8 @@ cljdoc works. A runnable end-to-end sample of all patterns lives in
   committed, ship as source). Regenerate with `bb generate`; do not edit.
 - `src/main/mantine/impl/`: hand-written internals: `props` (the CLJS→JS props
   converter) and `factory` (variadic factories, controlled-input shim, JVM stubs).
-- `codegen/`: the generator (`generate.clj`), its committed inputs (`input/docgen.json`,
+- `codegen/`: the generator (`plan.clj` — the Wrapper plan deep module, ADR 0004;
+  `bb generate` drives it), its committed inputs (`input/docgen.json`,
   `input/*-docs.edn`, `scope.edn`, `controlled-inputs.edn`) and the hand-written
   supplements hoisted into generated namespaces (`supplements/*.cljc`).
 - `demo/` + `public/`: dev-only browser harness.

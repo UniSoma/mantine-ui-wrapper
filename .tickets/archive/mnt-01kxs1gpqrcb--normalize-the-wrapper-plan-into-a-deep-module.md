@@ -1,28 +1,29 @@
 ---
 id: mnt-01kxs1gpqrcb
 title: Normalize the Wrapper plan into a deep module
-status: open
+status: closed
 type: feature
 priority: 4
 mode: afk
 created: '2026-07-17T22:00:26.616683462Z'
-updated: '2026-07-18T03:02:41.101500479Z'
+updated: '2026-07-18T03:30:19.963683866Z'
+closed: '2026-07-18T03:30:19.963683866Z'
 tags:
 - codegen
 - refactor
 acceptance:
 - title: build is a pure fn of a sources map (no shelling out, no writes); classification/naming/docstrings/supplement-hoisting/require-merging all move behind it
-  done: false
+  done: true
 - title: emit-ns performs zero domain decisions — no kebab, no docstring lookup, no controlled-inputs, no merge-requires, no derive-exclude; it escapes and templates pre-computed fields
-  done: false
+  done: true
 - title: Collision guard throws inside build; skips and controlled-input rot are returned as :skipped/:notes data
-  done: false
+  done: true
 - title: Plan-level fixture tests run with no Node and no writes (hand-built sources map)
-  done: false
+  done: true
 - title: bb generate, bb drift, bb build, bb coverage, bb jvm-load, bb test all stay green; generated sources are byte-identical (no drift)
-  done: false
+  done: true
 - title: coverage-check.clj keeps its independent recount and does not consume build's :namespaces
-  done: false
+  done: true
 ---
 
 ## Description
@@ -51,3 +52,13 @@ Settled decisions (see ADR 0004, amended 2026-07-18 after grilling):
 - REJECTED: a pluggable kind registry. The surface is closed and tiny — three def kinds (:component/:hook/:util) plus one degenerate package shape (supplement-only, emits zero defs) — against one emission target. Inline the kinds as private fns.
 
 Preserves ADR 0001/0002/0003 — relocates existing policy behind a seam, changes none of it.
+
+## Notes
+
+**2026-07-18T03:29:51.987109920Z**
+
+Code review (two-axis) found no implementation defects. Two spec-wording amendments made instead of code changes: (1) ADR 0004 ordering consequence corrected — refer-clojure excludes sort by kebab def-name, not :js-name (they mix in supplement def-names, which have no js-name; matches the emitter byte-for-byte). (2) :util kind explicitly marked reserved (Barrel utilities, mnt-01kxh6gf6ny3 — no util-docs.edn yet) in plan.clj shape comment + ADR. Interface amendment vs stub: ns-plan carries :mantine-version so emit-ns stays global-free.
+
+**2026-07-18T03:30:19.963683866Z**
+
+Implemented ADR 0004 (commit 5a85d69). codegen/plan.clj now hosts the four-entry-point deep module: read-sources (I/O: committed EDN/JSON + Node export enumeration), build (pure sources->plan: classification, core-precedence resolution, kebab naming, refer-clojure excludes, docstrings incl. Companion-hook page mapping, supplement parse/declare-drop/require-merge; collisions throw, skips+rot+multi-package are data), emit-ns (escape docstrings, splice supplement verbatim), write-plan! (spit + summary). generate.clj is the two-line driver; coverage-check shares read-sources for observation only with the load-bearing firewall comment. 11 fixture tests / 42 assertions on hand-built sources (bb plan-test, in bb ci). Generated sources byte-identical; drift/coverage/jvm-load/test/build green. ADR amended: excludes sort by kebab def-name; :util reserved for mnt-01kxh6gf6ny3.

@@ -2,35 +2,31 @@
 ;; committed codegen inputs (docgen.json + scope.edn + installed @mantine exports) and
 ;; asserts every intended def landed in the generated source. Catches a scope/resolution
 ;; bug that silently drops components — the recount here is deliberately separate from
-;; codegen/generate.clj, so a regression in the generator diverges from this check.
+;; plan/build's classification, so a regression in the generator diverges from this check.
 ;;
 ;; Run with: bb coverage
 (ns coverage-check
   (:require [babashka.process :refer [shell]]
             [cheshire.core :as json]
-            [clojure.edn :as edn]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [plan]))
 
-(def docgen (json/parse-string (slurp "codegen/input/docgen.json")))
-(def scope (edn/read-string (slurp "codegen/scope.edn")))
+;; LOAD-BEARING BOUNDARY (ADR 0004): this check shares plan/read-sources — the
+;; OBSERVED facts (docgen, scope, exports) — so any divergence from the generator
+;; is provably a classification bug, not an artifact of two separate Node
+;; enumerations. It MUST re-derive the scoped surface itself and MUST NOT consume
+;; plan/build's :namespaces — DRYing the classification through the plan would
+;; silently destroy the guard.
+(def sources (plan/read-sources))
 
-(def mantine-packages
-  (->> (get (json/parse-string (slurp "package.json")) "devDependencies")
-       keys
-       (filter #(str/starts-with? % "@mantine/"))
-       sort))
-
-(defn package-exports [pkg]
-  (-> (shell {:out :string} "node" "-e"
-             (str "console.log(JSON.stringify(Object.keys(require('" pkg "'))))"))
-      :out
-      json/parse-string))
+(def docgen (:docgen sources))
+(def scope (:scope sources))
 
 (def exports-index
   (reduce (fn [m pkg]
-            (reduce (fn [m nm] (update m nm (fnil conj []) pkg)) m (package-exports pkg)))
+            (reduce (fn [m nm] (update m nm (fnil conj []) pkg)) m (get (:exports sources) pkg)))
           {}
-          mantine-packages))
+          (sort (keys (:exports sources)))))
 
 (def wrapped-component-universe
   (filter (fn [nm]
@@ -84,7 +80,7 @@
        (keep (fn [nm] (when-let [pkg (resolve-package nm)] [(pkg-suffix pkg) nm])))
        (reduce (fn [m [suffix nm]] (update m suffix (fnil conj #{}) nm)) {})))
 
-(def hook-exports (set (package-exports "@mantine/hooks")))
+(def hook-exports (set (get (:exports sources) "@mantine/hooks")))
 (def expected-hooks
   (->> (dimension-names (:hooks scope) (filter #(str/starts-with? % "use") hook-exports))
        (filter #(and (str/starts-with? % "use") (hook-exports %)))
