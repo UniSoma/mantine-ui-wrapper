@@ -6,7 +6,7 @@ type: task
 priority: 2
 mode: hitl
 created: '2026-07-13T17:31:17.030092082Z'
-updated: '2026-07-13T19:20:30.977384679Z'
+updated: '2026-07-18T23:12:04.390015301Z'
 closed: '2026-07-13T19:20:30.977384679Z'
 parent: mnt-01kxe8fz1ert
 tags:
@@ -34,6 +34,10 @@ Research context (R2/docgen): docgen.json DELIBERATELY strips the exact props th
 **2026-07-13T19:20:30.977384679Z**
 
 Single public converter fn: hybrid kebab->camel keys (data-/aria- exempt), shallow-default values with curated deep-convert set {style,styles,classNames,vars} (map->convert, fn->passthrough), style leaf (--* verbatim, numeric passthrough) + class leaf (collection space-join), :class alias+merge, children path (prune nil/flatten/render-prop passthrough), component/section/renderRoot passthrough, raw JS SyntheticEvent to handlers, reserved escape-hatch merge key (plain clj->js, wins last). Controlled-input wrapping + factory call convention scoped out to codegen ticket.
+
+**2026-07-18T23:12:04.390015301Z**
+
+Value-handling half SUPERSEDED by ADR 0006 (mnt-01kxh6gf162j): shallow-default + curated deep-convert set replaced by deep-by-default + denylist(:inner-props) + raw escape helper. Key-casing (hybrid kebab->camel), :& escape hatch, and children path from this decision stand unchanged.
 
 ## Resolution — props-conversion semantics
 

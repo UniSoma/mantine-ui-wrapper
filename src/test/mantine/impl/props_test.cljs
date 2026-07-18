@@ -101,6 +101,58 @@
       (is (= "x" (gobj/getValueByKeys o "classNames" "input"))))))
 
 ;; ---------------------------------------------------------------------------
+;; Deep-by-default (ADR 0006): nested maps and vectors-of-maps convert at every
+;; depth; :inner-props denylisted; `raw` wrapper opts any value out.
+;; ---------------------------------------------------------------------------
+
+(deftest nested-maps-convert-recursively
+  (let [f (fn [])
+        o (p/convert {:confirm-props {:color "red" :left-section "!" :on-click f}})]
+    (is (= "red" (gobj/getValueByKeys o "confirmProps" "color")))
+    (is (= "!" (gobj/getValueByKeys o "confirmProps" "leftSection")) "kebab->camel at depth")
+    (is (identical? f (gobj/getValueByKeys o "confirmProps" "onClick")) "fn survives at depth")
+    (is (nil? (gobj/getValueByKeys o "confirmProps" "left-section")))))
+
+(deftest nested-leaf-handling-applies-at-depth
+  (let [o (p/convert {:confirm-props {:class ["a" nil "b"]
+                                      :style {:font-weight 900}}})]
+    (is (= "a b" (gobj/getValueByKeys o "confirmProps" "className")) ":class leaf at depth")
+    (is (= 900 (gobj/getValueByKeys o "confirmProps" "style" "fontWeight")) ":style leaf at depth")))
+
+(deftest vectors-of-maps-convert-recursively
+  (let [o (p/convert {:actions [{:id "a" :left-section "x"} "divider"]})
+        arr (gobj/get o "actions")]
+    (is (array? arr) "vector value becomes a JS array")
+    (is (= "x" (gobj/get (aget arr 0) "leftSection")) "map members convert (kebab->camel at depth)")
+    (is (= "divider" (aget arr 1)) "non-map members pass through")))
+
+(deftest inner-props-key-camelizes-but-value-passes-raw
+  (let [f (fn [])
+        payload {:app/id 7 :on-done f}
+        o (p/convert {:inner-props payload})]
+    (is (identical? payload (gobj/get o "innerProps")) "value is the untouched CLJS map")
+    (is (= 7 (:app/id (gobj/get o "innerProps"))) "qualified keyword lookup still works")))
+
+(deftest raw-wrapper-skips-conversion-at-any-depth
+  (let [payload {:qualified/key 1}
+        o (p/convert {:payload (p/raw payload)
+                      :nested {:inner (p/raw payload)}})]
+    (is (identical? payload (gobj/get o "payload")) "top-level raw value untouched")
+    (is (identical? payload (gobj/getValueByKeys o "nested" "inner")) "raw honored below top level")))
+
+(deftest raw-wrapper-survives-merge-and-select-keys
+  (let [payload {:qualified/key 1}
+        assembled (-> (merge {:payload (p/raw payload)} {:other 2})
+                      (select-keys [:payload]))
+        o (p/convert assembled)]
+    (is (identical? payload (gobj/get o "payload"))
+        "tag survives a map pipeline (wrapper value, not metadata)")))
+
+(deftest escape-hatch-merges-last-inside-nested-maps
+  (let [o (p/convert {:confirm-props {:color "red" :& #js {:color "blue"}}})]
+    (is (= "blue" (gobj/getValueByKeys o "confirmProps" "color")) ":& wins at depth too")))
+
+;; ---------------------------------------------------------------------------
 ;; Escape hatch :& — merged LAST, hyphens preserved, wins over normal conversion.
 ;; ---------------------------------------------------------------------------
 

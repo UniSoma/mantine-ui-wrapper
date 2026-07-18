@@ -235,17 +235,61 @@ try {
   await poll('modal closes', () => !doc.getElementById('modal-body'));
   assert(!doc.getElementById('modal-body'), 'mantine.modals/close (by raw id) removes the modal');
 
-  // spotlight: its component is the UI; toggle opens it (actions rendered), toggle again closes.
+  // deep-converted nested *Props (ADR 0006): kebab CLJS :labels/:confirm-props/
+  // :cancel-props reach the confirm/cancel Buttons at depth.
+  doc.getElementById('btn-open-confirm').click();
+  const confirmBtn = await poll('confirm modal opens', () => doc.getElementById('confirm-btn'));
+  assert(confirmBtn.textContent.includes('Do it'),
+    ':labels nested CLJS map converted (confirm label rendered)');
+  assert(confirmBtn.textContent.includes('⚠'),
+    ':confirm-props {:left-section ...} converted at depth (kebab->camel leftSection)');
+  const cancelBtn = doc.getElementById('cancel-btn');
+  assert(cancelBtn.getAttribute('data-variant') === 'outline',
+    ':cancel-props nested CLJS map reached the cancel Button (variant applied)');
+  confirmBtn.click();
+  await poll('on-confirm fires', () =>
+    doc.getElementById('confirm-echo').textContent === 'Confirm: confirmed');
+  await poll('confirm modal closes', () => !doc.getElementById('confirm-btn'));
+  assert(true, 'confirm modal :on-confirm fired and the modal closed');
+
+  // :inner-props denylist: the registered CLJS context modal receives the CLJS map
+  // untouched — qualified-keyword lookup works and the fn round-trips.
+  doc.getElementById('btn-open-ctx-modal').click();
+  const ctxLabel = await poll('context modal opens', () => doc.getElementById('ctx-modal-label'));
+  assert(ctxLabel.textContent === 'Inner: qualified-data',
+    ':inner-props passed RAW — qualified keyword read from the CLJS map');
+  doc.getElementById('ctx-modal-done').click();
+  await poll('ctx echo updates', () =>
+    doc.getElementById('ctx-echo').textContent === 'Ctx: qualified-data');
+  await poll('context modal closes', () => !doc.getElementById('ctx-modal-label'));
+  assert(true, ':inner-props fn round-tripped CLJS->CLJS and the modal closed');
+
+  // spotlight: its component is the UI; toggle opens it. :actions is a plain CLJS
+  // vector-of-maps deep-converted through the GENERATED factory; clicking the action
+  // fires its CLJS :on-click and closes the Spotlight.
   doc.getElementById('btn-toggle-spotlight').click();
   const spotlightAction = await poll('spotlight opens', () =>
-    [...doc.querySelectorAll('[class*="mantine-Spotlight-"]')]
+    [...doc.querySelectorAll('button[class*="mantine-Spotlight-action"]')]
       .find((el) => el.textContent.includes('First action')));
   assert(!!spotlightAction, 'mantine.spotlight/toggle opens the Spotlight (actions prop rendered)');
+  assert(spotlightAction.textContent.includes('★'),
+    ':actions vector-of-maps converted at depth (kebab->camel leftSection)');
   const spotUsed = hashedClasses(doc.body).filter((c) => perPkg.spotlight.has(c));
   assert(spotUsed.length > 0,
     'opened Spotlight paints selectors from @mantine/spotlight/styles.css (stylesheet linked after core)');
-  doc.getElementById('btn-toggle-spotlight').click();
+  spotlightAction.click();
+  await poll('spotlight action on-click fires', () =>
+    doc.getElementById('spotlight-echo').textContent === 'Spotlight: clicked');
   await poll('spotlight closes', () =>
+    ![...doc.querySelectorAll('[class*="mantine-Spotlight-"]')]
+      .some((el) => el.textContent.includes('First action')));
+  assert(true, 'spotlight action :on-click (CLJS fn at depth) fired; action trigger closed the Spotlight');
+  doc.getElementById('btn-toggle-spotlight').click();
+  await poll('spotlight reopens', () =>
+    [...doc.querySelectorAll('button[class*="mantine-Spotlight-action"]')]
+      .some((el) => el.textContent.includes('First action')));
+  doc.getElementById('btn-toggle-spotlight').click();
+  await poll('spotlight closes via toggle', () =>
     ![...doc.querySelectorAll('[class*="mantine-Spotlight-"]')]
       .some((el) => el.textContent.includes('First action')));
   assert(true, 'mantine.spotlight/toggle closes the Spotlight');

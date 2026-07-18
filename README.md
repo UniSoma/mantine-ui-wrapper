@@ -70,7 +70,10 @@ Conventions:
 
 - A factory takes an optional leading props map, then children.
 - Props are kebab-case keywords converted to camelCase (`:left-section` → `leftSection`).
-- `:styles` and `:class-names` maps convert recursively.
+- Conversion is deep by default: nested maps and vectors of maps (`:styles`, modal
+  `:confirm-props`, spotlight `:actions`, …) convert the same way at every depth.
+  Two opt-outs keep a value as untouched CLJS: `:inner-props` (handed raw to your
+  context modal) and `(mc/raw v)` for anything else.
 - Hooks return raw JS, unconverted; destructure tuples positionally.
 - Polymorphic components accept `:component` (`{:component "a" :href …}`).
 - Imperative packages (`notifications`, `modals`, `spotlight`) expose both a provider and

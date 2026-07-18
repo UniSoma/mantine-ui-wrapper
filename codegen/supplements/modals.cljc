@@ -23,8 +23,8 @@
 
 (defn open
   "Open a modal. The options map goes through the standard props converter
-  (:title, :children, :size, :centered, ...); nested *Props supply JS-shaped
-  values (shallow passthrough). Returns the modal id (raw string)."
+  (:title, :children, :size, :centered, ...); nested *Props maps convert deeply
+  (kebab keys camelized at every depth). Returns the modal id (raw string)."
   [data]
   #?(:cljs (openModal (p/convert data))
      :clj ((f/not-implemented "mantine.modals/open") data)))

@@ -20,6 +20,9 @@
         [value set-value] (react/useState "hello")
         [fruit set-fruit] (react/useState "apple")
         [date set-date] (react/useState "2026-07-14")
+        [confirm-result set-confirm-result] (react/useState "none")
+        [ctx-result set-ctx-result] (react/useState "none")
+        [spot-result set-spot-result] (react/useState "none")
         ;; hooks return-shape split, one sample each (raw JS returns, zero conversion):
         [count counter-handlers] (mh/use-counter 5) ; tuple, destructured positionally
         viewport (mh/use-viewport-size)             ; object, read via interop (^js)
@@ -142,20 +145,68 @@
         {:id "btn-close-modal" :on-click (fn [_] (mm/close "demo-modal"))}
         "Close modal")
 
-       ;; @mantine/spotlight: the Spotlight component is the UI; toggle drives the store
+       ;; deep-converted nested *Props (ADR 0006): :labels/:confirm-props/:cancel-props
+       ;; written as plain kebab CLJS maps, converted at every depth
+       (mc/button
+        {:id "btn-open-confirm"
+         :on-click (fn [_]
+                     (mm/open-confirm-modal
+                      {:title "Confirm action"
+                       :labels {:confirm "Do it" :cancel "Nope"}
+                       :confirm-props {:id "confirm-btn" :color "red" :left-section "⚠"}
+                       :cancel-props {:id "cancel-btn" :variant "outline"}
+                       :on-confirm (fn [] (set-confirm-result "confirmed"))}))}
+        "Open confirm modal")
+       (mc/text {:id "confirm-echo"} (str "Confirm: " confirm-result))
+
+       ;; :inner-props denylist: a CLJS map (qualified keyword + fn) handed RAW to
+       ;; the CLJS context modal registered on the provider (see `app`)
+       (mc/button
+        {:id "btn-open-ctx-modal"
+         :on-click (fn [_]
+                     (mm/open-context-modal
+                      {:modal "demo"
+                       :title "Context modal"
+                       :inner-props {::label "qualified-data"
+                                     :on-done set-ctx-result}}))}
+        "Open context modal")
+       (mc/text {:id "ctx-echo"} (str "Ctx: " ctx-result))
+
+       ;; @mantine/spotlight: the Spotlight component is the UI; toggle drives the
+       ;; store. :actions is a plain CLJS vector-of-maps, deep-converted through the
+       ;; GENERATED spotlight factory (kebab :left-section/:on-click land at depth).
        (ms/spotlight
-        {:actions #js [#js {:id "act-1"
-                            :label "First action"
-                            :description "Spotlight action rendered from actions prop"}]})
+        {:actions [{:id "act-1"
+                    :label "First action"
+                    :description "Spotlight action rendered from actions prop"
+                    :left-section "★"
+                    :on-click (fn [_] (set-spot-result "clicked"))}]})
+       (mc/text {:id "spotlight-echo"} (str "Spotlight: " spot-result))
        (mc/button
         {:id "btn-toggle-spotlight" :on-click (fn [_] (ms/toggle))}
         "Toggle spotlight"))))))
+
+(defn context-demo-modal
+  "CLJS context modal component proving the :inner-props denylist: receives the
+  UNTOUCHED CLJS map (qualified keyword + fn) and acts on it."
+  [^js props]
+  (let [inner (.-innerProps props)]
+    (mc/stack
+     {}
+     (mc/text {:id "ctx-modal-label"} (str "Inner: " (::label inner)))
+     (mc/button
+      {:id "ctx-modal-done"
+       :on-click (fn [_]
+                   ((:on-done inner) (::label inner))
+                   (mm/close (.-id props)))}
+      "Done"))))
 
 (defn app []
   (mc/mantine-provider
    {}
    (mn/provider {:position "top-right"})
-   (mm/provider {} (react/createElement demo))))
+   (mm/provider {:modals {:demo context-demo-modal}}
+                (react/createElement demo))))
 
 (defn init []
   (.render (rdom/createRoot (js/document.getElementById "app"))
