@@ -1,11 +1,12 @@
 # mantine-ui-wrapper
 
 [![Clojars Project](https://img.shields.io/clojars/v/io.github.unisoma/mantine-ui-wrapper.svg)](https://clojars.org/io.github.unisoma/mantine-ui-wrapper)
+[![Mantine](https://img.shields.io/github/package-json/dependency-version/UniSoma/mantine-ui-wrapper/dev/@mantine/core?label=Mantine&color=339af0)](https://mantine.dev)
 [![CI](https://github.com/UniSoma/mantine-ui-wrapper/actions/workflows/ci.yml/badge.svg)](https://github.com/UniSoma/mantine-ui-wrapper/actions/workflows/ci.yml)
 
-Framework-agnostic ClojureScript wrapper of [Mantine](https://mantine.dev) 9.4.1. It works
+Framework-agnostic ClojureScript wrapper of [Mantine](https://mantine.dev). It works
 from Fulcro, Reagent/re-frame, UIx, Helix, or raw React interop, and depends only on
-`react/createElement`, never on a rendering framework. It wraps the complete Mantine 9.4.1
+`react/createElement`, never on a rendering framework. It wraps the complete Mantine
 surface (generated from Mantine's `docgen.json`), and every factory's docstring carries the
 component's Mantine.dev URL and full prop table, so you can read it from your editor or via
 `(clojure.repl/doc mc/button)`.
