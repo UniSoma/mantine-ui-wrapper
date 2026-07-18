@@ -1,9 +1,13 @@
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.modals
   "Hand-written supplement HOISTED by the generator into the generated
   mantine.modals ns. Committed generator INPUT — compilable for editor/
   clj-kondo support, but never shipped as-is: its :require entries are merged into
   the generated ns and its top-level forms are appended after the codegen'd defs."
   (:require
+   ;; f is :clj-branch-only HERE, but the generated ns also uses it on :cljs
+   ;; (f/factory for its component defs) — so the require stays unconditional.
+   #_{:clj-kondo/ignore [:unused-namespace]}
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/modals" :refer [openModal openConfirmModal openContextModal
                                          closeModal closeAllModals updateModal

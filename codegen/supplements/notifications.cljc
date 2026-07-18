@@ -1,3 +1,4 @@
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.notifications
   "Hand-written supplement HOISTED by the generator into the generated
   mantine.notifications ns. Committed generator INPUT — compilable for editor/
@@ -5,6 +6,9 @@
   the generated ns and its top-level forms are appended after the codegen'd defs."
   (:refer-clojure :exclude [update])
   (:require
+   ;; f is :clj-branch-only HERE, but the generated ns also uses it on :cljs
+   ;; (f/factory for its component defs) — so the require stays unconditional.
+   #_{:clj-kondo/ignore [:unused-namespace]}
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/notifications" :refer [showNotification hideNotification
                                                 updateNotification cleanNotifications

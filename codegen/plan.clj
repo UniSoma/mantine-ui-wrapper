@@ -187,7 +187,8 @@
 
 (defn- parse-supplement
   "Parse the verbatim text of codegen/supplements/<suffix>.cljc. Returns
-  {:cljs-requires [...] :requires [...] :def-names [...] :body \"<verbatim text>\"}.
+  {:cljs-requires [...] :clj-requires [...] :requires [...] :def-names [...]
+   :body \"<verbatim text>\"}.
   Declares fully satisfied by `satisfied-names` are dropped from the body."
   [suffix text satisfied-names]
   (let [path (str "codegen/supplements/" suffix ".cljc")
@@ -196,16 +197,17 @@
         _ (assert (and (seq? ns-form) (= 'ns (first ns-form)))
                   (str path ": first form must be the ns form"))
         require-clause (some #(when (and (seq? %) (= :require (first %))) %) ns-form)
-        {:keys [cljs unconditional]}
+        {:keys [cljs clj unconditional]}
         (reduce (fn [acc entry]
                   (if (reader-conditional? entry)
                     (let [{:keys [form splicing?]} entry
-                          _ (assert (= :cljs (first form))
-                                    (str path ": only :cljs reader conditionals are supported in :require"))
+                          lang (first form)
+                          _ (assert (#{:cljs :clj} lang)
+                                    (str path ": only single-branch :cljs/:clj reader conditionals are supported in :require"))
                           entries (if splicing? (second form) [(second form)])]
-                      (update acc :cljs into entries))
+                      (update acc lang into entries))
                     (update acc :unconditional conj entry)))
-                {:cljs [] :unconditional []}
+                {:cljs [] :clj [] :unconditional []}
                 (rest require-clause))
         def-names (keep (fn [form]
                           (when (and (seq? form) ('#{def defn defn-} (first form)))
@@ -218,6 +220,7 @@
                    (drop-satisfied-declares body-start-row body-forms satisfied-names)
                    (->> (str/join "\n"))))]
     {:cljs-requires cljs
+     :clj-requires clj
      :requires unconditional
      :def-names (vec def-names)
      :body body}))
@@ -299,10 +302,15 @@
                      ").")
      :refer-clojure-exclude (vec (sort (filter clojure-core-names def-names)))
      :requires {:cljs (merge-requires
-                       [(into [pkg :refer (mapv symbol (sort component-names))])]
+                       (if (seq component-names)
+                         [(into [pkg :refer (mapv symbol (sort component-names))])]
+                         [])
                        (:cljs-requires supplement))
+                :clj (:clj-requires supplement)
+                ;; component defs use f on both branches; a supplement-only ns
+                ;; declares its own requires (factory :clj-only if that's where it's used)
                 :common (merge-requires
-                         '[[mantine.impl.factory :as f]]
+                         (if (seq component-names) '[[mantine.impl.factory :as f]] [])
                          (:requires supplement))}
      :defs (vec (for [nm (sort component-names)]
                   {:kind :component

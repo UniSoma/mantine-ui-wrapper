@@ -1,3 +1,4 @@
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.dropzone
   "Hand-written supplement HOISTED by the generator into the generated
   mantine.dropzone ns. Committed generator INPUT — compilable for editor/

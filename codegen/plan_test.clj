@@ -152,10 +152,10 @@
 (deftest supplement-only-package
   (let [supplement (str "(ns mantine.supplements.form\n"
                         "  (:require\n"
-                        "   [mantine.impl.factory :as f]\n"
-                        "   #?@(:cljs [[\"@mantine/form\" :refer [useForm]]])))\n"
+                        "   #?@(:clj [[mantine.impl.factory :as f]])\n"
+                        "   #?@(:cljs [[\"@mantine/form\" :as mf]])))\n"
                         "\n"
-                        "(def use-form\n  \"useForm.\"\n  #?(:cljs useForm\n     :clj (f/not-implemented \"mantine.form/use-form\")))\n")
+                        "(def use-form\n  \"useForm.\"\n  #?(:cljs mf/useForm\n     :clj (f/not-implemented \"mantine.form/use-form\")))\n")
         sources (-> base-sources
                     (assoc-in [:scope :supplement-only-packages] #{"@mantine/form"})
                     (assoc :supplements {"form" supplement})
@@ -165,8 +165,10 @@
     (testing "zero generated defs; body is entirely the hoisted supplement"
       (is (= [] (:defs form)))
       (is (str/starts-with? (get-in form [:supplement :body]) "(def use-form")))
-    (testing "the supplement's :refer survives the merge with the empty base refer"
-      (is (= [["@mantine/form" :refer '[useForm]]] (get-in form [:requires :cljs]))))))
+    (testing "requires come entirely from the supplement — no empty base refer, no injected factory"
+      (is (= [["@mantine/form" :as 'mf]] (get-in form [:requires :cljs])))
+      (is (= '[[mantine.impl.factory :as f]] (get-in form [:requires :clj])))
+      (is (= [] (get-in form [:requires :common]))))))
 
 ;; ---------------------------------------------------------------- emit-ns
 

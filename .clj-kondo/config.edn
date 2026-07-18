@@ -1,0 +1,8 @@
+{:linters
+ {;; clojure-lsp's linter (configured via clj-kondo config). This repo is a
+  ;; wrapper LIBRARY: every mantine.* var is public API for downstream
+  ;; consumers, so "unused public var" is expected for all of them.
+  ;; plan/read-sources and plan/write-plan! are the `bb generate` entry points,
+  ;; invoked from bb.edn (invisible to clojure-lsp's analysis).
+  :clojure-lsp/unused-public-var {:exclude-regex #{"mantine\\..*"}
+                                  :exclude #{plan/read-sources plan/write-plan!}}}}

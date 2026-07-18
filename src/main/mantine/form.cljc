@@ -2,8 +2,8 @@
 (ns mantine.form
   "Mantine @mantine/form 9.4.1 wrappers (generated, supplement hoisted from codegen/supplements/)."
   (:require
-   #?@(:cljs [["@mantine/form" :refer [useForm hasLength isEmail isInRange isJSONString isNotEmpty isNotEmptyHTML isOneOf isUrl matches matchesField]]])
-   [mantine.impl.factory :as f]))
+   #?@(:cljs [["@mantine/form" :as mf]])
+   #?@(:clj [[mantine.impl.factory :as f]])))
 
 
 ;; ---- hoisted from codegen/supplements/form.cljc ----
@@ -12,57 +12,57 @@
   "useForm — the form hook. Raw passthrough: pass JS-shaped options (#js {...});
   returns the raw JS form object (read/call its members via interop under :advanced,
   e.g. (.getInputProps form \"name\"), (.-values form), (.onSubmit form handler))."
-  #?(:cljs useForm
+  #?(:cljs mf/useForm
      :clj (f/not-implemented "mantine.form/use-form")))
 
 ;; ---- validators (pure functions, raw passthrough) ----
 
 (def has-length
   "hasLength — validator: value length within the given bounds. Raw passthrough."
-  #?(:cljs hasLength
+  #?(:cljs mf/hasLength
      :clj (f/not-implemented "mantine.form/has-length")))
 
 (def is-email
   "isEmail — validator: value is a valid email. Raw passthrough."
-  #?(:cljs isEmail
+  #?(:cljs mf/isEmail
      :clj (f/not-implemented "mantine.form/is-email")))
 
 (def is-in-range
   "isInRange — validator: numeric value within the given range. Raw passthrough."
-  #?(:cljs isInRange
+  #?(:cljs mf/isInRange
      :clj (f/not-implemented "mantine.form/is-in-range")))
 
 (def is-json-string
   "isJSONString — validator: value parses as JSON. Raw passthrough."
-  #?(:cljs isJSONString
+  #?(:cljs mf/isJSONString
      :clj (f/not-implemented "mantine.form/is-json-string")))
 
 (def is-not-empty
   "isNotEmpty — validator: value is not empty. Raw passthrough."
-  #?(:cljs isNotEmpty
+  #?(:cljs mf/isNotEmpty
      :clj (f/not-implemented "mantine.form/is-not-empty")))
 
 (def is-not-empty-html
   "isNotEmptyHTML — validator: value is not empty HTML. Raw passthrough."
-  #?(:cljs isNotEmptyHTML
+  #?(:cljs mf/isNotEmptyHTML
      :clj (f/not-implemented "mantine.form/is-not-empty-html")))
 
 (def is-one-of
   "isOneOf — validator: value is one of the given options. Raw passthrough."
-  #?(:cljs isOneOf
+  #?(:cljs mf/isOneOf
      :clj (f/not-implemented "mantine.form/is-one-of")))
 
 (def is-url
   "isUrl — validator: value is a valid URL. Raw passthrough."
-  #?(:cljs isUrl
+  #?(:cljs mf/isUrl
      :clj (f/not-implemented "mantine.form/is-url")))
 
 (def matches
   "matches — validator: value matches the given regexp. Raw passthrough."
-  #?(:cljs matches
+  #?(:cljs mf/matches
      :clj (f/not-implemented "mantine.form/matches")))
 
 (def matches-field
   "matchesField — validator: value equals another field's value. Raw passthrough."
-  #?(:cljs matchesField
+  #?(:cljs mf/matchesField
      :clj (f/not-implemented "mantine.form/matches-field")))

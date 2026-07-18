@@ -1,3 +1,4 @@
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.core
   "Hand-written supplement HOISTED by the generator into the generated
   mantine.core ns. Committed generator INPUT — compilable for editor/clj-kondo
