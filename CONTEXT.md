@@ -9,6 +9,15 @@ React component libraries as ClojureScript namespaces for use from Fulcro.
 A generated `.cljc` namespace exposing one `@mantine/*` package's surface as
 ClojureScript factory functions. The whole project produces wrappers.
 
+**Mantine anchor**:
+The single Mantine release the whole wrapper is built against — one version, held
+canonically as the exact `@mantine/*` pins in `package.json`. Every other place the
+version appears is a *rendering* of the anchor in that place's own form: the exact
+pin, the `^`-prefixed consumer *floor* shipped in `deps.cljs`, the `9.4.1` prefix of
+the `9.4.1.N` artifact, and the literal stamped into every generated banner. Renderings
+must agree with the anchor; the installed version in `node_modules` must equal it too.
+_Avoid_: Mantine version (ambiguous — pin, floor, and artifact prefix are distinct renderings).
+
 **Factory**:
 A thin `React.createElement` closure over a Mantine component, with clj→js prop
 conversion and Fulcro-style child handling. The unit a wrapper is made of.
