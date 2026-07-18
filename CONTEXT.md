@@ -13,8 +13,8 @@ ClojureScript factory functions. The whole project produces wrappers.
 The single Mantine release the whole wrapper is built against — one version, held
 canonically as the exact `@mantine/*` pins in `package.json`. Every other place the
 version appears is a *rendering* of the anchor in that place's own form: the exact
-pin, the `^`-prefixed consumer *floor* shipped in `deps.cljs`, the `9.4.1` prefix of
-the `9.4.1.N` artifact, and the literal stamped into every generated banner. Renderings
+pin, the `^`-prefixed consumer *floor* shipped in `deps.cljs`, the three-segment anchor
+prefix of the `<anchor>.N` artifact, and the literal stamped into every generated banner. Renderings
 must agree with the anchor; the installed version in `node_modules` must equal it too.
 _Avoid_: Mantine version (ambiguous — pin, floor, and artifact prefix are distinct renderings).
 

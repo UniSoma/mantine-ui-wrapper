@@ -91,6 +91,29 @@
     (is (some #(str/includes? % "witness") probs))
     (is (some #(str/includes? % "9.4.0") probs))))
 
+(deftest prose-renderings-extracts-embedded-coordinates-only
+  ;; Hermetic mechanics test: an arbitrary version (NOT the anchor) proves the extractor
+  ;; is anchor-agnostic — it pulls embedded coordinates out of text and nothing else.
+  (let [text (str "npm install @mantine/core@^1.2.3 @mantine/dates@^1.2.3\n"
+                  "{:mvn/version} scheme 1.2.3.0 → 1.2.3.1 examples stay illustrative\n"
+                  "io.github.unisoma/mantine-ui-wrapper {:mvn/version \"1.2.3.0-SNAPSHOT\"}")
+        found (release-check/prose-renderings "README.md" text)]
+    ;; two npm floors + one mvn coord; the bare scheme examples are NOT matched
+    (is (= 3 (count found)))
+    (is (= #{:npm-floor :mvn-coord} (set (map :kind found))))
+    (is (every? #(= "1.2.3" (:version %)) found))))
+
+(deftest release-check-flags-stale-prose-rendering
+  (let [probs (release-check/violations
+               (assoc rc-ok :prose [{:file "README.md" :kind :npm-floor :version "9.4.0"}]))]
+    (is (some #(str/includes? % "README.md") probs))
+    (is (some #(str/includes? % "9.4.0") probs))))
+
+(deftest release-check-clean-prose-has-no-violation
+  (is (empty? (release-check/violations
+               (assoc rc-ok :prose [{:file "README.md" :kind :npm-floor :version "9.4.1"}
+                                    {:file "docs/release.md" :kind :mvn-coord :version "9.4.1"}])))))
+
 ;; ---------------------------------------------------------------- classification
 
 (deftest classification-and-resolution
