@@ -6,7 +6,7 @@ type: feature
 priority: 4
 mode: afk
 created: '2026-07-14T20:53:46.150505173Z'
-updated: '2026-07-18T23:52:11.816732179Z'
+updated: '2026-07-19T00:02:43.628302822Z'
 closed: '2026-07-18T23:52:11.816732179Z'
 acceptance:
 - title: convert recurses into nested maps and vectors-of-maps by default, camelizing keys and applying :class/:style/:styles/:classNames/:vars leaf handling at every depth
@@ -21,6 +21,8 @@ acceptance:
   done: true
 - title: 'Docs synced with the new semantics: mantine.impl.props ns docstring rewritten; codegen/supplements/modals.cljc open docstring fixed (drop ''shallow passthrough'') and regenerated into src/main/mantine/modals.cljc; README props section updated (deep-by-default + :inner-props denylist + raw escape)'
   done: true
+links:
+- mnt-01kxvtxasg9a
 ---
 
 ## Description
