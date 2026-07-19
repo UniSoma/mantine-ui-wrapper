@@ -31,6 +31,17 @@
     (str/trim (:out (sh/sh "git" "rev-parse" "HEAD")))
     (str "v" version)))
 
+(defn- expand-empty-elements!
+  "tools.build writes empty pom containers as self-closing tags (<dependencies/>,
+  <repositories/>). cljdoc parses poms with Jsoup in HTML mode, which ignores XML
+  self-closing on unknown tags and re-parents every following sibling — including
+  our <scm> block — INSIDE the empty container. Its `project > scm > url` selector
+  then matches nothing, so cljdoc links no git repo (SCM URL/Commit SHA show nil).
+  Expanding them to explicit open/close pairs is semantically identical XML and
+  keeps <scm> a direct child of <project>."
+  [pom-path]
+  (spit pom-path (str/replace (slurp pom-path) #"<([A-Za-z][\w.-]*)/>" "<$1></$1>")))
+
 (defn clean [_]
   (b/delete {:path "target"}))
 
@@ -52,6 +63,7 @@
                              [:name "MIT License"]
                              [:url "https://opensource.org/license/mit"]
                              [:distribution "repo"]]]]})
+  (expand-empty-elements! (b/pom-path {:lib lib :class-dir class-dir}))
   (b/copy-dir {:src-dirs ["src/main"] :target-dir class-dir})
   (b/jar {:class-dir class-dir :jar-file jar-file})
   (println "JAR" jar-file))

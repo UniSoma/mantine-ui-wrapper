@@ -14,6 +14,17 @@
            :task (shell "clojure" "-T:build" "install")}
   deploy {:doc "Deploy the jar to Clojars (needs CLOJARS_USERNAME/CLOJARS_PASSWORD)"
           :task (shell "clojure" "-T:build" "deploy")}
+  cljdoc {:doc "Re-trigger a cljdoc build for the deployed version (SNAPSHOT analysis is cached; redeploy first)"
+          :requires ([clojure.string :as str])
+          :task (let [version (->> (slurp "build.clj")
+                                   (re-find (re-pattern "\\(def version \"([^\"]+)\"\\)"))
+                                   second)]
+                  (println "Requesting cljdoc build for io.github.unisoma/mantine-ui-wrapper" version)
+                  ;; -d implies POST; NO -X POST — cljdoc replies 303 to the build page and
+                  ;; -X would force curl to re-POST to that GET-only URL (→ 404). -L follows it.
+                  (shell "curl" "-fsSL" "https://cljdoc.org/api/request-build2"
+                         "-d" "project=io.github.unisoma/mantine-ui-wrapper"
+                         "-d" (str "version=" version)))}
 
   ;; ---- CI checks (same command locally and in .github/workflows/ci.yml) ----
   drift {:doc "Regenerate and FAIL on any drift vs committed generated sources"
