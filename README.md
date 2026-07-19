@@ -74,6 +74,15 @@ Conventions:
   `:confirm-props`, spotlight `:actions`, …) convert the same way at every depth.
   Two opt-outs keep a value as untouched CLJS: `:inner-props` (handed raw to your
   context modal) and `(mc/raw v)` for anything else.
+- Conversion camelizes map **keys** everywhere — including maps whose keys you name
+  yourself. Two slots hold such maps: chart `:data` row fields (the paired
+  `:data-key` / `:series` strings are *values* and stay verbatim) and the
+  `ModalsProvider` `:modals` registry (looked up by `open-context-modal`'s string
+  `:modal`). A kebab-case name there camelizes on one side only and silently
+  mismatches — the series plots nothing, the modal isn't found. Prefer dash-free
+  names (`:sales`, not `:total-sales`); to keep hyphens, pass the map raw with
+  `(mc/raw (clj->js m))` or the `:&` escape hatch (plain `clj->js`, hyphens
+  preserved).
 - Hooks return raw JS, unconverted; destructure tuples positionally.
 - Polymorphic components accept `:component` (`{:component "a" :href …}`).
 - Imperative packages (`notifications`, `modals`, `spotlight`) expose both a provider and

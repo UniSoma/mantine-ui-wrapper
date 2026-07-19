@@ -1,17 +1,18 @@
 ---
 id: mnt-01kxvtxasg9a
 title: Camelization mangles user-named keys (chart :data rows, :modals registry)
-status: open
+status: closed
 type: task
 priority: 2
 mode: afk
 created: '2026-07-19T00:02:43.628302822Z'
-updated: '2026-07-19T00:02:43.628302822Z'
+updated: '2026-07-19T00:11:40.647622525Z'
+closed: '2026-07-19T00:11:40.647622525Z'
 acceptance:
 - title: 'README props section documents the user-named-keys caveat: chart :data field names and :modals registry names camelize; recommend dash-free names, with mc/raw / :& as escapes'
-  done: false
+  done: true
 - title: 'No converter behavior change: bb ci stays green with no src/main changes beyond regenerated docs (if any)'
-  done: false
+  done: true
 links:
 - mnt-01kxh6gf162j
 ---
@@ -29,3 +30,9 @@ NOT candidates for the raw-value denylist: both maps must BECOME JS (they feed M
 Working idioms today (why this is priority 2, docs-first): dash-free names (the demo uses :sales, :demo — zero cost); (mc/raw v) + #js/clj->js; the :& escape hatch (plain clj->js preserves hyphens).
 
 Scope: document the sharp edge — README props section gets a caveat line naming both cases and the dash-free-names idiom. A converter mechanism (a verbatim-keys treatment: convert container, leave keys as written) is explicitly OUT of scope until a real consumer is bitten; if that happens, reopen the design via grilling + a new ADR rather than bolting it on here.
+
+## Notes
+
+**2026-07-19T00:11:40.647622525Z**
+
+Documented the user-named-keys sharp edge in the README conventions list: deep conversion camelizes map KEYS everywhere, including the two slots where keys are user-chosen — chart :data row fields (paired :data-key/:series string values stay verbatim) and the ModalsProvider :modals registry (looked up by open-context-modal's string :modal). Named the silent-mismatch failure modes, recommended dash-free names, and gave (mc/raw (clj->js m)) and the :& escape hatch as hyphen-preserving escapes. Docs-only: no src/main changes; bb release-check + bb drift green.
