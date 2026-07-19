@@ -93,7 +93,6 @@ Conventions:
 (ns my-app
   (:require ["react" :as react]
             ["react-dom/client" :as rdom]
-            ["@mantine/core" :refer [MantineProvider]]
             [mantine.core :as mc]
             [mantine.hooks :as mh]
             [mantine.notifications :as mn]))
@@ -115,8 +114,7 @@ Conventions:
       (mc/collapse {:expanded opened} (mc/text "Toggled content")))))
 
 (defn app []
-  (react/createElement
-    MantineProvider #js {}
+  (mc/mantine-provider {}
     (mn/provider {:position "top-right"})   ; imperative-API packages provide a provider
     (react/createElement panel)))
 
