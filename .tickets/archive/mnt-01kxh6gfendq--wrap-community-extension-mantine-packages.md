@@ -6,7 +6,7 @@ type: feature
 priority: 4
 mode: hitl
 created: '2026-07-14T20:53:46.581197533Z'
-updated: '2026-07-18T21:27:56.538898497Z'
+updated: '2026-07-20T14:10:02.668759802Z'
 closed: '2026-07-18T21:27:56.538898497Z'
 tags:
 - wontfix
@@ -17,6 +17,8 @@ acceptance:
   done: false
 - title: Verify loop green; a short guide documents how to add an extension package
   done: false
+links:
+- mnt-01kxzxsh9h5f
 ---
 
 ## Description

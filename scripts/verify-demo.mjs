@@ -175,7 +175,7 @@ try {
   const pkgSelectors = (pkg) =>
     new Set((fs.readFileSync(`node_modules/@mantine/${pkg}/styles.css`, 'utf8')
       .match(/\.m_[0-9a-f]+/g) || []).map((s) => s.slice(1)));
-  const linked = ['core', 'notifications', 'spotlight', 'dates', 'charts'];
+  const linked = ['core', 'notifications', 'spotlight', 'dates', 'charts', 'schedule'];
   const perPkg = Object.fromEntries(linked.map((p) => [p, pkgSelectors(p)]));
   const linkedUnion = new Set(linked.flatMap((p) => [...perPkg[p]]));
   const hashedClasses = (root) => {
@@ -219,6 +219,19 @@ try {
     'every hashed class in the LineChart subtree pairs with a linked stylesheet selector');
   assert(chartClasses.some((c) => perPkg.charts.has(c)),
     'LineChart subtree uses selectors defined in @mantine/charts/styles.css (charts CSS paired)');
+
+  // @mantine/schedule: minimal MonthView with hard-coded events renders (proves the
+  // mantine.schedule ns compiles and the @mantine/schedule + rrule imports resolve).
+  const monthView = doc.getElementById('schedule-month');
+  assert(monthView && monthView.className.includes('mantine-MonthView-'),
+    'mantine.schedule/month-view renders with Mantine classes');
+  assert(monthView.textContent.includes('Standup') && monthView.textContent.includes('Review'),
+    'hard-coded schedule events rendered in the month grid');
+  const scheduleClasses = hashedClasses(monthView);
+  assert(scheduleClasses.every((c) => linkedUnion.has(c)),
+    'every hashed class in the MonthView subtree pairs with a linked stylesheet selector');
+  assert(scheduleClasses.some((c) => perPkg.schedule.has(c)),
+    'MonthView subtree uses selectors defined in @mantine/schedule/styles.css (schedule CSS paired)');
 
   // -------------------------------------------------- 6. imperative modals + spotlight
   // modals: open drives the ModalsProvider (converted :title + :children), close by id.

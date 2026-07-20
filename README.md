@@ -16,7 +16,7 @@ Available on Clojars as SNAPSHOT builds while the API settles. There is no stabl
 
 ## Coverage
 
-The wrapper exposes the full surface of nine `@mantine/*` packages: every component, hook,
+The wrapper exposes the full surface of ten `@mantine/*` packages: every component, hook,
 and imperative API. Each package is a ClojureScript namespace; load the matching CSS yourself
 (see [Installation](#installation)).
 
@@ -29,6 +29,7 @@ and imperative API. Each package is a ClojureScript namespace; load the matching
 | `@mantine/notifications` | `mantine.notifications` | `@mantine/notifications/styles.layer.css` |
 | `@mantine/spotlight` | `mantine.spotlight` | `@mantine/spotlight/styles.layer.css` |
 | `@mantine/dropzone` | `mantine.dropzone` | `@mantine/dropzone/styles.layer.css` |
+| `@mantine/schedule` | `mantine.schedule` | `@mantine/schedule/styles.layer.css` · needs `@mantine/dates` |
 | `@mantine/modals` | `mantine.modals` | none (styled by `@mantine/core`) |
 | `@mantine/form` | `mantine.form` | none (logic only) |
 
@@ -48,7 +49,7 @@ packages. It does not declare `react`/`react-dom`: your app owns React. With oth
 tooling, install the npm deps manually:
 
 ```
-npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/modals@^9.4.1 @mantine/form@^9.4.1 @mantine/spotlight@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 @mantine/dropzone@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
+npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/modals@^9.4.1 @mantine/form@^9.4.1 @mantine/spotlight@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 @mantine/dropzone@^9.4.1 @mantine/schedule@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
 ```
 
 ### CSS

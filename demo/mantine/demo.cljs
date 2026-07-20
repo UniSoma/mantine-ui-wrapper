@@ -12,6 +12,7 @@
             [mantine.charts :as mch]
             [mantine.hooks :as mh]
             [mantine.notifications :as mn]
+            [mantine.schedule :as msch]
             [mantine.modals :as mm]
             [mantine.spotlight :as ms]))
 
@@ -111,6 +112,20 @@
                     #js {:month "Mar" :sales 120}]
          :data-key "month"
          :series #js [#js {:name "sales" :color "blue.6"}]})
+
+       ;; @mantine/schedule: minimal MonthView with hard-coded events — the one
+       ;; end-to-end path that cljs-compiles mantine.schedule and resolves the
+       ;; @mantine/schedule + rrule JS imports (events need a stable reference,
+       ;; hence #js literals like the chart :data above)
+       (msch/month-view
+        {:id "schedule-month"
+         :date "2026-07-14"
+         :events #js [#js {:id "ev-1" :title "Standup"
+                           :start "2026-07-14 09:00:00" :end "2026-07-14 09:30:00"
+                           :color "teal"}
+                      #js {:id "ev-2" :title "Review"
+                           :start "2026-07-15 14:00:00" :end "2026-07-15 15:00:00"
+                           :color "blue"}]})
 
        ;; hook-driven disclosure toggling a Collapse; children from a seq get flattened
        (mc/button
