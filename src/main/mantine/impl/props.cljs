@@ -8,13 +8,16 @@
   - Keys: hybrid kebab->camel (:label-position -> labelPosition); data-*/aria-*/--* exempt.
   - Values: DEEP conversion by default — nested maps and sequential collections
     recurse, applying the same rules at every depth (so *Props config maps and
-    vectors-of-maps like spotlight :actions work in plain CLJS). Everything else
-    (React elements, fns, primitives, #js values) passes through untouched;
-    keyword VALUES are NOT stringified (convert is not clj->js).
+    vectors-of-maps like spotlight :actions work in plain CLJS). Keyword VALUES
+    stringify via `name` (:sm -> \"sm\", :top-start -> \"top-start\" — never
+    camelized), matching clj->js: Mantine enum/color/size props are strings
+    (mnt-01ky03rej0tx). Everything else (React elements, fns, primitives,
+    #js values) passes through untouched.
   - Raw passthrough opt-outs: keys in `raw-value-keys` (:inner-props) camelize but
     their VALUES stay untouched CLJS; `(no-convert v)` tags any value to skip conversion
     at any depth — a wrapper VALUE, so it survives merge/select-keys/map rebuilds.
-  - :style / inner style maps: keys camelCased, --* verbatim, values passthrough.
+  - :style / inner style maps: keys camelCased, --* verbatim, values passthrough
+    (keywords stringify, numbers stay numeric).
   - class values (top-level :class/:className + classNames members): string or
     collection -> space-joined, nil/false dropped.
   - :class accepted as alias of :className; merged when both present.
@@ -79,12 +82,13 @@
 
 (defn- style-leaf
   "Style map: keys camelCased (--* verbatim), values passthrough (numbers stay
-  numeric — React appends px). Non-map values (raw JS objects) pass through."
+  numeric — React appends px; keywords stringify). Non-map values (raw JS
+  objects) pass through."
   [v]
   (if (map? v)
     (let [o #js {}]
       (doseq [[k sv] v]
-        (gobj/set o (camelize (key->str k)) sv))
+        (gobj/set o (camelize (key->str k)) (if (keyword? sv) (name sv) sv)))
       o)
     v))
 
@@ -113,8 +117,9 @@
 
 (defn- convert-value
   "Deep default for a plain prop value: Raw unwraps untouched, maps recurse through
-  `convert`, sequential collections become JS arrays with members recursed;
-  everything else passes through untouched."
+  `convert`, sequential collections become JS arrays with members recursed,
+  keywords stringify via `name` (never camelized — Mantine enum values keep their
+  hyphens); everything else passes through untouched."
   [v]
   (cond
     (instance? Raw v) (unraw v)
@@ -122,6 +127,7 @@
     (sequential? v) (let [a #js []]
                       (doseq [x v] (.push a (convert-value x)))
                       a)
+    (keyword? v) (name v)
     :else v))
 
 (defn convert

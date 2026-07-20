@@ -101,6 +101,30 @@
       (is (= "x" (gobj/getValueByKeys o "classNames" "input"))))))
 
 ;; ---------------------------------------------------------------------------
+;; Keyword leaf values stringify like clj->js — Mantine enum/color/size props
+;; are strings, and migrating consumers pass keywords (:sm, :red, :dimmed)
+;; everywhere (mnt-01ky03rej0tx).
+;; ---------------------------------------------------------------------------
+
+(deftest keyword-values-stringify-at-top-level
+  (let [o (p/convert {:size :sm :color :red :label-position :top-start})]
+    (is (= "sm" (gobj/get o "size")))
+    (is (= "red" (gobj/get o "color")))
+    (is (= "top-start" (gobj/get o "labelPosition")) "value keeps its hyphens — only keys camelize")))
+
+(deftest keyword-values-stringify-at-depth-and-in-vectors
+  (let [o (p/convert {:confirm-props {:color :red}
+                      :actions [{:id :home}]})]
+    (is (= "red" (gobj/getValueByKeys o "confirmProps" "color")))
+    (is (= "home" (gobj/get (aget (gobj/get o "actions") 0) "id")))))
+
+(deftest keyword-values-stringify-in-style-leaves
+  (let [o (p/convert {:style {:overflow-y :auto}
+                      :styles {:root {:text-align :center}}})]
+    (is (= "auto" (gobj/getValueByKeys o "style" "overflowY")))
+    (is (= "center" (gobj/getValueByKeys o "styles" "root" "textAlign")))))
+
+;; ---------------------------------------------------------------------------
 ;; Deep-by-default (ADR 0006): nested maps and vectors-of-maps convert at every
 ;; depth; :inner-props denylisted; `no-convert` wrapper opts any value out.
 ;; ---------------------------------------------------------------------------

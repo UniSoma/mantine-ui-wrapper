@@ -72,6 +72,9 @@ Conventions:
 
 - A factory takes an optional leading props map, then children.
 - Props are kebab-case keywords converted to camelCase (`:left-section` → `leftSection`).
+- Keyword prop *values* stringify via `name` (`:size :sm` → `size: "sm"`, `:position :top-start`
+  → `"top-start"` — values are never camelized), so keyword-style call sites work as they
+  do under `clj->js`-based wrappers.
 - Conversion is deep by default: nested maps and vectors of maps (`:styles`, modal
   `:confirm-props`, spotlight `:actions`, …) convert the same way at every depth.
   Two opt-outs keep a value as untouched CLJS: `:inner-props` (handed raw to your
