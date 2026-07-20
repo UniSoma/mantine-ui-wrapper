@@ -175,7 +175,7 @@ try {
   const pkgSelectors = (pkg) =>
     new Set((fs.readFileSync(`node_modules/@mantine/${pkg}/styles.css`, 'utf8')
       .match(/\.m_[0-9a-f]+/g) || []).map((s) => s.slice(1)));
-  const linked = ['core', 'notifications', 'spotlight', 'dates', 'charts', 'schedule'];
+  const linked = ['core', 'notifications', 'spotlight', 'dates', 'charts', 'schedule', 'dropzone'];
   const perPkg = Object.fromEntries(linked.map((p) => [p, pkgSelectors(p)]));
   const linkedUnion = new Set(linked.flatMap((p) => [...perPkg[p]]));
   const hashedClasses = (root) => {
@@ -232,6 +232,28 @@ try {
     'every hashed class in the MonthView subtree pairs with a linked stylesheet selector');
   assert(scheduleClasses.some((c) => perPkg.schedule.has(c)),
     'MonthView subtree uses selectors defined in @mantine/schedule/styles.css (schedule CSS paired)');
+
+  // @mantine/dropzone: minimal mount renders (proves mantine.dropzone compiles and
+  // the @mantine/dropzone import resolves) and paints its own stylesheet selectors.
+  const dropzone = doc.getElementById('dropzone');
+  assert(dropzone && dropzone.className.includes('mantine-Dropzone-'),
+    'mantine.dropzone/dropzone renders with Mantine classes');
+  assert(doc.getElementById('dropzone-label').textContent.includes('Drop files here'),
+    'dropzone child rendered');
+  const dropzoneClasses = hashedClasses(dropzone);
+  assert(dropzoneClasses.every((c) => linkedUnion.has(c)),
+    'every hashed class in the Dropzone subtree pairs with a linked stylesheet selector');
+  assert(dropzoneClasses.some((c) => perPkg.dropzone.has(c)),
+    'Dropzone subtree uses selectors defined in @mantine/dropzone/styles.css (dropzone CSS paired)');
+
+  // @mantine/form: controlled useForm backs a TextInput through the :& escape hatch.
+  // The initial value flows getInputProps -> :& -> input, and the echo reads form
+  // state via interop — proves the form hook is wired end-to-end, not just compiled.
+  const formInput = doc.getElementById('form-name');
+  assert(formInput && formInput.value === 'Ada',
+    'mantine.form/use-form initial value reaches the input via getInputProps + :& escape hatch');
+  assert(doc.getElementById('form-echo').textContent === 'Form name: Ada',
+    'form state read back through interop (.. form -values -name)');
 
   // -------------------------------------------------- 6. imperative modals + spotlight
   // modals: open drives the ModalsProvider (converted :title + :children), close by id.

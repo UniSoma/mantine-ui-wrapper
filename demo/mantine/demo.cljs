@@ -10,6 +10,8 @@
             [mantine.core :as mc]
             [mantine.dates :as md]
             [mantine.charts :as mch]
+            [mantine.dropzone :as mdz]
+            [mantine.form :as mfrm]
             [mantine.hooks :as mh]
             [mantine.notifications :as mn]
             [mantine.schedule :as msch]
@@ -24,6 +26,10 @@
         [confirm-result set-confirm-result] (react/useState "none")
         [ctx-result set-ctx-result] (react/useState "none")
         [spot-result set-spot-result] (react/useState "none")
+        [dropped set-dropped] (react/useState "none")
+        ;; @mantine/form: controlled useForm hook (raw JS options; raw JS form
+        ;; object read via interop) backing a TextInput below
+        form (mfrm/use-form #js {:mode "controlled" :initialValues #js {:name "Ada"}})
         ;; hooks return-shape split, one sample each (raw JS returns, zero conversion):
         [count counter-handlers] (mh/use-counter 5) ; tuple, destructured positionally
         viewport (mh/use-viewport-size)             ; object, read via interop (^js)
@@ -126,6 +132,23 @@
                       #js {:id "ev-2" :title "Review"
                            :start "2026-07-15 14:00:00" :end "2026-07-15 15:00:00"
                            :color "blue"}]})
+
+       ;; @mantine/dropzone: minimal mount — the one end-to-end path that
+       ;; cljs-compiles mantine.dropzone and resolves the @mantine/dropzone JS
+       ;; import. :on-drop (required) reports the dropped file count.
+       (mdz/dropzone
+        {:id "dropzone"
+         :on-drop (fn [files] (set-dropped (str (.-length ^js files))))}
+        (mc/text {:id "dropzone-label"} "Drop files here"))
+       (mc/text {:id "dropzone-echo"} (str "Dropped: " dropped))
+
+       ;; @mantine/form: controlled useForm backs a TextInput via the :& escape
+       ;; hatch, which merges the RAW getInputProps JS object (value/onChange)
+       ;; last. Echo reads form state through interop (.. form -values -name),
+       ;; proving the hook is wired end-to-end, not just that the ns compiles.
+       (mc/text-input
+        {:id "form-name" :label "Form name" :& (.getInputProps ^js form "name")})
+       (mc/text {:id "form-echo"} (str "Form name: " (.. ^js form -values -name)))
 
        ;; hook-driven disclosure toggling a Collapse; children from a seq get flattened
        (mc/button
