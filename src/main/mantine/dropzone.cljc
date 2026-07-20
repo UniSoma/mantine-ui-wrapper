@@ -11,37 +11,38 @@
 https://mantine.dev/x/dropzone
 
 Props (docgen 9.4.1):
-  accept (string[] | Accept) — Mime types of the files that dropzone can accepts. By default, dropzone accepts all file types.
-  acceptColor (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to set colors of <code>Dropzone.Accept</code>
-  activateOnClick (boolean) — If <code>false</code>, disables click to open the native file selection dialog
-  activateOnDrag (boolean) — If <code>false</code>, disables drag 'n' drop
-  activateOnKeyboard (boolean) — If <code>false</code>, disables Space/Enter to open the native file selection dialog. Note that it also stops tracking the focus state.
-  autoFocus (boolean) — Set to autofocus the root element
-  disabled (boolean) [default false] — Determines whether files capturing should be disabled
-  dragEventsBubbling (boolean) — If <code>false</code>, stops drag event propagation to parents
-  enablePointerEvents (boolean) [default false] — Determines whether pointer events should be enabled on the inner element
-  getFilesFromEvent ((event: DropEvent) => Promise<(File | DataTransferItem)[]>) — Use this to provide a custom file aggregator
-  inputProps (InputHTMLAttributes<HTMLInputElement>) — Props passed down to the internal Input component
-  loaderProps (LoaderProps) — Props passed down to the Loader component
-  loading (boolean) [default false] — Determines whether a loading overlay should be displayed over the dropzone
-  maxFiles (number) — Maximum number of files that can be picked at once
-  maxSize (number) — Maximum file size in bytes
-  multiple (boolean) [default true] — Determines whether multiple files can be dropped to the dropzone or selected from file system picker
-  name (string) — Name of the form control. Submitted with the form as part of a name/value pair.
-  onDragEnter ((event: DragEvent<HTMLElement>) => void) — Called when the <code>dragenter</code> event occurs
-  onDragLeave ((event: DragEvent<HTMLElement>) => void) — Called when the <code>dragleave</code> event occurs
-  onDragOver ((event: DragEvent<HTMLElement>) => void) — Called when the <code>dragover</code> event occurs
-  onDrop ((files: FileWithPath[]) => void) REQUIRED — Called when valid files are dropped to the dropzone
-  onDropAny ((files: FileWithPath[], fileRejections: FileRejection[]) => void) — Called when any files are dropped to the dropzone
-  onFileDialogCancel (() => void) — Called when user closes the file selection dialog with no selection
-  onFileDialogOpen (() => void) — Called when user opens the file selection dialog
-  onReject ((fileRejections: FileRejection[]) => void) — Called when dropped files do not meet file restrictions
-  openRef (Ref<() => void> | undefined) — A ref function which when called opens the file system file picker
-  preventDropOnDocument (boolean) — If <code>false</code>, allow dropped items to take over the current browser window
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  rejectColor (MantineColor) [default 'red'] — Key of <code>theme.colors</code> or any valid CSS color to set colors of <code>Dropzone.Reject</code>
-  useFsAccessApi (boolean) [default false] — Set to true to use the File System Access API to open the file picker instead of using an <code>input type=\"file\"</code> click event
-  validator (<T extends File>(file: T) => FileError | FileError[] | null) — Custom validation function. It must return null if there's no errors.
+
+- **accept** `string[] | Accept` — Mime types of the files that dropzone can accepts. By default, dropzone accepts all file types.
+- **acceptColor** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Accept`
+- **activateOnClick** `boolean` — If `false`, disables click to open the native file selection dialog
+- **activateOnDrag** `boolean` — If `false`, disables drag 'n' drop
+- **activateOnKeyboard** `boolean` — If `false`, disables Space/Enter to open the native file selection dialog. Note that it also stops tracking the focus state.
+- **autoFocus** `boolean` — Set to autofocus the root element
+- **disabled** `boolean` _(default `false`)_ — Determines whether files capturing should be disabled
+- **dragEventsBubbling** `boolean` — If `false`, stops drag event propagation to parents
+- **enablePointerEvents** `boolean` _(default `false`)_ — Determines whether pointer events should be enabled on the inner element
+- **getFilesFromEvent** `(event: DropEvent) => Promise<(File | DataTransferItem)[]>` — Use this to provide a custom file aggregator
+- **inputProps** `InputHTMLAttributes<HTMLInputElement>` — Props passed down to the internal Input component
+- **loaderProps** `LoaderProps` — Props passed down to the Loader component
+- **loading** `boolean` _(default `false`)_ — Determines whether a loading overlay should be displayed over the dropzone
+- **maxFiles** `number` — Maximum number of files that can be picked at once
+- **maxSize** `number` — Maximum file size in bytes
+- **multiple** `boolean` _(default `true`)_ — Determines whether multiple files can be dropped to the dropzone or selected from file system picker
+- **name** `string` — Name of the form control. Submitted with the form as part of a name/value pair.
+- **onDragEnter** `(event: DragEvent<HTMLElement>) => void` — Called when the `dragenter` event occurs
+- **onDragLeave** `(event: DragEvent<HTMLElement>) => void` — Called when the `dragleave` event occurs
+- **onDragOver** `(event: DragEvent<HTMLElement>) => void` — Called when the `dragover` event occurs
+- **onDrop** `(files: FileWithPath[]) => void` **(required)** — Called when valid files are dropped to the dropzone
+- **onDropAny** `(files: FileWithPath[], fileRejections: FileRejection[]) => void` — Called when any files are dropped to the dropzone
+- **onFileDialogCancel** `() => void` — Called when user closes the file selection dialog with no selection
+- **onFileDialogOpen** `() => void` — Called when user opens the file selection dialog
+- **onReject** `(fileRejections: FileRejection[]) => void` — Called when dropped files do not meet file restrictions
+- **openRef** `Ref<() => void> | undefined` — A ref function which when called opens the file system file picker
+- **preventDropOnDocument** `boolean` — If `false`, allow dropped items to take over the current browser window
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **rejectColor** `MantineColor` _(default `'red'`)_ — Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Reject`
+- **useFsAccessApi** `boolean` _(default `false`)_ — Set to true to use the File System Access API to open the file picker instead of using an `input type=\"file\"` click event
+- **validator** `<T extends File>(file: T) => FileError | FileError[] | null` — Custom validation function. It must return null if there's no errors.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Dropzone)
@@ -51,41 +52,42 @@ Optional leading props map; remaining args are children."
   "DropzoneFullScreen
 
 Props (docgen 9.4.1):
-  accept (string[] | Accept) — Mime types of the files that dropzone can accepts. By default, dropzone accepts all file types.
-  acceptColor (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to set colors of <code>Dropzone.Accept</code>
-  activateOnClick (boolean) — If <code>false</code>, disables click to open the native file selection dialog
-  activateOnDrag (boolean) — If <code>false</code>, disables drag 'n' drop
-  activateOnKeyboard (boolean) — If <code>false</code>, disables Space/Enter to open the native file selection dialog. Note that it also stops tracking the focus state.
-  active (boolean) [default true] — Determines whether user can drop files to browser window
-  autoFocus (boolean) — Set to autofocus the root element
-  disabled (boolean) [default false] — Determines whether files capturing should be disabled
-  dragEventsBubbling (boolean) — If <code>false</code>, stops drag event propagation to parents
-  enablePointerEvents (boolean) [default false] — Determines whether pointer events should be enabled on the inner element
-  getFilesFromEvent ((event: DropEvent) => Promise<(File | DataTransferItem)[]>) — Use this to provide a custom file aggregator
-  inputProps (InputHTMLAttributes<HTMLInputElement>) — Props passed down to the internal Input component
-  loaderProps (LoaderProps) — Props passed down to the Loader component
-  loading (boolean) [default false] — Determines whether a loading overlay should be displayed over the dropzone
-  maxFiles (number) — Maximum number of files that can be picked at once
-  maxSize (number) — Maximum file size in bytes
-  multiple (boolean) [default true] — Determines whether multiple files can be dropped to the dropzone or selected from file system picker
-  name (string) — Name of the form control. Submitted with the form as part of a name/value pair.
-  onDragEnter ((event: DragEvent<HTMLElement>) => void) — Called when the <code>dragenter</code> event occurs
-  onDragLeave ((event: DragEvent<HTMLElement>) => void) — Called when the <code>dragleave</code> event occurs
-  onDragOver ((event: DragEvent<HTMLElement>) => void) — Called when the <code>dragover</code> event occurs
-  onDrop ((files: FileWithPath[]) => void) REQUIRED — Called when valid files are dropped to the dropzone
-  onDropAny ((files: FileWithPath[], fileRejections: FileRejection[]) => void) — Called when any files are dropped to the dropzone
-  onFileDialogCancel (() => void) — Called when user closes the file selection dialog with no selection
-  onFileDialogOpen (() => void) — Called when user opens the file selection dialog
-  onReject ((fileRejections: FileRejection[]) => void) — Called when dropped files do not meet file restrictions
-  openRef (Ref<() => void> | undefined) — A ref function which when called opens the file system file picker
-  portalProps (Omit<BasePortalProps, \"withinPortal\">) — Props to pass down to the portal when withinPortal is <code>true</code>
-  preventDropOnDocument (boolean) — If <code>false</code>, allow dropped items to take over the current browser window
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  rejectColor (MantineColor) [default 'red'] — Key of <code>theme.colors</code> or any valid CSS color to set colors of <code>Dropzone.Reject</code>
-  useFsAccessApi (boolean) [default false] — Set to true to use the File System Access API to open the file picker instead of using an <code>input type=\"file\"</code> click event
-  validator (<T extends File>(file: T) => FileError | FileError[] | null) — Custom validation function. It must return null if there's no errors.
-  withinPortal (boolean) [default true] — Determines whether component should be rendered within <code>Portal</code>
-  zIndex (React.CSSProperties[\"zIndex\"]) [default 9999] — Z-index value
+
+- **accept** `string[] | Accept` — Mime types of the files that dropzone can accepts. By default, dropzone accepts all file types.
+- **acceptColor** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Accept`
+- **activateOnClick** `boolean` — If `false`, disables click to open the native file selection dialog
+- **activateOnDrag** `boolean` — If `false`, disables drag 'n' drop
+- **activateOnKeyboard** `boolean` — If `false`, disables Space/Enter to open the native file selection dialog. Note that it also stops tracking the focus state.
+- **active** `boolean` _(default `true`)_ — Determines whether user can drop files to browser window
+- **autoFocus** `boolean` — Set to autofocus the root element
+- **disabled** `boolean` _(default `false`)_ — Determines whether files capturing should be disabled
+- **dragEventsBubbling** `boolean` — If `false`, stops drag event propagation to parents
+- **enablePointerEvents** `boolean` _(default `false`)_ — Determines whether pointer events should be enabled on the inner element
+- **getFilesFromEvent** `(event: DropEvent) => Promise<(File | DataTransferItem)[]>` — Use this to provide a custom file aggregator
+- **inputProps** `InputHTMLAttributes<HTMLInputElement>` — Props passed down to the internal Input component
+- **loaderProps** `LoaderProps` — Props passed down to the Loader component
+- **loading** `boolean` _(default `false`)_ — Determines whether a loading overlay should be displayed over the dropzone
+- **maxFiles** `number` — Maximum number of files that can be picked at once
+- **maxSize** `number` — Maximum file size in bytes
+- **multiple** `boolean` _(default `true`)_ — Determines whether multiple files can be dropped to the dropzone or selected from file system picker
+- **name** `string` — Name of the form control. Submitted with the form as part of a name/value pair.
+- **onDragEnter** `(event: DragEvent<HTMLElement>) => void` — Called when the `dragenter` event occurs
+- **onDragLeave** `(event: DragEvent<HTMLElement>) => void` — Called when the `dragleave` event occurs
+- **onDragOver** `(event: DragEvent<HTMLElement>) => void` — Called when the `dragover` event occurs
+- **onDrop** `(files: FileWithPath[]) => void` **(required)** — Called when valid files are dropped to the dropzone
+- **onDropAny** `(files: FileWithPath[], fileRejections: FileRejection[]) => void` — Called when any files are dropped to the dropzone
+- **onFileDialogCancel** `() => void` — Called when user closes the file selection dialog with no selection
+- **onFileDialogOpen** `() => void` — Called when user opens the file selection dialog
+- **onReject** `(fileRejections: FileRejection[]) => void` — Called when dropped files do not meet file restrictions
+- **openRef** `Ref<() => void> | undefined` — A ref function which when called opens the file system file picker
+- **portalProps** `Omit<BasePortalProps, \"withinPortal\">` — Props to pass down to the portal when withinPortal is `true`
+- **preventDropOnDocument** `boolean` — If `false`, allow dropped items to take over the current browser window
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **rejectColor** `MantineColor` _(default `'red'`)_ — Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Reject`
+- **useFsAccessApi** `boolean` _(default `false`)_ — Set to true to use the File System Access API to open the file picker instead of using an `input type=\"file\"` click event
+- **validator** `<T extends File>(file: T) => FileError | FileError[] | null` — Custom validation function. It must return null if there's no errors.
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether component should be rendered within `Portal`
+- **zIndex** `React.CSSProperties[\"zIndex\"]` _(default `9999`)_ — Z-index value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DropzoneFullScreen)

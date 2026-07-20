@@ -11,48 +11,49 @@
 https://mantine.dev/charts/area-chart
 
 Props (docgen 9.4.1):
-  activeDotProps (MantineChartDotProps) — Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.
-  areaChartProps ((CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>AreaChart</code> component
-  areaProps (((series: AreaChartSeries) => Partial<Omit<Props<any, any>, \"ref\">>) | Partial<Omit<Props<any, any>, \"ref\">>) — Props passed down to recharts <code>Area</code> component
-  children (React.ReactNode) — Additional components that are rendered inside recharts <code>AreaChart</code> component
-  connectNulls (boolean) [default true] — If set, points with <code>null</code> values are connected
-  curveType (AreaChartCurveType) [default 'monotone'] — Type of the curve
-  data (ChartData) REQUIRED — Data used to display chart
-  dataKey (string) REQUIRED — Key of the <code>data</code> object for x-axis values
-  dotProps (MantineChartDotProps) — Props passed down to all dots. Ignored if <code>withDots={false}</code> is set.
-  fillOpacity (number) [default 0.2] — Controls fill opacity of all areas
-  gridAxis (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which lines should be displayed in the grid, <code>'x'</code> by default
-  gridColor (MantineColor) — Color of the grid and cursor lines, by default depends on color scheme
-  gridProps (RechartsProps) — Props passed down to the <code>CartesianGrid</code> component
-  legendProps (RechartsProps) — Props passed down to the <code>Legend</code> component
-  orientation (\"horizontal\" | \"vertical\") — Chart orientation, <code>'horizontal'</code> by default
-  referenceLines (ChartReferenceLineProps[]) — Reference lines that should be displayed on the chart
-  rightYAxisLabel (string) — A label to display next to the right y-axis
-  rightYAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component rendered on the right side
-  series (AreaChartSeries[]) REQUIRED — An array of objects with <code>name</code> and <code>color</code> keys. Determines which data should be consumed from the <code>data</code> array.
-  splitColors ([MantineColor, MantineColor]) [default ['green.7', 'red.7']] — A tuple of colors used when <code>type=\"split\"</code> is set, ignored in all other cases. A tuple may include theme colors reference or any valid CSS colors
-  splitOffset (number) — Offset for the split gradient. By default, value is inferred from <code>data</code> and <code>series</code> if possible. Must be generated from the data array with <code>getSplitOffset</code> function.
-  strokeDasharray (string | number) — Dash array for the grid lines and cursor, <code>'5 5'</code> by default
-  strokeWidth (number) [default 2] — Stroke width for the chart areas
-  textColor (MantineColor) — Color of the text displayed inside the chart, <code>'dimmed'</code> by default
-  tickLine (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which axis should have tick line, <code>'y'</code> by default
-  tooltipAnimationDuration (number) — Tooltip position animation duration in ms, <code>0</code> by default
-  tooltipProps (RechartsProps) — Props passed down to the <code>Tooltip</code> component
-  type (AreaChartType) [default 'default'] — Controls how chart areas are positioned relative to each other
-  unit (string) — Unit displayed next to each tick in y-axis
-  valueFormatter ((value: number) => string) — A function to format values on Y axis and inside the tooltip
-  withDots (boolean) [default true] — Determines whether dots should be displayed
-  withGradient (boolean) [default false] — Determines whether the chart area should be represented with a gradient instead of the solid color
-  withLegend (boolean) — Determines whether chart legend should be displayed, <code>false</code> by default
-  withPointLabels (boolean) [default false] — If set, each point has an associated label
-  withRightYAxis (boolean) — Determines whether additional y-axis should be displayed on the right side of the chart, <code>false</code> by default
-  withTooltip (boolean) — Determines whether chart tooltip should be displayed, <code>true</code> by default
-  withXAxis (boolean) — Determines whether x-axis should be displayed, <code>true</code> by default
-  withYAxis (boolean) — Determines whether y-axis should be displayed, <code>true</code> by default
-  xAxisLabel (string) — A label to display below the x-axis
-  xAxisProps (RechartsProps) — Props passed down to the <code>XAxis</code> recharts component
-  yAxisLabel (string) — A label to display next to the y-axis
-  yAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component
+
+- **activeDotProps** `MantineChartDotProps` — Props passed down to all active dots. Ignored if `withDots={false}` is set.
+- **areaChartProps** `(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `AreaChart` component
+- **areaProps** `((series: AreaChartSeries) => Partial<Omit<Props<any, any>, \"ref\">>) | Partial<Omit<Props<any, any>, \"ref\">>` — Props passed down to recharts `Area` component
+- **children** `React.ReactNode` — Additional components that are rendered inside recharts `AreaChart` component
+- **connectNulls** `boolean` _(default `true`)_ — If set, points with `null` values are connected
+- **curveType** `AreaChartCurveType` _(default `'monotone'`)_ — Type of the curve
+- **data** `ChartData` **(required)** — Data used to display chart
+- **dataKey** `string` **(required)** — Key of the `data` object for x-axis values
+- **dotProps** `MantineChartDotProps` — Props passed down to all dots. Ignored if `withDots={false}` is set.
+- **fillOpacity** `number` _(default `0.2`)_ — Controls fill opacity of all areas
+- **gridAxis** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which lines should be displayed in the grid, `'x'` by default
+- **gridColor** `MantineColor` — Color of the grid and cursor lines, by default depends on color scheme
+- **gridProps** `RechartsProps` — Props passed down to the `CartesianGrid` component
+- **legendProps** `RechartsProps` — Props passed down to the `Legend` component
+- **orientation** `\"horizontal\" | \"vertical\"` — Chart orientation, `'horizontal'` by default
+- **referenceLines** `ChartReferenceLineProps[]` — Reference lines that should be displayed on the chart
+- **rightYAxisLabel** `string` — A label to display next to the right y-axis
+- **rightYAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component rendered on the right side
+- **series** `AreaChartSeries[]` **(required)** — An array of objects with `name` and `color` keys. Determines which data should be consumed from the `data` array.
+- **splitColors** `[MantineColor, MantineColor]` _(default `['green.7', 'red.7']`)_ — A tuple of colors used when `type=\"split\"` is set, ignored in all other cases. A tuple may include theme colors reference or any valid CSS colors
+- **splitOffset** `number` — Offset for the split gradient. By default, value is inferred from `data` and `series` if possible. Must be generated from the data array with `getSplitOffset` function.
+- **strokeDasharray** `string | number` — Dash array for the grid lines and cursor, `'5 5'` by default
+- **strokeWidth** `number` _(default `2`)_ — Stroke width for the chart areas
+- **textColor** `MantineColor` — Color of the text displayed inside the chart, `'dimmed'` by default
+- **tickLine** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which axis should have tick line, `'y'` by default
+- **tooltipAnimationDuration** `number` — Tooltip position animation duration in ms, `0` by default
+- **tooltipProps** `RechartsProps` — Props passed down to the `Tooltip` component
+- **type** `AreaChartType` _(default `'default'`)_ — Controls how chart areas are positioned relative to each other
+- **unit** `string` — Unit displayed next to each tick in y-axis
+- **valueFormatter** `(value: number) => string` — A function to format values on Y axis and inside the tooltip
+- **withDots** `boolean` _(default `true`)_ — Determines whether dots should be displayed
+- **withGradient** `boolean` _(default `false`)_ — Determines whether the chart area should be represented with a gradient instead of the solid color
+- **withLegend** `boolean` — Determines whether chart legend should be displayed, `false` by default
+- **withPointLabels** `boolean` _(default `false`)_ — If set, each point has an associated label
+- **withRightYAxis** `boolean` — Determines whether additional y-axis should be displayed on the right side of the chart, `false` by default
+- **withTooltip** `boolean` — Determines whether chart tooltip should be displayed, `true` by default
+- **withXAxis** `boolean` — Determines whether x-axis should be displayed, `true` by default
+- **withYAxis** `boolean` — Determines whether y-axis should be displayed, `true` by default
+- **xAxisLabel** `string` — A label to display below the x-axis
+- **xAxisProps** `RechartsProps` — Props passed down to the `XAxis` recharts component
+- **yAxisLabel** `string` — A label to display next to the y-axis
+- **yAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AreaChart)
@@ -64,45 +65,46 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/bar-chart
 
 Props (docgen 9.4.1):
-  barChartProps ((CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>BarChart</code> component
-  barLabelColor (MantineColor) — Controls color of the bar label, by default the value is determined by the chart orientation
-  barProps (((series: BarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>) — Props passed down to recharts <code>Bar</code> component
-  children (React.ReactNode) — Additional components that are rendered inside recharts <code>BarChart</code> component
-  cursorFill (MantineColor) — Fill of hovered bar section, by default value is based on color scheme
-  data (Record<string, any>[]) REQUIRED — Data used to display chart.
-  dataKey (string) REQUIRED — Key of the <code>data</code> object for x-axis values
-  fillOpacity (number) [default 1] — Controls fill opacity of all bars
-  getBarColor ((value: number, series: BarChartSeries) => DefaultMantineColor) — A function to assign dynamic bar color based on its value
-  gridAxis (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which lines should be displayed in the grid, <code>'x'</code> by default
-  gridColor (MantineColor) — Color of the grid and cursor lines, by default depends on color scheme
-  gridProps (RechartsProps) — Props passed down to the <code>CartesianGrid</code> component
-  legendProps (RechartsProps) — Props passed down to the <code>Legend</code> component
-  maxBarWidth (number) — Maximum bar width in px
-  minBarSize (number) [default 0] — Sets minimum height of the bar in px
-  orientation (\"horizontal\" | \"vertical\") — Chart orientation, <code>'horizontal'</code> by default
-  referenceLines (ChartReferenceLineProps[]) — Reference lines that should be displayed on the chart
-  rightYAxisLabel (string) — A label to display next to the right y-axis
-  rightYAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component rendered on the right side
-  series (BarChartSeries[]) REQUIRED — An array of objects with <code>name</code> and <code>color</code> keys. Determines which data should be consumed from the <code>data</code> array.
-  strokeDasharray (string | number) — Dash array for the grid lines and cursor, <code>'5 5'</code> by default
-  textColor (MantineColor) — Color of the text displayed inside the chart, <code>'dimmed'</code> by default
-  tickLine (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which axis should have tick line, <code>'y'</code> by default
-  tooltipAnimationDuration (number) — Tooltip position animation duration in ms, <code>0</code> by default
-  tooltipProps (RechartsProps) — Props passed down to the <code>Tooltip</code> component
-  type (BarChartType) [default 'default'] — Controls how bars are positioned relative to each other
-  unit (string) — Unit displayed next to each tick in y-axis
-  valueFormatter ((value: number) => string) — A function to format values on Y axis and inside the tooltip
-  valueLabelProps (((series: BarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Props>) — Props passed down to recharts <code>LabelList</code> component
-  withBarValueLabel (boolean) [default false] — Determines whether a label with bar value should be displayed on top of each bar, incompatible with <code>type=\"stacked\"</code> and <code>type=\"percent\"</code>
-  withLegend (boolean) — Determines whether chart legend should be displayed, <code>false</code> by default
-  withRightYAxis (boolean) — Determines whether additional y-axis should be displayed on the right side of the chart, <code>false</code> by default
-  withTooltip (boolean) — Determines whether chart tooltip should be displayed, <code>true</code> by default
-  withXAxis (boolean) — Determines whether x-axis should be displayed, <code>true</code> by default
-  withYAxis (boolean) — Determines whether y-axis should be displayed, <code>true</code> by default
-  xAxisLabel (string) — A label to display below the x-axis
-  xAxisProps (RechartsProps) — Props passed down to the <code>XAxis</code> recharts component
-  yAxisLabel (string) — A label to display next to the y-axis
-  yAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component
+
+- **barChartProps** `(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `BarChart` component
+- **barLabelColor** `MantineColor` — Controls color of the bar label, by default the value is determined by the chart orientation
+- **barProps** `((series: BarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>` — Props passed down to recharts `Bar` component
+- **children** `React.ReactNode` — Additional components that are rendered inside recharts `BarChart` component
+- **cursorFill** `MantineColor` — Fill of hovered bar section, by default value is based on color scheme
+- **data** `Record<string, any>[]` **(required)** — Data used to display chart.
+- **dataKey** `string` **(required)** — Key of the `data` object for x-axis values
+- **fillOpacity** `number` _(default `1`)_ — Controls fill opacity of all bars
+- **getBarColor** `(value: number, series: BarChartSeries) => DefaultMantineColor` — A function to assign dynamic bar color based on its value
+- **gridAxis** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which lines should be displayed in the grid, `'x'` by default
+- **gridColor** `MantineColor` — Color of the grid and cursor lines, by default depends on color scheme
+- **gridProps** `RechartsProps` — Props passed down to the `CartesianGrid` component
+- **legendProps** `RechartsProps` — Props passed down to the `Legend` component
+- **maxBarWidth** `number` — Maximum bar width in px
+- **minBarSize** `number` _(default `0`)_ — Sets minimum height of the bar in px
+- **orientation** `\"horizontal\" | \"vertical\"` — Chart orientation, `'horizontal'` by default
+- **referenceLines** `ChartReferenceLineProps[]` — Reference lines that should be displayed on the chart
+- **rightYAxisLabel** `string` — A label to display next to the right y-axis
+- **rightYAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component rendered on the right side
+- **series** `BarChartSeries[]` **(required)** — An array of objects with `name` and `color` keys. Determines which data should be consumed from the `data` array.
+- **strokeDasharray** `string | number` — Dash array for the grid lines and cursor, `'5 5'` by default
+- **textColor** `MantineColor` — Color of the text displayed inside the chart, `'dimmed'` by default
+- **tickLine** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which axis should have tick line, `'y'` by default
+- **tooltipAnimationDuration** `number` — Tooltip position animation duration in ms, `0` by default
+- **tooltipProps** `RechartsProps` — Props passed down to the `Tooltip` component
+- **type** `BarChartType` _(default `'default'`)_ — Controls how bars are positioned relative to each other
+- **unit** `string` — Unit displayed next to each tick in y-axis
+- **valueFormatter** `(value: number) => string` — A function to format values on Y axis and inside the tooltip
+- **valueLabelProps** `((series: BarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Props>` — Props passed down to recharts `LabelList` component
+- **withBarValueLabel** `boolean` _(default `false`)_ — Determines whether a label with bar value should be displayed on top of each bar, incompatible with `type=\"stacked\"` and `type=\"percent\"`
+- **withLegend** `boolean` — Determines whether chart legend should be displayed, `false` by default
+- **withRightYAxis** `boolean` — Determines whether additional y-axis should be displayed on the right side of the chart, `false` by default
+- **withTooltip** `boolean` — Determines whether chart tooltip should be displayed, `true` by default
+- **withXAxis** `boolean` — Determines whether x-axis should be displayed, `true` by default
+- **withYAxis** `boolean` — Determines whether y-axis should be displayed, `true` by default
+- **xAxisLabel** `string` — A label to display below the x-axis
+- **xAxisProps** `RechartsProps` — Props passed down to the `XAxis` recharts component
+- **yAxisLabel** `string` — A label to display next to the y-axis
+- **yAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory BarChart)
@@ -114,18 +116,19 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/bars-list
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color
-  barColor (MantineColor) — Default bar background color, used when item does not have color specified
-  barGap (MantineSpacing) [default 5] — Controls gap between bars
-  barHeight (string | number) [default 32] — Bar height
-  barTextColor (MantineColor) — Bar text color, overrides autoContrast
-  barsLabel (string) — Label displayed above the bars column
-  data (BarsListBarData[]) REQUIRED — Data for bars
-  getBarProps ((data: BarsListBarData) => DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) — Function to pass props down to the bar depending on the bar data payload
-  minBarSize (string | number) [default 100] — Minimum bar width
-  renderBar ((data: BarsListBarData, defaultBar: ReactNode) => ReactNode) — Function to completely customize bar rendering
-  valueFormatter ((value: number) => string) — Function to format value display
-  valueLabel (string) — Label displayed above the values column
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color
+- **barColor** `MantineColor` — Default bar background color, used when item does not have color specified
+- **barGap** `MantineSpacing` _(default `5`)_ — Controls gap between bars
+- **barHeight** `string | number` _(default `32`)_ — Bar height
+- **barTextColor** `MantineColor` — Bar text color, overrides autoContrast
+- **barsLabel** `string` — Label displayed above the bars column
+- **data** `BarsListBarData[]` **(required)** — Data for bars
+- **getBarProps** `(data: BarsListBarData) => DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>` — Function to pass props down to the bar depending on the bar data payload
+- **minBarSize** `string | number` _(default `100`)_ — Minimum bar width
+- **renderBar** `(data: BarsListBarData, defaultBar: ReactNode) => ReactNode` — Function to completely customize bar rendering
+- **valueFormatter** `(value: number) => string` — Function to format value display
+- **valueLabel** `string` — Label displayed above the values column
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory BarsList)
@@ -137,20 +140,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/bubble-chart
 
 Props (docgen 9.4.1):
-  color (MantineColor) [default blue.6] — Color of the chart items. Key of <code>theme.colors</code> or any valid CSS color.
-  data (Record<string, any>[]) REQUIRED — Chart data
-  dataKey (BubbleChartDataKey) REQUIRED — Data keys for x, y and z axis
-  gridColor (MantineColor) — Color of the grid and cursor lines, by default depends on color scheme
-  label (string) — Chart label displayed next to the x axis
-  range ([number, number]) REQUIRED — Z axis range
-  scatterProps (Partial<Omit<Props, \"ref\">>) — Props passed down to the <code>Scatter</code> component
-  textColor (MantineColor) [default 'dimmed'] — Color of the text displayed inside the chart
-  tooltipProps (RechartsProps) — Props passed down to the <code>Tooltip</code> component
-  valueFormatter ((value: number) => string) — Function to format z axis values
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed
-  xAxisProps (RechartsProps) — Props passed down to the <code>XAxis</code> recharts component
-  yAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component
-  zAxisProps (Omit<Props<any, any>, \"ref\">) — Props passed down to the <code>ZAxis</code> recharts component
+
+- **color** `MantineColor` _(default `blue.6`)_ — Color of the chart items. Key of `theme.colors` or any valid CSS color.
+- **data** `Record<string, any>[]` **(required)** — Chart data
+- **dataKey** `BubbleChartDataKey` **(required)** — Data keys for x, y and z axis
+- **gridColor** `MantineColor` — Color of the grid and cursor lines, by default depends on color scheme
+- **label** `string` — Chart label displayed next to the x axis
+- **range** `[number, number]` **(required)** — Z axis range
+- **scatterProps** `Partial<Omit<Props, \"ref\">>` — Props passed down to the `Scatter` component
+- **textColor** `MantineColor` _(default `'dimmed'`)_ — Color of the text displayed inside the chart
+- **tooltipProps** `RechartsProps` — Props passed down to the `Tooltip` component
+- **valueFormatter** `(value: number) => string` — Function to format z axis values
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed
+- **xAxisProps** `RechartsProps` — Props passed down to the `XAxis` recharts component
+- **yAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component
+- **zAxisProps** `Omit<Props<any, any>, \"ref\">` — Props passed down to the `ZAxis` recharts component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory BubbleChart)
@@ -160,12 +164,13 @@ Optional leading props map; remaining args are children."
   "ChartLegend
 
 Props (docgen 9.4.1):
-  centered (boolean) [default false] — Determines whether the legend should be centered
-  legendPosition (\"bottom\" | \"top\" | \"middle\") REQUIRED — Position of the legend relative to the chart, used to apply margin on the corresponding side
-  onHighlight ((area: string | number | null) => void) REQUIRED — Function called when mouse enters/leaves one of the legend items
-  payload (readonly Record<string, any>[]) REQUIRED — Chart data provided by recharts
-  series (ChartSeries[]) — Data used for labels, only applicable for area charts: AreaChart, LineChart, BarChart
-  showColor (boolean) [default true] — Determines whether color swatch should be shown next to the label
+
+- **centered** `boolean` _(default `false`)_ — Determines whether the legend should be centered
+- **legendPosition** `\"bottom\" | \"top\" | \"middle\"` **(required)** — Position of the legend relative to the chart, used to apply margin on the corresponding side
+- **onHighlight** `(area: string | number | null) => void` **(required)** — Function called when mouse enters/leaves one of the legend items
+- **payload** `readonly Record<string, any>[]` **(required)** — Chart data provided by recharts
+- **series** `ChartSeries[]` — Data used for labels, only applicable for area charts: AreaChart, LineChart, BarChart
+- **showColor** `boolean` _(default `true`)_ — Determines whether color swatch should be shown next to the label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ChartLegend)
@@ -175,14 +180,15 @@ Optional leading props map; remaining args are children."
   "ChartTooltip
 
 Props (docgen 9.4.1):
-  label (React.ReactNode) — Main tooltip label
-  payload (Record<string, any>[] | readonly Record<string, any>[]) REQUIRED — Chart data provided by recharts
-  segmentId (string | number) — Segment to display data for, identified by its index in the data array (preferred, isolates duplicate names) or by its name. Only applicable when <code>type=\"radial\"</code>. If not set, all data is rendered.
-  series (ChartSeries[]) — Chart series data, applicable only for <code>area</code> type
-  showColor (boolean) [default true] — Determines whether the color swatch should be visible
-  type (\"area\" | \"radial\" | \"scatter\") [default 'area'] — Tooltip type that determines the content and styles, <code>area</code> for LineChart, AreaChart and BarChart, <code>radial</code> for DonutChart and PieChart
-  unit (string) — Data units, provided by parent component
-  valueFormatter ((value: number) => ReactNode) — A function to format values
+
+- **label** `React.ReactNode` — Main tooltip label
+- **payload** `Record<string, any>[] | readonly Record<string, any>[]` **(required)** — Chart data provided by recharts
+- **segmentId** `string | number` — Segment to display data for, identified by its index in the data array (preferred, isolates duplicate names) or by its name. Only applicable when `type=\"radial\"`. If not set, all data is rendered.
+- **series** `ChartSeries[]` — Chart series data, applicable only for `area` type
+- **showColor** `boolean` _(default `true`)_ — Determines whether the color swatch should be visible
+- **type** `\"area\" | \"radial\" | \"scatter\"` _(default `'area'`)_ — Tooltip type that determines the content and styles, `area` for LineChart, AreaChart and BarChart, `radial` for DonutChart and PieChart
+- **unit** `string` — Data units, provided by parent component
+- **valueFormatter** `(value: number) => ReactNode` — A function to format values
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ChartTooltip)
@@ -194,47 +200,48 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/composite-chart
 
 Props (docgen 9.4.1):
-  activeDotProps (MantineChartDotProps) — Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.
-  areaProps (Partial<Omit<Props<any, any>, \"ref\">> | ((series: CompositeChartSeries) => Partial<Omit<Props<any, any>, \"ref\">>)) — Props passed down to recharts <code>Area</code> component
-  barProps (Partial<Omit<Props, \"ref\">> | ((series: CompositeChartSeries) => Partial<Omit<Props, \"ref\">>)) — Props passed down to recharts <code>Bar</code> component
-  children (React.ReactNode) — Additional components that are rendered inside recharts <code>AreaChart</code> component
-  composedChartProps ((CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>AreaChart</code> component
-  connectNulls (boolean) [default true] — Determines whether points with <code>null</code> values should be connected
-  curveType (CompositeChartCurveType) [default 'monotone'] — Type of the curve
-  data (Record<string, any>[]) REQUIRED — Data used to display chart
-  dataKey (string) REQUIRED — Key of the <code>data</code> object for x-axis values
-  dotProps (MantineChartDotProps) — Props passed down to all dots. Ignored if <code>withDots={false}</code> is set.
-  gridAxis (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which lines should be displayed in the grid, <code>'x'</code> by default
-  gridColor (MantineColor) — Color of the grid and cursor lines, by default depends on color scheme
-  gridProps (RechartsProps) — Props passed down to the <code>CartesianGrid</code> component
-  legendProps (RechartsProps) — Props passed down to the <code>Legend</code> component
-  lineProps (((series: CompositeChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>) — Props passed down to recharts <code>Line</code> component
-  maxBarWidth (number) — Maximum bar width in px
-  minBarSize (number) [default 0] — Sets minimum height of the bar in px
-  referenceLines (ChartReferenceLineProps[]) — Reference lines that should be displayed on the chart
-  rightYAxisLabel (string) — A label to display next to the right y-axis
-  rightYAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component rendered on the right side
-  series (CompositeChartSeries[]) REQUIRED — An array of objects with <code>name</code> and <code>color</code> keys. Determines which data should be consumed from the <code>data</code> array.
-  strokeDasharray (string | number) — Dash array for the grid lines and cursor, <code>'5 5'</code> by default
-  strokeWidth (number) [default 2] — Stroke width for the chart lines
-  textColor (MantineColor) — Color of the text displayed inside the chart, <code>'dimmed'</code> by default
-  tickLine (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which axis should have tick line, <code>'y'</code> by default
-  tooltipAnimationDuration (number) — Tooltip position animation duration in ms, <code>0</code> by default
-  tooltipProps (RechartsProps) — Props passed down to the <code>Tooltip</code> component
-  unit (string) — Unit displayed next to each tick in y-axis
-  valueFormatter ((value: number) => string) — A function to format values on Y axis and inside the tooltip
-  withBarValueLabel (boolean) [default false] — Determines whether a label with bar value should be displayed on top of each bar
-  withDots (boolean) [default true] — Determines whether dots should be displayed
-  withLegend (boolean) — Determines whether chart legend should be displayed, <code>false</code> by default
-  withPointLabels (boolean) [default false] — Determines whether each point should have associated label
-  withRightYAxis (boolean) — Determines whether additional y-axis should be displayed on the right side of the chart, <code>false</code> by default
-  withTooltip (boolean) — Determines whether chart tooltip should be displayed, <code>true</code> by default
-  withXAxis (boolean) — Determines whether x-axis should be displayed, <code>true</code> by default
-  withYAxis (boolean) — Determines whether y-axis should be displayed, <code>true</code> by default
-  xAxisLabel (string) — A label to display below the x-axis
-  xAxisProps (RechartsProps) — Props passed down to the <code>XAxis</code> recharts component
-  yAxisLabel (string) — A label to display next to the y-axis
-  yAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component
+
+- **activeDotProps** `MantineChartDotProps` — Props passed down to all active dots. Ignored if `withDots={false}` is set.
+- **areaProps** `Partial<Omit<Props<any, any>, \"ref\">> | ((series: CompositeChartSeries) => Partial<Omit<Props<any, any>, \"ref\">>)` — Props passed down to recharts `Area` component
+- **barProps** `Partial<Omit<Props, \"ref\">> | ((series: CompositeChartSeries) => Partial<Omit<Props, \"ref\">>)` — Props passed down to recharts `Bar` component
+- **children** `React.ReactNode` — Additional components that are rendered inside recharts `AreaChart` component
+- **composedChartProps** `(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `AreaChart` component
+- **connectNulls** `boolean` _(default `true`)_ — Determines whether points with `null` values should be connected
+- **curveType** `CompositeChartCurveType` _(default `'monotone'`)_ — Type of the curve
+- **data** `Record<string, any>[]` **(required)** — Data used to display chart
+- **dataKey** `string` **(required)** — Key of the `data` object for x-axis values
+- **dotProps** `MantineChartDotProps` — Props passed down to all dots. Ignored if `withDots={false}` is set.
+- **gridAxis** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which lines should be displayed in the grid, `'x'` by default
+- **gridColor** `MantineColor` — Color of the grid and cursor lines, by default depends on color scheme
+- **gridProps** `RechartsProps` — Props passed down to the `CartesianGrid` component
+- **legendProps** `RechartsProps` — Props passed down to the `Legend` component
+- **lineProps** `((series: CompositeChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>` — Props passed down to recharts `Line` component
+- **maxBarWidth** `number` — Maximum bar width in px
+- **minBarSize** `number` _(default `0`)_ — Sets minimum height of the bar in px
+- **referenceLines** `ChartReferenceLineProps[]` — Reference lines that should be displayed on the chart
+- **rightYAxisLabel** `string` — A label to display next to the right y-axis
+- **rightYAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component rendered on the right side
+- **series** `CompositeChartSeries[]` **(required)** — An array of objects with `name` and `color` keys. Determines which data should be consumed from the `data` array.
+- **strokeDasharray** `string | number` — Dash array for the grid lines and cursor, `'5 5'` by default
+- **strokeWidth** `number` _(default `2`)_ — Stroke width for the chart lines
+- **textColor** `MantineColor` — Color of the text displayed inside the chart, `'dimmed'` by default
+- **tickLine** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which axis should have tick line, `'y'` by default
+- **tooltipAnimationDuration** `number` — Tooltip position animation duration in ms, `0` by default
+- **tooltipProps** `RechartsProps` — Props passed down to the `Tooltip` component
+- **unit** `string` — Unit displayed next to each tick in y-axis
+- **valueFormatter** `(value: number) => string` — A function to format values on Y axis and inside the tooltip
+- **withBarValueLabel** `boolean` _(default `false`)_ — Determines whether a label with bar value should be displayed on top of each bar
+- **withDots** `boolean` _(default `true`)_ — Determines whether dots should be displayed
+- **withLegend** `boolean` — Determines whether chart legend should be displayed, `false` by default
+- **withPointLabels** `boolean` _(default `false`)_ — Determines whether each point should have associated label
+- **withRightYAxis** `boolean` — Determines whether additional y-axis should be displayed on the right side of the chart, `false` by default
+- **withTooltip** `boolean` — Determines whether chart tooltip should be displayed, `true` by default
+- **withXAxis** `boolean` — Determines whether x-axis should be displayed, `true` by default
+- **withYAxis** `boolean` — Determines whether y-axis should be displayed, `true` by default
+- **xAxisLabel** `string` — A label to display below the x-axis
+- **xAxisProps** `RechartsProps` — Props passed down to the `XAxis` recharts component
+- **yAxisLabel** `string` — A label to display next to the y-axis
+- **yAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CompositeChart)
@@ -246,30 +253,31 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/donut-chart
 
 Props (docgen 9.4.1):
-  cellProps (((series: DonutChartCell) => Partial<Omit<SVGProps<SVGElement>, \"ref\">>) | Partial<Omit<SVGProps<SVGElement>, \"ref\">>) — Props passed down to each segment of the chart
-  chartLabel (string | number) — Chart label, displayed in the center of the chart
-  children (React.ReactNode) — Additional elements rendered inside <code>PieChart</code> component
-  data (DonutChartCell[]) REQUIRED — Data used to render chart
-  endAngle (number) [default 360] — Controls angle at which charts ends. Set to <code>0</code> to render the chart as semicircle.
-  labelColor (MantineColor) — Controls text color of all labels, by default depends on color scheme
-  labelsType (\"value\" | \"name\" | \"percent\") — Type of labels to display, <code>'value'</code> by default
-  legendProps (RechartsProps) — Props passed down to recharts <code>Legend</code> component
-  paddingAngle (number) [default 0] — Controls padding between segments
-  pieChartProps ((PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>PieChart</code> component
-  pieProps (Partial<Omit<Props, \"ref\">>) — Props passed down to recharts <code>Pie</code> component
-  size (number) [default 80] — Controls chart width and height, height is increased by 40 if <code>withLabels</code> prop is set. Cannot be less than <code>thickness</code>.
-  startAngle (number) [default 0] — Controls angle at which chart starts. Set to <code>180</code> to render the chart as semicircle.
-  strokeColor (MantineColor) — Controls color of the segments stroke, by default depends on color scheme
-  strokeWidth (number) [default 1] — Controls width of segments stroke
-  thickness (number) [default 20] — Controls thickness of the chart segments
-  tooltipAnimationDuration (number) [default 0] — Tooltip animation duration in ms
-  tooltipDataSource (\"all\" | \"segment\") [default 'all'] — Determines which data is displayed in the tooltip. <code>'all'</code> – display all values, <code>'segment'</code> – display only hovered segment.
-  tooltipProps (RechartsProps) — Props passed down to <code>Tooltip</code> recharts component
-  valueFormatter ((value: number) => string) — A function to format values inside the tooltip
-  withLabels (boolean) [default false] — Determines whether each segment should have associated label
-  withLabelsLine (boolean) [default true] — Determines whether segments labels should have lines that connect the segment with the label
-  withLegend (boolean) [default false] — Determines whether the legend should be displayed
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed when one of the section is hovered
+
+- **cellProps** `((series: DonutChartCell) => Partial<Omit<SVGProps<SVGElement>, \"ref\">>) | Partial<Omit<SVGProps<SVGElement>, \"ref\">>` — Props passed down to each segment of the chart
+- **chartLabel** `string | number` — Chart label, displayed in the center of the chart
+- **children** `React.ReactNode` — Additional elements rendered inside `PieChart` component
+- **data** `DonutChartCell[]` **(required)** — Data used to render chart
+- **endAngle** `number` _(default `360`)_ — Controls angle at which charts ends. Set to `0` to render the chart as semicircle.
+- **labelColor** `MantineColor` — Controls text color of all labels, by default depends on color scheme
+- **labelsType** `\"value\" | \"name\" | \"percent\"` — Type of labels to display, `'value'` by default
+- **legendProps** `RechartsProps` — Props passed down to recharts `Legend` component
+- **paddingAngle** `number` _(default `0`)_ — Controls padding between segments
+- **pieChartProps** `(PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `PieChart` component
+- **pieProps** `Partial<Omit<Props, \"ref\">>` — Props passed down to recharts `Pie` component
+- **size** `number` _(default `80`)_ — Controls chart width and height, height is increased by 40 if `withLabels` prop is set. Cannot be less than `thickness`.
+- **startAngle** `number` _(default `0`)_ — Controls angle at which chart starts. Set to `180` to render the chart as semicircle.
+- **strokeColor** `MantineColor` — Controls color of the segments stroke, by default depends on color scheme
+- **strokeWidth** `number` _(default `1`)_ — Controls width of segments stroke
+- **thickness** `number` _(default `20`)_ — Controls thickness of the chart segments
+- **tooltipAnimationDuration** `number` _(default `0`)_ — Tooltip animation duration in ms
+- **tooltipDataSource** `\"all\" | \"segment\"` _(default `'all'`)_ — Determines which data is displayed in the tooltip. `'all'` – display all values, `'segment'` – display only hovered segment.
+- **tooltipProps** `RechartsProps` — Props passed down to `Tooltip` recharts component
+- **valueFormatter** `(value: number) => string` — A function to format values inside the tooltip
+- **withLabels** `boolean` _(default `false`)_ — Determines whether each segment should have associated label
+- **withLabelsLine** `boolean` _(default `true`)_ — Determines whether segments labels should have lines that connect the segment with the label
+- **withLegend** `boolean` _(default `false`)_ — Determines whether the legend should be displayed
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed when one of the section is hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DonutChart)
@@ -281,23 +289,24 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/funnel-chart
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Additional elements rendered inside <code>FunnelChart</code> component
-  data (FunnelChartCell[]) REQUIRED — Data used to render chart
-  funnelChartProps ((CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>FunnelChart</code> component
-  funnelProps (Partial<Omit<Props, \"ref\">>) — Props passed down to recharts <code>Pie</code> component
-  labelColor (MantineColor) [default 'white'] — Controls text color of all labels
-  labelsPosition (\"left\" | \"right\" | \"inside\") [default 'right'] — Controls labels position relative to the segment
-  legendProps (RechartsProps) — Props passed down to recharts <code>Legend</code> component
-  size (number) [default 300] — Controls chart width and height
-  strokeColor (MantineColor) — Controls color of the segments stroke, by default depends on color scheme
-  strokeWidth (number) [default 1] — Controls width of segments stroke
-  tooltipAnimationDuration (number) [default 0] — Tooltip animation duration in ms
-  tooltipDataSource (\"all\" | \"segment\") [default 'all'] — Determines which data is displayed in the tooltip. <code>'all'</code> – display all values, <code>'segment'</code> – display only hovered segment.
-  tooltipProps (RechartsProps) — Props passed down to <code>Tooltip</code> recharts component
-  valueFormatter ((value: number) => string) — A function to format values inside the tooltip and labels
-  withLabels (boolean) [default false] — Determines whether each segment should have associated label
-  withLegend (boolean) [default false] — Determines whether the legend should be displayed
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed when a section is hovered
+
+- **children** `React.ReactNode` — Additional elements rendered inside `FunnelChart` component
+- **data** `FunnelChartCell[]` **(required)** — Data used to render chart
+- **funnelChartProps** `(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `FunnelChart` component
+- **funnelProps** `Partial<Omit<Props, \"ref\">>` — Props passed down to recharts `Pie` component
+- **labelColor** `MantineColor` _(default `'white'`)_ — Controls text color of all labels
+- **labelsPosition** `\"left\" | \"right\" | \"inside\"` _(default `'right'`)_ — Controls labels position relative to the segment
+- **legendProps** `RechartsProps` — Props passed down to recharts `Legend` component
+- **size** `number` _(default `300`)_ — Controls chart width and height
+- **strokeColor** `MantineColor` — Controls color of the segments stroke, by default depends on color scheme
+- **strokeWidth** `number` _(default `1`)_ — Controls width of segments stroke
+- **tooltipAnimationDuration** `number` _(default `0`)_ — Tooltip animation duration in ms
+- **tooltipDataSource** `\"all\" | \"segment\"` _(default `'all'`)_ — Determines which data is displayed in the tooltip. `'all'` – display all values, `'segment'` – display only hovered segment.
+- **tooltipProps** `RechartsProps` — Props passed down to `Tooltip` recharts component
+- **valueFormatter** `(value: number) => string` — A function to format values inside the tooltip and labels
+- **withLabels** `boolean` _(default `false`)_ — Determines whether each segment should have associated label
+- **withLegend** `boolean` _(default `false`)_ — Determines whether the legend should be displayed
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed when a section is hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory FunnelChart)
@@ -309,30 +318,31 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/heatmap
 
 Props (docgen 9.4.1):
-  colors (string[]) — Colors array, used to calculate color for each value, by default 4 shades of green colors are used
-  data (Record<string, number>) REQUIRED — Heatmap data, key is date in <code>YYYY-MM-DD</code> format (interpreted as a UTC calendar day)
-  domain ([number, number]) — Heatmap domain, array of 2 numbers, min and max values, calculated from data by default
-  endDate (string | Date) — Heatmap end date. Current date by default. Date is normalized to UTC midnight of the intended calendar day.
-  firstDayOfWeek (0 | 2 | 1 | 3 | 4 | 5 | 6) [default 1 – Monday] — First day of week, 0 – Sunday, 1 – Monday.
-  fontSize (number) [default 12] — Font size of month and weekday labels
-  gap (number) [default 1] — Gap between rects in px
-  getRectProps ((input: HeatmapRectData) => SVGProps<SVGRectElement>) — Props passed down to each rect depending on its date and associated value
-  getTooltipLabel ((input: HeatmapRectData) => ReactNode) — A function to generate tooltip label based on the hovered rect date and value, required for the tooltip to be visible
-  legendLabels ([string, string]) [default ['Less', 'More']] — Legend labels, array of 2 elements: [min label, max label]
-  monthLabels (string[]) — Month labels, array of 12 elements, can be used for localization
-  monthsLabelsHeight (number) [default 30] — Height of month labels row
-  rectRadius (number) [default 2] — Rect radius in px
-  rectSize (number) [default 10] — Size of day rect in px
-  splitMonths (boolean) [default false] — If set, inserts a spacer column between months
-  startDate (string | Date) — Heatmap start date. Current date - 1 year by default. Date is normalized to UTC midnight of the intended calendar day.
-  tooltipProps (Partial<TooltipFloatingProps>) — Props passed down to the <code>Tooltip.Floating</code> component
-  weekdayLabels (string[]) — Weekday labels, array of 7 elements, can be used for localization
-  weekdaysLabelsWidth (number) [default 30] — Width of weekday labels column
-  withLegend (boolean) [default false] — If set, legend with color levels is displayed below the heatmap
-  withMonthLabels (boolean) [default false] — If set, month labels are displayed
-  withOutsideDates (boolean) [default true] — If set, trailing dates that do not fall into the given <code>startDate</code> – <code>endDate</code> range are displayed to fill empty space.
-  withTooltip (boolean) [default false] — If set, tooltip is displayed on rect hover
-  withWeekdayLabels (boolean) [default false] — If set, weekday labels are displayed
+
+- **colors** `string[]` — Colors array, used to calculate color for each value, by default 4 shades of green colors are used
+- **data** `Record<string, number>` **(required)** — Heatmap data, key is date in `YYYY-MM-DD` format (interpreted as a UTC calendar day)
+- **domain** `[number, number]` — Heatmap domain, array of 2 numbers, min and max values, calculated from data by default
+- **endDate** `string | Date` — Heatmap end date. Current date by default. Date is normalized to UTC midnight of the intended calendar day.
+- **firstDayOfWeek** `0 | 2 | 1 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — First day of week, 0 – Sunday, 1 – Monday.
+- **fontSize** `number` _(default `12`)_ — Font size of month and weekday labels
+- **gap** `number` _(default `1`)_ — Gap between rects in px
+- **getRectProps** `(input: HeatmapRectData) => SVGProps<SVGRectElement>` — Props passed down to each rect depending on its date and associated value
+- **getTooltipLabel** `(input: HeatmapRectData) => ReactNode` — A function to generate tooltip label based on the hovered rect date and value, required for the tooltip to be visible
+- **legendLabels** `[string, string]` _(default `['Less', 'More']`)_ — Legend labels, array of 2 elements: [min label, max label]
+- **monthLabels** `string[]` — Month labels, array of 12 elements, can be used for localization
+- **monthsLabelsHeight** `number` _(default `30`)_ — Height of month labels row
+- **rectRadius** `number` _(default `2`)_ — Rect radius in px
+- **rectSize** `number` _(default `10`)_ — Size of day rect in px
+- **splitMonths** `boolean` _(default `false`)_ — If set, inserts a spacer column between months
+- **startDate** `string | Date` — Heatmap start date. Current date - 1 year by default. Date is normalized to UTC midnight of the intended calendar day.
+- **tooltipProps** `Partial<TooltipFloatingProps>` — Props passed down to the `Tooltip.Floating` component
+- **weekdayLabels** `string[]` — Weekday labels, array of 7 elements, can be used for localization
+- **weekdaysLabelsWidth** `number` _(default `30`)_ — Width of weekday labels column
+- **withLegend** `boolean` _(default `false`)_ — If set, legend with color levels is displayed below the heatmap
+- **withMonthLabels** `boolean` _(default `false`)_ — If set, month labels are displayed
+- **withOutsideDates** `boolean` _(default `true`)_ — If set, trailing dates that do not fall into the given `startDate` – `endDate` range are displayed to fill empty space.
+- **withTooltip** `boolean` _(default `false`)_ — If set, tooltip is displayed on rect hover
+- **withWeekdayLabels** `boolean` _(default `false`)_ — If set, weekday labels are displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Heatmap)
@@ -344,46 +354,47 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/line-chart
 
 Props (docgen 9.4.1):
-  activeDotProps (MantineChartDotProps) — Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.
-  children (React.ReactNode) — Additional components that are rendered inside recharts <code>LineChart</code> component
-  connectNulls (boolean) [default true] — Determines whether points with <code>null</code> values should be connected
-  curveType (LineChartCurveType) [default 'monotone'] — Type of the curve
-  data (Record<string, any>[]) REQUIRED — Data used to display chart
-  dataKey (string) REQUIRED — Key of the <code>data</code> object for x-axis values
-  dotProps (MantineChartDotProps) — Props passed down to all dots. Ignored if <code>withDots={false}</code> is set.
-  fillOpacity (number) [default 1] — Controls fill opacity of all lines
-  gradientStops (LineChartGradientStop[]) [default [{ offset: 0, color: 'red' }, { offset: 100, color: 'blue' }]] — Data used to generate gradient stops
-  gridAxis (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which lines should be displayed in the grid, <code>'x'</code> by default
-  gridColor (MantineColor) — Color of the grid and cursor lines, by default depends on color scheme
-  gridProps (RechartsProps) — Props passed down to the <code>CartesianGrid</code> component
-  legendProps (RechartsProps) — Props passed down to the <code>Legend</code> component
-  lineChartProps ((CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>LineChart</code> component
-  lineProps (Partial<Omit<Props, \"ref\">> | ((series: LineChartSeries) => Partial<Omit<Props, \"ref\">>)) — Props passed down to recharts <code>Line</code> component
-  orientation (\"horizontal\" | \"vertical\") — Chart orientation, <code>'horizontal'</code> by default
-  referenceLines (ChartReferenceLineProps[]) — Reference lines that should be displayed on the chart
-  rightYAxisLabel (string) — A label to display next to the right y-axis
-  rightYAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component rendered on the right side
-  series (LineChartSeries[]) REQUIRED — An array of objects with <code>name</code> and <code>color</code> keys. Determines which data should be consumed from the <code>data</code> array.
-  strokeDasharray (string | number) — Dash array for the grid lines and cursor, <code>'5 5'</code> by default
-  strokeWidth (number) [default 2] — Stroke width for the chart lines
-  textColor (MantineColor) — Color of the text displayed inside the chart, <code>'dimmed'</code> by default
-  tickLine (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which axis should have tick line, <code>'y'</code> by default
-  tooltipAnimationDuration (number) — Tooltip position animation duration in ms, <code>0</code> by default
-  tooltipProps (RechartsProps) — Props passed down to the <code>Tooltip</code> component
-  type (LineChartType) [default 'default'] — Controls styles of the line
-  unit (string) — Unit displayed next to each tick in y-axis
-  valueFormatter ((value: number) => string) — A function to format values on Y axis and inside the tooltip
-  withDots (boolean) [default true] — Determines whether dots should be displayed
-  withLegend (boolean) — Determines whether chart legend should be displayed, <code>false</code> by default
-  withPointLabels (boolean) [default false] — Determines whether each point should have associated label
-  withRightYAxis (boolean) — Determines whether additional y-axis should be displayed on the right side of the chart, <code>false</code> by default
-  withTooltip (boolean) — Determines whether chart tooltip should be displayed, <code>true</code> by default
-  withXAxis (boolean) — Determines whether x-axis should be displayed, <code>true</code> by default
-  withYAxis (boolean) — Determines whether y-axis should be displayed, <code>true</code> by default
-  xAxisLabel (string) — A label to display below the x-axis
-  xAxisProps (RechartsProps) — Props passed down to the <code>XAxis</code> recharts component
-  yAxisLabel (string) — A label to display next to the y-axis
-  yAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component
+
+- **activeDotProps** `MantineChartDotProps` — Props passed down to all active dots. Ignored if `withDots={false}` is set.
+- **children** `React.ReactNode` — Additional components that are rendered inside recharts `LineChart` component
+- **connectNulls** `boolean` _(default `true`)_ — Determines whether points with `null` values should be connected
+- **curveType** `LineChartCurveType` _(default `'monotone'`)_ — Type of the curve
+- **data** `Record<string, any>[]` **(required)** — Data used to display chart
+- **dataKey** `string` **(required)** — Key of the `data` object for x-axis values
+- **dotProps** `MantineChartDotProps` — Props passed down to all dots. Ignored if `withDots={false}` is set.
+- **fillOpacity** `number` _(default `1`)_ — Controls fill opacity of all lines
+- **gradientStops** `LineChartGradientStop[]` _(default `[{ offset: 0, color: 'red' }, { offset: 100, color: 'blue' }]`)_ — Data used to generate gradient stops
+- **gridAxis** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which lines should be displayed in the grid, `'x'` by default
+- **gridColor** `MantineColor` — Color of the grid and cursor lines, by default depends on color scheme
+- **gridProps** `RechartsProps` — Props passed down to the `CartesianGrid` component
+- **legendProps** `RechartsProps` — Props passed down to the `Legend` component
+- **lineChartProps** `(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `LineChart` component
+- **lineProps** `Partial<Omit<Props, \"ref\">> | ((series: LineChartSeries) => Partial<Omit<Props, \"ref\">>)` — Props passed down to recharts `Line` component
+- **orientation** `\"horizontal\" | \"vertical\"` — Chart orientation, `'horizontal'` by default
+- **referenceLines** `ChartReferenceLineProps[]` — Reference lines that should be displayed on the chart
+- **rightYAxisLabel** `string` — A label to display next to the right y-axis
+- **rightYAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component rendered on the right side
+- **series** `LineChartSeries[]` **(required)** — An array of objects with `name` and `color` keys. Determines which data should be consumed from the `data` array.
+- **strokeDasharray** `string | number` — Dash array for the grid lines and cursor, `'5 5'` by default
+- **strokeWidth** `number` _(default `2`)_ — Stroke width for the chart lines
+- **textColor** `MantineColor` — Color of the text displayed inside the chart, `'dimmed'` by default
+- **tickLine** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which axis should have tick line, `'y'` by default
+- **tooltipAnimationDuration** `number` — Tooltip position animation duration in ms, `0` by default
+- **tooltipProps** `RechartsProps` — Props passed down to the `Tooltip` component
+- **type** `LineChartType` _(default `'default'`)_ — Controls styles of the line
+- **unit** `string` — Unit displayed next to each tick in y-axis
+- **valueFormatter** `(value: number) => string` — A function to format values on Y axis and inside the tooltip
+- **withDots** `boolean` _(default `true`)_ — Determines whether dots should be displayed
+- **withLegend** `boolean` — Determines whether chart legend should be displayed, `false` by default
+- **withPointLabels** `boolean` _(default `false`)_ — Determines whether each point should have associated label
+- **withRightYAxis** `boolean` — Determines whether additional y-axis should be displayed on the right side of the chart, `false` by default
+- **withTooltip** `boolean` — Determines whether chart tooltip should be displayed, `true` by default
+- **withXAxis** `boolean` — Determines whether x-axis should be displayed, `true` by default
+- **withYAxis** `boolean` — Determines whether y-axis should be displayed, `true` by default
+- **xAxisLabel** `string` — A label to display below the x-axis
+- **xAxisProps** `RechartsProps` — Props passed down to the `XAxis` recharts component
+- **yAxisLabel** `string` — A label to display next to the y-axis
+- **yAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory LineChart)
@@ -395,29 +406,30 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/pie-chart
 
 Props (docgen 9.4.1):
-  cellProps (Partial<Omit<SVGProps<SVGElement>, \"ref\">> | ((series: PieChartCell) => Partial<Omit<SVGProps<SVGElement>, \"ref\">>)) — Props passed down to each segment of the chart
-  children (React.ReactNode) — Additional elements rendered inside <code>PieChart</code> component
-  data (PieChartCell[]) REQUIRED — Data used to render chart
-  endAngle (number) [default 360] — Controls angle at which charts ends. Set to <code>0</code> to render the chart as semicircle.
-  labelColor (MantineColor) — Controls text color of all labels, white by default
-  labelsPosition (\"outside\" | \"inside\") [default 'outside'] — Controls labels position relative to the segment
-  labelsType (\"value\" | \"name\" | \"percent\") [default 'value'] — Type of labels to display
-  legendProps (RechartsProps) — Props passed down to recharts <code>Legend</code> component
-  paddingAngle (number) [default 0] — Controls padding between segments
-  pieChartProps ((PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>PieChart</code> component
-  pieProps (Partial<Omit<Props, \"ref\">>) — Props passed down to recharts <code>Pie</code> component
-  size (number) [default 80] — Controls chart width and height, height is increased by 40 if <code>withLabels</code> prop is set. Cannot be less than <code>thickness</code>.
-  startAngle (number) [default 0] — Controls angle at which chart starts. Set to <code>180</code> to render the chart as semicircle.
-  strokeColor (MantineColor) — Controls color of the segments stroke, by default depends on color scheme
-  strokeWidth (number) [default 1] — Controls width of segments stroke
-  tooltipAnimationDuration (number) [default 0] — Tooltip animation duration in ms
-  tooltipDataSource (\"all\" | \"segment\") [default 'all'] — Determines which data is displayed in the tooltip. <code>'all'</code> – display all values, <code>'segment'</code> – display only hovered segment.
-  tooltipProps (RechartsProps) — Props passed down to <code>Tooltip</code> recharts component
-  valueFormatter ((value: number) => string) — A function to format values inside the tooltip
-  withLabels (boolean) [default false] — Determines whether each segment should have associated label
-  withLabelsLine (boolean) [default true] — Determines whether segments labels should have lines that connect the segment with the label
-  withLegend (boolean) [default false] — Determines whether the legend should be displayed
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed when one of the section is hovered
+
+- **cellProps** `Partial<Omit<SVGProps<SVGElement>, \"ref\">> | ((series: PieChartCell) => Partial<Omit<SVGProps<SVGElement>, \"ref\">>)` — Props passed down to each segment of the chart
+- **children** `React.ReactNode` — Additional elements rendered inside `PieChart` component
+- **data** `PieChartCell[]` **(required)** — Data used to render chart
+- **endAngle** `number` _(default `360`)_ — Controls angle at which charts ends. Set to `0` to render the chart as semicircle.
+- **labelColor** `MantineColor` — Controls text color of all labels, white by default
+- **labelsPosition** `\"outside\" | \"inside\"` _(default `'outside'`)_ — Controls labels position relative to the segment
+- **labelsType** `\"value\" | \"name\" | \"percent\"` _(default `'value'`)_ — Type of labels to display
+- **legendProps** `RechartsProps` — Props passed down to recharts `Legend` component
+- **paddingAngle** `number` _(default `0`)_ — Controls padding between segments
+- **pieChartProps** `(PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `PieChart` component
+- **pieProps** `Partial<Omit<Props, \"ref\">>` — Props passed down to recharts `Pie` component
+- **size** `number` _(default `80`)_ — Controls chart width and height, height is increased by 40 if `withLabels` prop is set. Cannot be less than `thickness`.
+- **startAngle** `number` _(default `0`)_ — Controls angle at which chart starts. Set to `180` to render the chart as semicircle.
+- **strokeColor** `MantineColor` — Controls color of the segments stroke, by default depends on color scheme
+- **strokeWidth** `number` _(default `1`)_ — Controls width of segments stroke
+- **tooltipAnimationDuration** `number` _(default `0`)_ — Tooltip animation duration in ms
+- **tooltipDataSource** `\"all\" | \"segment\"` _(default `'all'`)_ — Determines which data is displayed in the tooltip. `'all'` – display all values, `'segment'` – display only hovered segment.
+- **tooltipProps** `RechartsProps` — Props passed down to `Tooltip` recharts component
+- **valueFormatter** `(value: number) => string` — A function to format values inside the tooltip
+- **withLabels** `boolean` _(default `false`)_ — Determines whether each segment should have associated label
+- **withLabelsLine** `boolean` _(default `true`)_ — Determines whether segments labels should have lines that connect the segment with the label
+- **withLegend** `boolean` _(default `false`)_ — Determines whether the legend should be displayed
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed when one of the section is hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PieChart)
@@ -429,28 +441,29 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/radar-chart
 
 Props (docgen 9.4.1):
-  activeDotProps (MantineChartDotProps) — Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.
-  children (React.ReactNode) — Additional components that are rendered inside recharts <code>RadarChart</code> component
-  data (Record<string, any>[]) REQUIRED — Data used in the chart
-  dataKey (string) REQUIRED — Key of the <code>data</code> object for axis values
-  dotProps (MantineChartDotProps) — Props passed down to all dots. Ignored if <code>withDots={false}</code> is set.
-  gridColor (MantineColor) — Controls color of the grid lines. By default, color depends on the color scheme.
-  legendProps (RechartsProps) — Props passed down to recharts Legend component
-  polarAngleAxisProps (RechartsProps) — Props passed down to recharts PolarAngleAxis component
-  polarGridProps (RechartsProps) — Props passed down to recharts PolarGrid component
-  polarRadiusAxisProps (RechartsProps) — Props passed down to recharts PolarRadiusAxis component
-  radarChartProps ((PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts RadarChart component
-  radarProps (((series: RadarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>) — Props passed down to recharts Radar component
-  series (RadarChartSeries[]) REQUIRED — Determines which data should be consumed from the <code>data</code> array.
-  textColor (MantineColor) — Controls color of all text elements. By default, color depends on the color scheme.
-  tooltipAnimationDuration (number) [default 0] — Tooltip position animation duration in ms
-  tooltipProps (RechartsProps) — Props passed down to recharts Tooltip component
-  withDots (boolean) [default false] — Determines whether dots should be displayed
-  withLegend (boolean) [default false] — Determines whether the legend should be displayed
-  withPolarAngleAxis (boolean) [default true] — Determines whether PolarAngleAxis component should be displayed
-  withPolarGrid (boolean) [default true.] — Determines whether PolarGrid component should be displayed
-  withPolarRadiusAxis (boolean) [default false] — Determines whether PolarRadiusAxisProps component should be displayed
-  withTooltip (boolean) [default false] — Determines whether Tooltip component should be displayed
+
+- **activeDotProps** `MantineChartDotProps` — Props passed down to all active dots. Ignored if `withDots={false}` is set.
+- **children** `React.ReactNode` — Additional components that are rendered inside recharts `RadarChart` component
+- **data** `Record<string, any>[]` **(required)** — Data used in the chart
+- **dataKey** `string` **(required)** — Key of the `data` object for axis values
+- **dotProps** `MantineChartDotProps` — Props passed down to all dots. Ignored if `withDots={false}` is set.
+- **gridColor** `MantineColor` — Controls color of the grid lines. By default, color depends on the color scheme.
+- **legendProps** `RechartsProps` — Props passed down to recharts Legend component
+- **polarAngleAxisProps** `RechartsProps` — Props passed down to recharts PolarAngleAxis component
+- **polarGridProps** `RechartsProps` — Props passed down to recharts PolarGrid component
+- **polarRadiusAxisProps** `RechartsProps` — Props passed down to recharts PolarRadiusAxis component
+- **radarChartProps** `(PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts RadarChart component
+- **radarProps** `((series: RadarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>` — Props passed down to recharts Radar component
+- **series** `RadarChartSeries[]` **(required)** — Determines which data should be consumed from the `data` array.
+- **textColor** `MantineColor` — Controls color of all text elements. By default, color depends on the color scheme.
+- **tooltipAnimationDuration** `number` _(default `0`)_ — Tooltip position animation duration in ms
+- **tooltipProps** `RechartsProps` — Props passed down to recharts Tooltip component
+- **withDots** `boolean` _(default `false`)_ — Determines whether dots should be displayed
+- **withLegend** `boolean` _(default `false`)_ — Determines whether the legend should be displayed
+- **withPolarAngleAxis** `boolean` _(default `true`)_ — Determines whether PolarAngleAxis component should be displayed
+- **withPolarGrid** `boolean` _(default `true.`)_ — Determines whether PolarGrid component should be displayed
+- **withPolarRadiusAxis** `boolean` _(default `false`)_ — Determines whether PolarRadiusAxisProps component should be displayed
+- **withTooltip** `boolean` _(default `false`)_ — Determines whether Tooltip component should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RadarChart)
@@ -462,20 +475,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/radial-bar-chart
 
 Props (docgen 9.4.1):
-  barSize (number) — Size of bars in px, <code>20</code> by default
-  data (Record<string, any>[]) REQUIRED — Chart data
-  dataKey (string) REQUIRED — Key from data object to use as data key
-  emptyBackgroundColor (string) — Color of the empty background, by default depends on the color scheme
-  endAngle (number) [default -270] — Angle at which chart ends
-  legendProps (RechartsProps) — Props passed down to recharts Legend component
-  radialBarChartProps ((PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts RadarChartChart component
-  radialBarProps (Omit<RadialBarProps, \"ref\">) — Props passed down to recharts RadialBar component
-  startAngle (number) [default 90] — Angle at which chart starts
-  tooltipProps (RechartsProps) — Props passed down to <code>Tooltip</code> recharts component
-  withBackground (boolean) [default true] — Determines whether empty bars area should be visible
-  withLabels (boolean) [default false] — Determines whether labels should be displayed
-  withLegend (boolean) [default false] — Determines whether the legend should be displayed
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed when one of the bars is hovered
+
+- **barSize** `number` — Size of bars in px, `20` by default
+- **data** `Record<string, any>[]` **(required)** — Chart data
+- **dataKey** `string` **(required)** — Key from data object to use as data key
+- **emptyBackgroundColor** `string` — Color of the empty background, by default depends on the color scheme
+- **endAngle** `number` _(default `-270`)_ — Angle at which chart ends
+- **legendProps** `RechartsProps` — Props passed down to recharts Legend component
+- **radialBarChartProps** `(PolarChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts RadarChartChart component
+- **radialBarProps** `Omit<RadialBarProps, \"ref\">` — Props passed down to recharts RadialBar component
+- **startAngle** `number` _(default `90`)_ — Angle at which chart starts
+- **tooltipProps** `RechartsProps` — Props passed down to `Tooltip` recharts component
+- **withBackground** `boolean` _(default `true`)_ — Determines whether empty bars area should be visible
+- **withLabels** `boolean` _(default `false`)_ — Determines whether labels should be displayed
+- **withLegend** `boolean` _(default `false`)_ — Determines whether the legend should be displayed
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed when one of the bars is hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RadialBarChart)
@@ -487,23 +501,24 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/sankey-chart
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Additional elements rendered inside <code>Sankey</code> component
-  colors (DefaultMantineColor[]) — An array of colors used for nodes when no <code>color</code> is set on individual nodes
-  data (SankeyChartData) REQUIRED — Data used to render chart, must include <code>nodes</code> and <code>links</code> arrays
-  height (number) [default 300] — Controls chart height
-  iterations (number) [default 32] — The number of relaxation iterations
-  linkColor (MantineColor) — Default color for links, by default depends on color scheme
-  linkCurvature (number) [default 0.5] — The curvature of links between nodes
-  linkOpacity (number) [default 0.4] — Opacity of the link fill
-  nodeColor (MantineColor) — Default color for nodes, by default depends on color scheme
-  nodePadding (number) [default 10] — The padding between nodes
-  nodeWidth (number) [default 10] — The width of each node
-  sankeyProps (Partial<Omit<Props, \"data\" | \"ref\">>) — Props passed down to recharts <code>Sankey</code> component
-  textColor (MantineColor) [default dimmed] — Controls text color of labels
-  tooltipAnimationDuration (number) [default 0] — Tooltip animation duration in ms
-  tooltipProps (RechartsProps) — Props passed down to <code>Tooltip</code> recharts component
-  valueFormatter ((value: number) => string) — A function to format values inside the tooltip and node labels
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed when hovered
+
+- **children** `React.ReactNode` — Additional elements rendered inside `Sankey` component
+- **colors** `DefaultMantineColor[]` — An array of colors used for nodes when no `color` is set on individual nodes
+- **data** `SankeyChartData` **(required)** — Data used to render chart, must include `nodes` and `links` arrays
+- **height** `number` _(default `300`)_ — Controls chart height
+- **iterations** `number` _(default `32`)_ — The number of relaxation iterations
+- **linkColor** `MantineColor` — Default color for links, by default depends on color scheme
+- **linkCurvature** `number` _(default `0.5`)_ — The curvature of links between nodes
+- **linkOpacity** `number` _(default `0.4`)_ — Opacity of the link fill
+- **nodeColor** `MantineColor` — Default color for nodes, by default depends on color scheme
+- **nodePadding** `number` _(default `10`)_ — The padding between nodes
+- **nodeWidth** `number` _(default `10`)_ — The width of each node
+- **sankeyProps** `Partial<Omit<Props, \"data\" | \"ref\">>` — Props passed down to recharts `Sankey` component
+- **textColor** `MantineColor` _(default `dimmed`)_ — Controls text color of labels
+- **tooltipAnimationDuration** `number` _(default `0`)_ — Tooltip animation duration in ms
+- **tooltipProps** `RechartsProps` — Props passed down to `Tooltip` recharts component
+- **valueFormatter** `(value: number) => string` — A function to format values inside the tooltip and node labels
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed when hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SankeyChart)
@@ -515,36 +530,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/scatter-chart
 
 Props (docgen 9.4.1):
-  data (ScatterChartSeries[]) REQUIRED — Data that is used to build the chart
-  dataKey ({ x: string; y: string; }) REQUIRED — Keys that should be used to retrieve data from the data array on x and y axis
-  gridAxis (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which lines should be displayed in the grid, <code>'x'</code> by default
-  gridColor (MantineColor) — Color of the grid and cursor lines, by default depends on color scheme
-  gridProps (RechartsProps) — Props passed down to the <code>CartesianGrid</code> component
-  labels ({ x?: string; y?: string | undefined; } | undefined) — Labels that should be used instead of keys names in the tooltip
-  legendProps (RechartsProps) — Props passed down to the <code>Legend</code> component
-  orientation (\"horizontal\" | \"vertical\") — Chart orientation, <code>'horizontal'</code> by default
-  pointLabels (\"x\" | \"y\") — If set, displays labels next to points for the given axis
-  referenceLines (ChartReferenceLineProps[]) — Reference lines that should be displayed on the chart
-  rightYAxisLabel (string) — A label to display next to the right y-axis
-  rightYAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component rendered on the right side
-  scatterChartProps ((CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined) — Props passed down to recharts <code>ScatterChart</code> component
-  scatterProps (Partial<Omit<Props, \"ref\">>) — Props passed down to recharts <code>Scatter</code> component
-  strokeDasharray (string | number) — Dash array for the grid lines and cursor, <code>'5 5'</code> by default
-  textColor (MantineColor) — Color of the text displayed inside the chart, <code>'dimmed'</code> by default
-  tickLine (\"none\" | \"x\" | \"y\" | \"xy\") — Specifies which axis should have tick line, <code>'y'</code> by default
-  tooltipAnimationDuration (number) — Tooltip position animation duration in ms, <code>0</code> by default
-  tooltipProps (RechartsProps) — Props passed down to the <code>Tooltip</code> component
-  unit ({ x?: string; y?: string | undefined; } | undefined) — Units displayed after value on axis and inside the tooltip
-  valueFormatter (((value: number) => string) | { x?: ((value: number) => string); y?: ((value: number) => string) | undefined; } | undefined) — A function to format values on x/y axis and in the tooltip
-  withLegend (boolean) — Determines whether chart legend should be displayed, <code>false</code> by default
-  withRightYAxis (boolean) — Determines whether additional y-axis should be displayed on the right side of the chart, <code>false</code> by default
-  withTooltip (boolean) — Determines whether chart tooltip should be displayed, <code>true</code> by default
-  withXAxis (boolean) — Determines whether x-axis should be displayed, <code>true</code> by default
-  withYAxis (boolean) — Determines whether y-axis should be displayed, <code>true</code> by default
-  xAxisLabel (string) — A label to display below the x-axis
-  xAxisProps (RechartsProps) — Props passed down to the <code>XAxis</code> recharts component
-  yAxisLabel (string) — A label to display next to the y-axis
-  yAxisProps (RechartsProps) — Props passed down to the <code>YAxis</code> recharts component
+
+- **data** `ScatterChartSeries[]` **(required)** — Data that is used to build the chart
+- **dataKey** `{ x: string; y: string; }` **(required)** — Keys that should be used to retrieve data from the data array on x and y axis
+- **gridAxis** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which lines should be displayed in the grid, `'x'` by default
+- **gridColor** `MantineColor` — Color of the grid and cursor lines, by default depends on color scheme
+- **gridProps** `RechartsProps` — Props passed down to the `CartesianGrid` component
+- **labels** `{ x?: string; y?: string | undefined; } | undefined` — Labels that should be used instead of keys names in the tooltip
+- **legendProps** `RechartsProps` — Props passed down to the `Legend` component
+- **orientation** `\"horizontal\" | \"vertical\"` — Chart orientation, `'horizontal'` by default
+- **pointLabels** `\"x\" | \"y\"` — If set, displays labels next to points for the given axis
+- **referenceLines** `ChartReferenceLineProps[]` — Reference lines that should be displayed on the chart
+- **rightYAxisLabel** `string` — A label to display next to the right y-axis
+- **rightYAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component rendered on the right side
+- **scatterChartProps** `(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined` — Props passed down to recharts `ScatterChart` component
+- **scatterProps** `Partial<Omit<Props, \"ref\">>` — Props passed down to recharts `Scatter` component
+- **strokeDasharray** `string | number` — Dash array for the grid lines and cursor, `'5 5'` by default
+- **textColor** `MantineColor` — Color of the text displayed inside the chart, `'dimmed'` by default
+- **tickLine** `\"none\" | \"x\" | \"y\" | \"xy\"` — Specifies which axis should have tick line, `'y'` by default
+- **tooltipAnimationDuration** `number` — Tooltip position animation duration in ms, `0` by default
+- **tooltipProps** `RechartsProps` — Props passed down to the `Tooltip` component
+- **unit** `{ x?: string; y?: string | undefined; } | undefined` — Units displayed after value on axis and inside the tooltip
+- **valueFormatter** `((value: number) => string) | { x?: ((value: number) => string); y?: ((value: number) => string) | undefined; } | undefined` — A function to format values on x/y axis and in the tooltip
+- **withLegend** `boolean` — Determines whether chart legend should be displayed, `false` by default
+- **withRightYAxis** `boolean` — Determines whether additional y-axis should be displayed on the right side of the chart, `false` by default
+- **withTooltip** `boolean` — Determines whether chart tooltip should be displayed, `true` by default
+- **withXAxis** `boolean` — Determines whether x-axis should be displayed, `true` by default
+- **withYAxis** `boolean` — Determines whether y-axis should be displayed, `true` by default
+- **xAxisLabel** `string` — A label to display below the x-axis
+- **xAxisProps** `RechartsProps` — Props passed down to the `XAxis` recharts component
+- **yAxisLabel** `string` — A label to display next to the y-axis
+- **yAxisProps** `RechartsProps` — Props passed down to the `YAxis` recharts component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ScatterChart)
@@ -556,15 +572,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/sparkline
 
 Props (docgen 9.4.1):
-  areaProps (Omit<Props<any, any>, \"data\" | \"ref\" | \"dataKey\">) — Props passed down to the underlying recharts <code>Area</code> component
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color
-  connectNulls (boolean) [default true] — Determines whether null values should be connected with other values
-  curveType (AreaChartCurveType) [default 'linear'] — Type of the curve
-  data ((number | null)[]) REQUIRED — Data used to render the chart
-  fillOpacity (number) [default 0.6] — Controls fill opacity of the area
-  strokeWidth (number) [default 2] — Area stroke width
-  trendColors (SparklineTrendColors) — If set, <code>color</code> prop is ignored and chart color is determined by the difference between first and last value.
-  withGradient (boolean) [default true] — Determines whether the chart fill should be a gradient
+
+- **areaProps** `Omit<Props<any, any>, \"data\" | \"ref\" | \"dataKey\">` — Props passed down to the underlying recharts `Area` component
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color
+- **connectNulls** `boolean` _(default `true`)_ — Determines whether null values should be connected with other values
+- **curveType** `AreaChartCurveType` _(default `'linear'`)_ — Type of the curve
+- **data** `(number | null)[]` **(required)** — Data used to render the chart
+- **fillOpacity** `number` _(default `0.6`)_ — Controls fill opacity of the area
+- **strokeWidth** `number` _(default `2`)_ — Area stroke width
+- **trendColors** `SparklineTrendColors` — If set, `color` prop is ignored and chart color is determined by the difference between first and last value.
+- **withGradient** `boolean` _(default `true`)_ — Determines whether the chart fill should be a gradient
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Sparkline)
@@ -576,20 +593,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/charts/treemap
 
 Props (docgen 9.4.1):
-  aspectRatio (number) [default 1.618033988749895] — The treemap will try to keep every single rectangle's aspect ratio near the aspectRatio given
-  autoContrast (boolean) — Determines whether text color should be adjusted based on background color to improve contrast
-  children (React.ReactNode) — Additional elements rendered inside <code>Treemap</code> component
-  data (TreemapData[]) REQUIRED — Data used to render chart
-  dataKey (string) [default 'value'] — Key in data object for the value
-  height (number) [default 300] — Controls chart height
-  strokeColor (MantineColor) — Controls color of the node stroke, by default depends on color scheme
-  strokeWidth (number) [default 1] — Controls width of node stroke
-  textColor (MantineColor) [default dimmed] — Controls text color of labels
-  tooltipAnimationDuration (number) [default 0] — Tooltip animation duration in ms
-  tooltipProps (RechartsProps) — Props passed down to <code>Tooltip</code> recharts component
-  treemapProps (Partial<Omit<Props<TreemapDataType, any>, \"data\" | \"ref\" | \"dataKey\">>) — Props passed down to recharts <code>Treemap</code> component
-  valueFormatter ((value: number) => string) — A function to format values inside the tooltip
-  withTooltip (boolean) [default true] — Determines whether the tooltip should be displayed when a node is hovered
+
+- **aspectRatio** `number` _(default `1.618033988749895`)_ — The treemap will try to keep every single rectangle's aspect ratio near the aspectRatio given
+- **autoContrast** `boolean` — Determines whether text color should be adjusted based on background color to improve contrast
+- **children** `React.ReactNode` — Additional elements rendered inside `Treemap` component
+- **data** `TreemapData[]` **(required)** — Data used to render chart
+- **dataKey** `string` _(default `'value'`)_ — Key in data object for the value
+- **height** `number` _(default `300`)_ — Controls chart height
+- **strokeColor** `MantineColor` — Controls color of the node stroke, by default depends on color scheme
+- **strokeWidth** `number` _(default `1`)_ — Controls width of node stroke
+- **textColor** `MantineColor` _(default `dimmed`)_ — Controls text color of labels
+- **tooltipAnimationDuration** `number` _(default `0`)_ — Tooltip animation duration in ms
+- **tooltipProps** `RechartsProps` — Props passed down to `Tooltip` recharts component
+- **treemapProps** `Partial<Omit<Props<TreemapDataType, any>, \"data\" | \"ref\" | \"dataKey\">>` — Props passed down to recharts `Treemap` component
+- **valueFormatter** `(value: number) => string` — A function to format values inside the tooltip
+- **withTooltip** `boolean` _(default `true`)_ — Determines whether the tooltip should be displayed when a node is hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Treemap)

@@ -12,10 +12,11 @@
 https://mantine.dev/x/modals
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Your app
-  labels (ConfirmLabels) — Confirm modal labels
-  modalProps (ModalSettings) — Shared Modal component props, applied for every modal
-  modals (Record<string, FC<ContextModalProps<any>>>) — Predefined modals
+
+- **children** `React.ReactNode` — Your app
+- **labels** `ConfirmLabels` — Confirm modal labels
+- **modalProps** `ModalSettings` — Shared Modal component props, applied for every modal
+- **modals** `Record<string, FC<ContextModalProps<any>>>` — Predefined modals
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ModalsProvider)

@@ -1,4 +1,4 @@
-(ns mantine.impl.factory
+(ns ^:no-doc mantine.impl.factory
   "Factory + JVM stubs the generated namespaces delegate to.
 
   :cljs exposes `factory` (variadic element factory over react/createElement) and

@@ -13,20 +13,21 @@
 https://mantine.dev/core/accordion
 
 Props (docgen 9.4.1):
-  chevron (React.ReactNode) — Custom chevron icon
-  chevronIconSize (string | number) [default 16] — Size of the default chevron icon. Ignored when <code>chevron</code> prop is set. Use <code>chevronSize</code> instead when using custom chevron.
-  chevronPosition (\"left\" | \"right\") [default right] — Position of the chevron relative to the item label
-  chevronSize (string | number) [default auto] — Size of the chevron icon container
-  defaultValue (string | string[] | null) — Uncontrolled component default value
-  disableChevronRotation (boolean) [default false] — If set, chevron rotation is disabled
-  keepMounted (boolean) [default true] — If set to <code>false</code>, panels are unmounted when collapsed. By default, panels stay mounted when collapsed.
-  loop (boolean) [default true] — If set, arrow keys loop through items (first to last and last to first)
-  multiple (boolean) [default false] — If set, multiple items can be opened at the same time
-  onChange ((value: AccordionValue<Multiple>) => void) — Called when value changes, payload type depends on <code>multiple</code> prop
-  order (2 | 3 | 4 | 5 | 6) — Sets heading level (h2-h6) for <code>Accordion.Control</code> elements. Wraps each control in the corresponding heading tag, recommended to meet WAI-ARIA accessibility requirements. Has no visual effect.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem.
-  transitionDuration (number) [default 200] — Transition duration in ms
-  value (string | string[] | null) — Controlled component value
+
+- **chevron** `React.ReactNode` — Custom chevron icon
+- **chevronIconSize** `string | number` _(default `16`)_ — Size of the default chevron icon. Ignored when `chevron` prop is set. Use `chevronSize` instead when using custom chevron.
+- **chevronPosition** `\"left\" | \"right\"` _(default `right`)_ — Position of the chevron relative to the item label
+- **chevronSize** `string | number` _(default `auto`)_ — Size of the chevron icon container
+- **defaultValue** `string | string[] | null` — Uncontrolled component default value
+- **disableChevronRotation** `boolean` _(default `false`)_ — If set, chevron rotation is disabled
+- **keepMounted** `boolean` _(default `true`)_ — If set to `false`, panels are unmounted when collapsed. By default, panels stay mounted when collapsed.
+- **loop** `boolean` _(default `true`)_ — If set, arrow keys loop through items (first to last and last to first)
+- **multiple** `boolean` _(default `false`)_ — If set, multiple items can be opened at the same time
+- **onChange** `(value: AccordionValue<Multiple>) => void` — Called when value changes, payload type depends on `multiple` prop
+- **order** `2 | 3 | 4 | 5 | 6` — Sets heading level (h2-h6) for `Accordion.Control` elements. Wraps each control in the corresponding heading tag, recommended to meet WAI-ARIA accessibility requirements. Has no visual effect.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem.
+- **transitionDuration** `number` _(default `200`)_ — Transition duration in ms
+- **value** `string | string[] | null` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Accordion)
@@ -38,10 +39,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/accordion
 
 Props (docgen 9.4.1):
-  chevron (React.ReactNode) — Custom chevron icon
-  children (React.ReactNode) — Control label
-  disabled (boolean) — Sets <code>disabled</code> attribute, prevents interactions
-  icon (React.ReactNode) — Icon displayed next to the label
+
+- **chevron** `React.ReactNode` — Custom chevron icon
+- **children** `React.ReactNode` — Control label
+- **disabled** `boolean` — Sets `disabled` attribute, prevents interactions
+- **icon** `React.ReactNode` — Icon displayed next to the label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AccordionControl)
@@ -53,7 +55,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/accordion
 
 Props (docgen 9.4.1):
-  value (string) REQUIRED — Value that is used to manage the accordion state
+
+- **value** `string` **(required)** — Value that is used to manage the accordion state
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AccordionItem)
@@ -67,15 +70,16 @@ https://mantine.dev/core/action-icon
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Icon element
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color.
-  disabled (boolean) — Sets <code>disabled</code> attribute, prevents interactions
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient values used with <code>variant=\"gradient\"</code>.
-  loaderProps (LoaderProps) — Props passed down to the <code>Loader</code> component. Ignored when <code>loading</code> prop is not set.
-  loading (boolean) — If set, <code>Loader</code> component is displayed instead of the <code>children</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem.
-  size (number | MantineSize | (string & {}) | \"input-xs\" | \"input-sm\" | \"input-md\" | \"input-lg\" | \"input-xl\") [default 'md'] — Controls width and height of the button. Numbers are converted to rem.
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Icon element
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color.
+- **disabled** `boolean` — Sets `disabled` attribute, prevents interactions
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient values used with `variant=\"gradient\"`.
+- **loaderProps** `LoaderProps` — Props passed down to the `Loader` component. Ignored when `loading` prop is not set.
+- **loading** `boolean` — If set, `Loader` component is displayed instead of the `children`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem.
+- **size** `number | MantineSize | (string & {}) | \"input-xs\" | \"input-sm\" | \"input-md\" | \"input-lg\" | \"input-xl\"` _(default `'md'`)_ — Controls width and height of the button. Numbers are converted to rem.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ActionIcon)
@@ -89,9 +93,10 @@ https://mantine.dev/core/action-icon
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  borderWidth (string | number) [default 1] — <code>border-width</code> of the child components.
-  children (React.ReactNode) — <code>ActionIcon</code> and <code>ActionIcon.GroupSection</code> components only
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Group orientation
+
+- **borderWidth** `string | number` _(default `1`)_ — `border-width` of the child components.
+- **children** `React.ReactNode` — `ActionIcon` and `ActionIcon.GroupSection` components only
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Group orientation
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ActionIconGroup)
@@ -103,10 +108,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/affix
 
 Props (docgen 9.4.1):
-  portalProps (BasePortalProps) — Props passed down to the <code>Portal</code> component. Ignored when <code>withinPortal</code> is <code>false</code>.
-  position (AffixPosition) [default { bottom: 0, right: 0 }] — Affix position on screen
-  withinPortal (boolean) [default true] — Determines whether the component is rendered within <code>Portal</code>
-  zIndex (React.CSSProperties[\"zIndex\"]) [default 200] — Root element <code>z-index</code> property
+
+- **portalProps** `BasePortalProps` — Props passed down to the `Portal` component. Ignored when `withinPortal` is `false`.
+- **position** `AffixPosition` _(default `{ bottom: 0, right: 0 }`)_ — Affix position on screen
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether the component is rendered within `Portal`
+- **zIndex** `React.CSSProperties[\"zIndex\"]` _(default `200`)_ — Root element `z-index` property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Affix)
@@ -118,14 +124,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/alert
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  closeButtonLabel (string) — Close button <code>aria-label</code>
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color
-  icon (React.ReactNode) — Icon displayed next to the title
-  onClose (() => void) — Called when the close button is clicked
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  title (React.ReactNode) — Alert title
-  withCloseButton (boolean) [default false] — Determines whether close button should be displayed
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **closeButtonLabel** `string` — Close button `aria-label`
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color
+- **icon** `React.ReactNode` — Icon displayed next to the title
+- **onClose** `() => void` — Called when the close button is clicked
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **title** `React.ReactNode` — Alert title
+- **withCloseButton** `boolean` _(default `false`)_ — Determines whether close button should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Alert)
@@ -137,14 +144,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/alpha-slider
 
 Props (docgen 9.4.1):
-  color (string) REQUIRED
-  focusable (boolean) [default true] — If set, slider thumb can be focused
-  onChange ((value: number) => void) — Called when value changes
-  onChangeEnd ((value: number) => void) — Called when user stops dragging the slider or uses keyboard to change value
-  onScrubEnd (() => void) — Called when user stops dragging the slider
-  onScrubStart (() => void) — Called when user starts dragging the slider
-  size (MantineSize) [default 'md'] — Slider size
-  value (number) REQUIRED — Controlled component value
+
+- **color** `string` **(required)**
+- **focusable** `boolean` _(default `true`)_ — If set, slider thumb can be focused
+- **onChange** `(value: number) => void` — Called when value changes
+- **onChangeEnd** `(value: number) => void` — Called when user stops dragging the slider or uses keyboard to change value
+- **onScrubEnd** `() => void` — Called when user stops dragging the slider
+- **onScrubStart** `() => void` — Called when user starts dragging the slider
+- **size** `MantineSize` _(default `'md'`)_ — Slider size
+- **value** `number` **(required)** — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled AlphaSlider))
@@ -156,14 +164,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/anchor
 
 Props (docgen 9.4.1):
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration, ignored when <code>variant</code> is not <code>gradient</code>
-  inherit (boolean) [default false] — Determines whether font properties should be inherited from the parent
-  inline (boolean) [default false] — Sets <code>line-height</code> to 1 for centering
-  lineClamp (number) — Number of lines after which Text will be truncated
-  size (MantineSize | (string & {})) [default 'md'] — Controls <code>font-size</code> and <code>line-height</code>
-  textWrap (\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\") — Controls <code>text-wrap</code> CSS property
-  truncate (TextTruncate) — Side on which Text must be truncated, if <code>true</code>, text is truncated from the start
-  underline (\"always\" | \"hover\" | \"not-hover\" | \"never\") [default hover] — Defines when <code>text-decoration: underline</code> styles are applied.
+
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration, ignored when `variant` is not `gradient`
+- **inherit** `boolean` _(default `false`)_ — Determines whether font properties should be inherited from the parent
+- **inline** `boolean` _(default `false`)_ — Sets `line-height` to 1 for centering
+- **lineClamp** `number` — Number of lines after which Text will be truncated
+- **size** `MantineSize | (string & {})` _(default `'md'`)_ — Controls `font-size` and `line-height`
+- **textWrap** `\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\"` — Controls `text-wrap` CSS property
+- **truncate** `TextTruncate` — Side on which Text must be truncated, if `true`, text is truncated from the start
+- **underline** `\"always\" | \"hover\" | \"not-hover\" | \"never\"` _(default `hover`)_ — Defines when `text-decoration: underline` styles are applied.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Anchor)
@@ -175,22 +184,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/angle-slider
 
 Props (docgen 9.4.1):
-  defaultValue (number) — Uncontrolled component default value
-  disabled (boolean) — Sets <code>data-disabled</code> attribute, disables interactions
-  formatLabel ((value: number) => ReactNode) — A function to format label based on the current value
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  marks ({ value: number; label?: string; }[] | undefined) — Array of marks displayed on the slider
-  name (string) — Hidden input name, use with uncontrolled component
-  onChange ((value: number) => void) — Called on value change
-  onChangeEnd ((value: number) => void) — Called after the selection is finished
-  onScrubEnd (() => void) — Called in <code>onMouseUp</code> and <code>onTouchEnd</code>
-  onScrubStart (() => void) — Called in <code>onMouseDown</code> and <code>onTouchStart</code>
-  restrictToMarks (boolean) [default false] — If set, the selection is allowed only from the given marks array
-  size (number) [default 60] — Slider size in px
-  step (number) [default 1] — Step between values
-  thumbSize (number) — Size of the thumb in px. Calculated based on the <code>size</code> value by default.
-  value (number) — Controlled component value
-  withLabel (boolean) [default true] — If set, the label is displayed inside the slider
+
+- **defaultValue** `number` — Uncontrolled component default value
+- **disabled** `boolean` — Sets `data-disabled` attribute, disables interactions
+- **formatLabel** `(value: number) => ReactNode` — A function to format label based on the current value
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **marks** `{ value: number; label?: string; }[] | undefined` — Array of marks displayed on the slider
+- **name** `string` — Hidden input name, use with uncontrolled component
+- **onChange** `(value: number) => void` — Called on value change
+- **onChangeEnd** `(value: number) => void` — Called after the selection is finished
+- **onScrubEnd** `() => void` — Called in `onMouseUp` and `onTouchEnd`
+- **onScrubStart** `() => void` — Called in `onMouseDown` and `onTouchStart`
+- **restrictToMarks** `boolean` _(default `false`)_ — If set, the selection is allowed only from the given marks array
+- **size** `number` _(default `60`)_ — Slider size in px
+- **step** `number` _(default `1`)_ — Step between values
+- **thumbSize** `number` — Size of the thumb in px. Calculated based on the `size` value by default.
+- **value** `number` — Controlled component value
+- **withLabel** `boolean` _(default `true`)_ — If set, the label is displayed inside the slider
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled AngleSlider))
@@ -202,19 +212,20 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/app-shell
 
 Props (docgen 9.4.1):
-  aside (AppShellAsideConfiguration) — <code>Aside</code> configuration, controls width, breakpoints and collapsed state. Required if you use <code>Aside</code> component.
-  disabled (boolean) — If set, <code>Navbar</code>, <code>Aside</code>, <code>Header</code> and <code>Footer</code> components are hidden
-  footer (AppShellFooterConfiguration) — <code>Footer</code> configuration, controls height, offset and collapsed state. Required if you use <code>Footer</code> component.
-  header (AppShellHeaderConfiguration) — <code>Header</code> configuration, controls height, offset and collapsed state. Required if you use <code>Header</code> component.
-  layout (\"default\" | \"alt\") — Determines how <code>Navbar</code>/<code>Aside</code> are arranged relative to <code>Header</code>/<code>Footer</code>
-  mode (\"fixed\" | \"static\") [default 'fixed'] — Determines positioning mode of all sections
-  navbar (AppShellNavbarConfiguration) — <code>Navbar</code> configuration, controls width, breakpoints and collapsed state. Required if you use <code>Navbar</code> component.
-  offsetScrollbars (boolean) [default true] — If set, <code>Header</code> and <code>Footer</code> components include styles to offset scrollbars. Based on <code>react-remove-scroll</code>.
-  padding (MantineSpacing | AppShellResponsiveSize) [default 0] — Padding of the main section. Important: use <code>padding</code> prop instead of <code>p</code>.
-  transitionDuration (number) [default 200] — Duration of all transitions in ms
-  transitionTimingFunction (TransitionTimingFunction) [default ease] — Timing function of all transitions
-  withBorder (boolean) [default true] — If set, the associated components have a border
-  zIndex (string | number) [default 100] — <code>z-index</code> of all associated elements
+
+- **aside** `AppShellAsideConfiguration` — `Aside` configuration, controls width, breakpoints and collapsed state. Required if you use `Aside` component.
+- **disabled** `boolean` — If set, `Navbar`, `Aside`, `Header` and `Footer` components are hidden
+- **footer** `AppShellFooterConfiguration` — `Footer` configuration, controls height, offset and collapsed state. Required if you use `Footer` component.
+- **header** `AppShellHeaderConfiguration` — `Header` configuration, controls height, offset and collapsed state. Required if you use `Header` component.
+- **layout** `\"default\" | \"alt\"` — Determines how `Navbar`/`Aside` are arranged relative to `Header`/`Footer`
+- **mode** `\"fixed\" | \"static\"` _(default `'fixed'`)_ — Determines positioning mode of all sections
+- **navbar** `AppShellNavbarConfiguration` — `Navbar` configuration, controls width, breakpoints and collapsed state. Required if you use `Navbar` component.
+- **offsetScrollbars** `boolean` _(default `true`)_ — If set, `Header` and `Footer` components include styles to offset scrollbars. Based on `react-remove-scroll`.
+- **padding** `MantineSpacing | AppShellResponsiveSize` _(default `0`)_ — Padding of the main section. Important: use `padding` prop instead of `p`.
+- **transitionDuration** `number` _(default `200`)_ — Duration of all transitions in ms
+- **transitionTimingFunction** `TransitionTimingFunction` _(default `ease`)_ — Timing function of all transitions
+- **withBorder** `boolean` _(default `true`)_ — If set, the associated components have a border
+- **zIndex** `string | number` _(default `100`)_ — `z-index` of all associated elements
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AppShell)
@@ -226,8 +237,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/app-shell
 
 Props (docgen 9.4.1):
-  withBorder (boolean) — If set, component haves a border, overrides <code>withBorder</code> prop on <code>AppShell</code> component
-  zIndex (React.CSSProperties[\"zIndex\"]) — Sets <code>z-index</code>. Inherited from the <code>AppShell</code> by default.
+
+- **withBorder** `boolean` — If set, component haves a border, overrides `withBorder` prop on `AppShell` component
+- **zIndex** `React.CSSProperties[\"zIndex\"]` — Sets `z-index`. Inherited from the `AppShell` by default.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AppShellAside)
@@ -239,8 +251,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/app-shell
 
 Props (docgen 9.4.1):
-  withBorder (boolean) — If set, component haves a border, overrides <code>withBorder</code> prop on <code>AppShell</code> component
-  zIndex (React.CSSProperties[\"zIndex\"]) — Sets <code>z-index</code>. Inherited from the <code>AppShell</code> by default.
+
+- **withBorder** `boolean` — If set, component haves a border, overrides `withBorder` prop on `AppShell` component
+- **zIndex** `React.CSSProperties[\"zIndex\"]` — Sets `z-index`. Inherited from the `AppShell` by default.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AppShellFooter)
@@ -252,8 +265,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/app-shell
 
 Props (docgen 9.4.1):
-  withBorder (boolean) — If set, component haves a border, overrides <code>withBorder</code> prop on <code>AppShell</code> component
-  zIndex (React.CSSProperties[\"zIndex\"]) — Sets <code>z-index</code>. Inherited from the <code>AppShell</code> by default.
+
+- **withBorder** `boolean` — If set, component haves a border, overrides `withBorder` prop on `AppShell` component
+- **zIndex** `React.CSSProperties[\"zIndex\"]` — Sets `z-index`. Inherited from the `AppShell` by default.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AppShellHeader)
@@ -265,8 +279,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/app-shell
 
 Props (docgen 9.4.1):
-  withBorder (boolean) — If set, component haves a border, overrides <code>withBorder</code> prop on <code>AppShell</code> component
-  zIndex (React.CSSProperties[\"zIndex\"]) — Sets <code>z-index</code>. Inherited from the <code>AppShell</code> by default.
+
+- **withBorder** `boolean` — If set, component haves a border, overrides `withBorder` prop on `AppShell` component
+- **zIndex** `React.CSSProperties[\"zIndex\"]` — Sets `z-index`. Inherited from the `AppShell` by default.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AppShellNavbar)
@@ -276,7 +291,8 @@ Optional leading props map; remaining args are children."
   "AppShellSection
 
 Props (docgen 9.4.1):
-  grow (boolean) — If set, the section expands to take all available space
+
+- **grow** `boolean` — If set, the section expands to take all available space
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AppShellSection)
@@ -288,7 +304,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/aspect-ratio
 
 Props (docgen 9.4.1):
-  ratio (number) [default 1] — Aspect ratio, for example, <code>16 / 9</code>, <code>4 / 3</code>, <code>1920 / 1080</code>
+
+- **ratio** `number` _(default `1`)_ — Aspect ratio, for example, `16 / 9`, `4 / 3`, `1920 / 1080`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory AspectRatio)
@@ -300,60 +317,61 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/autocomplete
 
 Props (docgen 9.4.1):
-  autoSelectOnBlur (boolean) [default false] — If set, the highlighted option is selected when the input loses focus
-  clearButtonProps (InputClearButtonProps) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, the clear button is displayed when the component has a value
-  comboboxProps (ComboboxProps) — Props passed down to <code>Combobox</code> component
-  data (ComboboxGenericData) — Data used to display options. Values must be unique.
-  defaultDropdownOpened (boolean) — Uncontrolled dropdown initial opened state
-  defaultValue (string) — Default value for uncontrolled component
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownOpened (boolean) — Controlled dropdown opened state
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  filter (OptionsFilter<string>) — Function based on which items are filtered and sorted
-  floatingHeight (\"viewport\") — If set to <code>'viewport'</code>, the dropdown grows to fill the available vertical space in the viewport. Disables the <code>flip</code> middleware.
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  limit (number) — Maximum number of options displayed at a time, <code>Infinity</code> by default
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxDropdownHeight (string | number) — <code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default
-  onChange ((value: string) => void) — Called when value changes
-  onClear (() => void) — Called when the clear button is clicked
-  onDropdownClose (() => void) — Called when dropdown closes
-  onDropdownOpen (() => void) — Called when dropdown opens
-  onOptionSubmit ((value: string) => void) — Called when option is submitted from dropdown with mouse click or <code>Enter</code> key
-  openOnFocus (boolean) [default true] — If set, the dropdown opens when the input receives focus
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  renderOption (RenderAutocompleteOption) — Function to render custom option content
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  scrollAreaProps (ScrollAreaProps) — Props passed to the underlying <code>ScrollArea</code> component in the dropdown
-  selectFirstOptionOnChange (boolean) — If set, the first option is selected when value changes, <code>false</code> by default
-  selectFirstOptionOnDropdownOpen (boolean) — If set, the first option is selected when dropdown opens, <code>false</code> by default
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (string) — Controlled component value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withScrollArea (boolean) — Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **autoSelectOnBlur** `boolean` _(default `false`)_ — If set, the highlighted option is selected when the input loses focus
+- **clearButtonProps** `InputClearButtonProps` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, the clear button is displayed when the component has a value
+- **comboboxProps** `ComboboxProps` — Props passed down to `Combobox` component
+- **data** `ComboboxGenericData` — Data used to display options. Values must be unique.
+- **defaultDropdownOpened** `boolean` — Uncontrolled dropdown initial opened state
+- **defaultValue** `string` — Default value for uncontrolled component
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownOpened** `boolean` — Controlled dropdown opened state
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **filter** `OptionsFilter<string>` — Function based on which items are filtered and sorted
+- **floatingHeight** `\"viewport\"` — If set to `'viewport'`, the dropdown grows to fill the available vertical space in the viewport. Disables the `flip` middleware.
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **limit** `number` — Maximum number of options displayed at a time, `Infinity` by default
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxDropdownHeight** `string | number` — `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default
+- **onChange** `(value: string) => void` — Called when value changes
+- **onClear** `() => void` — Called when the clear button is clicked
+- **onDropdownClose** `() => void` — Called when dropdown closes
+- **onDropdownOpen** `() => void` — Called when dropdown opens
+- **onOptionSubmit** `(value: string) => void` — Called when option is submitted from dropdown with mouse click or `Enter` key
+- **openOnFocus** `boolean` _(default `true`)_ — If set, the dropdown opens when the input receives focus
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **renderOption** `RenderAutocompleteOption` — Function to render custom option content
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **scrollAreaProps** `ScrollAreaProps` — Props passed to the underlying `ScrollArea` component in the dropdown
+- **selectFirstOptionOnChange** `boolean` — If set, the first option is selected when value changes, `false` by default
+- **selectFirstOptionOnDropdownOpen** `boolean` — If set, the first option is selected when dropdown opens, `false` by default
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `string` — Controlled component value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withScrollArea** `boolean` — Determines whether the options should be wrapped with `ScrollArea.AutoSize`, `true` by default
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled Autocomplete))
@@ -367,17 +385,18 @@ https://mantine.dev/core/avatar
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  allowedInitialsColors (DefaultMantineColor[]) — A list of colors that is used for autogenerated initials. By default, all default Mantine colors can be used except gray and dark.
-  alt (string) — Image <code>alt</code> attribute, also used as <code>title</code> attribute for placeholder
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Avatar placeholder, displayed when <code>src={null}</code> or when the image cannot be loaded
-  color (DefaultMantineColor | \"initials\") [default 'gray'] — Key of <code>theme.colors</code> or any valid CSS color
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration for <code>variant=\"gradient\"</code>
-  imageProps (DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) — Attributes passed down to <code>img</code> element
-  name (string) — Name of the user. When <code>src</code> is not set, used to display initials and to generate color when <code>color=\"initials\"</code> is set.
-  radius (MantineRadius | number) [default '1000px'] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  size (MantineSize | number) [default 'md'] — Width and height of the avatar, numbers are converted to rem
-  src (string | null) — Image url, if the image cannot be loaded or <code>src={null}</code>, then placeholder is displayed instead
+
+- **allowedInitialsColors** `DefaultMantineColor[]` — A list of colors that is used for autogenerated initials. By default, all default Mantine colors can be used except gray and dark.
+- **alt** `string` — Image `alt` attribute, also used as `title` attribute for placeholder
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Avatar placeholder, displayed when `src={null}` or when the image cannot be loaded
+- **color** `DefaultMantineColor | \"initials\"` _(default `'gray'`)_ — Key of `theme.colors` or any valid CSS color
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration for `variant=\"gradient\"`
+- **imageProps** `DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>` — Attributes passed down to `img` element
+- **name** `string` — Name of the user. When `src` is not set, used to display initials and to generate color when `color=\"initials\"` is set.
+- **radius** `MantineRadius | number` _(default `'1000px'`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **size** `MantineSize | number` _(default `'md'`)_ — Width and height of the avatar, numbers are converted to rem
+- **src** `string | null` — Image url, if the image cannot be loaded or `src={null}`, then placeholder is displayed instead
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Avatar)
@@ -402,8 +421,9 @@ https://mantine.dev/core/background-image
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  radius (MantineRadius | number) [default 0] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem
-  src (string) REQUIRED — Image url
+
+- **radius** `MantineRadius | number` _(default `0`)_ — Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem
+- **src** `string` **(required)** — Image url
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory BackgroundImage)
@@ -417,16 +437,17 @@ https://mantine.dev/core/badge
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Main badge content
-  circle (boolean) — If set, badge <code>min-width</code> becomes equal to its <code>height</code> and horizontal padding is removed
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color
-  fullWidth (boolean) [default false] — Determines whether Badge should take 100% of its parent width
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration used when <code>variant=\\\"gradient\\\"</code>
-  leftSection (React.ReactNode) — Content displayed on the left side of the badge label
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  rightSection (React.ReactNode) — Content displayed on the right side of the badge label
-  size (MantineSize) [default 'md'] — Controls <code>font-size</code>, <code>height</code> and horizontal <code>padding</code>
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Main badge content
+- **circle** `boolean` — If set, badge `min-width` becomes equal to its `height` and horizontal padding is removed
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether Badge should take 100% of its parent width
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration used when `variant=\\\"gradient\\\"`
+- **leftSection** `React.ReactNode` — Content displayed on the left side of the badge label
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **rightSection** `React.ReactNode` — Content displayed on the right side of the badge label
+- **size** `MantineSize` _(default `'md'`)_ — Controls `font-size`, `height` and horizontal `padding`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Badge)
@@ -438,12 +459,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/blockquote
 
 Props (docgen 9.4.1):
-  cite (React.ReactNode) — Reference to a cited quote
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color
-  icon (React.ReactNode) — Blockquote icon, displayed at the top left side
-  iconSize (string | number) [default 40] — Controls icon <code>width</code> and <code>height</code>, numbers are converted to rem
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  textWrap (\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\") — Controls <code>text-wrap</code> CSS property
+
+- **cite** `React.ReactNode` — Reference to a cited quote
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color
+- **icon** `React.ReactNode` — Blockquote icon, displayed at the top left side
+- **iconSize** `string | number` _(default `40`)_ — Controls icon `width` and `height`, numbers are converted to rem
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **textWrap** `\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\"` — Controls `text-wrap` CSS property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Blockquote)
@@ -455,9 +477,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/breadcrumbs
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — React nodes that should be separated with <code>separator</code>
-  separator (React.ReactNode) [default '/'] — Separator between children
-  separatorMargin (MantineSpacing) [default 'xs'] — Controls spacing between separator and breadcrumb
+
+- **children** `React.ReactNode` **(required)** — React nodes that should be separated with `separator`
+- **separator** `React.ReactNode` _(default `'/'`)_ — Separator between children
+- **separatorMargin** `MantineSpacing` _(default `'xs'`)_ — Controls spacing between separator and breadcrumb
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Breadcrumbs)
@@ -469,12 +492,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/burger
 
 Props (docgen 9.4.1):
-  color (MantineColor) — Key of <code>theme.colors</code> of any valid CSS value, by default <code>theme.white</code> in dark color scheme and <code>theme.black</code> in light
-  lineSize (string | number) — Controls height of lines, by default calculated based on <code>size</code> prop
-  opened (boolean) [default false] — State of the burger, when <code>true</code> burger is transformed into X
-  size (MantineSize | number) [default 'md'] — Controls burger <code>width</code> and <code>height</code>, numbers are converted to rem
-  transitionDuration (number) [default 300] — <code>transition-duration</code> property value in ms
-  transitionTimingFunction (string) [default 'ease'] — <code>transition-timing-function</code> property value
+
+- **color** `MantineColor` — Key of `theme.colors` of any valid CSS value, by default `theme.white` in dark color scheme and `theme.black` in light
+- **lineSize** `string | number` — Controls height of lines, by default calculated based on `size` prop
+- **opened** `boolean` _(default `false`)_ — State of the burger, when `true` burger is transformed into X
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls burger `width` and `height`, numbers are converted to rem
+- **transitionDuration** `number` _(default `300`)_ — `transition-duration` property value in ms
+- **transitionTimingFunction** `string` _(default `'ease'`)_ — `transition-timing-function` property value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Burger)
@@ -486,19 +510,20 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/button
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Button content
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color
-  disabled (boolean) — Sets <code>disabled</code> attribute, applies disabled styles
-  fullWidth (boolean) [default false] — Sets <code>width: 100%</code>
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration used for <code>variant=\"gradient\"</code>
-  justify (JustifyContent) [default 'center'] — Sets <code>justify-content</code> of <code>inner</code> element, can be used to change distribution of sections and label
-  leftSection (React.ReactNode) — Content on the left side of the button label
-  loaderProps (LoaderProps) — Props added to the <code>Loader</code> component (only visible when <code>loading</code> prop is set)
-  loading (boolean) — If set, the <code>Loader</code> component is displayed over the button
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  rightSection (React.ReactNode) — Content on the right side of the button label
-  size (ButtonSize) [default 'sm'] — Controls button <code>height</code>, <code>font-size</code> and horizontal <code>padding</code>
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Button content
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color
+- **disabled** `boolean` — Sets `disabled` attribute, applies disabled styles
+- **fullWidth** `boolean` _(default `false`)_ — Sets `width: 100%`
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration used for `variant=\"gradient\"`
+- **justify** `JustifyContent` _(default `'center'`)_ — Sets `justify-content` of `inner` element, can be used to change distribution of sections and label
+- **leftSection** `React.ReactNode` — Content on the left side of the button label
+- **loaderProps** `LoaderProps` — Props added to the `Loader` component (only visible when `loading` prop is set)
+- **loading** `boolean` — If set, the `Loader` component is displayed over the button
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **rightSection** `React.ReactNode` — Content on the right side of the button label
+- **size** `ButtonSize` _(default `'sm'`)_ — Controls button `height`, `font-size` and horizontal `padding`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Button)
@@ -510,9 +535,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/button
 
 Props (docgen 9.4.1):
-  borderWidth (string | number) [default 1] — <code>border-width</code> of the child <code>Button</code> components. Numbers are converted to rem.
-  children (React.ReactNode) — <code>Button</code> components
-  orientation (\"horizontal\" | \"vertical\") [default horizontal] — Orientation of the group
+
+- **borderWidth** `string | number` _(default `1`)_ — `border-width` of the child `Button` components. Numbers are converted to rem.
+- **children** `React.ReactNode` — `Button` components
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `horizontal`)_ — Orientation of the group
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ButtonGroup)
@@ -524,10 +550,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/button
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration used when <code>variant=\"gradient\"</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  size (ButtonSize) [default 'sm'] — Controls section <code>height</code>, <code>font-size</code> and horizontal <code>padding</code>
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration used when `variant=\"gradient\"`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **size** `ButtonSize` _(default `'sm'`)_ — Controls section `height`, `font-size` and horizontal `padding`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ButtonGroupSection)
@@ -539,12 +566,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/card
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Card content
-  orientation (\"horizontal\" | \"vertical\") [default 'vertical'] — Card orientation
-  padding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set padding
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any valid CSS value to set <code>box-shadow</code>
-  withBorder (boolean) — Adds border to the card
+
+- **children** `React.ReactNode` — Card content
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'vertical'`)_ — Card orientation
+- **padding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set padding
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any valid CSS value to set `box-shadow`
+- **withBorder** `boolean` — Adds border to the card
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Card)
@@ -556,8 +584,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/card
 
 Props (docgen 9.4.1):
-  inheritPadding (boolean) — If set, the section inherits padding from the parent <code>Card</code>
-  withBorder (boolean) — Adds border to the root element
+
+- **inheritPadding** `boolean` — If set, the section inherits padding from the parent `Card`
+- **withBorder** `boolean` — Adds border to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CardSection)
@@ -571,8 +600,9 @@ https://mantine.dev/core/center
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Content to center
-  inline (boolean) — If set, <code>inline-flex</code> is used instead of <code>flex</code>
+
+- **children** `React.ReactNode` — Content to center
+- **inline** `boolean` — If set, `inline-flex` is used instead of `flex`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Center)
@@ -584,21 +614,22 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/checkbox
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts icon color based on background color for <code>filled</code> variant
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to set input background color in checked state
-  description (React.ReactNode) — Description below the label
-  error (React.ReactNode) — Error message below the label
-  icon (CheckboxIconComponent) — Icon for checked or indeterminate state
-  iconColor (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color to set icon color. By default, depends on <code>theme.autoContrast</code>.
-  id (string) — Unique input id
-  indeterminate (boolean) — Indeterminate state of the checkbox. If set, <code>checked</code> prop is dismissed.
-  label (React.ReactNode) — <code>label</code> associated with the checkbox
-  labelPosition (\"left\" | \"right\") [default 'right'] — Position of the label relative to the input
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  rootRef (Ref<HTMLDivElement>) — Root element ref
-  size (MantineSize) [default 'sm'] — Controls size of the component
-  withErrorStyles (boolean) [default true] — If set, applies error styles to the checkbox when <code>error</code> prop is set
-  wrapperProps (React.ComponentProps<\"div\">) — Props passed down to the root element
+
+- **autoContrast** `boolean` — If set, adjusts icon color based on background color for `filled` variant
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to set input background color in checked state
+- **description** `React.ReactNode` — Description below the label
+- **error** `React.ReactNode` — Error message below the label
+- **icon** `CheckboxIconComponent` — Icon for checked or indeterminate state
+- **iconColor** `MantineColor` — Key of `theme.colors` or any valid CSS color to set icon color. By default, depends on `theme.autoContrast`.
+- **id** `string` — Unique input id
+- **indeterminate** `boolean` — Indeterminate state of the checkbox. If set, `checked` prop is dismissed.
+- **label** `React.ReactNode` — `label` associated with the checkbox
+- **labelPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the label relative to the input
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **rootRef** `Ref<HTMLDivElement>` — Root element ref
+- **size** `MantineSize` _(default `'sm'`)_ — Controls size of the component
+- **withErrorStyles** `boolean` _(default `true`)_ — If set, applies error styles to the checkbox when `error` prop is set
+- **wrapperProps** `React.ComponentProps<\"div\">` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Checkbox)
@@ -610,12 +641,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/checkbox
 
 Props (docgen 9.4.1):
-  checked (boolean) — Controlled component value
-  defaultChecked (boolean) — Uncontrolled component default value
-  onChange ((checked: boolean) => void) — Called when value changes
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  value (string) — Value of the checkbox, used with <code>Checkbox.Group</code>
-  withBorder (boolean) — Adds border to the root element
+
+- **checked** `boolean` — Controlled component value
+- **defaultChecked** `boolean` — Uncontrolled component default value
+- **onChange** `(checked: boolean) => void` — Called when value changes
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **value** `string` — Value of the checkbox, used with `Checkbox.Group`
+- **withBorder** `boolean` — Adds border to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CheckboxCard)
@@ -643,15 +675,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/checkbox
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts icon color based on background color for <code>filled</code> variant
-  checked (boolean) — Determines whether the component should have checked styles
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to set input background color in checked state
-  disabled (boolean) — Indicates disabled state
-  icon (CheckboxIconComponent) — Icon for checked or indeterminate state
-  iconColor (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color to set icon color, by default value depends on <code>theme.autoContrast</code>
-  indeterminate (boolean) — Indeterminate state of the checkbox. If set, <code>checked</code> prop is ignored.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  size (MantineSize | number) [default 'sm'] — Controls size of the component
+
+- **autoContrast** `boolean` — If set, adjusts icon color based on background color for `filled` variant
+- **checked** `boolean` — Determines whether the component should have checked styles
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to set input background color in checked state
+- **disabled** `boolean` — Indicates disabled state
+- **icon** `CheckboxIconComponent` — Icon for checked or indeterminate state
+- **iconColor** `MantineColor` — Key of `theme.colors` or any valid CSS color to set icon color, by default value depends on `theme.autoContrast`
+- **indeterminate** `boolean` — Indeterminate state of the checkbox. If set, `checked` prop is ignored.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **size** `MantineSize | number` _(default `'sm'`)_ — Controls size of the component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CheckboxIndicator)
@@ -663,19 +696,20 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/chip
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on the chip background color for <code>filled</code> variant
-  checked (boolean) — Controlled checked state
-  children (React.ReactNode) REQUIRED — <code>label</code> element associated with the input
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color.
-  defaultChecked (boolean) — Uncontrolled checked state initial value
-  icon (React.ReactNode) — Any element or component to replace the default icon
-  id (string) — Unique input id, generated randomly if not provided
-  onChange ((checked: boolean) => void) — Calls when checked state changes
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  rootRef (Ref<HTMLDivElement>) — Assigns ref of the root element
-  size (MantineSize) [default 'sm'] — Controls various properties related to the component size
-  type (\"checkbox\" | \"radio\") [default 'checkbox'] — Chip input type
-  wrapperProps (React.ComponentProps<\"div\">) — Props passed down to the root element
+
+- **autoContrast** `boolean` — If set, adjusts text color based on the chip background color for `filled` variant
+- **checked** `boolean` — Controlled checked state
+- **children** `React.ReactNode` **(required)** — `label` element associated with the input
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color.
+- **defaultChecked** `boolean` — Uncontrolled checked state initial value
+- **icon** `React.ReactNode` — Any element or component to replace the default icon
+- **id** `string` — Unique input id, generated randomly if not provided
+- **onChange** `(checked: boolean) => void` — Calls when checked state changes
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **rootRef** `Ref<HTMLDivElement>` — Assigns ref of the root element
+- **size** `MantineSize` _(default `'sm'`)_ — Controls various properties related to the component size
+- **type** `\"checkbox\" | \"radio\"` _(default `'checkbox'`)_ — Chip input type
+- **wrapperProps** `React.ComponentProps<\"div\">` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Chip)
@@ -687,11 +721,12 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/chip
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — <code>Chip</code> components and any other elements
-  defaultValue (Primitive | Value[] | null) — Uncontrolled component initial value
-  multiple (boolean) — If set, multiple values can be selected
-  onChange ((value: Multiple extends true ? Value[] : Value) => void) — Called when value changes. If <code>multiple</code> prop is set, called with an array of selected values. If not, called with a string value of selected chip.
-  value (Primitive | Value[] | null) — Controlled component value
+
+- **children** `React.ReactNode` — `Chip` components and any other elements
+- **defaultValue** `Primitive | Value[] | null` — Uncontrolled component initial value
+- **multiple** `boolean` — If set, multiple values can be selected
+- **onChange** `(value: Multiple extends true ? Value[] : Value) => void` — Called when value changes. If `multiple` prop is set, called with an array of selected values. If not, called with a string value of selected chip.
+- **value** `Primitive | Value[] | null` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ChipGroup)
@@ -712,12 +747,13 @@ https://mantine.dev/core/close-button
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Content rendered inside the button. For example <code>VisuallyHidden</code> with label for screen readers.
-  disabled (boolean) — Sets <code>disabled</code> attribute, assigns disabled styles
-  icon (React.ReactNode) — React node to replace the default close icon. If set, <code>iconSize</code> prop is ignored.
-  iconSize (string | number) [default 70%] — <code>X</code> icon <code>width</code> and <code>height</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem.
-  size (MantineSize | number) [default 'md'] — Controls width and height of the button. Numbers are converted to rem.
+
+- **children** `React.ReactNode` — Content rendered inside the button. For example `VisuallyHidden` with label for screen readers.
+- **disabled** `boolean` — Sets `disabled` attribute, assigns disabled styles
+- **icon** `React.ReactNode` — React node to replace the default close icon. If set, `iconSize` prop is ignored.
+- **iconSize** `string | number` _(default `70%`)_ — `X` icon `width` and `height`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem.
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width and height of the button. Numbers are converted to rem.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CloseButton)
@@ -729,8 +765,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/code
 
 Props (docgen 9.4.1):
-  block (boolean) — If set, code is rendered in <code>pre</code>
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color, controls <code>background-color</code> of the code. By default, calculated based on the color scheme.
+
+- **block** `boolean` — If set, code is rendered in `pre`
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color, controls `background-color` of the code. By default, calculated based on the color scheme.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Code)
@@ -742,14 +779,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/collapse
 
 Props (docgen 9.4.1):
-  animateOpacity (boolean) [default true] — Determines whether the opacity is animated
-  expanded (boolean) REQUIRED — Expanded state
-  keepMounted (boolean) [default true] — If set, the element is kept in the DOM when collapsed. When <code>true</code>, React 19 <code>Activity</code> is used to preserve state while collapsed. When <code>false</code>, the element is unmounted after the exit animation.
-  onTransitionEnd (() => void) — Called when the transition ends
-  onTransitionStart (() => void) — Called when transition starts
-  orientation (\"horizontal\" | \"vertical\") [default 'vertical'] — Collapse orientation
-  transitionDuration (number) [default 200] — Transition duration in ms
-  transitionTimingFunction (string) [default ease] — Transition timing function
+
+- **animateOpacity** `boolean` _(default `true`)_ — Determines whether the opacity is animated
+- **expanded** `boolean` **(required)** — Expanded state
+- **keepMounted** `boolean` _(default `true`)_ — If set, the element is kept in the DOM when collapsed. When `true`, React 19 `Activity` is used to preserve state while collapsed. When `false`, the element is unmounted after the exit animation.
+- **onTransitionEnd** `() => void` — Called when the transition ends
+- **onTransitionStart** `() => void` — Called when transition starts
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'vertical'`)_ — Collapse orientation
+- **transitionDuration** `number` _(default `200`)_ — Transition duration in ms
+- **transitionTimingFunction** `string` _(default `ease`)_ — Transition timing function
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Collapse)
@@ -761,52 +799,53 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/color-input
 
 Props (docgen 9.4.1):
-  closeOnColorSwatchClick (boolean) [default false] — If set, the dropdown is closed when one of the color swatches is clicked
-  defaultValue (string) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  disallowInput (boolean) — If input is not allowed, the user can only pick value with color picker and swatches
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  eyeDropperButtonProps (Record<string, any>) — Props passed down to the eye dropper button
-  eyeDropperIcon (React.ReactNode) — An icon to replace the default eye dropper icon
-  fixOnBlur (boolean) [default true] — If set, the input value resets to the last known valid value when the input loses focus
-  format ('hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla') [default 'hex'] — Color format. <code>hexa</code>, <code>rgba</code>, <code>hsla</code> values render alpha channel slider
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  onChange ((value: string) => void) — Called when value changes
-  onChangeEnd ((value: string) => void) — Called when the user stops dragging one of the sliders or changes the value with keyboard
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (PopoverProps) — Props passed down to the <code>Popover</code> component
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  swatches (string[]) — A list of colors used to display swatches list below the color picker
-  swatchesPerRow (number) [default 7] — Number of swatches per row
-  value (string) — Controlled component value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withEyeDropper (boolean) [default true] — If set, the eye dropper button is displayed in the right section
-  withPicker (boolean) [default true] — If <code>false</code>, the component displays only swatches
-  withPreview (boolean) [default true] — If set, the preview color swatch is displayed in the left section of the input
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **closeOnColorSwatchClick** `boolean` _(default `false`)_ — If set, the dropdown is closed when one of the color swatches is clicked
+- **defaultValue** `string` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **disallowInput** `boolean` — If input is not allowed, the user can only pick value with color picker and swatches
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **eyeDropperButtonProps** `Record<string, any>` — Props passed down to the eye dropper button
+- **eyeDropperIcon** `React.ReactNode` — An icon to replace the default eye dropper icon
+- **fixOnBlur** `boolean` _(default `true`)_ — If set, the input value resets to the last known valid value when the input loses focus
+- **format** `'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla'` _(default `'hex'`)_ — Color format. `hexa`, `rgba`, `hsla` values render alpha channel slider
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **onChange** `(value: string) => void` — Called when value changes
+- **onChangeEnd** `(value: string) => void` — Called when the user stops dragging one of the sliders or changes the value with keyboard
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `PopoverProps` — Props passed down to the `Popover` component
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **swatches** `string[]` — A list of colors used to display swatches list below the color picker
+- **swatchesPerRow** `number` _(default `7`)_ — Number of swatches per row
+- **value** `string` — Controlled component value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withEyeDropper** `boolean` _(default `true`)_ — If set, the eye dropper button is displayed in the right section
+- **withPicker** `boolean` _(default `true`)_ — If `false`, the component displays only swatches
+- **withPreview** `boolean` _(default `true`)_ — If set, the preview color swatch is displayed in the left section of the input
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled ColorInput))
@@ -818,23 +857,24 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/color-picker
 
 Props (docgen 9.4.1):
-  alphaLabel (string) — Alpha slider <code>aria-label</code>
-  defaultValue (string) — Uncontrolled component default value
-  focusable (boolean) [default true] — If set, interactive elements (sliders thumbs and swatches) are focusable with keyboard
-  format ('hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla') [default 'hex'] — Color format. <code>hexa</code>, <code>rgba</code>, <code>hsla</code> values render alpha channel slider
-  fullWidth (boolean) [default false] — If set, the component takes 100% width of its container
-  hiddenInputProps (ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes) — Props spread to the hidden input
-  hueLabel (string) — Hue slider <code>aria-label</code>
-  name (string) — Hidden input <code>name</code> attribute, if not set, the input will not be rendered
-  onChange ((value: string) => void) — Called when value changes
-  onChangeEnd ((value: string) => void) — Called when the user stops dragging one of the sliders or changes the value with keyboard
-  onColorSwatchClick ((color: string) => void) — Called when one of the color swatches is clicked
-  saturationLabel (string) — Saturation slider <code>aria-label</code>
-  size (MantineSize) [default 'md'] — Component size
-  swatches (string[]) — A list of colors used to display swatches list below the color picker
-  swatchesPerRow (number) [default 7] — Number of swatches per row
-  value (string) — Controlled component value
-  withPicker (boolean) [default true] — If <code>false</code>, the component displays only swatches
+
+- **alphaLabel** `string` — Alpha slider `aria-label`
+- **defaultValue** `string` — Uncontrolled component default value
+- **focusable** `boolean` _(default `true`)_ — If set, interactive elements (sliders thumbs and swatches) are focusable with keyboard
+- **format** `'hex' | 'hexa' | 'rgba' | 'rgb' | 'hsl' | 'hsla'` _(default `'hex'`)_ — Color format. `hexa`, `rgba`, `hsla` values render alpha channel slider
+- **fullWidth** `boolean` _(default `false`)_ — If set, the component takes 100% width of its container
+- **hiddenInputProps** `ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes` — Props spread to the hidden input
+- **hueLabel** `string` — Hue slider `aria-label`
+- **name** `string` — Hidden input `name` attribute, if not set, the input will not be rendered
+- **onChange** `(value: string) => void` — Called when value changes
+- **onChangeEnd** `(value: string) => void` — Called when the user stops dragging one of the sliders or changes the value with keyboard
+- **onColorSwatchClick** `(color: string) => void` — Called when one of the color swatches is clicked
+- **saturationLabel** `string` — Saturation slider `aria-label`
+- **size** `MantineSize` _(default `'md'`)_ — Component size
+- **swatches** `string[]` — A list of colors used to display swatches list below the color picker
+- **swatchesPerRow** `number` _(default `7`)_ — Number of swatches per row
+- **value** `string` — Controlled component value
+- **withPicker** `boolean` _(default `true`)_ — If `false`, the component displays only swatches
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled ColorPicker))
@@ -848,11 +888,12 @@ https://mantine.dev/core/color-swatch
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Children inside the swatch
-  color (string) REQUIRED — Valid CSS color to display
-  radius (MantineRadius | number) [default 1000] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem.
-  size (React.CSSProperties[\"width\"]) [default 28] — Swatch <code>width</code> and <code>height</code>, any valid CSS value, numbers are converted to rem.
-  withShadow (boolean) [default true] — If set, the swatch has inner <code>box-shadow</code>
+
+- **children** `React.ReactNode` — Children inside the swatch
+- **color** `string` **(required)** — Valid CSS color to display
+- **radius** `MantineRadius | number` _(default `1000`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem.
+- **size** `React.CSSProperties[\"width\"]` _(default `28`)_ — Swatch `width` and `height`, any valid CSS value, numbers are converted to rem.
+- **withShadow** `boolean` _(default `true`)_ — If set, the swatch has inner `box-shadow`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ColorSwatch)
@@ -864,44 +905,45 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  arrowOffset (number) [default 5] — Arrow offset in px
-  arrowPosition ('center' | 'side') — Arrow position
-  arrowRadius (number) [default 0] — Arrow <code>border-radius</code> in px
-  arrowSize (number) [default 7] — Arrow size in px
-  children (React.ReactNode) — Combobox content
-  disabled (boolean) — If set, popover dropdown will not be rendered
-  dropdownPadding (Padding<string | number>) [default 4] — Controls <code>padding</code> of the dropdown
-  floatingHeight (\"viewport\") — If set to <code>'viewport'</code>, the dropdown grows to fill the available vertical space in the viewport. Disables the <code>flip</code> middleware.
-  floatingStrategy (FloatingStrategy) [default 'absolute'] — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
-  hideDetached (boolean) [default true] — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
-  keepMounted (boolean) — If set, the dropdown is not unmounted from the DOM when hidden. <code>display: none</code> styles are added instead.
-  keepMountedMode (\"activity\" | \"display-none\") [default 'activity'] — Controls how the dropdown is hidden when <code>keepMounted</code> is set: <code>'activity'</code> – hidden with React 19 <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  middlewares (PopoverMiddlewares) [default { flip: true, shift: true, inline: false }] — Floating ui middlewares to configure position handling
-  offset (number | FloatingAxesOffsets) [default 8] — Offset of the dropdown element
-  onClose (() => void) — Called when dropdown closes
-  onDismiss (() => void) — Called when the popover is dismissed by clicking outside or by pressing escape
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onOpen (() => void) — Called when dropdown opens
-  onOptionSubmit ((value: string, optionProps: ComboboxOptionProps) => void) — Called when item is selected with the <code>Enter</code> key or by clicking it
-  onPositionChange ((position: FloatingPosition) => void) — Called when dropdown position changes
-  overlayProps (OverlayProps & ElementProps<\"div\">) — Props passed down to <code>Overlay</code> component
-  portalProps (BasePortalProps) — Props to pass down to the <code>Portal</code> when <code>withinPortal</code> is true
-  position (FloatingPosition) [default 'bottom'] — Dropdown position relative to the target element
-  preventPositionChangeWhenVisible (boolean) [default true] — If <code>true</code>, the dropdown picks its side on open (flip runs once, preferring the <code>position</code> prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the <code>shift</code> middleware. Set to <code>false</code> to keep flip active and allow the dropdown to re-flip on every change.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  readOnly (boolean) — Determines whether the <code>Combobox</code> value can be changed
-  resetSelectionOnOptionHover (boolean) [default false] — Determines whether selection should be reset when option is hovered
-  returnFocus (boolean) [default false] — Determines whether focus should be automatically returned to control when dropdown closes
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any other valid CSS <code>box-shadow</code> value
-  size (MantineSize) [default 'sm'] — Controls items <code>font-size</code> and <code>padding</code>
-  store (ComboboxStore) — Combobox store, can be used to control combobox state
-  transitionProps (TransitionProps) [default { duration: 150, transition: 'fade' }] — Props passed down to the <code>Transition</code> component. Use to configure duration and animation type.
-  width (PopoverWidth) [default 'max-content'] — Dropdown width, or <code>'target'</code> to make dropdown width the same as target element
-  withArrow (boolean) [default false] — Determines whether component should have an arrow
-  withOverlay (boolean) [default false] — Determines whether the overlay should be displayed when the dropdown is opened
-  withinPortal (boolean) [default true] — Determines whether dropdown should be rendered within the <code>Portal</code>
-  zIndex (string | number) [default 300] — Dropdown <code>z-index</code>
+
+- **arrowOffset** `number` _(default `5`)_ — Arrow offset in px
+- **arrowPosition** `'center' | 'side'` — Arrow position
+- **arrowRadius** `number` _(default `0`)_ — Arrow `border-radius` in px
+- **arrowSize** `number` _(default `7`)_ — Arrow size in px
+- **children** `React.ReactNode` — Combobox content
+- **disabled** `boolean` — If set, popover dropdown will not be rendered
+- **dropdownPadding** `Padding<string | number>` _(default `4`)_ — Controls `padding` of the dropdown
+- **floatingHeight** `\"viewport\"` — If set to `'viewport'`, the dropdown grows to fill the available vertical space in the viewport. Disables the `flip` middleware.
+- **floatingStrategy** `FloatingStrategy` _(default `'absolute'`)_ — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
+- **hideDetached** `boolean` _(default `true`)_ — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
+- **keepMounted** `boolean` — If set, the dropdown is not unmounted from the DOM when hidden. `display: none` styles are added instead.
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `'activity'`)_ — Controls how the dropdown is hidden when `keepMounted` is set: `'activity'` – hidden with React 19 `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **middlewares** `PopoverMiddlewares` _(default `{ flip: true, shift: true, inline: false }`)_ — Floating ui middlewares to configure position handling
+- **offset** `number | FloatingAxesOffsets` _(default `8`)_ — Offset of the dropdown element
+- **onClose** `() => void` — Called when dropdown closes
+- **onDismiss** `() => void` — Called when the popover is dismissed by clicking outside or by pressing escape
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onOpen** `() => void` — Called when dropdown opens
+- **onOptionSubmit** `(value: string, optionProps: ComboboxOptionProps) => void` — Called when item is selected with the `Enter` key or by clicking it
+- **onPositionChange** `(position: FloatingPosition) => void` — Called when dropdown position changes
+- **overlayProps** `OverlayProps & ElementProps<\"div\">` — Props passed down to `Overlay` component
+- **portalProps** `BasePortalProps` — Props to pass down to the `Portal` when `withinPortal` is true
+- **position** `FloatingPosition` _(default `'bottom'`)_ — Dropdown position relative to the target element
+- **preventPositionChangeWhenVisible** `boolean` _(default `true`)_ — If `true`, the dropdown picks its side on open (flip runs once, preferring the `position` prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the `shift` middleware. Set to `false` to keep flip active and allow the dropdown to re-flip on every change.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **readOnly** `boolean` — Determines whether the `Combobox` value can be changed
+- **resetSelectionOnOptionHover** `boolean` _(default `false`)_ — Determines whether selection should be reset when option is hovered
+- **returnFocus** `boolean` _(default `false`)_ — Determines whether focus should be automatically returned to control when dropdown closes
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any other valid CSS `box-shadow` value
+- **size** `MantineSize` _(default `'sm'`)_ — Controls items `font-size` and `padding`
+- **store** `ComboboxStore` — Combobox store, can be used to control combobox state
+- **transitionProps** `TransitionProps` _(default `{ duration: 150, transition: 'fade' }`)_ — Props passed down to the `Transition` component. Use to configure duration and animation type.
+- **width** `PopoverWidth` _(default `'max-content'`)_ — Dropdown width, or `'target'` to make dropdown width the same as target element
+- **withArrow** `boolean` _(default `false`)_ — Determines whether component should have an arrow
+- **withOverlay** `boolean` _(default `false`)_ — Determines whether the overlay should be displayed when the dropdown is opened
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether dropdown should be rendered within the `Portal`
+- **zIndex** `string | number` _(default `300`)_ — Dropdown `z-index`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Combobox)
@@ -913,7 +955,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  hidden (boolean) — Determines whether the dropdown should be hidden, for example, when there are no options to display
+
+- **hidden** `boolean` — Determines whether the dropdown should be hidden, for example, when there are no options to display
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxDropdown)
@@ -925,8 +968,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Target element
-  refProp (string) — Key of the prop that should be used to access element ref
+
+- **children** `React.ReactNode` **(required)** — Target element
+- **refProp** `string` — Key of the prop that should be used to access element ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxDropdownTarget)
@@ -938,13 +982,14 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  autoComplete (string) — Input autocomplete attribute
-  children (React.ReactNode) REQUIRED — Target element
-  refProp (string) — Key of the prop is used to access element ref
-  targetType (\"button\" | \"input\") [default input] — Determines which events should be handled by the target element. <code>button</code> target type handles <code>Space</code> and <code>Enter</code> keys to toggle dropdown opened state.
-  withAriaAttributes (boolean) [default true] — If set, the target has <code>aria-</code> attributes
-  withExpandedAttribute (boolean) [default false] — If set, the target has <code>aria-expanded</code> attribute
-  withKeyboardNavigation (boolean) [default true] — If set, the component responds to the keyboard events
+
+- **autoComplete** `string` — Input autocomplete attribute
+- **children** `React.ReactNode` **(required)** — Target element
+- **refProp** `string` — Key of the prop is used to access element ref
+- **targetType** `\"button\" | \"input\"` _(default `input`)_ — Determines which events should be handled by the target element. `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
+- **withAriaAttributes** `boolean` _(default `true`)_ — If set, the target has `aria-` attributes
+- **withExpandedAttribute** `boolean` _(default `false`)_ — If set, the target has `aria-expanded` attribute
+- **withKeyboardNavigation** `boolean` _(default `true`)_ — If set, the component responds to the keyboard events
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxEventsTarget)
@@ -956,7 +1001,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  label (React.ReactNode) — Group label
+
+- **label** `React.ReactNode` — Group label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxGroup)
@@ -968,10 +1014,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  active (boolean) — Current active state
-  disabled (boolean) — Disabled state
-  selected (boolean) — Current selected state
-  value (Primitive) REQUIRED — Option value
+
+- **active** `boolean` — Current active state
+- **disabled** `boolean` — Disabled state
+- **selected** `boolean` — Current selected state
+- **value** `Primitive` **(required)** — Option value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxOption)
@@ -983,38 +1030,39 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox-popover
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) [default true] — Allows deselecting the selected option by clicking it (only for single mode)
-  checkIconPosition (\"left\" | \"right\") [default 'left'] — Position of the check icon relative to the option label
-  children (React.ReactNode) — Content of the component
-  comboboxProps (ComboboxProps) — Props passed down to Combobox component
-  data (ComboboxData<Value>) — Data used to generate options
-  defaultDropdownOpened (boolean) — Uncontrolled dropdown initial opened state
-  defaultSearchValue (string) — Default search value
-  defaultValue (Primitive | Value[] | null) — Uncontrolled component default value
-  dropdownOpened (boolean) — Controlled dropdown opened state
-  filter (OptionsFilter<Value>) — Function based on which items are filtered and sorted
-  form (string) — Hidden input form for form submission
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  hiddenInputValuesDivider (string) [default ','] — Divider used to separate values in the hidden input value attribute
-  limit (number) [default Infinity] — Maximum number of options displayed at a time
-  maxDropdownHeight (string | number) [default 250] — max-height of the dropdown
-  multiple (boolean) — If set, multiple items can be selected at the same time
-  name (string) — Hidden input name for form submission
-  nothingFoundMessage (React.ReactNode) — Message displayed when no options match the search query or when there is no data
-  onChange ((value: ComboboxPopoverValue<Multiple, Value>) => void) — Called when value changes
-  onDropdownClose (() => void) — Called when dropdown closes
-  onDropdownOpen (() => void) — Called when dropdown opens
-  onOptionSubmit ((value: Value) => void) — Called when option is submitted from dropdown with mouse click or Enter key
-  onSearchChange ((value: string) => void) — Called when search changes
-  renderOption ((item: ComboboxLikeRenderOptionInput<ComboboxItem<string>>) => ReactNode) — A function to render content of the option, replaces the default content of the option
-  scrollAreaProps (ScrollAreaProps) — Props passed down to the underlying ScrollArea component in the dropdown
-  searchValue (string) — Controlled search value
-  searchable (boolean) [default false] — Allows searching through options
-  selectFirstOptionOnDropdownOpen (boolean) [default false] — If set, the first option is selected when dropdown opens
-  value (Primitive | Value[] | null) — Controlled component value
-  withAlignedLabels (boolean) [default false] — Aligns unchecked labels with the checked one
-  withCheckIcon (boolean) [default true] — Displays check icon near the selected option label
-  withScrollArea (boolean) [default true] — Determines whether the options should be wrapped with ScrollArea.AutoSize
+
+- **allowDeselect** `boolean` _(default `true`)_ — Allows deselecting the selected option by clicking it (only for single mode)
+- **checkIconPosition** `\"left\" | \"right\"` _(default `'left'`)_ — Position of the check icon relative to the option label
+- **children** `React.ReactNode` — Content of the component
+- **comboboxProps** `ComboboxProps` — Props passed down to Combobox component
+- **data** `ComboboxData<Value>` — Data used to generate options
+- **defaultDropdownOpened** `boolean` — Uncontrolled dropdown initial opened state
+- **defaultSearchValue** `string` — Default search value
+- **defaultValue** `Primitive | Value[] | null` — Uncontrolled component default value
+- **dropdownOpened** `boolean` — Controlled dropdown opened state
+- **filter** `OptionsFilter<Value>` — Function based on which items are filtered and sorted
+- **form** `string` — Hidden input form for form submission
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **hiddenInputValuesDivider** `string` _(default `','`)_ — Divider used to separate values in the hidden input value attribute
+- **limit** `number` _(default `Infinity`)_ — Maximum number of options displayed at a time
+- **maxDropdownHeight** `string | number` _(default `250`)_ — max-height of the dropdown
+- **multiple** `boolean` — If set, multiple items can be selected at the same time
+- **name** `string` — Hidden input name for form submission
+- **nothingFoundMessage** `React.ReactNode` — Message displayed when no options match the search query or when there is no data
+- **onChange** `(value: ComboboxPopoverValue<Multiple, Value>) => void` — Called when value changes
+- **onDropdownClose** `() => void` — Called when dropdown closes
+- **onDropdownOpen** `() => void` — Called when dropdown opens
+- **onOptionSubmit** `(value: Value) => void` — Called when option is submitted from dropdown with mouse click or Enter key
+- **onSearchChange** `(value: string) => void` — Called when search changes
+- **renderOption** `(item: ComboboxLikeRenderOptionInput<ComboboxItem<string>>) => ReactNode` — A function to render content of the option, replaces the default content of the option
+- **scrollAreaProps** `ScrollAreaProps` — Props passed down to the underlying ScrollArea component in the dropdown
+- **searchValue** `string` — Controlled search value
+- **searchable** `boolean` _(default `false`)_ — Allows searching through options
+- **selectFirstOptionOnDropdownOpen** `boolean` _(default `false`)_ — If set, the first option is selected when dropdown opens
+- **value** `Primitive | Value[] | null` — Controlled component value
+- **withAlignedLabels** `boolean` _(default `false`)_ — Aligns unchecked labels with the checked one
+- **withCheckIcon** `boolean` _(default `true`)_ — Displays check icon near the selected option label
+- **withScrollArea** `boolean` _(default `true`)_ — Determines whether the options should be wrapped with ScrollArea.AutoSize
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxPopover)
@@ -1026,13 +1074,14 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/combobox
 
 Props (docgen 9.4.1):
-  autoComplete (string) — Input autocomplete attribute
-  children (React.ReactNode) REQUIRED — Target element
-  refProp (string) — Key of the prop that is used to access element ref
-  targetType (\"button\" | \"input\") [default input] — Determines which events is handled by the target element. <code>button</code> target type handles <code>Space</code> and <code>Enter</code> keys to toggle dropdown opened state.
-  withAriaAttributes (boolean) [default true] — If set, the target has <code>aria-</code> attributes
-  withExpandedAttribute (boolean) [default false] — If set, the target has <code>aria-expanded</code> attribute
-  withKeyboardNavigation (boolean) [default true] — If set, the component responds to keyboard events
+
+- **autoComplete** `string` — Input autocomplete attribute
+- **children** `React.ReactNode` **(required)** — Target element
+- **refProp** `string` — Key of the prop that is used to access element ref
+- **targetType** `\"button\" | \"input\"` _(default `input`)_ — Determines which events is handled by the target element. `button` target type handles `Space` and `Enter` keys to toggle dropdown opened state.
+- **withAriaAttributes** `boolean` _(default `true`)_ — If set, the target has `aria-` attributes
+- **withExpandedAttribute** `boolean` _(default `false`)_ — If set, the target has `aria-expanded` attribute
+- **withKeyboardNavigation** `boolean` _(default `true`)_ — If set, the component responds to keyboard events
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ComboboxTarget)
@@ -1044,9 +1093,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/container
 
 Props (docgen 9.4.1):
-  fluid (boolean) [default false] — If set, the container takes 100% width of its parent and <code>size</code> prop is ignored.
-  size (MantineSize | number) [default 'md'] — <code>max-width</code> of the container, value is not responsive – it is the same for all screen sizes. Numbers are converted to rem. Ignored when <code>fluid</code> prop is set.
-  strategy (\"block\" | \"grid\") [default 'block'] — Centering strategy
+
+- **fluid** `boolean` _(default `false`)_ — If set, the container takes 100% width of its parent and `size` prop is ignored.
+- **size** `MantineSize | number` _(default `'md'`)_ — `max-width` of the container, value is not responsive – it is the same for all screen sizes. Numbers are converted to rem. Ignored when `fluid` prop is set.
+- **strategy** `\"block\" | \"grid\"` _(default `'block'`)_ — Centering strategy
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Container)
@@ -1058,9 +1108,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/copy-button
 
 Props (docgen 9.4.1):
-  children ((payload: { copied: boolean; copy: () => void; }) => ReactNode) REQUIRED — Children callback, provides current status and copy function as an argument
-  timeout (number) [default 1000] — Copied status timeout in ms
-  value (string) REQUIRED — Value that is copied to the clipboard when the button is clicked
+
+- **children** `(payload: { copied: boolean; copy: () => void; }) => ReactNode` **(required)** — Children callback, provides current status and copy function as an argument
+- **timeout** `number` _(default `1000`)_ — Copied status timeout in ms
+- **value** `string` **(required)** — Value that is copied to the clipboard when the button is clicked
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CopyButton)
@@ -1072,12 +1123,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/data-list
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — DataList.Item components
-  gap (MantineSpacing) [default 'sm'] — Key of <code>theme.spacing</code> or any valid CSS value to set gap between items
-  labelWidth (MinWidth<string | number>) [default '120px'] — Controls min-width of the label (dt) element, any valid CSS value
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Controls arrangement of label and value within each item. <code>horizontal</code> renders label and value side by side, <code>vertical</code> stacks label on top of value
-  size (MantineSize) [default 'sm'] — Controls <code>font-size</code> and <code>line-height</code>
-  withDivider (boolean) [default false] — Adds border between items
+
+- **children** `React.ReactNode` — DataList.Item components
+- **gap** `MantineSpacing` _(default `'sm'`)_ — Key of `theme.spacing` or any valid CSS value to set gap between items
+- **labelWidth** `MinWidth<string | number>` _(default `'120px'`)_ — Controls min-width of the label (dt) element, any valid CSS value
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Controls arrangement of label and value within each item. `horizontal` renders label and value side by side, `vertical` stacks label on top of value
+- **size** `MantineSize` _(default `'sm'`)_ — Controls `font-size` and `line-height`
+- **withDivider** `boolean` _(default `false`)_ — Adds border between items
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DataList)
@@ -1089,20 +1141,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/dialog
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Dialog content
-  keepMounted (boolean) [default false] — If set, the component uses <code>display: none</code> to hide the root element instead of removing the DOM node
-  onClose (() => void) — Called on close button click
-  opened (boolean) REQUIRED — Opened state
-  portalProps (BasePortalProps) — Props passed down to the <code>Portal</code> component. Ignored when <code>withinPortal</code> is <code>false</code>.
-  position (AffixPosition) [default { bottom: 0, right: 0 }] — Affix position on screen
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any valid CSS value to set <code>box-shadow</code>
-  size (MantineSize | number) [default 'md'] — Controls <code>width</code> of the dialog
-  transitionProps (TransitionProps) [default { transition: 'pop-top-right', duration: 200 }] — Props passed down to the underlying <code>Transition</code> component
-  withBorder (boolean) — Adds border to the root element
-  withCloseButton (boolean) [default false] — If set, displays the close button
-  withinPortal (boolean) [default true] — Determines whether the component is rendered within <code>Portal</code>
-  zIndex (React.CSSProperties[\"zIndex\"]) [default 200] — Root element <code>z-index</code> property
+
+- **children** `React.ReactNode` — Dialog content
+- **keepMounted** `boolean` _(default `false`)_ — If set, the component uses `display: none` to hide the root element instead of removing the DOM node
+- **onClose** `() => void` — Called on close button click
+- **opened** `boolean` **(required)** — Opened state
+- **portalProps** `BasePortalProps` — Props passed down to the `Portal` component. Ignored when `withinPortal` is `false`.
+- **position** `AffixPosition` _(default `{ bottom: 0, right: 0 }`)_ — Affix position on screen
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any valid CSS value to set `box-shadow`
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls `width` of the dialog
+- **transitionProps** `TransitionProps` _(default `{ transition: 'pop-top-right', duration: 200 }`)_ — Props passed down to the underlying `Transition` component
+- **withBorder** `boolean` — Adds border to the root element
+- **withCloseButton** `boolean` _(default `false`)_ — If set, displays the close button
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether the component is rendered within `Portal`
+- **zIndex** `React.CSSProperties[\"zIndex\"]` _(default `200`)_ — Root element `z-index` property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Dialog)
@@ -1114,11 +1167,12 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/divider
 
 Props (docgen 9.4.1):
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color value
-  label (React.ReactNode) — Divider label, visible only with <code>orientation=\"horizontal\"</code>
-  labelPosition (\"center\" | \"left\" | \"right\") [default 'center'] — Label position
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Divider orientation
-  size (MantineSize | number) [default 'xs'] — Controls width/height (depends on orientation)
+
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color value
+- **label** `React.ReactNode` — Divider label, visible only with `orientation=\"horizontal\"`
+- **labelPosition** `\"center\" | \"left\" | \"right\"` _(default `'center'`)_ — Label position
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Divider orientation
+- **size** `MantineSize | number` _(default `'xs'`)_ — Controls width/height (depends on orientation)
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Divider)
@@ -1130,36 +1184,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/drawer
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Drawer content
-  closeButtonProps (ModalBaseCloseButtonProps) — Props passed down to the close button
-  closeOnClickOutside (boolean) [default true] — If set, the modal/drawer is closed when user clicks on the overlay
-  closeOnEscape (boolean) [default true] — If set, <code>onClose</code> is called when user presses the escape key
-  id (string) — Id used to connect modal/drawer with body and title
-  keepMounted (boolean) [default false] — If set modal/drawer is not unmounted from the DOM when hidden. <code>display: none</code> styles are applied instead.
-  lockScroll (boolean) [default true] — If set, scroll is locked when <code>opened={true}</code>
-  offset (string | number) [default 0] — Drawer container offset from the viewport end
-  onClose (() => void) REQUIRED — Called when modal/drawer is closed
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  opened (boolean) REQUIRED — Controls opened state
-  overlayProps (ModalBaseOverlayProps) — Props passed down to the <code>Overlay</code> component, can be used to configure opacity, <code>background-color</code>, styles and other properties
-  padding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set content, header and footer padding
-  portalProps (BasePortalProps) — Props passed down to the Portal component when <code>withinPortal</code> is set
-  position (DrawerPosition) [default 'left'] — Side of the screen on which drawer will be opened
-  radius (MantineRadius | number) [default 0] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  removeScrollProps (RemoveScrollProps) — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
-  returnFocus (boolean) [default true] — If set, focus is returned to the last active element when <code>onClose</code> is called
-  scrollAreaComponent (ScrollAreaComponent) [default 'div'] — Scroll area component
-  shadow (MantineShadow) [default 'xl'] — Key of <code>theme.shadows</code> or any valid CSS box-shadow value
-  size (MantineSize | number) [default 'md'] — Controls width of the content area
-  stackId (string) — Id of the drawer in the <code>Drawer.Stack</code>
-  title (React.ReactNode) — Drawer title
-  transitionProps (TransitionProps) — Props added to the <code>Transition</code> component that used to animate overlay and body, use to configure duration and animation type, <code>{ duration: 200, transition: 'fade-down' }</code> by default
-  trapFocus (boolean) [default true] — If set, focus is trapped within the modal/drawer
-  withCloseButton (boolean) [default true] — If set, the close button is displayed
-  withOverlay (boolean) [default true] — If set, the overlay is displayed
-  withinPortal (boolean) [default true] — If set, the component is rendered inside <code>Portal</code>
-  zIndex (string | number) [default 200] — <code>z-index</code> CSS property of the root element
+
+- **children** `React.ReactNode` — Drawer content
+- **closeButtonProps** `ModalBaseCloseButtonProps` — Props passed down to the close button
+- **closeOnClickOutside** `boolean` _(default `true`)_ — If set, the modal/drawer is closed when user clicks on the overlay
+- **closeOnEscape** `boolean` _(default `true`)_ — If set, `onClose` is called when user presses the escape key
+- **id** `string` — Id used to connect modal/drawer with body and title
+- **keepMounted** `boolean` _(default `false`)_ — If set modal/drawer is not unmounted from the DOM when hidden. `display: none` styles are applied instead.
+- **lockScroll** `boolean` _(default `true`)_ — If set, scroll is locked when `opened={true}`
+- **offset** `string | number` _(default `0`)_ — Drawer container offset from the viewport end
+- **onClose** `() => void` **(required)** — Called when modal/drawer is closed
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **opened** `boolean` **(required)** — Controls opened state
+- **overlayProps** `ModalBaseOverlayProps` — Props passed down to the `Overlay` component, can be used to configure opacity, `background-color`, styles and other properties
+- **padding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set content, header and footer padding
+- **portalProps** `BasePortalProps` — Props passed down to the Portal component when `withinPortal` is set
+- **position** `DrawerPosition` _(default `'left'`)_ — Side of the screen on which drawer will be opened
+- **radius** `MantineRadius | number` _(default `0`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **removeScrollProps** `RemoveScrollProps` — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
+- **returnFocus** `boolean` _(default `true`)_ — If set, focus is returned to the last active element when `onClose` is called
+- **scrollAreaComponent** `ScrollAreaComponent` _(default `'div'`)_ — Scroll area component
+- **shadow** `MantineShadow` _(default `'xl'`)_ — Key of `theme.shadows` or any valid CSS box-shadow value
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width of the content area
+- **stackId** `string` — Id of the drawer in the `Drawer.Stack`
+- **title** `React.ReactNode` — Drawer title
+- **transitionProps** `TransitionProps` — Props added to the `Transition` component that used to animate overlay and body, use to configure duration and animation type, `{ duration: 200, transition: 'fade-down' }` by default
+- **trapFocus** `boolean` _(default `true`)_ — If set, focus is trapped within the modal/drawer
+- **withCloseButton** `boolean` _(default `true`)_ — If set, the close button is displayed
+- **withOverlay** `boolean` _(default `true`)_ — If set, the overlay is displayed
+- **withinPortal** `boolean` _(default `true`)_ — If set, the component is rendered inside `Portal`
+- **zIndex** `string | number` _(default `200`)_ — `z-index` CSS property of the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Drawer)
@@ -1171,14 +1226,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/empty-state
 
 Props (docgen 9.4.1):
-  align (\"center\" | \"left\" | \"right\") [default 'center'] — Content alignment. <code>center</code> stacks the content in a centered column, <code>left</code>/<code>right</code> place the indicator on the side with the content next to it
-  children (React.ReactNode) — <code>EmptyState</code> compound components, rendered after the shorthand props content
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color, used by <code>filled</code> and <code>light</code> variants
-  description (React.ReactNode) — Description content, rendered inside <code>EmptyState.Description</code>
-  icon (React.ReactNode) — Icon or illustration, rendered inside <code>EmptyState.Indicator</code>
-  size (MantineSize) [default 'md'] — Controls indicator size, gap between elements and font sizes of title and description
-  title (React.ReactNode) — Title content, rendered inside <code>EmptyState.Title</code>
-  withIndicatorBackground (boolean) [default false] — If set, a neutral circular background is displayed behind the indicator. Setting <code>variant</code> always displays a colored background regardless of this prop
+
+- **align** `\"center\" | \"left\" | \"right\"` _(default `'center'`)_ — Content alignment. `center` stacks the content in a centered column, `left`/`right` place the indicator on the side with the content next to it
+- **children** `React.ReactNode` — `EmptyState` compound components, rendered after the shorthand props content
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color, used by `filled` and `light` variants
+- **description** `React.ReactNode` — Description content, rendered inside `EmptyState.Description`
+- **icon** `React.ReactNode` — Icon or illustration, rendered inside `EmptyState.Indicator`
+- **size** `MantineSize` _(default `'md'`)_ — Controls indicator size, gap between elements and font sizes of title and description
+- **title** `React.ReactNode` — Title content, rendered inside `EmptyState.Title`
+- **withIndicatorBackground** `boolean` _(default `false`)_ — If set, a neutral circular background is displayed behind the indicator. Setting `variant` always displays a colored background regardless of this prop
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory EmptyState)
@@ -1190,8 +1246,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/fieldset
 
 Props (docgen 9.4.1):
-  legend (React.ReactNode) — Fieldset legend
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
+
+- **legend** `React.ReactNode` — Fieldset legend
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Fieldset)
@@ -1203,16 +1260,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/file-button
 
 Props (docgen 9.4.1):
-  accept (string) — File input accept attribute, for example, <code>\"image/png,image/jpeg\"</code>
-  capture (boolean | \"user\" | \"environment\") — Specifies that, optionally, a new file should be captured, and which device should be used to capture that new media of a type defined by the accept attribute.
-  children ((props: { onClick: () => void; }) => ReactNode) REQUIRED — Function that receives button props and returns react node that should be rendered
-  disabled (boolean) — Disables file picker
-  form (string) — Input form attribute
-  inputProps (React.ComponentProps<\"input\">) — Passes down props to the input element used to capture files
-  multiple (boolean) — If set, user can pick more than one file
-  name (string) — Input name attribute
-  onChange ((payload: Multiple extends true ? File[] : File | null) => void) REQUIRED — Called when files are picked
-  resetRef (Ref<() => void>) — Reference of the function that should be called when value changes to null or empty array
+
+- **accept** `string` — File input accept attribute, for example, `\"image/png,image/jpeg\"`
+- **capture** `boolean | \"user\" | \"environment\"` — Specifies that, optionally, a new file should be captured, and which device should be used to capture that new media of a type defined by the accept attribute.
+- **children** `(props: { onClick: () => void; }) => ReactNode` **(required)** — Function that receives button props and returns react node that should be rendered
+- **disabled** `boolean` — Disables file picker
+- **form** `string` — Input form attribute
+- **inputProps** `React.ComponentProps<\"input\">` — Passes down props to the input element used to capture files
+- **multiple** `boolean` — If set, user can pick more than one file
+- **name** `string` — Input name attribute
+- **onChange** `(payload: Multiple extends true ? File[] : File | null) => void` **(required)** — Called when files are picked
+- **resetRef** `Ref<() => void>` — Reference of the function that should be called when value changes to null or empty array
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory FileButton)
@@ -1224,52 +1282,53 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/file-input
 
 Props (docgen 9.4.1):
-  accept (string) — File input accept attribute, for example, <code>\"image/png,image/jpeg\"</code>
-  capture (boolean | \"user\" | \"environment\") — Specifies that, optionally, a new file should be captured, and which device should be used to capture that new media of a type defined by the accept attribute.
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, the clear button is displayed in the right section
-  defaultValue (File | File[] | null) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  fileInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden <code>input[type=\"file\"]</code>
-  form (string) — Input form attribute
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  multiple (boolean) [default false] — If set, user can pick more than one file
-  name (string) — Input name attribute
-  onChange ((payload: Multiple extends true ? File[] : File | null) => void) — Called when value changes
-  placeholder (React.ReactNode) — Input placeholder
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the input value cannot be changed
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  resetRef (Ref<() => void>) — Reference of the function that should be called when value changes to null or empty array
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (File | File[] | null) — Controlled component value
-  valueComponent (FC<{ value: File | File[] | null; }>) — Value renderer. By default, displays file name.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **accept** `string` — File input accept attribute, for example, `\"image/png,image/jpeg\"`
+- **capture** `boolean | \"user\" | \"environment\"` — Specifies that, optionally, a new file should be captured, and which device should be used to capture that new media of a type defined by the accept attribute.
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, the clear button is displayed in the right section
+- **defaultValue** `File | File[] | null` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **fileInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden `input[type=\"file\"]`
+- **form** `string` — Input form attribute
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **multiple** `boolean` _(default `false`)_ — If set, user can pick more than one file
+- **name** `string` — Input name attribute
+- **onChange** `(payload: Multiple extends true ? File[] : File | null) => void` — Called when value changes
+- **placeholder** `React.ReactNode` — Input placeholder
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the input value cannot be changed
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **resetRef** `Ref<() => void>` — Reference of the function that should be called when value changes to null or empty array
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `File | File[] | null` — Controlled component value
+- **valueComponent** `FC<{ value: File | File[] | null; }>` — Value renderer. By default, displays file name.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled FileInput))
@@ -1283,13 +1342,14 @@ https://mantine.dev/core/flex
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  align (StyleProp<AlignItems>) — <code>align-items</code> CSS property
-  columnGap (StyleProp<MantineSpacing>) — <code>column-gap</code> CSS property
-  direction (StyleProp<FlexDirection>) — <code>flex-direction</code> CSS property
-  gap (StyleProp<MantineSpacing>) — <code>gap</code> CSS property
-  justify (StyleProp<JustifyContent>) — <code>justify-content</code> CSS property
-  rowGap (StyleProp<MantineSpacing>) — <code>row-gap</code> CSS property
-  wrap (StyleProp<FlexWrap>) — <code>flex-wrap</code> CSS property
+
+- **align** `StyleProp<AlignItems>` — `align-items` CSS property
+- **columnGap** `StyleProp<MantineSpacing>` — `column-gap` CSS property
+- **direction** `StyleProp<FlexDirection>` — `flex-direction` CSS property
+- **gap** `StyleProp<MantineSpacing>` — `gap` CSS property
+- **justify** `StyleProp<JustifyContent>` — `justify-content` CSS property
+- **rowGap** `StyleProp<MantineSpacing>` — `row-gap` CSS property
+- **wrap** `StyleProp<FlexWrap>` — `flex-wrap` CSS property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Flex)
@@ -1301,12 +1361,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/floating-indicator
 
 Props (docgen 9.4.1):
-  displayAfterTransitionEnd (boolean) [default false] — Controls whether the indicator should be hidden initially and displayed after the parent's transition ends. Set to <code>true</code> when the parent container has CSS transitions (e.g., <code>transform: scale()</code>) to prevent the indicator from appearing at the wrong position during the parent's animation.
-  onTransitionEnd (() => void) — Called when the indicator finishes transitioning to a new position
-  onTransitionStart (() => void) — Called when the indicator starts transitioning to a new position
-  parent (HTMLElement | null) REQUIRED — Parent container element that must have <code>position: relative</code>. The indicator's position is calculated relative to this element.
-  target (HTMLElement | null) REQUIRED — Target element over which the indicator is displayed. The indicator will be positioned to match the target's size and position.
-  transitionDuration (string | number) [default 150] — Transition duration in ms
+
+- **displayAfterTransitionEnd** `boolean` _(default `false`)_ — Controls whether the indicator should be hidden initially and displayed after the parent's transition ends. Set to `true` when the parent container has CSS transitions (e.g., `transform: scale()`) to prevent the indicator from appearing at the wrong position during the parent's animation.
+- **onTransitionEnd** `() => void` — Called when the indicator finishes transitioning to a new position
+- **onTransitionStart** `() => void` — Called when the indicator starts transitioning to a new position
+- **parent** `HTMLElement | null` **(required)** — Parent container element that must have `position: relative`. The indicator's position is calculated relative to this element.
+- **target** `HTMLElement | null` **(required)** — Target element over which the indicator is displayed. The indicator will be positioned to match the target's size and position.
+- **transitionDuration** `string | number` _(default `150`)_ — Transition duration in ms
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory FloatingIndicator)
@@ -1318,23 +1379,24 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/floating-window
 
 Props (docgen 9.4.1):
-  axis (\"x\" | \"y\") — If set, restricts movement to the specified axis
-  constrainOffset (number) — The offset from the viewport edges when constraining the element. Requires <code>constrainToViewport: true</code>.
-  constrainToViewport (boolean) — If <code>true</code>, the element can only move within the current viewport boundaries.
-  dragHandleSelector (string) — Selector of an element that should be used to drag floating window. If not specified, the entire root element is used as a drag target.
-  enabled (boolean) — If <code>false</code>, the element can not be dragged.
-  excludeDragHandleSelector (string) — Selector of an element within <code>dragHandleSelector</code> that should be excluded from the drag event.
-  initialPosition (FloatingWindowPositionConfig) — Initial position. If not set, calculated from element styles.
-  onDragEnd (() => void) — Called when the drag stops
-  onDragStart (() => void) — Called when the drag starts
-  onPositionChange ((pos: FloatingWindowPosition) => void) — Called when the element position changes
-  portalProps (Omit<PortalProps, \"children\">) — Props passed down to <code>Portal</code> component
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem
-  setPositionRef (RefObject<SetFloatingWindowPosition | null>) — Assigns ref to set position programmatically
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any valid CSS value to set <code>box-shadow</code>
-  withBorder (boolean) — Adds border to the root element
-  withinPortal (boolean) [default true] — Determines whether the window should be rendered inside <code>Portal</code>
-  zIndex (React.CSSProperties[\"zIndex\"]) [default 400] — <code>z-index</code> of the root element
+
+- **axis** `\"x\" | \"y\"` — If set, restricts movement to the specified axis
+- **constrainOffset** `number` — The offset from the viewport edges when constraining the element. Requires `constrainToViewport: true`.
+- **constrainToViewport** `boolean` — If `true`, the element can only move within the current viewport boundaries.
+- **dragHandleSelector** `string` — Selector of an element that should be used to drag floating window. If not specified, the entire root element is used as a drag target.
+- **enabled** `boolean` — If `false`, the element can not be dragged.
+- **excludeDragHandleSelector** `string` — Selector of an element within `dragHandleSelector` that should be excluded from the drag event.
+- **initialPosition** `FloatingWindowPositionConfig` — Initial position. If not set, calculated from element styles.
+- **onDragEnd** `() => void` — Called when the drag stops
+- **onDragStart** `() => void` — Called when the drag starts
+- **onPositionChange** `(pos: FloatingWindowPosition) => void` — Called when the element position changes
+- **portalProps** `Omit<PortalProps, \"children\">` — Props passed down to `Portal` component
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem
+- **setPositionRef** `RefObject<SetFloatingWindowPosition | null>` — Assigns ref to set position programmatically
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any valid CSS value to set `box-shadow`
+- **withBorder** `boolean` — Adds border to the root element
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether the window should be rendered inside `Portal`
+- **zIndex** `React.CSSProperties[\"zIndex\"]` _(default `400`)_ — `z-index` of the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory FloatingWindow)
@@ -1346,10 +1408,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/focus-trap
 
 Props (docgen 9.4.1):
-  active (boolean) [default true] — If set to <code>false</code>, disables focus trap
-  children (any) REQUIRED — Element to trap focus at, must support ref prop
-  innerRef (Ref<any>) — Ref to combine with the focus trap ref
-  refProp (string) [default ref] — Prop that is used to access element ref
+
+- **active** `boolean` _(default `true`)_ — If set to `false`, disables focus trap
+- **children** `any` **(required)** — Element to trap focus at, must support ref prop
+- **innerRef** `Ref<any>` — Ref to combine with the focus trap ref
+- **refProp** `string` _(default `ref`)_ — Prop that is used to access element ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory FocusTrap)
@@ -1368,16 +1431,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/grid
 
 Props (docgen 9.4.1):
-  align (AlignItems) [default stretch] — Sets <code>align-items</code>
-  breakpoints (GridBreakpoints) — Breakpoints values, only used with <code>type=\"container\"</code>
-  columnGap (StyleProp<MantineSpacing>) — Column gap, overrides <code>gap</code> for horizontal spacing
-  columns (number) [default 12] — Number of columns in each row
-  gap (StyleProp<MantineSpacing>) [default 'md'] — Gap between columns and rows, key of <code>theme.spacing</code> or any valid CSS value
-  grow (boolean) [default false] — If set, columns in the last row expand to fill all available space
-  justify (JustifyContent) [default flex-start] — Sets <code>justify-content</code>
-  overflow (Overflow) [default 'visible'] — Sets <code>overflow</code> CSS property on the root element
-  rowGap (StyleProp<MantineSpacing>) — Row gap, overrides <code>gap</code> for vertical spacing
-  type (\"media\" | \"container\") [default 'media'] — Type of queries used for responsive styles
+
+- **align** `AlignItems` _(default `stretch`)_ — Sets `align-items`
+- **breakpoints** `GridBreakpoints` — Breakpoints values, only used with `type=\"container\"`
+- **columnGap** `StyleProp<MantineSpacing>` — Column gap, overrides `gap` for horizontal spacing
+- **columns** `number` _(default `12`)_ — Number of columns in each row
+- **gap** `StyleProp<MantineSpacing>` _(default `'md'`)_ — Gap between columns and rows, key of `theme.spacing` or any valid CSS value
+- **grow** `boolean` _(default `false`)_ — If set, columns in the last row expand to fill all available space
+- **justify** `JustifyContent` _(default `flex-start`)_ — Sets `justify-content`
+- **overflow** `Overflow` _(default `'visible'`)_ — Sets `overflow` CSS property on the root element
+- **rowGap** `StyleProp<MantineSpacing>` — Row gap, overrides `gap` for vertical spacing
+- **type** `\"media\" | \"container\"` _(default `'media'`)_ — Type of queries used for responsive styles
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Grid)
@@ -1389,10 +1453,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/grid
 
 Props (docgen 9.4.1):
-  align (StyleProp<AlignSelf>) — Vertical alignment of the column, controls <code>align-self</code> CSS property
-  offset (StyleProp<number>) — Column start offset – number of empty columns before this column
-  order (StyleProp<number>) — Column order, use to reorder columns at different viewport sizes
-  span (StyleProp<ColSpan>) [default 12] — Column span
+
+- **align** `StyleProp<AlignSelf>` — Vertical alignment of the column, controls `align-self` CSS property
+- **offset** `StyleProp<number>` — Column start offset – number of empty columns before this column
+- **order** `StyleProp<number>` — Column order, use to reorder columns at different viewport sizes
+- **span** `StyleProp<ColSpan>` _(default `12`)_ — Column span
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory GridCol)
@@ -1404,12 +1469,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/group
 
 Props (docgen 9.4.1):
-  align (AlignItems) [default 'center'] — Controls <code>align-items</code> CSS property
-  gap (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value for <code>gap</code>, numbers are converted to rem
-  grow (boolean) [default false] — Determines whether each child element should have <code>flex-grow: 1</code> style
-  justify (JustifyContent) [default 'flex-start'] — Controls <code>justify-content</code> CSS property
-  preventGrowOverflow (boolean) [default true] — Determines whether children should take only dedicated amount of space (<code>max-width</code> style is set based on the number of children)
-  wrap (FlexWrap) [default 'wrap'] — Controls <code>flex-wrap</code> CSS property
+
+- **align** `AlignItems` _(default `'center'`)_ — Controls `align-items` CSS property
+- **gap** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem
+- **grow** `boolean` _(default `false`)_ — Determines whether each child element should have `flex-grow: 1` style
+- **justify** `JustifyContent` _(default `'flex-start'`)_ — Controls `justify-content` CSS property
+- **preventGrowOverflow** `boolean` _(default `true`)_ — Determines whether children should take only dedicated amount of space (`max-width` style is set based on the number of children)
+- **wrap** `FlexWrap` _(default `'wrap'`)_ — Controls `flex-wrap` CSS property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Group)
@@ -1423,21 +1489,22 @@ https://mantine.dev/core/highlight
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  accentInsensitive (boolean) [default true] — Perform accent-insensitive matching. When enabled cafe will match cafe, café, cafè, etc.
-  caseInsensitive (boolean) [default true] — Perform case-insensitive matching.
-  children (string) REQUIRED — String in which to highlight substrings
-  color (string | (string & {})) [default 'yellow'] — Default background color for all highlighted text. Key of <code>theme.colors</code> or any valid CSS color, passed to <code>Mark</code> component. Can be overridden per term when using HighlightTerm objects.
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration, ignored when <code>variant</code> is not <code>gradient</code>
-  highlight (string | string[] | HighlightTerm[]) REQUIRED — Substring(s) to highlight in <code>children</code>. Can be: - string: single term - string[]: multiple terms with same color - HighlightTerm[]: multiple terms with custom colors per term - Matching is case-insensitive and accent-insensitive by default, use <code>caseInsensitive</code> and <code>accentInsensitive</code> props to control this behavior - Regex special characters are automatically escaped - When multiple substrings are provided, longer matches take precedence - Empty strings and whitespace-only strings are ignored
-  highlightStyles (CSSProperties | ((theme: MantineTheme) => CSSProperties)) — Styles applied to <code>mark</code> elements
-  inherit (boolean) [default false] — Determines whether font properties should be inherited from the parent
-  inline (boolean) [default false] — Sets <code>line-height</code> to 1 for centering
-  lineClamp (number) — Number of lines after which Text will be truncated
-  size (MantineSize | (string & {})) [default 'md'] — Controls <code>font-size</code> and <code>line-height</code>
-  span (boolean) — Shorthand for <code>component=\"span\"</code>
-  textWrap (\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\") — Controls <code>text-wrap</code> CSS property
-  truncate (TextTruncate) — Side on which Text must be truncated, if <code>true</code>, text is truncated from the start
-  wholeWord (boolean) [default false] — Only match whole words (adds word boundaries to regex). When enabled, 'the' will not match 'there'.
+
+- **accentInsensitive** `boolean` _(default `true`)_ — Perform accent-insensitive matching. When enabled cafe will match cafe, café, cafè, etc.
+- **caseInsensitive** `boolean` _(default `true`)_ — Perform case-insensitive matching.
+- **children** `string` **(required)** — String in which to highlight substrings
+- **color** `string | (string & {})` _(default `'yellow'`)_ — Default background color for all highlighted text. Key of `theme.colors` or any valid CSS color, passed to `Mark` component. Can be overridden per term when using HighlightTerm objects.
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration, ignored when `variant` is not `gradient`
+- **highlight** `string | string[] | HighlightTerm[]` **(required)** — Substring(s) to highlight in `children`. Can be: - string: single term - string[]: multiple terms with same color - HighlightTerm[]: multiple terms with custom colors per term - Matching is case-insensitive and accent-insensitive by default, use `caseInsensitive` and `accentInsensitive` props to control this behavior - Regex special characters are automatically escaped - When multiple substrings are provided, longer matches take precedence - Empty strings and whitespace-only strings are ignored
+- **highlightStyles** `CSSProperties | ((theme: MantineTheme) => CSSProperties)` — Styles applied to `mark` elements
+- **inherit** `boolean` _(default `false`)_ — Determines whether font properties should be inherited from the parent
+- **inline** `boolean` _(default `false`)_ — Sets `line-height` to 1 for centering
+- **lineClamp** `number` — Number of lines after which Text will be truncated
+- **size** `MantineSize | (string & {})` _(default `'md'`)_ — Controls `font-size` and `line-height`
+- **span** `boolean` — Shorthand for `component=\"span\"`
+- **textWrap** `\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\"` — Controls `text-wrap` CSS property
+- **truncate** `TextTruncate` — Side on which Text must be truncated, if `true`, text is truncated from the start
+- **wholeWord** `boolean` _(default `false`)_ — Only match whole words (adds word boundaries to regex). When enabled, 'the' will not match 'there'.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Highlight)
@@ -1449,47 +1516,48 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/hover-card
 
 Props (docgen 9.4.1):
-  arrowOffset (number) [default 5] — Arrow offset in px
-  arrowPosition ('center' | 'side') — Arrow position
-  arrowRadius (number) [default 0] — Arrow <code>border-radius</code> in px
-  arrowSize (number) [default 7] — Arrow size in px
-  children (React.ReactNode) — <code>Popover.Target</code> and <code>Popover.Dropdown</code> components
-  clickOutsideEvents (string[]) — Events that trigger outside clicks
-  closeDelay (number) [default 150] — Delay in ms before the dropdown closes after mouse leaves the target or dropdown. Overridden by HoverCard.Group delay if used within a group.
-  closeOnClickOutside (boolean) [default true] — Determines whether dropdown should be closed on outside clicks
-  closeOnEscape (boolean) [default true] — Determines whether dropdown should be closed when <code>Escape</code> key is pressed
-  defaultOpened (boolean) — Initial opened state for uncontrolled component
-  disabled (boolean) — If set, popover dropdown will not be rendered
-  floatingStrategy (FloatingStrategy) [default 'absolute'] — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
-  hideDetached (boolean) [default true] — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
-  id (string) — Id base to create accessibility connections
-  initiallyOpened (boolean) — Initial opened state
-  keepMounted (boolean) — If set, the dropdown is not unmounted from the DOM when hidden. <code>display: none</code> styles are added instead.
-  keepMountedMode (\"activity\" | \"display-none\") [default 'activity'] — Controls how the dropdown is hidden when <code>keepMounted</code> is set: <code>'activity'</code> – hidden with React 19 <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  middlewares (PopoverMiddlewares) [default { flip: true, shift: true, inline: false }] — Floating ui middlewares to configure position handling
-  offset (number | FloatingAxesOffsets) [default 8] — Offset of the dropdown element
-  onClose (() => void) — Called when the dropdown is closed
-  onDismiss (() => void) — Called when the popover is dismissed by clicking outside or by pressing escape
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onOpen (() => void) — Called when the dropdown is opened
-  onPositionChange ((position: FloatingPosition) => void) — Called when dropdown position changes
-  openDelay (number) [default 0] — Delay in ms before the dropdown opens after mouse enters the target. Overridden by HoverCard.Group delay if used within a group.
-  overlayProps (OverlayProps & ElementProps<\"div\">) — Props passed down to <code>Overlay</code> component
-  portalProps (BasePortalProps) — Props to pass down to the <code>Portal</code> when <code>withinPortal</code> is true
-  position (FloatingPosition) [default 'bottom'] — Dropdown position relative to the target element
-  preventPositionChangeWhenVisible (boolean) [default true] — If <code>true</code>, the dropdown picks its side on open (flip runs once, preferring the <code>position</code> prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the <code>shift</code> middleware. Set to <code>false</code> to keep flip active and allow the dropdown to re-flip on every change.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  returnFocus (boolean) [default false] — Determines whether focus should be automatically returned to control when dropdown closes
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any other valid CSS <code>box-shadow</code> value
-  transitionProps (TransitionProps) [default { duration: 150, transition: 'fade' }] — Props passed down to the <code>Transition</code> component. Use to configure duration and animation type.
-  trapFocus (boolean) [default false] — Determines whether focus should be trapped within dropdown
-  width (PopoverWidth) [default 'max-content'] — Dropdown width, or <code>'target'</code> to make dropdown width the same as target element
-  withArrow (boolean) [default false] — Determines whether component should have an arrow
-  withOverlay (boolean) [default false] — Determines whether the overlay should be displayed when the dropdown is opened
-  withRoles (boolean) [default true] — Determines whether dropdown and target elements should have accessible roles
-  withinPortal (boolean) [default true] — Determines whether dropdown should be rendered within the <code>Portal</code>
-  zIndex (string | number) [default 300] — Dropdown <code>z-index</code>
+
+- **arrowOffset** `number` _(default `5`)_ — Arrow offset in px
+- **arrowPosition** `'center' | 'side'` — Arrow position
+- **arrowRadius** `number` _(default `0`)_ — Arrow `border-radius` in px
+- **arrowSize** `number` _(default `7`)_ — Arrow size in px
+- **children** `React.ReactNode` — `Popover.Target` and `Popover.Dropdown` components
+- **clickOutsideEvents** `string[]` — Events that trigger outside clicks
+- **closeDelay** `number` _(default `150`)_ — Delay in ms before the dropdown closes after mouse leaves the target or dropdown. Overridden by HoverCard.Group delay if used within a group.
+- **closeOnClickOutside** `boolean` _(default `true`)_ — Determines whether dropdown should be closed on outside clicks
+- **closeOnEscape** `boolean` _(default `true`)_ — Determines whether dropdown should be closed when `Escape` key is pressed
+- **defaultOpened** `boolean` — Initial opened state for uncontrolled component
+- **disabled** `boolean` — If set, popover dropdown will not be rendered
+- **floatingStrategy** `FloatingStrategy` _(default `'absolute'`)_ — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
+- **hideDetached** `boolean` _(default `true`)_ — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
+- **id** `string` — Id base to create accessibility connections
+- **initiallyOpened** `boolean` — Initial opened state
+- **keepMounted** `boolean` — If set, the dropdown is not unmounted from the DOM when hidden. `display: none` styles are added instead.
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `'activity'`)_ — Controls how the dropdown is hidden when `keepMounted` is set: `'activity'` – hidden with React 19 `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **middlewares** `PopoverMiddlewares` _(default `{ flip: true, shift: true, inline: false }`)_ — Floating ui middlewares to configure position handling
+- **offset** `number | FloatingAxesOffsets` _(default `8`)_ — Offset of the dropdown element
+- **onClose** `() => void` — Called when the dropdown is closed
+- **onDismiss** `() => void` — Called when the popover is dismissed by clicking outside or by pressing escape
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onOpen** `() => void` — Called when the dropdown is opened
+- **onPositionChange** `(position: FloatingPosition) => void` — Called when dropdown position changes
+- **openDelay** `number` _(default `0`)_ — Delay in ms before the dropdown opens after mouse enters the target. Overridden by HoverCard.Group delay if used within a group.
+- **overlayProps** `OverlayProps & ElementProps<\"div\">` — Props passed down to `Overlay` component
+- **portalProps** `BasePortalProps` — Props to pass down to the `Portal` when `withinPortal` is true
+- **position** `FloatingPosition` _(default `'bottom'`)_ — Dropdown position relative to the target element
+- **preventPositionChangeWhenVisible** `boolean` _(default `true`)_ — If `true`, the dropdown picks its side on open (flip runs once, preferring the `position` prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the `shift` middleware. Set to `false` to keep flip active and allow the dropdown to re-flip on every change.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **returnFocus** `boolean` _(default `false`)_ — Determines whether focus should be automatically returned to control when dropdown closes
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any other valid CSS `box-shadow` value
+- **transitionProps** `TransitionProps` _(default `{ duration: 150, transition: 'fade' }`)_ — Props passed down to the `Transition` component. Use to configure duration and animation type.
+- **trapFocus** `boolean` _(default `false`)_ — Determines whether focus should be trapped within dropdown
+- **width** `PopoverWidth` _(default `'max-content'`)_ — Dropdown width, or `'target'` to make dropdown width the same as target element
+- **withArrow** `boolean` _(default `false`)_ — Determines whether component should have an arrow
+- **withOverlay** `boolean` _(default `false`)_ — Determines whether the overlay should be displayed when the dropdown is opened
+- **withRoles** `boolean` _(default `true`)_ — Determines whether dropdown and target elements should have accessible roles
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether dropdown should be rendered within the `Portal`
+- **zIndex** `string | number` _(default `300`)_ — Dropdown `z-index`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory HoverCard)
@@ -1501,9 +1569,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/hover-card
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — <code>HoverCard</code> components
-  closeDelay (number) — Close delay in ms
-  openDelay (number) — Open delay in ms
+
+- **children** `React.ReactNode` **(required)** — `HoverCard` components
+- **closeDelay** `number` — Close delay in ms
+- **openDelay** `number` — Open delay in ms
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory HoverCardGroup)
@@ -1515,10 +1584,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/hover-card
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Target element
-  eventPropsWrapperName (string) [default undefined (event listeners passed directly to component)] — Name of the prop to wrap event listeners in. Use when the target component expects event listeners in a nested object. For example, some components expect <code>componentProps={{ onMouseEnter, onMouseLeave }}</code>.
-  popupType (string) [default 'dialog'] — Popup accessible type
-  refProp (string) — Key of the prop that should be used to access element ref
+
+- **children** `React.ReactNode` **(required)** — Target element
+- **eventPropsWrapperName** `string` _(default `undefined (event listeners passed directly to component)`)_ — Name of the prop to wrap event listeners in. Use when the target component expects event listeners in a nested object. For example, some components expect `componentProps={{ onMouseEnter, onMouseLeave }}`.
+- **popupType** `string` _(default `'dialog'`)_ — Popup accessible type
+- **refProp** `string` — Key of the prop that should be used to access element ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory HoverCardTarget)
@@ -1530,13 +1600,14 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/hue-slider
 
 Props (docgen 9.4.1):
-  focusable (boolean) [default true] — If set, slider thumb can be focused
-  onChange ((value: number) => void) — Called when value changes
-  onChangeEnd ((value: number) => void) — Called when user stops dragging the slider or uses keyboard to change value
-  onScrubEnd (() => void) — Called when user stops dragging the slider
-  onScrubStart (() => void) — Called when user starts dragging the slider
-  size (MantineSize) [default 'md'] — Slider size
-  value (number) REQUIRED — Controlled component value
+
+- **focusable** `boolean` _(default `true`)_ — If set, slider thumb can be focused
+- **onChange** `(value: number) => void` — Called when value changes
+- **onChangeEnd** `(value: number) => void` — Called when user stops dragging the slider or uses keyboard to change value
+- **onScrubEnd** `() => void` — Called when user stops dragging the slider
+- **onScrubStart** `() => void` — Called when user starts dragging the slider
+- **size** `MantineSize` _(default `'md'`)_ — Slider size
+- **value** `number` **(required)** — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled HueSlider))
@@ -1550,11 +1621,12 @@ https://mantine.dev/core/image
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  fallbackSrc (string) — Image url used as a fallback if the image cannot be loaded
-  fit (ObjectFit) [default 'cover'] — Controls <code>object-fit</code> style
-  onError ((event: SyntheticEvent<HTMLImageElement, Event>) => void) — Called when image fails to load
-  radius (MantineRadius | number) [default 0] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  src (any) — Image url
+
+- **fallbackSrc** `string` — Image url used as a fallback if the image cannot be loaded
+- **fit** `ObjectFit` _(default `'cover'`)_ — Controls `object-fit` style
+- **onError** `(event: SyntheticEvent<HTMLImageElement, Event>) => void` — Called when image fails to load
+- **radius** `MantineRadius | number` _(default `0`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **src** `any` — Image url
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Image)
@@ -1566,20 +1638,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/indicator
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color value
-  disabled (boolean) — Hides the indicator when set
-  inline (boolean) [default false] — Changes container display from block to inline-block, use when wrapping elements with fixed width
-  label (React.ReactNode) — Label displayed inside the indicator, for example, notification count
-  maxValue (number) — Maximum value to display. If label is a number greater than this value, it will be displayed as <code>{maxValue}+</code>
-  offset (number | { x: number; y: number; }) [default 0] — Distance in pixels to offset the indicator from its default position, useful for elements with border-radius. Can be a number for uniform offset or an object with <code>x</code> and <code>y</code> properties for separate horizontal and vertical offsets
-  position (\"bottom-end\" | \"bottom-start\" | \"top-end\" | \"top-start\" | \"bottom-center\" | \"top-center\" | \"middle-center\" | \"middle-end\" | \"middle-start\") [default 'top-end'] — Indicator position relative to the target element
-  processing (boolean) [default false] — If set, the indicator has processing animation
-  radius (MantineRadius | number) [default 100] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  showZero (boolean) [default true] — Determines whether indicator with label <code>0</code> should be displayed
-  size (string | number) [default 10] — Indicator width and height
-  withBorder (boolean) — Adds border to the root element
-  zIndex (string | number) [default 200] — Indicator z-index
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color value
+- **disabled** `boolean` — Hides the indicator when set
+- **inline** `boolean` _(default `false`)_ — Changes container display from block to inline-block, use when wrapping elements with fixed width
+- **label** `React.ReactNode` — Label displayed inside the indicator, for example, notification count
+- **maxValue** `number` — Maximum value to display. If label is a number greater than this value, it will be displayed as `{maxValue}+`
+- **offset** `number | { x: number; y: number; }` _(default `0`)_ — Distance in pixels to offset the indicator from its default position, useful for elements with border-radius. Can be a number for uniform offset or an object with `x` and `y` properties for separate horizontal and vertical offsets
+- **position** `\"bottom-end\" | \"bottom-start\" | \"top-end\" | \"top-start\" | \"bottom-center\" | \"top-center\" | \"middle-center\" | \"middle-end\" | \"middle-start\"` _(default `'top-end'`)_ — Indicator position relative to the target element
+- **processing** `boolean` _(default `false`)_ — If set, the indicator has processing animation
+- **radius** `MantineRadius | number` _(default `100`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **showZero** `boolean` _(default `true`)_ — Determines whether indicator with label `0` should be displayed
+- **size** `string | number` _(default `10`)_ — Indicator width and height
+- **withBorder** `boolean` — Adds border to the root element
+- **zIndex** `string | number` _(default `200`)_ — Indicator z-index
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Indicator)
@@ -1593,31 +1666,32 @@ https://mantine.dev/core/input
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Determines whether the input should have error styles and <code>aria-invalid</code> attribute
-  id (string) — Input element id
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  multiline (boolean) [default false] — Adjusts padding and sizing calculations for multiline inputs (use with <code>component=\"textarea\"</code>). Does not make the input multiline by itself.
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) — Sets <code>required</code> attribute on the <code>input</code> element
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  rootRef (Ref<HTMLDivElement>) — Root element ref
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Determines whether the input should have success styles
-  withAria (boolean) [default true] — Determines whether <code>aria-</code> and other accessibility attributes should be added to the input. Only disable when implementing custom accessibility handling.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element of the <code>Input</code> component
+
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Determines whether the input should have error styles and `aria-invalid` attribute
+- **id** `string` — Input element id
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **multiline** `boolean` _(default `false`)_ — Adjusts padding and sizing calculations for multiline inputs (use with `component=\"textarea\"`). Does not make the input multiline by itself.
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` — Sets `required` attribute on the `input` element
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **rootRef** `Ref<HTMLDivElement>` — Root element ref
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Determines whether the input should have success styles
+- **withAria** `boolean` _(default `true`)_ — Determines whether `aria-` and other accessibility attributes should be added to the input. Only disable when implementing custom accessibility handling.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element of the `Input` component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Input)
@@ -1627,38 +1701,39 @@ Optional leading props map; remaining args are children."
   "InputBase
 
 Props (docgen 9.4.1):
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  multiline (boolean) [default false] — If set, the input can have multiple lines, for example when <code>component=\"textarea\"</code>
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAria (boolean) [default true] — If set, <code>aria-</code> and other accessibility attributes are added to the input
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (React.ComponentProps<\"div\">) — Props passed down to the root element (<code>Input.Wrapper</code> component)
+
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **multiline** `boolean` _(default `false`)_ — If set, the input can have multiple lines, for example when `component=\"textarea\"`
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAria** `boolean` _(default `true`)_ — If set, `aria-` and other accessibility attributes are added to the input
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `React.ComponentProps<\"div\">` — Props passed down to the root element (`Input.Wrapper` component)
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory InputBase)
@@ -1672,7 +1747,8 @@ https://mantine.dev/core/input
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  size (MantineFontSize) [default 'sm'] — Controls description <code>font-size</code>
+
+- **size** `MantineFontSize` _(default `'sm'`)_ — Controls description `font-size`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory InputDescription)
@@ -1686,7 +1762,8 @@ https://mantine.dev/core/input
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  size (MantineFontSize) [default 'sm'] — Controls error <code>font-size</code>
+
+- **size** `MantineFontSize` _(default `'sm'`)_ — Controls error `font-size`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory InputError)
@@ -1700,9 +1777,10 @@ https://mantine.dev/core/input
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  labelElement (\"div\" | \"label\") [default 'label'] — Root element of the label
-  required (boolean) — If set, the required asterisk is displayed next to the label
-  size (MantineFontSize) [default 'sm'] — Controls label <code>font-size</code>
+
+- **labelElement** `\"div\" | \"label\"` _(default `'label'`)_ — Root element of the label
+- **required** `boolean` — If set, the required asterisk is displayed next to the label
+- **size** `MantineFontSize` _(default `'sm'`)_ — Controls label `font-size`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory InputLabel)
@@ -1716,21 +1794,22 @@ https://mantine.dev/core/input
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  id (string) — Static id used as base to generate <code>aria-</code> attributes, by default generates random id
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelElement (\"div\" | \"label\") [default 'label'] — Root element for the label. Use <code>'div'</code> when wrapper contains multiple input elements and you need to handle <code>htmlFor</code> manually.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  size (MantineFontSize) — Controls size of <code>Input.Label</code>, <code>Input.Description</code> and <code>Input.Error</code> components
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
+
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **id** `string` — Static id used as base to generate `aria-` attributes, by default generates random id
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelElement** `\"div\" | \"label\"` _(default `'label'`)_ — Root element for the label. Use `'div'` when wrapper contains multiple input elements and you need to handle `htmlFor` manually.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **size** `MantineFontSize` — Controls size of `Input.Label`, `Input.Description` and `Input.Error` components
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory InputWrapper)
@@ -1742,50 +1821,51 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/json-input
 
 Props (docgen 9.4.1):
-  autosize (boolean) [default false] — If set, enables textarea height growing with its content
-  bottomSection (React.ReactNode) — Content rendered at the bottom of the input, inside the border
-  bottomSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>bottomSection</code> element
-  defaultValue (string) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  deserialize (((text: string, reviver?: ((this: any, key: string, value: any) => any)) => any) | undefined) [default JSON.parse] — Function to deserialize string value for formatting and validation. Must throw an error if the string is invalid JSON.
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  formatOnBlur (boolean) [default false] — Determines whether the value should be formatted on blur
-  indentSpaces (number) [default 2] — Number of spaces to use as white space for formatting. Passed as the third argument to <code>serialize</code> function.
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxRows (number) — Maximum rows for autosize textarea to grow, ignored if <code>autosize</code> prop is not set
-  minRows (number) — Minimum rows of autosize textarea, ignored if <code>autosize</code> prop is not set
-  onChange ((value: string) => void) — Called when value changes
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  resize (Resize) [default 'none'] — Controls <code>resize</code> CSS property
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  serialize ({ (value: any, replacer?: ((this: any, key: string, value: any) => any), space?: string | number | undefined): string; (value: any, replacer?: (string | number)[] | null | undefined, space?: string | ... 1 more ... | undefined): string; } | undefined) [default JSON.stringify] — Function to serialize value into a string for formatting. Called with (value, null, 2) where 2 is the indentation level.
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  validationError (React.ReactNode) — Error message shown when the input value is invalid JSON (checked on blur). If not provided, a generic error state is shown. Takes precedence over the <code>error</code> prop when validation fails.
-  value (string) — Controlled component value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **autosize** `boolean` _(default `false`)_ — If set, enables textarea height growing with its content
+- **bottomSection** `React.ReactNode` — Content rendered at the bottom of the input, inside the border
+- **bottomSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `bottomSection` element
+- **defaultValue** `string` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **deserialize** `((text: string, reviver?: ((this: any, key: string, value: any) => any)) => any) | undefined` _(default `JSON.parse`)_ — Function to deserialize string value for formatting and validation. Must throw an error if the string is invalid JSON.
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **formatOnBlur** `boolean` _(default `false`)_ — Determines whether the value should be formatted on blur
+- **indentSpaces** `number` _(default `2`)_ — Number of spaces to use as white space for formatting. Passed as the third argument to `serialize` function.
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxRows** `number` — Maximum rows for autosize textarea to grow, ignored if `autosize` prop is not set
+- **minRows** `number` — Minimum rows of autosize textarea, ignored if `autosize` prop is not set
+- **onChange** `(value: string) => void` — Called when value changes
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **resize** `Resize` _(default `'none'`)_ — Controls `resize` CSS property
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **serialize** `{ (value: any, replacer?: ((this: any, key: string, value: any) => any), space?: string | number | undefined): string; (value: any, replacer?: (string | number)[] | null | undefined, space?: string | ... 1 more ... | undefined): string; } | undefined` _(default `JSON.stringify`)_ — Function to serialize value into a string for formatting. Called with (value, null, 2) where 2 is the indentation level.
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **validationError** `React.ReactNode` — Error message shown when the input value is invalid JSON (checked on blur). If not provided, a generic error state is shown. Takes precedence over the `error` prop when validation fails.
+- **value** `string` — Controlled component value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled JsonInput))
@@ -1797,7 +1877,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/kbd
 
 Props (docgen 9.4.1):
-  size (MantineSize | number) [default 'sm'] — Controls <code>font-size</code> and <code>padding</code>
+
+- **size** `MantineSize | number` _(default `'sm'`)_ — Controls `font-size` and `padding`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Kbd)
@@ -1809,16 +1890,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/list
 
 Props (docgen 9.4.1):
-  center (boolean) [default false] — Vertically centers list items with their icons
-  children (React.ReactNode) — <code>List.Item</code> components
-  icon (React.ReactNode) — Icon to replace default list markers. Applied to all items unless overridden on individual List.Item components
-  listStyleType (ListStyleType) — Controls CSS <code>list-style-type</code> property. Overrides the default list marker style based on list type
-  reversed (boolean) — Reverses the order of list items (only works with type=\"ordered\")
-  size (MantineSize) [default 'md'] — Controls <code>font-size</code> and <code>line-height</code>
-  spacing (MantineSpacing) [default 0] — Key of <code>theme.spacing</code> or any valid CSS value to set spacing between items
-  start (number) — Starting value for ordered list numbering (only works with type=\"ordered\")
-  type (\"ordered\" | \"unordered\") [default 'unordered'] — List type
-  withPadding (boolean) [default false] — Adds extra horizontal padding to the list, useful for nested lists
+
+- **center** `boolean` _(default `false`)_ — Vertically centers list items with their icons
+- **children** `React.ReactNode` — `List.Item` components
+- **icon** `React.ReactNode` — Icon to replace default list markers. Applied to all items unless overridden on individual List.Item components
+- **listStyleType** `ListStyleType` — Controls CSS `list-style-type` property. Overrides the default list marker style based on list type
+- **reversed** `boolean` — Reverses the order of list items (only works with type=\"ordered\")
+- **size** `MantineSize` _(default `'md'`)_ — Controls `font-size` and `line-height`
+- **spacing** `MantineSpacing` _(default `0`)_ — Key of `theme.spacing` or any valid CSS value to set spacing between items
+- **start** `number` — Starting value for ordered list numbering (only works with type=\"ordered\")
+- **type** `\"ordered\" | \"unordered\"` _(default `'unordered'`)_ — List type
+- **withPadding** `boolean` _(default `false`)_ — Adds extra horizontal padding to the list, useful for nested lists
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory List)
@@ -1830,8 +1912,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/list
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Item content
-  icon (React.ReactNode) — Icon to replace item bullet
+
+- **children** `React.ReactNode` — Item content
+- **icon** `React.ReactNode` — Icon to replace item bullet
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ListItem)
@@ -1843,11 +1926,12 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/loader
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Overrides default loader with given content
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color
-  loaders (Partial<Record<(string & {}) | \"bars\" | \"dots\" | \"oval\", MantineLoaderComponent>>) — Object of loaders components, can be customized via default props or inline.
-  size (MantineSize | number) [default 'md'] — Controls <code>width</code> and <code>height</code> of the loader. <code>Loader</code> has predefined <code>xs</code>-<code>xl</code> values. Numbers are converted to rem.
-  type ((string & {}) | \"bars\" | \"dots\" | \"oval\") [default 'oval'] — Loader type, key of <code>loaders</code> prop
+
+- **children** `React.ReactNode` — Overrides default loader with given content
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color
+- **loaders** `Partial<Record<(string & {}) | \"bars\" | \"dots\" | \"oval\", MantineLoaderComponent>>` — Object of loaders components, can be customized via default props or inline.
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem.
+- **type** `(string & {}) | \"bars\" | \"dots\" | \"oval\"` _(default `'oval'`)_ — Loader type, key of `loaders` prop
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Loader)
@@ -1859,15 +1943,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/loading-overlay
 
 Props (docgen 9.4.1):
-  loaderProps (LoaderProps) — Props passed down to <code>Loader</code> component
-  onEnter (() => void) — Called when transition starts
-  onEntered (() => void) — Called when transition ends
-  onExit (() => void) — Called when exit transition starts
-  onExited (() => void) — Called when exit transition ends
-  overlayProps (OverlayProps) — Props passed down to <code>Overlay</code> component. Use to customizing blur, opacity, color and other properties.
-  transitionProps (TransitionProps) — Props passed down to <code>Transition</code> component. Set <code>duration</code> to create custom transition or override default transition.
-  visible (boolean) [default false] — Controls overlay visibility. Typically used with state (useState, useDisclosure).
-  zIndex (string | number) [default 400] — Controls <code>z-index</code> of both the overlay and loader. The loader receives <code>z-index + 1</code>.
+
+- **loaderProps** `LoaderProps` — Props passed down to `Loader` component
+- **onEnter** `() => void` — Called when transition starts
+- **onEntered** `() => void` — Called when transition ends
+- **onExit** `() => void` — Called when exit transition starts
+- **onExited** `() => void` — Called when exit transition ends
+- **overlayProps** `OverlayProps` — Props passed down to `Overlay` component. Use to customizing blur, opacity, color and other properties.
+- **transitionProps** `TransitionProps` — Props passed down to `Transition` component. Set `duration` to create custom transition or override default transition.
+- **visible** `boolean` _(default `false`)_ — Controls overlay visibility. Typically used with state (useState, useDisclosure).
+- **zIndex** `string | number` _(default `400`)_ — Controls `z-index` of both the overlay and loader. The loader receives `z-index + 1`.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory LoadingOverlay)
@@ -1879,7 +1964,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/mark
 
 Props (docgen 9.4.1):
-  color (MantineColor) [default yellow] — Key of <code>theme.colors</code> or any valid CSS color
+
+- **color** `MantineColor` _(default `yellow`)_ — Key of `theme.colors` or any valid CSS color
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Mark)
@@ -1891,16 +1977,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/marquee
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Content to scroll
-  duration (number) [default 40000] — Animation duration in ms
-  fadeEdgeColor (string) [default 'var(--mantine-color-body)'] — Color of the fade gradient,
-  fadeEdgeSize (string) [default '5%'] — Size of the fade gradient,
-  fadeEdges (boolean) [default true] — Whether to show gradient fade on edges,
-  gap (MantineSpacing) [default 'md'] — Gap between repeated children, key of <code>theme.spacing</code> or any valid CSS value
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Scroll orientation
-  pauseOnHover (boolean) [default false] — Pauses animation on hover
-  repeat (number) [default 4] — Number of times children are repeated inline for seamless scrolling
-  reverse (boolean) [default false] — Reverses animation direction
+
+- **children** `React.ReactNode` **(required)** — Content to scroll
+- **duration** `number` _(default `40000`)_ — Animation duration in ms
+- **fadeEdgeColor** `string` _(default `'var(--mantine-color-body)'`)_ — Color of the fade gradient,
+- **fadeEdgeSize** `string` _(default `'5%'`)_ — Size of the fade gradient,
+- **fadeEdges** `boolean` _(default `true`)_ — Whether to show gradient fade on edges,
+- **gap** `MantineSpacing` _(default `'md'`)_ — Gap between repeated children, key of `theme.spacing` or any valid CSS value
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Scroll orientation
+- **pauseOnHover** `boolean` _(default `false`)_ — Pauses animation on hover
+- **repeat** `number` _(default `4`)_ — Number of times children are repeated inline for seamless scrolling
+- **reverse** `boolean` _(default `false`)_ — Reverses animation direction
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Marquee)
@@ -1912,49 +1999,50 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/mask-input
 
 Props (docgen 9.4.1):
-  alwaysShowMask (boolean) — Show mask pattern even when field is empty and unfocused
-  autoClear (boolean) — Clear value on blur when mask is incomplete, <code>false</code> by default
-  beforeMaskedStateChange ((states: { previousState: { value: string; selection: { start: number; end: number; } | null; }; currentState: { value: string; selection: { start: number; end: number; } | null; }; nextState: { value: string; selection: { ...; } | null; }; }) => { ...; }) — Escape hatch for advanced cursor/value manipulation
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  mask (string | (string | RegExp)[]) REQUIRED — Mask pattern string or array of string literals and RegExp objects
-  modify (((value: string) => Partial<Pick<MaskInputProps, \"mask\" | \"tokens\" | \"separate\" | \"slotChar\">>) | undefined) — Called before masking on each keystroke, can return overrides for mask options
-  onChangeRaw ((rawValue: string, maskedValue: string) => void) — Called on every change with raw and masked values
-  onComplete ((maskedValue: string, rawValue: string) => void) — Called when all required mask slots are filled
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  resetRef (RefObject<(() => void) | null>) — Assigns a function that clears the input value to the given ref
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  separate (boolean) — When true, raw and display values are decoupled
-  showMaskOnFocus (boolean) — Show mask placeholder on focus, <code>true</code> by default
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  slotChar (string | null) — Character displayed in unfilled slots, <code>\"_\"</code> by default
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  tokens (Record<string, RegExp>) — Override or extend the default token map
-  transform ((char: string) => string) — Transform each character before validation and insertion
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **alwaysShowMask** `boolean` — Show mask pattern even when field is empty and unfocused
+- **autoClear** `boolean` — Clear value on blur when mask is incomplete, `false` by default
+- **beforeMaskedStateChange** `(states: { previousState: { value: string; selection: { start: number; end: number; } | null; }; currentState: { value: string; selection: { start: number; end: number; } | null; }; nextState: { value: string; selection: { ...; } | null; }; }) => { ...; }` — Escape hatch for advanced cursor/value manipulation
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **mask** `string | (string | RegExp)[]` **(required)** — Mask pattern string or array of string literals and RegExp objects
+- **modify** `((value: string) => Partial<Pick<MaskInputProps, \"mask\" | \"tokens\" | \"separate\" | \"slotChar\">>) | undefined` — Called before masking on each keystroke, can return overrides for mask options
+- **onChangeRaw** `(rawValue: string, maskedValue: string) => void` — Called on every change with raw and masked values
+- **onComplete** `(maskedValue: string, rawValue: string) => void` — Called when all required mask slots are filled
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **resetRef** `RefObject<(() => void) | null>` — Assigns a function that clears the input value to the given ref
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **separate** `boolean` — When true, raw and display values are decoupled
+- **showMaskOnFocus** `boolean` — Show mask placeholder on focus, `true` by default
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **slotChar** `string | null` — Character displayed in unfilled slots, `\"_\"` by default
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **tokens** `Record<string, RegExp>` — Override or extend the default token map
+- **transform** `(char: string) => string` — Transform each character before validation and insertion
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled MaskInput))
@@ -1966,54 +2054,55 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  alignItemsLabels (\"none\" | \"all\" | \"with-indicators\") [default 'with-indicators'] — Controls how indicator slot space is reserved on menu items for label alignment. <code>'all'</code> reserves space on every <code>Menu.Item</code>, <code>'with-indicators'</code> reserves space only on <code>Menu.CheckboxItem</code> and <code>Menu.RadioItem</code>, <code>'none'</code> reserves space only on items that currently display an indicator.
-  arrowOffset (number) [default 5] — Arrow offset in px
-  arrowPosition ('center' | 'side') — Arrow position
-  arrowRadius (number) [default 0] — Arrow <code>border-radius</code> in px
-  arrowSize (number) [default 7] — Arrow size in px
-  checkIcon (React.ReactNode) — Custom icon rendered as the indicator of checked <code>Menu.CheckboxItem</code> and selected <code>Menu.RadioItem</code>. Can be overridden per item with the <code>checkIcon</code> prop.
-  children (React.ReactNode) — Menu children
-  clickOutsideEvents (string[]) [default ['mousedown', 'touchstart', 'keydown']] — Events that trigger outside click detection. Includes mousedown for desktop clicks, touchstart for mobile, and keydown for Escape key handling
-  closeDelay (number) — Close delay in ms, applicable only to <code>trigger=\"hover\"</code> variant
-  closeOnClickOutside (boolean) — If set, the dropdown is closed on outside clicks
-  closeOnEscape (boolean) [default true] — If set, the dropdown is closed when the <code>Escape</code> key is pressed
-  closeOnItemClick (boolean) — If set, the Menu is closed when one of the items is clicked. Can be overridden per item with <code>closeMenuOnClick</code> prop
-  defaultOpened (boolean) — Uncontrolled menu initial opened state
-  disabled (boolean) — If set, popover dropdown will not be rendered
-  floatingStrategy (FloatingStrategy) [default 'absolute'] — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
-  hideDetached (boolean) [default true] — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
-  id (string) — Id base to create accessibility connections
-  keepMounted (boolean) — If set, the dropdown is not unmounted from the DOM when hidden. <code>display: none</code> styles are added instead.
-  keepMountedMode (\"activity\" | \"display-none\") [default 'activity'] — Controls how the dropdown is hidden when <code>keepMounted</code> is set: <code>'activity'</code> – hidden with React 19 <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  loop (boolean) — If set, arrow key presses wrap around from last item to first and vice versa
-  menuItemTabIndex (0 | -1) [default -1] — Set the <code>tabindex</code> on all menu items. Use <code>0</code> to allow Tab key navigation through menu items (required for navigation menus following WAI-ARIA disclosure pattern).
-  middlewares (PopoverMiddlewares) [default { flip: true, shift: true, inline: false }] — Floating ui middlewares to configure position handling
-  offset (number | FloatingAxesOffsets) [default 8] — Offset of the dropdown element
-  onChange ((opened: boolean) => void) — Called when menu opened state changes
-  onClose (() => void) — Called when Menu is closed
-  onDismiss (() => void) — Called when the popover is dismissed by clicking outside or by pressing escape
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onOpen (() => void) — Called when Menu is opened
-  onPositionChange ((position: FloatingPosition) => void) — Called when dropdown position changes
-  openDelay (number) — Open delay in ms, applicable only to <code>trigger=\"hover\"</code> variant
-  opened (boolean) — Controlled menu opened state
-  overlayProps (OverlayProps & ElementProps<\"div\">) — Props passed down to <code>Overlay</code> component
-  portalProps (BasePortalProps) — Props to pass down to the <code>Portal</code> when <code>withinPortal</code> is true
-  position (FloatingPosition) [default 'bottom'] — Dropdown position relative to the target element
-  preventPositionChangeWhenVisible (boolean) [default true] — If <code>true</code>, the dropdown picks its side on open (flip runs once, preferring the <code>position</code> prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the <code>shift</code> middleware. Set to <code>false</code> to keep flip active and allow the dropdown to re-flip on every change.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  returnFocus (boolean) [default `true`] — Determines whether focus should be automatically returned to control when dropdown closes
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any other valid CSS <code>box-shadow</code> value
-  transitionProps (TransitionProps) [default { duration: 150, transition: 'fade' }] — Props passed down to the <code>Transition</code> component. Use to configure duration and animation type.
-  trapFocus (boolean) — If set, focus is trapped within the menu dropdown when it is opened
-  trigger (\"hover\" | \"click\" | \"click-hover\") — Event trigger to open menu. Note: 'hover' is not keyboard accessible; prefer 'click-hover' for accessible hover menus
-  width (PopoverWidth) [default 'max-content'] — Dropdown width, or <code>'target'</code> to make dropdown width the same as target element
-  withArrow (boolean) [default false] — Determines whether component should have an arrow
-  withInitialFocusPlaceholder (boolean) [default true] — Adds a hidden focusable element at the start of the dropdown to prevent unexpected focus jumps when opening with keyboard. Set to false if you need custom focus management.
-  withOverlay (boolean) [default false] — Determines whether the overlay should be displayed when the dropdown is opened
-  withinPortal (boolean) [default true] — Determines whether dropdown should be rendered within the <code>Portal</code>
-  zIndex (string | number) [default 300] — Dropdown <code>z-index</code>
+
+- **alignItemsLabels** `\"none\" | \"all\" | \"with-indicators\"` _(default `'with-indicators'`)_ — Controls how indicator slot space is reserved on menu items for label alignment. `'all'` reserves space on every `Menu.Item`, `'with-indicators'` reserves space only on `Menu.CheckboxItem` and `Menu.RadioItem`, `'none'` reserves space only on items that currently display an indicator.
+- **arrowOffset** `number` _(default `5`)_ — Arrow offset in px
+- **arrowPosition** `'center' | 'side'` — Arrow position
+- **arrowRadius** `number` _(default `0`)_ — Arrow `border-radius` in px
+- **arrowSize** `number` _(default `7`)_ — Arrow size in px
+- **checkIcon** `React.ReactNode` — Custom icon rendered as the indicator of checked `Menu.CheckboxItem` and selected `Menu.RadioItem`. Can be overridden per item with the `checkIcon` prop.
+- **children** `React.ReactNode` — Menu children
+- **clickOutsideEvents** `string[]` _(default `['mousedown', 'touchstart', 'keydown']`)_ — Events that trigger outside click detection. Includes mousedown for desktop clicks, touchstart for mobile, and keydown for Escape key handling
+- **closeDelay** `number` — Close delay in ms, applicable only to `trigger=\"hover\"` variant
+- **closeOnClickOutside** `boolean` — If set, the dropdown is closed on outside clicks
+- **closeOnEscape** `boolean` _(default `true`)_ — If set, the dropdown is closed when the `Escape` key is pressed
+- **closeOnItemClick** `boolean` — If set, the Menu is closed when one of the items is clicked. Can be overridden per item with `closeMenuOnClick` prop
+- **defaultOpened** `boolean` — Uncontrolled menu initial opened state
+- **disabled** `boolean` — If set, popover dropdown will not be rendered
+- **floatingStrategy** `FloatingStrategy` _(default `'absolute'`)_ — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
+- **hideDetached** `boolean` _(default `true`)_ — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
+- **id** `string` — Id base to create accessibility connections
+- **keepMounted** `boolean` — If set, the dropdown is not unmounted from the DOM when hidden. `display: none` styles are added instead.
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `'activity'`)_ — Controls how the dropdown is hidden when `keepMounted` is set: `'activity'` – hidden with React 19 `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **loop** `boolean` — If set, arrow key presses wrap around from last item to first and vice versa
+- **menuItemTabIndex** `0 | -1` _(default `-1`)_ — Set the `tabindex` on all menu items. Use `0` to allow Tab key navigation through menu items (required for navigation menus following WAI-ARIA disclosure pattern).
+- **middlewares** `PopoverMiddlewares` _(default `{ flip: true, shift: true, inline: false }`)_ — Floating ui middlewares to configure position handling
+- **offset** `number | FloatingAxesOffsets` _(default `8`)_ — Offset of the dropdown element
+- **onChange** `(opened: boolean) => void` — Called when menu opened state changes
+- **onClose** `() => void` — Called when Menu is closed
+- **onDismiss** `() => void` — Called when the popover is dismissed by clicking outside or by pressing escape
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onOpen** `() => void` — Called when Menu is opened
+- **onPositionChange** `(position: FloatingPosition) => void` — Called when dropdown position changes
+- **openDelay** `number` — Open delay in ms, applicable only to `trigger=\"hover\"` variant
+- **opened** `boolean` — Controlled menu opened state
+- **overlayProps** `OverlayProps & ElementProps<\"div\">` — Props passed down to `Overlay` component
+- **portalProps** `BasePortalProps` — Props to pass down to the `Portal` when `withinPortal` is true
+- **position** `FloatingPosition` _(default `'bottom'`)_ — Dropdown position relative to the target element
+- **preventPositionChangeWhenVisible** `boolean` _(default `true`)_ — If `true`, the dropdown picks its side on open (flip runs once, preferring the `position` prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the `shift` middleware. Set to `false` to keep flip active and allow the dropdown to re-flip on every change.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **returnFocus** `boolean` _(default ``true``)_ — Determines whether focus should be automatically returned to control when dropdown closes
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any other valid CSS `box-shadow` value
+- **transitionProps** `TransitionProps` _(default `{ duration: 150, transition: 'fade' }`)_ — Props passed down to the `Transition` component. Use to configure duration and animation type.
+- **trapFocus** `boolean` — If set, focus is trapped within the menu dropdown when it is opened
+- **trigger** `\"hover\" | \"click\" | \"click-hover\"` — Event trigger to open menu. Note: 'hover' is not keyboard accessible; prefer 'click-hover' for accessible hover menus
+- **width** `PopoverWidth` _(default `'max-content'`)_ — Dropdown width, or `'target'` to make dropdown width the same as target element
+- **withArrow** `boolean` _(default `false`)_ — Determines whether component should have an arrow
+- **withInitialFocusPlaceholder** `boolean` _(default `true`)_ — Adds a hidden focusable element at the start of the dropdown to prevent unexpected focus jumps when opening with keyboard. Set to false if you need custom focus management.
+- **withOverlay** `boolean` _(default `false`)_ — Determines whether the overlay should be displayed when the dropdown is opened
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether dropdown should be rendered within the `Portal`
+- **zIndex** `string | number` _(default `300`)_ — Dropdown `z-index`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Menu)
@@ -2025,10 +2114,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — <code>Menu.CheckboxItem</code> components and other elements
-  defaultValue (string[]) — Uncontrolled default selected values
-  onChange ((value: string[]) => void) — Called with the new array of selected values when a <code>Menu.CheckboxItem</code> is toggled
-  value (string[]) — Controlled selected values
+
+- **children** `React.ReactNode` — `Menu.CheckboxItem` components and other elements
+- **defaultValue** `string[]` — Uncontrolled default selected values
+- **onChange** `(value: string[]) => void` — Called with the new array of selected values when a `Menu.CheckboxItem` is toggled
+- **value** `string[]` — Controlled selected values
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuCheckboxGroup)
@@ -2040,16 +2130,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  checkIcon (React.ReactNode) — Replaces the default check icon rendered in the indicator slot when the item is checked. Overrides <code>checkIcon</code> set on <code>Menu</code>.
-  checked (boolean) — Controlled checked state. Overrides selection derived from the parent <code>Menu.CheckboxGroup</code>.
-  children (React.ReactNode) — Item label
-  closeMenuOnClick (boolean) — If set, closes the menu when this item is clicked. By default, checkbox items do not close the menu.
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color
-  defaultChecked (boolean) — Uncontrolled default checked state. Ignored when the item is used inside <code>Menu.CheckboxGroup</code>.
-  disabled (boolean) — Sets disabled attribute, applies disabled styles
-  onChange ((checked: boolean) => void) — Called when checked state changes. Overrides <code>onChange</code> of the parent <code>Menu.CheckboxGroup</code>.
-  rightSection (React.ReactNode) — Section displayed at the end of the label
-  value (string) — Value of the checkbox item. When used inside <code>Menu.CheckboxGroup</code>, determines whether the item is checked and what value is added/removed on toggle.
+
+- **checkIcon** `React.ReactNode` — Replaces the default check icon rendered in the indicator slot when the item is checked. Overrides `checkIcon` set on `Menu`.
+- **checked** `boolean` — Controlled checked state. Overrides selection derived from the parent `Menu.CheckboxGroup`.
+- **children** `React.ReactNode` — Item label
+- **closeMenuOnClick** `boolean` — If set, closes the menu when this item is clicked. By default, checkbox items do not close the menu.
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color
+- **defaultChecked** `boolean` — Uncontrolled default checked state. Ignored when the item is used inside `Menu.CheckboxGroup`.
+- **disabled** `boolean` — Sets disabled attribute, applies disabled styles
+- **onChange** `(checked: boolean) => void` — Called when checked state changes. Overrides `onChange` of the parent `Menu.CheckboxGroup`.
+- **rightSection** `React.ReactNode` — Section displayed at the end of the label
+- **value** `string` — Value of the checkbox item. When used inside `Menu.CheckboxGroup`, determines whether the item is checked and what value is added/removed on toggle.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuCheckboxItem)
@@ -2061,9 +2152,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Element that opens the menu when right-clicked. Menu dropdown is positioned at the cursor. The trigger element must not call <code>event.preventDefault()</code> in its own <code>onContextMenu</code> handler, otherwise the native context menu is not suppressed.
-  disabled (boolean) — If set, the right-click trigger is disabled and the browser's default context menu is shown
-  longPressDelay (number) — Delay in ms before a touch long-press opens the dropdown on touch devices, <code>500</code> by default
+
+- **children** `React.ReactNode` **(required)** — Element that opens the menu when right-clicked. Menu dropdown is positioned at the cursor. The trigger element must not call `event.preventDefault()` in its own `onContextMenu` handler, otherwise the native context menu is not suppressed.
+- **disabled** `boolean` — If set, the right-click trigger is disabled and the browser's default context menu is shown
+- **longPressDelay** `number` — Delay in ms before a touch long-press opens the dropdown on touch devices, `500` by default
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuContextMenu)
@@ -2075,12 +2167,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Item label
-  closeMenuOnClick (boolean) — Controls whether the menu closes when this item is clicked. When undefined, inherits from Menu's <code>closeOnItemClick</code> prop. When true or false, overrides the Menu-level setting
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color
-  disabled (boolean) — Sets disabled attribute, applies disabled styles
-  leftSection (React.ReactNode) — Section displayed at the start of the label
-  rightSection (React.ReactNode) — Section displayed at the end of the label
+
+- **children** `React.ReactNode` — Item label
+- **closeMenuOnClick** `boolean` — Controls whether the menu closes when this item is clicked. When undefined, inherits from Menu's `closeOnItemClick` prop. When true or false, overrides the Menu-level setting
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color
+- **disabled** `boolean` — Sets disabled attribute, applies disabled styles
+- **leftSection** `React.ReactNode` — Section displayed at the start of the label
+- **rightSection** `React.ReactNode` — Section displayed at the end of the label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuItem)
@@ -2092,10 +2185,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — <code>Menu.RadioItem</code> components and other elements
-  defaultValue (string | null) — Uncontrolled default selected value
-  onChange ((value: string) => void) — Called with the new value when a <code>Menu.RadioItem</code> is selected
-  value (string | null) — Controlled selected value
+
+- **children** `React.ReactNode` — `Menu.RadioItem` components and other elements
+- **defaultValue** `string | null` — Uncontrolled default selected value
+- **onChange** `(value: string) => void` — Called with the new value when a `Menu.RadioItem` is selected
+- **value** `string | null` — Controlled selected value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuRadioGroup)
@@ -2107,15 +2201,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  checkIcon (React.ReactNode) — Replaces the default radio indicator rendered when the item is selected. Overrides <code>checkIcon</code> set on <code>Menu</code>.
-  checked (boolean) — Overrides selected state determined by the parent <code>Menu.RadioGroup</code>.
-  children (React.ReactNode) — Item label
-  closeMenuOnClick (boolean) — If set, closes the menu when this item is clicked. By default, radio items do not close the menu.
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color
-  disabled (boolean) — Sets disabled attribute, applies disabled styles
-  onChange ((value: string) => void) — Called with the item value when item is selected. Overrides <code>onChange</code> of the parent <code>Menu.RadioGroup</code>.
-  rightSection (React.ReactNode) — Section displayed at the end of the label
-  value (string) REQUIRED — Value of the radio item. Used by the parent <code>Menu.RadioGroup</code> to determine which item is selected.
+
+- **checkIcon** `React.ReactNode` — Replaces the default radio indicator rendered when the item is selected. Overrides `checkIcon` set on `Menu`.
+- **checked** `boolean` — Overrides selected state determined by the parent `Menu.RadioGroup`.
+- **children** `React.ReactNode` — Item label
+- **closeMenuOnClick** `boolean` — If set, closes the menu when this item is clicked. By default, radio items do not close the menu.
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color
+- **disabled** `boolean` — Sets disabled attribute, applies disabled styles
+- **onChange** `(value: string) => void` — Called with the item value when item is selected. Overrides `onChange` of the parent `Menu.RadioGroup`.
+- **rightSection** `React.ReactNode` — Section displayed at the end of the label
+- **value** `string` **(required)** — Value of the radio item. Used by the parent `Menu.RadioGroup` to determine which item is selected.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuRadioItem)
@@ -2127,32 +2222,33 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  clearSearchOnClose (boolean) [default true] — If set, clears the search value after the menu close transition completes. Requires a controlled <code>value</code>/<code>onChange</code> pair.
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Determines whether the input should have error styles and <code>aria-invalid</code> attribute
-  id (string) — Input element id
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  multiline (boolean) [default false] — Adjusts padding and sizing calculations for multiline inputs (use with <code>component=\"textarea\"</code>). Does not make the input multiline by itself.
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) — Sets <code>required</code> attribute on the <code>input</code> element
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  rootRef (Ref<HTMLDivElement>) — Root element ref
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Determines whether the input should have success styles
-  withAria (boolean) [default true] — Determines whether <code>aria-</code> and other accessibility attributes should be added to the input. Only disable when implementing custom accessibility handling.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element of the <code>Input</code> component
+
+- **clearSearchOnClose** `boolean` _(default `true`)_ — If set, clears the search value after the menu close transition completes. Requires a controlled `value`/`onChange` pair.
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Determines whether the input should have error styles and `aria-invalid` attribute
+- **id** `string` — Input element id
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **multiline** `boolean` _(default `false`)_ — Adjusts padding and sizing calculations for multiline inputs (use with `component=\"textarea\"`). Does not make the input multiline by itself.
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` — Sets `required` attribute on the `input` element
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **rootRef** `Ref<HTMLDivElement>` — Root element ref
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Determines whether the input should have success styles
+- **withAria** `boolean` _(default `true`)_ — Determines whether `aria-` and other accessibility attributes should be added to the input. Only disable when implementing custom accessibility handling.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element of the `Input` component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuSearch)
@@ -2164,41 +2260,42 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  arrowOffset (number) [default 5] — Arrow offset in px
-  arrowPosition ('center' | 'side') — Arrow position
-  arrowRadius (number) [default 0] — Arrow <code>border-radius</code> in px
-  arrowSize (number) [default 7] — Arrow size in px
-  closeDelay (number) — Close delay in ms, applicable when hover trigger is used
-  disabled (boolean) — If set, popover dropdown will not be rendered
-  floatingStrategy (FloatingStrategy) [default 'absolute'] — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
-  hideDetached (boolean) [default true] — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
-  keepMounted (boolean) — If set, the dropdown is not unmounted from the DOM when hidden. <code>display: none</code> styles are added instead.
-  keepMountedMode (\"activity\" | \"display-none\") [default 'activity'] — Controls how the dropdown is hidden when <code>keepMounted</code> is set: <code>'activity'</code> – hidden with React 19 <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  middlewares (PopoverMiddlewares) [default { flip: true, shift: true, inline: false }] — Floating ui middlewares to configure position handling
-  offset (number | FloatingAxesOffsets) [default 0] — Offset of the dropdown element
-  onChange ((opened: boolean) => void) — Called with current state when dropdown opens or closes
-  onClose (() => void) — Called when dropdown closes
-  onDismiss (() => void) — Called when the popover is dismissed by clicking outside or by pressing escape
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onOpen (() => void) — Called when dropdown opens
-  onPositionChange ((position: FloatingPosition) => void) — Called when dropdown position changes
-  openDelay (number) — Open delay in ms, applicable when hover trigger is used
-  opened (boolean) — Controlled opened state
-  overlayProps (OverlayProps & ElementProps<\"div\">) — Props passed down to <code>Overlay</code> component
-  portalProps (BasePortalProps) — Props to pass down to the <code>Portal</code> when <code>withinPortal</code> is true
-  position (FloatingPosition) [default 'right-start'] — Dropdown position relative to the target element
-  preventPositionChangeWhenVisible (boolean) [default true] — If <code>true</code>, the dropdown picks its side on open (flip runs once, preferring the <code>position</code> prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the <code>shift</code> middleware. Set to <code>false</code> to keep flip active and allow the dropdown to re-flip on every change.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  returnFocus (boolean) [default false] — Determines whether focus should be automatically returned to control when dropdown closes
-  safeAreaPolygon (boolean | SafePolygonOptions) [default true] — Determines whether submenu stays open while the cursor moves toward its dropdown. Pass an object to configure safe polygon behavior.
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any other valid CSS <code>box-shadow</code> value
-  transitionProps (TransitionProps) [default { duration: 0 }] — Props passed down to the <code>Transition</code> component that used to animate dropdown presence, use to configure duration and animation type
-  width (PopoverWidth) [default 'max-content'] — Dropdown width, or <code>'target'</code> to make dropdown width the same as target element
-  withArrow (boolean) [default false] — Determines whether component should have an arrow
-  withOverlay (boolean) [default false] — Determines whether the overlay should be displayed when the dropdown is opened
-  withinPortal (boolean) [default true] — Determines whether dropdown should be rendered within the <code>Portal</code>
-  zIndex (string | number) [default 300] — Dropdown <code>z-index</code>
+
+- **arrowOffset** `number` _(default `5`)_ — Arrow offset in px
+- **arrowPosition** `'center' | 'side'` — Arrow position
+- **arrowRadius** `number` _(default `0`)_ — Arrow `border-radius` in px
+- **arrowSize** `number` _(default `7`)_ — Arrow size in px
+- **closeDelay** `number` — Close delay in ms, applicable when hover trigger is used
+- **disabled** `boolean` — If set, popover dropdown will not be rendered
+- **floatingStrategy** `FloatingStrategy` _(default `'absolute'`)_ — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
+- **hideDetached** `boolean` _(default `true`)_ — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
+- **keepMounted** `boolean` — If set, the dropdown is not unmounted from the DOM when hidden. `display: none` styles are added instead.
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `'activity'`)_ — Controls how the dropdown is hidden when `keepMounted` is set: `'activity'` – hidden with React 19 `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **middlewares** `PopoverMiddlewares` _(default `{ flip: true, shift: true, inline: false }`)_ — Floating ui middlewares to configure position handling
+- **offset** `number | FloatingAxesOffsets` _(default `0`)_ — Offset of the dropdown element
+- **onChange** `(opened: boolean) => void` — Called with current state when dropdown opens or closes
+- **onClose** `() => void` — Called when dropdown closes
+- **onDismiss** `() => void` — Called when the popover is dismissed by clicking outside or by pressing escape
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onOpen** `() => void` — Called when dropdown opens
+- **onPositionChange** `(position: FloatingPosition) => void` — Called when dropdown position changes
+- **openDelay** `number` — Open delay in ms, applicable when hover trigger is used
+- **opened** `boolean` — Controlled opened state
+- **overlayProps** `OverlayProps & ElementProps<\"div\">` — Props passed down to `Overlay` component
+- **portalProps** `BasePortalProps` — Props to pass down to the `Portal` when `withinPortal` is true
+- **position** `FloatingPosition` _(default `'right-start'`)_ — Dropdown position relative to the target element
+- **preventPositionChangeWhenVisible** `boolean` _(default `true`)_ — If `true`, the dropdown picks its side on open (flip runs once, preferring the `position` prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the `shift` middleware. Set to `false` to keep flip active and allow the dropdown to re-flip on every change.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **returnFocus** `boolean` _(default `false`)_ — Determines whether focus should be automatically returned to control when dropdown closes
+- **safeAreaPolygon** `boolean | SafePolygonOptions` _(default `true`)_ — Determines whether submenu stays open while the cursor moves toward its dropdown. Pass an object to configure safe polygon behavior.
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any other valid CSS `box-shadow` value
+- **transitionProps** `TransitionProps` _(default `{ duration: 0 }`)_ — Props passed down to the `Transition` component that used to animate dropdown presence, use to configure duration and animation type
+- **width** `PopoverWidth` _(default `'max-content'`)_ — Dropdown width, or `'target'` to make dropdown width the same as target element
+- **withArrow** `boolean` _(default `false`)_ — Determines whether component should have an arrow
+- **withOverlay** `boolean` _(default `false`)_ — Determines whether the overlay should be displayed when the dropdown is opened
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether dropdown should be rendered within the `Portal`
+- **zIndex** `string | number` _(default `300`)_ — Dropdown `z-index`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuSub)
@@ -2210,12 +2307,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Item label
-  closeMenuOnClick (boolean) — If set, the menu is closed when the item is clicked. Overrides <code>closeOnItemClick</code> prop on the <code>Menu</code> component.
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color
-  disabled (boolean) — Sets disabled attribute, applies disabled styles
-  leftSection (React.ReactNode) — Section displayed at the start of the label
-  rightSection (React.ReactNode) — Section displayed at the end of the label
+
+- **children** `React.ReactNode` — Item label
+- **closeMenuOnClick** `boolean` — If set, the menu is closed when the item is clicked. Overrides `closeOnItemClick` prop on the `Menu` component.
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color
+- **disabled** `boolean` — Sets disabled attribute, applies disabled styles
+- **leftSection** `React.ReactNode` — Section displayed at the start of the label
+- **rightSection** `React.ReactNode` — Section displayed at the end of the label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuSubItem)
@@ -2227,8 +2325,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Target element
-  refProp (string) [default 'ref'] — Key of the prop used to get element ref
+
+- **children** `React.ReactNode` **(required)** — Target element
+- **refProp** `string` _(default `'ref'`)_ — Key of the prop used to get element ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuSubTarget)
@@ -2240,8 +2339,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menu
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Target element
-  refProp (string) [default 'ref'] — Key of the prop used to get element ref, useful for forwarding refs to custom components
+
+- **children** `React.ReactNode` **(required)** — Target element
+- **refProp** `string` _(default `'ref'`)_ — Key of the prop used to get element ref, useful for forwarding refs to custom components
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MenuTarget)
@@ -2253,13 +2353,14 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/menubar
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — <code>Menubar.Menu</code> components
-  defaultOpenIndex (number | null) [default `null`] — Index of the opened menu for uncontrolled component
-  loop (boolean) [default `true`] — If set, arrow key navigation wraps from last to first menu and vice versa
-  onOpenChange ((index: number | null) => void) — Called when the opened menu changes with its index or <code>null</code> when all menus are closed
-  openIndex (number | null) — Index of the controlled opened menu, <code>null</code> closes all menus
-  position (FloatingPosition) [default `'bottom-start'`] — Dropdown position relative to the target element
-  trigger (\"hover\" | \"click\") [default `'click'`] — Event that opens a menu when none of the menus is opened. <code>'click'</code> opens a menu on target click and then switches menus on hover (desktop application pattern), <code>'hover'</code> opens a menu when the target is hovered
+
+- **children** `React.ReactNode` — `Menubar.Menu` components
+- **defaultOpenIndex** `number | null` _(default ``null``)_ — Index of the opened menu for uncontrolled component
+- **loop** `boolean` _(default ``true``)_ — If set, arrow key navigation wraps from last to first menu and vice versa
+- **onOpenChange** `(index: number | null) => void` — Called when the opened menu changes with its index or `null` when all menus are closed
+- **openIndex** `number | null` — Index of the controlled opened menu, `null` closes all menus
+- **position** `FloatingPosition` _(default ``'bottom-start'``)_ — Dropdown position relative to the target element
+- **trigger** `\"hover\" | \"click\"` _(default ``'click'``)_ — Event that opens a menu when none of the menus is opened. `'click'` opens a menu on target click and then switches menus on hover (desktop application pattern), `'hover'` opens a menu when the target is hovered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Menubar)
@@ -2271,38 +2372,39 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/modal
 
 Props (docgen 9.4.1):
-  centered (boolean) [default false] — If set, the modal is centered vertically
-  children (React.ReactNode) — Modal content
-  closeButtonProps (ModalBaseCloseButtonProps) — Props passed down to the close button
-  closeOnClickOutside (boolean) [default true] — If set, the modal/drawer is closed when user clicks on the overlay
-  closeOnEscape (boolean) [default true] — If set, <code>onClose</code> is called when user presses the escape key
-  fullScreen (boolean) [default false] — If set, the modal takes the entire screen
-  id (string) — Id used to connect modal/drawer with body and title
-  keepMounted (boolean) [default false] — If set modal/drawer is not unmounted from the DOM when hidden. <code>display: none</code> styles are applied instead.
-  lockScroll (boolean) [default true] — If set, scroll is locked when <code>opened={true}</code>
-  onClose (() => void) REQUIRED — Called when modal/drawer is closed
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  opened (boolean) REQUIRED — Controls opened state
-  overlayProps (ModalBaseOverlayProps) — Props passed down to the <code>Overlay</code> component, use to configure opacity, <code>background-color</code>, styles and other properties
-  padding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set content, header and footer padding
-  portalProps (BasePortalProps) — Props passed down to the Portal component when <code>withinPortal</code> is set
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  removeScrollProps (RemoveScrollProps) — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
-  returnFocus (boolean) [default true] — If set, focus is returned to the last active element when <code>onClose</code> is called
-  scrollAreaComponent (ScrollAreaComponent) [default 'div'] — Scroll area component
-  shadow (MantineShadow) [default 'xl'] — Key of <code>theme.shadows</code> or any valid CSS box-shadow value
-  size (MantineSize | number) [default 'md'] — Controls width of the content area
-  stackId (string) — Id of the modal in the <code>Modal.Stack</code>
-  title (React.ReactNode) — Modal title
-  transitionProps (TransitionProps) — Props added to the <code>Transition</code> component that used to animate overlay and body, use to configure duration and animation type, <code>{ duration: 200, transition: 'fade-down' }</code> by default
-  trapFocus (boolean) [default true] — If set, focus is trapped within the modal/drawer
-  withCloseButton (boolean) [default true] — If set, the close button is rendered
-  withOverlay (boolean) [default true] — If set, the overlay is rendered
-  withinPortal (boolean) [default true] — If set, the component is rendered inside <code>Portal</code>
-  xOffset (MarginLeft<string | number>) [default 5vw] — Left/right modal offset
-  yOffset (MarginTop<string | number>) [default 5dvh] — Top/bottom modal offset
-  zIndex (string | number) [default 200] — <code>z-index</code> CSS property of the root element
+
+- **centered** `boolean` _(default `false`)_ — If set, the modal is centered vertically
+- **children** `React.ReactNode` — Modal content
+- **closeButtonProps** `ModalBaseCloseButtonProps` — Props passed down to the close button
+- **closeOnClickOutside** `boolean` _(default `true`)_ — If set, the modal/drawer is closed when user clicks on the overlay
+- **closeOnEscape** `boolean` _(default `true`)_ — If set, `onClose` is called when user presses the escape key
+- **fullScreen** `boolean` _(default `false`)_ — If set, the modal takes the entire screen
+- **id** `string` — Id used to connect modal/drawer with body and title
+- **keepMounted** `boolean` _(default `false`)_ — If set modal/drawer is not unmounted from the DOM when hidden. `display: none` styles are applied instead.
+- **lockScroll** `boolean` _(default `true`)_ — If set, scroll is locked when `opened={true}`
+- **onClose** `() => void` **(required)** — Called when modal/drawer is closed
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **opened** `boolean` **(required)** — Controls opened state
+- **overlayProps** `ModalBaseOverlayProps` — Props passed down to the `Overlay` component, use to configure opacity, `background-color`, styles and other properties
+- **padding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set content, header and footer padding
+- **portalProps** `BasePortalProps` — Props passed down to the Portal component when `withinPortal` is set
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **removeScrollProps** `RemoveScrollProps` — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
+- **returnFocus** `boolean` _(default `true`)_ — If set, focus is returned to the last active element when `onClose` is called
+- **scrollAreaComponent** `ScrollAreaComponent` _(default `'div'`)_ — Scroll area component
+- **shadow** `MantineShadow` _(default `'xl'`)_ — Key of `theme.shadows` or any valid CSS box-shadow value
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width of the content area
+- **stackId** `string` — Id of the modal in the `Modal.Stack`
+- **title** `React.ReactNode` — Modal title
+- **transitionProps** `TransitionProps` — Props added to the `Transition` component that used to animate overlay and body, use to configure duration and animation type, `{ duration: 200, transition: 'fade-down' }` by default
+- **trapFocus** `boolean` _(default `true`)_ — If set, focus is trapped within the modal/drawer
+- **withCloseButton** `boolean` _(default `true`)_ — If set, the close button is rendered
+- **withOverlay** `boolean` _(default `true`)_ — If set, the overlay is rendered
+- **withinPortal** `boolean` _(default `true`)_ — If set, the component is rendered inside `Portal`
+- **xOffset** `MarginLeft<string | number>` _(default `5vw`)_ — Left/right modal offset
+- **yOffset** `MarginTop<string | number>` _(default `5dvh`)_ — Top/bottom modal offset
+- **zIndex** `string | number` _(default `200`)_ — `z-index` CSS property of the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Modal)
@@ -2312,26 +2414,27 @@ Optional leading props map; remaining args are children."
   "ModalBase
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Modal/drawer content
-  closeOnClickOutside (boolean) [default true] — If set, the modal/drawer is closed when user clicks on the overlay
-  closeOnEscape (boolean) [default true] — If set, <code>onClose</code> is called when user presses the escape key
-  id (string) — Id used to connect modal/drawer with body and title
-  keepMounted (boolean) [default false] — If set modal/drawer is not unmounted from the DOM when hidden. <code>display: none</code> styles are applied instead.
-  lockScroll (boolean) [default true] — If set, scroll is locked when <code>opened={true}</code>
-  onClose (() => void) REQUIRED — Called when modal/drawer is closed
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  opened (boolean) REQUIRED — Controls opened state
-  padding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set content, header and footer padding
-  portalProps (BasePortalProps) — Props passed down to the Portal component when <code>withinPortal</code> is set
-  removeScrollProps (RemoveScrollProps) — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
-  returnFocus (boolean) [default true] — If set, focus is returned to the last active element when <code>onClose</code> is called
-  shadow (MantineShadow) [default 'xl'] — Key of <code>theme.shadows</code> or any valid CSS box-shadow value
-  size (MantineSize | number) [default 'md'] — Controls width of the content area
-  transitionProps (TransitionProps) — Props added to the <code>Transition</code> component that used to animate overlay and body, use to configure duration and animation type, <code>{ duration: 200, transition: 'fade-down' }</code> by default
-  trapFocus (boolean) [default true] — If set, focus is trapped within the modal/drawer
-  withinPortal (boolean) [default true] — If set, the component is rendered inside <code>Portal</code>
-  zIndex (string | number) [default 200] — <code>z-index</code> CSS property of the root element
+
+- **children** `React.ReactNode` — Modal/drawer content
+- **closeOnClickOutside** `boolean` _(default `true`)_ — If set, the modal/drawer is closed when user clicks on the overlay
+- **closeOnEscape** `boolean` _(default `true`)_ — If set, `onClose` is called when user presses the escape key
+- **id** `string` — Id used to connect modal/drawer with body and title
+- **keepMounted** `boolean` _(default `false`)_ — If set modal/drawer is not unmounted from the DOM when hidden. `display: none` styles are applied instead.
+- **lockScroll** `boolean` _(default `true`)_ — If set, scroll is locked when `opened={true}`
+- **onClose** `() => void` **(required)** — Called when modal/drawer is closed
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **opened** `boolean` **(required)** — Controls opened state
+- **padding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set content, header and footer padding
+- **portalProps** `BasePortalProps` — Props passed down to the Portal component when `withinPortal` is set
+- **removeScrollProps** `RemoveScrollProps` — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
+- **returnFocus** `boolean` _(default `true`)_ — If set, focus is returned to the last active element when `onClose` is called
+- **shadow** `MantineShadow` _(default `'xl'`)_ — Key of `theme.shadows` or any valid CSS box-shadow value
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width of the content area
+- **transitionProps** `TransitionProps` — Props added to the `Transition` component that used to animate overlay and body, use to configure duration and animation type, `{ duration: 200, transition: 'fade-down' }` by default
+- **trapFocus** `boolean` _(default `true`)_ — If set, focus is trapped within the modal/drawer
+- **withinPortal** `boolean` _(default `true`)_ — If set, the component is rendered inside `Portal`
+- **zIndex** `string | number` _(default `200`)_ — `z-index` CSS property of the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ModalBase)
@@ -2343,78 +2446,79 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/multi-select
 
 Props (docgen 9.4.1):
-  checkIconPosition (\"left\" | \"right\") [default 'left'] — Position of the checkmark icon shown next to selected options in the dropdown
-  chevronColor (MantineColor) — Controls color of the default chevron
-  clearButtonProps (InputClearButtonProps) — Props passed down to the clear button
-  clearSearchOnChange (boolean) [default true] — Clear search value when item is selected
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — When enabled, displays a clear button to remove all selected values (hidden when component is empty, disabled, or read-only)
-  comboboxProps (ComboboxProps) — Props passed down to <code>Combobox</code> component
-  data (ComboboxData<Value>) — Data used to generate options. Values must be unique, otherwise an error will be thrown and component will not render.
-  defaultDropdownOpened (boolean) — Uncontrolled dropdown initial opened state
-  defaultSearchValue (string) — Default search value
-  defaultValue (Value[]) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownOpened (boolean) — Controlled dropdown opened state
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  filter (OptionsFilter<Value>) — Function based on which items are filtered and sorted
-  floatingHeight (\"viewport\") — If set to <code>'viewport'</code>, the dropdown grows to fill the available vertical space in the viewport. Disables the <code>flip</code> middleware.
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  hiddenInputValuesDivider (string) [default ','] — Divider used to separate values in the hidden input <code>value</code> attribute
-  hidePickedOptions (boolean) [default false] — When enabled, selected options are hidden from the dropdown list
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  limit (number) — Maximum number of options displayed at a time, <code>Infinity</code> by default
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxDropdownHeight (string | number) — <code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default
-  maxValues (number) — Maximum number of values, no limit if not set
-  nothingFoundMessage (React.ReactNode) — Message displayed when no options match the search query (when searchable is enabled) or when the data array is empty. If not set, the dropdown will be hidden instead.
-  onChange ((value: Value[]) => void) — Called when value changes
-  onClear (() => void) — Called when the clear button is clicked
-  onDropdownClose (() => void) — Called when dropdown closes
-  onDropdownOpen (() => void) — Called when dropdown opens
-  onMaxValues (() => void) — Called when user attempts to select more values than allowed
-  onOptionSubmit ((value: Value) => void) — Called when option is submitted from dropdown with mouse click or <code>Enter</code> key
-  onRemove ((value: Value) => void) — Called with <code>value</code> of the removed item
-  onSearchChange ((value: string) => void) — Called when search changes
-  openOnFocus (boolean) [default true] — Controls whether dropdown opens when the input receives focus
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  renderOption ((item: ComboboxLikeRenderOptionInput<ComboboxItem<Value>>) => ReactNode) — A function to render content of the option, replaces the default content of the option
-  renderPill ((props: ComboboxRenderPillInput<Value>) => ReactNode) — A function to render content of the pill
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  scrollAreaProps (ScrollAreaProps) — Props passed down to the underlying <code>ScrollArea</code> component in the dropdown
-  searchValue (string) — Controlled search value
-  searchable (boolean) [default false] — Allows searching through options by user input
-  selectFirstOptionOnChange (boolean) — If set, the first option is selected when value changes, <code>false</code> by default
-  selectFirstOptionOnDropdownOpen (boolean) — If set, the first option is selected when dropdown opens, <code>false</code> by default
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (Value[]) — Controlled component value
-  withAlignedLabels (boolean) [default false] — If set, unchecked labels are aligned with checked ones
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCheckIcon (boolean) [default true] — If set, the check icon is displayed near the selected option label
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withPillsReorder (boolean) [default false] — If set, selected values can be reordered by dragging pills. Disabled when <code>disabled</code> or <code>readOnly</code> is set.
-  withScrollArea (boolean) — Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **checkIconPosition** `\"left\" | \"right\"` _(default `'left'`)_ — Position of the checkmark icon shown next to selected options in the dropdown
+- **chevronColor** `MantineColor` — Controls color of the default chevron
+- **clearButtonProps** `InputClearButtonProps` — Props passed down to the clear button
+- **clearSearchOnChange** `boolean` _(default `true`)_ — Clear search value when item is selected
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — When enabled, displays a clear button to remove all selected values (hidden when component is empty, disabled, or read-only)
+- **comboboxProps** `ComboboxProps` — Props passed down to `Combobox` component
+- **data** `ComboboxData<Value>` — Data used to generate options. Values must be unique, otherwise an error will be thrown and component will not render.
+- **defaultDropdownOpened** `boolean` — Uncontrolled dropdown initial opened state
+- **defaultSearchValue** `string` — Default search value
+- **defaultValue** `Value[]` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownOpened** `boolean` — Controlled dropdown opened state
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **filter** `OptionsFilter<Value>` — Function based on which items are filtered and sorted
+- **floatingHeight** `\"viewport\"` — If set to `'viewport'`, the dropdown grows to fill the available vertical space in the viewport. Disables the `flip` middleware.
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **hiddenInputValuesDivider** `string` _(default `','`)_ — Divider used to separate values in the hidden input `value` attribute
+- **hidePickedOptions** `boolean` _(default `false`)_ — When enabled, selected options are hidden from the dropdown list
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **limit** `number` — Maximum number of options displayed at a time, `Infinity` by default
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxDropdownHeight** `string | number` — `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default
+- **maxValues** `number` — Maximum number of values, no limit if not set
+- **nothingFoundMessage** `React.ReactNode` — Message displayed when no options match the search query (when searchable is enabled) or when the data array is empty. If not set, the dropdown will be hidden instead.
+- **onChange** `(value: Value[]) => void` — Called when value changes
+- **onClear** `() => void` — Called when the clear button is clicked
+- **onDropdownClose** `() => void` — Called when dropdown closes
+- **onDropdownOpen** `() => void` — Called when dropdown opens
+- **onMaxValues** `() => void` — Called when user attempts to select more values than allowed
+- **onOptionSubmit** `(value: Value) => void` — Called when option is submitted from dropdown with mouse click or `Enter` key
+- **onRemove** `(value: Value) => void` — Called with `value` of the removed item
+- **onSearchChange** `(value: string) => void` — Called when search changes
+- **openOnFocus** `boolean` _(default `true`)_ — Controls whether dropdown opens when the input receives focus
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **renderOption** `(item: ComboboxLikeRenderOptionInput<ComboboxItem<Value>>) => ReactNode` — A function to render content of the option, replaces the default content of the option
+- **renderPill** `(props: ComboboxRenderPillInput<Value>) => ReactNode` — A function to render content of the pill
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **scrollAreaProps** `ScrollAreaProps` — Props passed down to the underlying `ScrollArea` component in the dropdown
+- **searchValue** `string` — Controlled search value
+- **searchable** `boolean` _(default `false`)_ — Allows searching through options by user input
+- **selectFirstOptionOnChange** `boolean` — If set, the first option is selected when value changes, `false` by default
+- **selectFirstOptionOnDropdownOpen** `boolean` — If set, the first option is selected when dropdown opens, `false` by default
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `Value[]` — Controlled component value
+- **withAlignedLabels** `boolean` _(default `false`)_ — If set, unchecked labels are aligned with checked ones
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCheckIcon** `boolean` _(default `true`)_ — If set, the check icon is displayed near the selected option label
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withPillsReorder** `boolean` _(default `false`)_ — If set, selected values can be reordered by dragging pills. Disabled when `disabled` or `readOnly` is set.
+- **withScrollArea** `boolean` — Determines whether the options should be wrapped with `ScrollArea.AutoSize`, `true` by default
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled MultiSelect))
@@ -2426,36 +2530,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/native-select
 
 Props (docgen 9.4.1):
-  data (ComboboxStringGroupData) — Data used to render options. Accepts strings, objects with label/value, or grouped options. If <code>children</code> prop is provided, <code>data</code> will be ignored.
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **data** `ComboboxStringGroupData` — Data used to render options. Accepts strings, objects with label/value, or grouped options. If `children` prop is provided, `data` will be ignored.
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled NativeSelect))
@@ -2469,24 +2574,25 @@ https://mantine.dev/core/nav-link
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  active (boolean) [default false] — Determines whether the link should have active styles
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Child <code>NavLink</code> components
-  childrenOffset (MantineSpacing) [default 'lg'] — Controls indentation of nested NavLink components, key of <code>theme.spacing</code> or any valid CSS value
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to control active styles
-  defaultOpened (boolean) — Uncontrolled nested items collapse initial state
-  description (React.ReactNode) — Link description, displayed below the label
-  disableRightSectionRotation (boolean) [default false] — If set, right section will not be rotated when collapse is opened
-  disabled (boolean) [default false] — If set, disabled styles will be added to the root element
-  keepMounted (boolean) — If set to <code>false</code>, child <code>NavLinks</code> are unmounted when collapsed
-  label (React.ReactNode) — Main link label
-  leftSection (React.ReactNode) — Section displayed on the left side of the label
-  noWrap (boolean) [default false] — If set, label and description are truncated with ellipsis instead of wrapping
-  onChange ((opened: boolean) => void) — Called when open state changes
-  onClick (MouseEventHandler<HTMLElement>) — Called when the root element is clicked
-  onKeyDown (KeyboardEventHandler<HTMLElement>) — Called on keydown of the root element
-  opened (boolean) — Controlled nested items collapse state
-  rightSection (React.ReactNode) — Section displayed on the right side of the label
+
+- **active** `boolean` _(default `false`)_ — Determines whether the link should have active styles
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Child `NavLink` components
+- **childrenOffset** `MantineSpacing` _(default `'lg'`)_ — Controls indentation of nested NavLink components, key of `theme.spacing` or any valid CSS value
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to control active styles
+- **defaultOpened** `boolean` — Uncontrolled nested items collapse initial state
+- **description** `React.ReactNode` — Link description, displayed below the label
+- **disableRightSectionRotation** `boolean` _(default `false`)_ — If set, right section will not be rotated when collapse is opened
+- **disabled** `boolean` _(default `false`)_ — If set, disabled styles will be added to the root element
+- **keepMounted** `boolean` — If set to `false`, child `NavLinks` are unmounted when collapsed
+- **label** `React.ReactNode` — Main link label
+- **leftSection** `React.ReactNode` — Section displayed on the left side of the label
+- **noWrap** `boolean` _(default `false`)_ — If set, label and description are truncated with ellipsis instead of wrapping
+- **onChange** `(opened: boolean) => void` — Called when open state changes
+- **onClick** `MouseEventHandler<HTMLElement>` — Called when the root element is clicked
+- **onKeyDown** `KeyboardEventHandler<HTMLElement>` — Called on keydown of the root element
+- **opened** `boolean` — Controlled nested items collapse state
+- **rightSection** `React.ReactNode` — Section displayed on the right side of the label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory NavLink)
@@ -2498,17 +2604,18 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/notification
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Notification description, displayed below the title. When no title is provided, this serves as the main message.
-  closeButtonProps (ElementProps<\"button\"> & DataAttributes) — Props passed down to the close button
-  color (MantineColor) [default theme.primaryColor] — Controls icon background color or notification accent line color, key of <code>theme.colors</code> or any valid CSS color. When <code>icon</code> is provided, sets the icon background color. When no icon is provided, sets the colored accent line on the left.
-  icon (React.ReactNode) — Notification icon, replaces color line
-  loaderProps (LoaderProps) — Props passed down to the <code>Loader</code> component
-  loading (boolean) — If set, displays a <code>Loader</code> component instead of the icon. Takes precedence over the <code>icon</code> prop if both are provided.
-  onClose (() => void) — Called when the close button is clicked
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  title (React.ReactNode) — Notification title, displayed above the message body
-  withBorder (boolean) — Adds border to the root element
-  withCloseButton (boolean) [default true] — If set, the close button is visible
+
+- **children** `React.ReactNode` — Notification description, displayed below the title. When no title is provided, this serves as the main message.
+- **closeButtonProps** `ElementProps<\"button\"> & DataAttributes` — Props passed down to the close button
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Controls icon background color or notification accent line color, key of `theme.colors` or any valid CSS color. When `icon` is provided, sets the icon background color. When no icon is provided, sets the colored accent line on the left.
+- **icon** `React.ReactNode` — Notification icon, replaces color line
+- **loaderProps** `LoaderProps` — Props passed down to the `Loader` component
+- **loading** `boolean` — If set, displays a `Loader` component instead of the icon. Takes precedence over the `icon` prop if both are provided.
+- **onClose** `() => void` — Called when the close button is clicked
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **title** `React.ReactNode` — Notification title, displayed above the message body
+- **withBorder** `boolean` — Adds border to the root element
+- **withCloseButton** `boolean` _(default `true`)_ — If set, the close button is visible
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Notification)
@@ -2520,15 +2627,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/number-formatter
 
 Props (docgen 9.4.1):
-  allowNegative (boolean) [default true] — If set, negative values are allowed
-  decimalScale (number) [default Infinity] — Limits the number of digits that are displayed after the decimal point
-  decimalSeparator (string) — Character used as a decimal separator, <code>'.'</code> by default
-  fixedDecimalScale (boolean) [default false] — If set, zeros are added after <code>decimalSeparator</code> to match given <code>decimalScale</code>.
-  prefix (string) — Prefix added before the value
-  suffix (string) — Suffix added after the value
-  thousandSeparator (string | boolean) [default ','] — A character used to separate thousands
-  thousandsGroupStyle (\"none\" | \"thousand\" | \"lakh\" | \"wan\") — Defines the thousand grouping style
-  value (string | number) — Value to format
+
+- **allowNegative** `boolean` _(default `true`)_ — If set, negative values are allowed
+- **decimalScale** `number` _(default `Infinity`)_ — Limits the number of digits that are displayed after the decimal point
+- **decimalSeparator** `string` — Character used as a decimal separator, `'.'` by default
+- **fixedDecimalScale** `boolean` _(default `false`)_ — If set, zeros are added after `decimalSeparator` to match given `decimalScale`.
+- **prefix** `string` — Prefix added before the value
+- **suffix** `string` — Suffix added after the value
+- **thousandSeparator** `string | boolean` _(default `','`)_ — A character used to separate thousands
+- **thousandsGroupStyle** `\"none\" | \"thousand\" | \"lakh\" | \"wan\"` — Defines the thousand grouping style
+- **value** `string | number` — Value to format
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory NumberFormatter)
@@ -2540,67 +2648,68 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/number-input
 
 Props (docgen 9.4.1):
-  allowDecimal (boolean) [default true] — If set, decimal values are allowed
-  allowLeadingZeros (boolean) [default true] — Determines whether leading zeros are allowed during input. If <code>false</code>, leading zeros are removed as you type (e.g., typing <code>007</code> results in <code>7</code>). Works in conjunction with <code>trimLeadingZeroesOnBlur</code>.
-  allowNegative (boolean) [default true] — Determines whether negative numbers are allowed. If <code>false</code>, the input will not accept negative values, and the decrement button will stop at <code>0</code> (when <code>min</code> is not set).
-  allowedDecimalSeparators (string[]) [default ['.', ',']] — Characters which when pressed result in a decimal separator. These characters will be replaced by the <code>decimalSeparator</code> in the input value.
-  clampBehavior (\"none\" | \"blur\" | \"strict\") — Controls how values are clamped to the <code>min</code>/<code>max</code> range: - <code>'blur'</code> (default): User can type any value, but it's clamped when the input loses focus - <code>'strict'</code>: User cannot type values outside the range - <code>'none'</code>: No clamping; <code>min</code>/<code>max</code> only apply to increment/decrement controls and arrow keys
-  decimalScale (number) [default Infinity] — Limits the number of digits that can be entered after the decimal point
-  decimalSeparator (string) [default '.'] — Character used as a decimal separator. Generally used with <code>allowedDecimalSeparators</code> prop.
-  defaultValue (string | NumberInputNumericType) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  fixedDecimalScale (boolean) [default false] — If <code>true</code>, automatically pads the decimal part with zeros to match <code>decimalScale</code> (e.g., with <code>decimalScale={2}</code>, typing <code>5.1</code> displays as <code>5.10</code>). Requires <code>decimalScale</code> to be set.
-  handlersRef (Ref<NumberInputHandlers> | undefined) — Increment/decrement handlers
-  hideControls (boolean) [default false] — If set, the up/down controls are hidden
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  isAllowed ((values: NumberFormatValues) => boolean) — A function to validate the input value. If this function returns <code>false</code>, the <code>onChange</code> will not be called and the input value will not change.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  max (NumberInputNumericType) — Maximum possible value
-  min (NumberInputNumericType) — Minimum possible value
-  onChange ((value: NumberInputValue<T>) => void) — Called when value changes
-  onMaxReached (() => void) — Called when the decrement button or arrow down key is pressed and the value has reached the minimum
-  onMinReached (() => void) — Called when the increment button or arrow up key is pressed and the value has reached the maximum
-  onValueChange (OnValueChange) — Called when value changes with <code>react-number-format</code> payload
-  prefix (string) — Prefix added before the input value
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  selectAllOnFocus (boolean) [default false] — If set, all text is selected when the input receives focus
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  startValue (NumberInputNumericType) [default 0] — Value used when incrementing/decrementing an empty input. If <code>min</code> is set and <code>startValue < min</code>, <code>min</code> is used instead.
-  step (NumberInputNumericType) [default 1] — Number by which value will be incremented/decremented with up/down controls and keyboard arrows
-  stepHoldDelay (number) — Initial delay in milliseconds before stepping the value.
-  stepHoldInterval (number | ((stepCount: number) => number)) [default undefined] — Interval in milliseconds between value steps when increment/decrement button is held down. Can be a number or a function <code>(stepCount) => number</code> for dynamic intervals. Requires <code>stepHoldDelay</code> to be set.
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  suffix (string) — Suffix added after the input value
-  thousandSeparator (string | boolean) — A character used to separate thousands
-  thousandsGroupStyle (\"none\" | \"thousand\" | \"lakh\" | \"wan\") — Defines the thousand grouping style. 'thousand' (1,000), 'lakh' (1,00,000), 'wan' (1,0000), 'none'.
-  trimLeadingZeroesOnBlur (boolean) [default true] — If set, leading zeros are removed on blur. For example, <code>00100</code> -> <code>100</code>
-  type (\"text\" | \"tel\" | \"password\") [default 'text'] — Controls input <code>type</code> attribute
-  value (string | NumberInputNumericType) — Controlled component value
-  valueIsNumericString (boolean) [default false] — Advanced: Set to <code>true</code> if you're passing numeric strings (e.g., <code>\"12345\"</code>) and using formatting props like <code>prefix</code> or <code>suffix</code>. In most cases, you don't need this prop. See [react-number-format docs](https://www.npmjs.com/package/react-number-format) for details.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withKeyboardEvents (boolean) [default true] — If set, up/down keyboard events increment/decrement value
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **allowDecimal** `boolean` _(default `true`)_ — If set, decimal values are allowed
+- **allowLeadingZeros** `boolean` _(default `true`)_ — Determines whether leading zeros are allowed during input. If `false`, leading zeros are removed as you type (e.g., typing `007` results in `7`). Works in conjunction with `trimLeadingZeroesOnBlur`.
+- **allowNegative** `boolean` _(default `true`)_ — Determines whether negative numbers are allowed. If `false`, the input will not accept negative values, and the decrement button will stop at `0` (when `min` is not set).
+- **allowedDecimalSeparators** `string[]` _(default `['.', ',']`)_ — Characters which when pressed result in a decimal separator. These characters will be replaced by the `decimalSeparator` in the input value.
+- **clampBehavior** `\"none\" | \"blur\" | \"strict\"` — Controls how values are clamped to the `min`/`max` range: - `'blur'` (default): User can type any value, but it's clamped when the input loses focus - `'strict'`: User cannot type values outside the range - `'none'`: No clamping; `min`/`max` only apply to increment/decrement controls and arrow keys
+- **decimalScale** `number` _(default `Infinity`)_ — Limits the number of digits that can be entered after the decimal point
+- **decimalSeparator** `string` _(default `'.'`)_ — Character used as a decimal separator. Generally used with `allowedDecimalSeparators` prop.
+- **defaultValue** `string | NumberInputNumericType` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **fixedDecimalScale** `boolean` _(default `false`)_ — If `true`, automatically pads the decimal part with zeros to match `decimalScale` (e.g., with `decimalScale={2}`, typing `5.1` displays as `5.10`). Requires `decimalScale` to be set.
+- **handlersRef** `Ref<NumberInputHandlers> | undefined` — Increment/decrement handlers
+- **hideControls** `boolean` _(default `false`)_ — If set, the up/down controls are hidden
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **isAllowed** `(values: NumberFormatValues) => boolean` — A function to validate the input value. If this function returns `false`, the `onChange` will not be called and the input value will not change.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **max** `NumberInputNumericType` — Maximum possible value
+- **min** `NumberInputNumericType` — Minimum possible value
+- **onChange** `(value: NumberInputValue<T>) => void` — Called when value changes
+- **onMaxReached** `() => void` — Called when the decrement button or arrow down key is pressed and the value has reached the minimum
+- **onMinReached** `() => void` — Called when the increment button or arrow up key is pressed and the value has reached the maximum
+- **onValueChange** `OnValueChange` — Called when value changes with `react-number-format` payload
+- **prefix** `string` — Prefix added before the input value
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **selectAllOnFocus** `boolean` _(default `false`)_ — If set, all text is selected when the input receives focus
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **startValue** `NumberInputNumericType` _(default `0`)_ — Value used when incrementing/decrementing an empty input. If `min` is set and `startValue < min`, `min` is used instead.
+- **step** `NumberInputNumericType` _(default `1`)_ — Number by which value will be incremented/decremented with up/down controls and keyboard arrows
+- **stepHoldDelay** `number` — Initial delay in milliseconds before stepping the value.
+- **stepHoldInterval** `number | ((stepCount: number) => number)` _(default `undefined`)_ — Interval in milliseconds between value steps when increment/decrement button is held down. Can be a number or a function `(stepCount) => number` for dynamic intervals. Requires `stepHoldDelay` to be set.
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **suffix** `string` — Suffix added after the input value
+- **thousandSeparator** `string | boolean` — A character used to separate thousands
+- **thousandsGroupStyle** `\"none\" | \"thousand\" | \"lakh\" | \"wan\"` — Defines the thousand grouping style. 'thousand' (1,000), 'lakh' (1,00,000), 'wan' (1,0000), 'none'.
+- **trimLeadingZeroesOnBlur** `boolean` _(default `true`)_ — If set, leading zeros are removed on blur. For example, `00100` -> `100`
+- **type** `\"text\" | \"tel\" | \"password\"` _(default `'text'`)_ — Controls input `type` attribute
+- **value** `string | NumberInputNumericType` — Controlled component value
+- **valueIsNumericString** `boolean` _(default `false`)_ — Advanced: Set to `true` if you're passing numeric strings (e.g., `\"12345\"`) and using formatting props like `prefix` or `suffix`. In most cases, you don't need this prop. See [react-number-format docs](https://www.npmjs.com/package/react-number-format) for details.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withKeyboardEvents** `boolean` _(default `true`)_ — If set, up/down keyboard events increment/decrement value
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled NumberInput))
@@ -2612,14 +2721,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/overflow-list
 
 Props (docgen 9.4.1):
-  collapseFrom (\"end\" | \"start\") [default 'end'] — Direction from which items are collapsed when they overflow, <code>'end'</code> collapses last items, <code>'start'</code> collapses first items
-  data (T[]) REQUIRED — Array of items to display
-  gap (MantineSpacing) [default 'xs'] — Key of <code>theme.spacing</code> or any valid CSS value for <code>gap</code>, numbers are converted to rem
-  getItemKey ((item: T, index: number) => Key) — A function to resolve a unique key for each item. Used to detect when the contents of <code>data</code> change (for example when items are reordered while the length stays the same) so the visible/overflow split can be recomputed. Required to detect reordering when <code>data</code> contains objects; for primitive items (strings, numbers) the item value is used by default.
-  maxRows (number) [default 1] — Number of rows to display
-  maxVisibleItems (number) [default Infinity] — Maximum number of visible items
-  renderItem ((item: T, index: number) => ReactNode) REQUIRED — Function to render item
-  renderOverflow ((items: T[]) => ReactNode) REQUIRED — Function to render hidden items
+
+- **collapseFrom** `\"end\" | \"start\"` _(default `'end'`)_ — Direction from which items are collapsed when they overflow, `'end'` collapses last items, `'start'` collapses first items
+- **data** `T[]` **(required)** — Array of items to display
+- **gap** `MantineSpacing` _(default `'xs'`)_ — Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem
+- **getItemKey** `(item: T, index: number) => Key` — A function to resolve a unique key for each item. Used to detect when the contents of `data` change (for example when items are reordered while the length stays the same) so the visible/overflow split can be recomputed. Required to detect reordering when `data` contains objects; for primitive items (strings, numbers) the item value is used by default.
+- **maxRows** `number` _(default `1`)_ — Number of rows to display
+- **maxVisibleItems** `number` _(default `Infinity`)_ — Maximum number of visible items
+- **renderItem** `(item: T, index: number) => ReactNode` **(required)** — Function to render item
+- **renderOverflow** `(items: T[]) => ReactNode` **(required)** — Function to render hidden items
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory OverflowList)
@@ -2633,15 +2743,16 @@ https://mantine.dev/core/overlay
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  backgroundOpacity (number) [default 0.6] — Overlay <code>background-color</code> opacity 0–1, ignored when <code>gradient</code> prop is set
-  blur (string | number) [default 0] — Overlay background blur in px (converted to rem). Applies <code>backdrop-filter: blur()</code>. Note: backdrop-filter is not supported in all browsers.
-  center (boolean) [default false] — Centers content inside the overlay using flexbox (sets display: flex, align-items: center, justify-content: center)
-  children (React.ReactNode) — Content inside overlay
-  color (BackgroundColor) [default #000] — Overlay <code>background-color</code>
-  fixed (boolean) [default false] — Changes position from <code>absolute</code> to <code>fixed</code> (viewport-relative instead of parent-relative)
-  gradient (string) — Changes overlay to gradient. If set, both <code>color</code> and <code>backgroundOpacity</code> props are ignored.
-  radius (MantineRadius | number) [default 0] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  zIndex (string | number) [default 200] — Overlay z-index
+
+- **backgroundOpacity** `number` _(default `0.6`)_ — Overlay `background-color` opacity 0–1, ignored when `gradient` prop is set
+- **blur** `string | number` _(default `0`)_ — Overlay background blur in px (converted to rem). Applies `backdrop-filter: blur()`. Note: backdrop-filter is not supported in all browsers.
+- **center** `boolean` _(default `false`)_ — Centers content inside the overlay using flexbox (sets display: flex, align-items: center, justify-content: center)
+- **children** `React.ReactNode` — Content inside overlay
+- **color** `BackgroundColor` _(default `#000`)_ — Overlay `background-color`
+- **fixed** `boolean` _(default `false`)_ — Changes position from `absolute` to `fixed` (viewport-relative instead of parent-relative)
+- **gradient** `string` — Changes overlay to gradient. If set, both `color` and `backgroundOpacity` props are ignored.
+- **radius** `MantineRadius | number` _(default `0`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **zIndex** `string | number` _(default `200`)_ — Overlay z-index
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Overlay)
@@ -2653,36 +2764,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on the active page background color to ensure sufficient contrast
-  boundaries (number) [default 1] — Number of elements visible on the left/right edges
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code>, active item color
-  defaultValue (number) — Active page for uncontrolled component, must be an integer in [1, total] interval
-  disabled (boolean) — Disables all controls, applies disabled styles
-  dotsIcon (PaginationIcon) — Dots icon component
-  firstIcon (PaginationIcon) — First control icon component
-  formatLabel (PaginationFormatLabel) — Function to format the label text displayed in responsive mode
-  gap (MantineSpacing) [default 8] — Key of <code>theme.spacing</code>, gap between controls
-  getControlProps ((control: \"next\" | \"previous\" | \"first\" | \"last\") => Record<string, any>) — Props passed down to next/previous/first/last controls
-  getItemProps ((page: number) => Record<string, any>) — Additional props passed down to controls
-  hideWithOnePage (boolean) [default false] — If set, the pagination is hidden when only one page is available (<code>total={1}</code>)
-  lastIcon (PaginationIcon) — Last control icon component
-  layout (\"default\" | \"responsive\") [default 'default'] — Determines how the pagination is displayed, <code>'responsive'</code> uses CSS container queries to switch between pages and a compact label
-  nextIcon (PaginationIcon) — Next control icon component
-  onChange ((value: number) => void) — Called when page changes
-  onFirstPage (() => void) — Called when first page control is clicked
-  onLastPage (() => void) — Called when last page control is clicked
-  onNextPage (() => void) — Called when next page control is clicked
-  onPreviousPage (() => void) — Called when previous page control is clicked
-  previousIcon (PaginationIcon) — Previous control icon component
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  siblings (number) [default 1] — Number of siblings displayed on the left/right side of the selected page
-  size (number | MantineSize | (string & {}) | \"input-xs\" | \"input-sm\" | \"input-md\" | \"input-lg\" | \"input-xl\") [default 'md'] — <code>height</code> and <code>min-width</code> of controls
-  startValue (number) — Starting page number, defaults to 1
-  total (number) REQUIRED — Total number of pages, must be an integer
-  value (number) — Active page for controlled component, must be an integer in [1, total] interval
-  withControls (boolean) [default true] — If set, next/previous controls are displayed
-  withEdges (boolean) [default false] — If set, first/last controls are displayed
-  withPages (boolean) [default `true`] — If set to <code>false</code>, page number buttons are hidden, only next/previous controls remain
+
+- **autoContrast** `boolean` — If set, adjusts text color based on the active page background color to ensure sufficient contrast
+- **boundaries** `number` _(default `1`)_ — Number of elements visible on the left/right edges
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors`, active item color
+- **defaultValue** `number` — Active page for uncontrolled component, must be an integer in [1, total] interval
+- **disabled** `boolean` — Disables all controls, applies disabled styles
+- **dotsIcon** `PaginationIcon` — Dots icon component
+- **firstIcon** `PaginationIcon` — First control icon component
+- **formatLabel** `PaginationFormatLabel` — Function to format the label text displayed in responsive mode
+- **gap** `MantineSpacing` _(default `8`)_ — Key of `theme.spacing`, gap between controls
+- **getControlProps** `(control: \"next\" | \"previous\" | \"first\" | \"last\") => Record<string, any>` — Props passed down to next/previous/first/last controls
+- **getItemProps** `(page: number) => Record<string, any>` — Additional props passed down to controls
+- **hideWithOnePage** `boolean` _(default `false`)_ — If set, the pagination is hidden when only one page is available (`total={1}`)
+- **lastIcon** `PaginationIcon` — Last control icon component
+- **layout** `\"default\" | \"responsive\"` _(default `'default'`)_ — Determines how the pagination is displayed, `'responsive'` uses CSS container queries to switch between pages and a compact label
+- **nextIcon** `PaginationIcon` — Next control icon component
+- **onChange** `(value: number) => void` — Called when page changes
+- **onFirstPage** `() => void` — Called when first page control is clicked
+- **onLastPage** `() => void` — Called when last page control is clicked
+- **onNextPage** `() => void` — Called when next page control is clicked
+- **onPreviousPage** `() => void` — Called when previous page control is clicked
+- **previousIcon** `PaginationIcon` — Previous control icon component
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **siblings** `number` _(default `1`)_ — Number of siblings displayed on the left/right side of the selected page
+- **size** `number | MantineSize | (string & {}) | \"input-xs\" | \"input-sm\" | \"input-md\" | \"input-lg\" | \"input-xl\"` _(default `'md'`)_ — `height` and `min-width` of controls
+- **startValue** `number` — Starting page number, defaults to 1
+- **total** `number` **(required)** — Total number of pages, must be an integer
+- **value** `number` — Active page for controlled component, must be an integer in [1, total] interval
+- **withControls** `boolean` _(default `true`)_ — If set, next/previous controls are displayed
+- **withEdges** `boolean` _(default `false`)_ — If set, first/last controls are displayed
+- **withPages** `boolean` _(default ``true``)_ — If set to `false`, page number buttons are hidden, only next/previous controls remain
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Pagination)
@@ -2694,8 +2806,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  active (boolean) — Applies active styles, adds <code>data-active</code> attribute
-  withPadding (boolean) [default true] — Applies padding
+
+- **active** `boolean` — Applies active styles, adds `data-active` attribute
+- **withPadding** `boolean` _(default `true`)_ — Applies padding
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationControl)
@@ -2707,7 +2820,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  icon (FC<PaginationIconProps>) — Custom dots icon component, must accept svg element props and size prop
+
+- **icon** `FC<PaginationIconProps>` — Custom dots icon component, must accept svg element props and size prop
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationDots)
@@ -2719,7 +2833,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  icon (FC<PaginationIconProps>) — An icon component to replace the default icon
+
+- **icon** `FC<PaginationIconProps>` — An icon component to replace the default icon
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationFirst)
@@ -2731,7 +2846,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  dotsIcon (PaginationIcon) — Dots icon component
+
+- **dotsIcon** `PaginationIcon` — Dots icon component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationItems)
@@ -2743,7 +2859,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  icon (FC<PaginationIconProps>) — An icon component to replace the default icon
+
+- **icon** `FC<PaginationIconProps>` — An icon component to replace the default icon
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationLast)
@@ -2755,7 +2872,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  icon (FC<PaginationIconProps>) — An icon component to replace the default icon
+
+- **icon** `FC<PaginationIconProps>` — An icon component to replace the default icon
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationNext)
@@ -2767,7 +2885,8 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  icon (FC<PaginationIconProps>) — An icon component to replace the default icon
+
+- **icon** `FC<PaginationIconProps>` — An icon component to replace the default icon
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationPrevious)
@@ -2779,24 +2898,25 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pagination
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on the active page background color to ensure sufficient contrast
-  boundaries (number) [default 1] — Number of elements visible on the left/right edges
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code>, active item color
-  defaultValue (number) — Active page for uncontrolled component, must be an integer in [1, total] interval
-  disabled (boolean) — Disables all controls, applies disabled styles
-  getItemProps ((page: number) => Record<string, any>) — Additional props passed down to controls
-  layout (\"default\" | \"responsive\") [default 'default'] — Determines how the pagination is displayed, <code>'responsive'</code> uses CSS container queries to switch between pages and a compact label
-  onChange ((value: number) => void) — Called when page changes
-  onFirstPage (() => void) — Called when first page control is clicked
-  onLastPage (() => void) — Called when last page control is clicked
-  onNextPage (() => void) — Called when next page control is clicked
-  onPreviousPage (() => void) — Called when previous page control is clicked
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  siblings (number) [default 1] — Number of siblings displayed on the left/right side of the selected page
-  size (number | MantineSize | (string & {}) | \"input-xs\" | \"input-sm\" | \"input-md\" | \"input-lg\" | \"input-xl\") [default 'md'] — <code>height</code> and <code>min-width</code> of controls
-  startValue (number) — Starting page number, defaults to 1
-  total (number) REQUIRED — Total number of pages, must be an integer
-  value (number) — Active page for controlled component, must be an integer in [1, total] interval
+
+- **autoContrast** `boolean` — If set, adjusts text color based on the active page background color to ensure sufficient contrast
+- **boundaries** `number` _(default `1`)_ — Number of elements visible on the left/right edges
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors`, active item color
+- **defaultValue** `number` — Active page for uncontrolled component, must be an integer in [1, total] interval
+- **disabled** `boolean` — Disables all controls, applies disabled styles
+- **getItemProps** `(page: number) => Record<string, any>` — Additional props passed down to controls
+- **layout** `\"default\" | \"responsive\"` _(default `'default'`)_ — Determines how the pagination is displayed, `'responsive'` uses CSS container queries to switch between pages and a compact label
+- **onChange** `(value: number) => void` — Called when page changes
+- **onFirstPage** `() => void` — Called when first page control is clicked
+- **onLastPage** `() => void` — Called when last page control is clicked
+- **onNextPage** `() => void` — Called when next page control is clicked
+- **onPreviousPage** `() => void` — Called when previous page control is clicked
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **siblings** `number` _(default `1`)_ — Number of siblings displayed on the left/right side of the selected page
+- **size** `number | MantineSize | (string & {}) | \"input-xs\" | \"input-sm\" | \"input-md\" | \"input-lg\" | \"input-xl\"` _(default `'md'`)_ — `height` and `min-width` of controls
+- **startValue** `number` — Starting page number, defaults to 1
+- **total** `number` **(required)** — Total number of pages, must be an integer
+- **value** `number` — Active page for controlled component, must be an integer in [1, total] interval
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PaginationRoot)
@@ -2810,9 +2930,10 @@ https://mantine.dev/core/paper
 Polymorphic: accepts :component / :render-root.
 
 Props (docgen 9.4.1):
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any valid CSS value to set <code>box-shadow</code>
-  withBorder (boolean) — Adds border to the root element
+
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any valid CSS value to set `box-shadow`
+- **withBorder** `boolean` — Adds border to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Paper)
@@ -2824,40 +2945,41 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/password-input
 
 Props (docgen 9.4.1):
-  defaultVisible (boolean) — If set, the input value is visible by default
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  onVisibilityChange ((visible: boolean) => void) — Called when visibility changes
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  visibilityToggleButtonProps (Record<string, any>) — Props passed down to the visibility toggle button
-  visibilityToggleIcon (FC<{ reveal: boolean; }>) — A component to replace the visibility toggle icon
-  visible (boolean) — If set, the input value is visible
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **defaultVisible** `boolean` — If set, the input value is visible by default
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **onVisibilityChange** `(visible: boolean) => void` — Called when visibility changes
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **visibilityToggleButtonProps** `Record<string, any>` — Props passed down to the visibility toggle button
+- **visibilityToggleIcon** `FC<{ reveal: boolean; }>` — A component to replace the visibility toggle icon
+- **visible** `boolean` — If set, the input value is visible
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled PasswordInput))
@@ -2869,12 +2991,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pill
 
 Props (docgen 9.4.1):
-  disabled (boolean) — Adds disabled attribute, applies disabled styles
-  onRemove (() => void) — Called when the remove button is clicked
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem.
-  removeButtonProps (CloseButtonProps & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>) — Props passed down to the remove button
-  size (MantineSize) [default 'sm'] — Controls pill <code>font-size</code> and <code>padding</code>
-  withRemoveButton (boolean) [default false] — Controls visibility of the remove button
+
+- **disabled** `boolean` — Adds disabled attribute, applies disabled styles
+- **onRemove** `() => void` — Called when the remove button is clicked
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem.
+- **removeButtonProps** `CloseButtonProps & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>` — Props passed down to the remove button
+- **size** `MantineSize` _(default `'sm'`)_ — Controls pill `font-size` and `padding`
+- **withRemoveButton** `boolean` _(default `false`)_ — Controls visibility of the remove button
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Pill)
@@ -2895,36 +3018,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pills-input
 
 Props (docgen 9.4.1):
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PillsInput)
@@ -2936,8 +3060,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pills-input
 
 Props (docgen 9.4.1):
-  pointer (boolean) — If set, cursor is changed to pointer
-  type (\"hidden\" | \"auto\" | \"visible\") [default 'visible'] — Controls input styles when focused. If <code>auto</code> the input is hidden when not focused. If <code>visible</code> the input will always remain visible.
+
+- **pointer** `boolean` — If set, cursor is changed to pointer
+- **type** `\"hidden\" | \"auto\" | \"visible\"` _(default `'visible'`)_ — Controls input styles when focused. If `auto` the input is hidden when not focused. If `visible` the input will always remain visible.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PillsInputField)
@@ -2949,33 +3074,34 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/pin-input
 
 Props (docgen 9.4.1):
-  ariaLabel (string) — <code>aria-label</code> attribute
-  autoFocus (boolean) [default false] — If set, the first input is focused when component is mounted
-  defaultValue (string) — Uncontrolled component default value
-  disabled (boolean) — Adds disabled attribute to all inputs
-  error (boolean) — Sets <code>aria-invalid</code> attribute and applies error styles to all inputs
-  form (string) — Hidden input <code>form</code> attribute
-  gap (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set <code>gap</code> between inputs, numbers are converted to rem
-  getInputProps ((index: number) => InputProps & ElementProps<\"input\", \"size\"> & DataAttributes) — Props added to the input element depending on its index
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  id (string) — Base id used to generate unique ids for inputs
-  inputMode (\"search\" | \"text\" | \"none\" | \"tel\" | \"url\" | \"email\" | \"numeric\" | \"decimal\") — <code>inputmode</code> attribute, inferred from the <code>type</code> prop if not specified
-  inputType (HTMLInputTypeAttribute) — Inputs <code>type</code> attribute, inferred from the <code>type</code> prop if not specified
-  length (number) [default 4] — Number of inputs
-  manageFocus (boolean) [default true] — Determines whether focus should be moved automatically to the next input once filled
-  mask (boolean) [default false] — Changes input type to <code>\"password\"</code>
-  name (string) — Hidden input <code>name</code> attribute
-  onChange ((value: string) => void) — Called when value changes
-  onComplete ((value: string) => void) — Called when all inputs have value
-  oneTimeCode (boolean) [default true] — Determines whether <code>autocomplete=\"one-time-code\"</code> attribute should be set on all inputs
-  placeholder (string) [default '○'] — Inputs placeholder
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the user cannot edit the value
-  rootRef (Ref<HTMLDivElement>) — Assigns ref of the root element
-  size (MantineSize) [default 'sm'] — Controls inputs <code>width</code> and <code>height</code>
-  success (boolean) — Applies success styles to all inputs
-  type (\"number\" | RegExp | \"alphanumeric\") [default 'alphanumeric'] — Determines which values can be entered
-  value (string) — Controlled component value
+
+- **ariaLabel** `string` — `aria-label` attribute
+- **autoFocus** `boolean` _(default `false`)_ — If set, the first input is focused when component is mounted
+- **defaultValue** `string` — Uncontrolled component default value
+- **disabled** `boolean` — Adds disabled attribute to all inputs
+- **error** `boolean` — Sets `aria-invalid` attribute and applies error styles to all inputs
+- **form** `string` — Hidden input `form` attribute
+- **gap** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set `gap` between inputs, numbers are converted to rem
+- **getInputProps** `(index: number) => InputProps & ElementProps<\"input\", \"size\"> & DataAttributes` — Props added to the input element depending on its index
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **id** `string` — Base id used to generate unique ids for inputs
+- **inputMode** `\"search\" | \"text\" | \"none\" | \"tel\" | \"url\" | \"email\" | \"numeric\" | \"decimal\"` — `inputmode` attribute, inferred from the `type` prop if not specified
+- **inputType** `HTMLInputTypeAttribute` — Inputs `type` attribute, inferred from the `type` prop if not specified
+- **length** `number` _(default `4`)_ — Number of inputs
+- **manageFocus** `boolean` _(default `true`)_ — Determines whether focus should be moved automatically to the next input once filled
+- **mask** `boolean` _(default `false`)_ — Changes input type to `\"password\"`
+- **name** `string` — Hidden input `name` attribute
+- **onChange** `(value: string) => void` — Called when value changes
+- **onComplete** `(value: string) => void` — Called when all inputs have value
+- **oneTimeCode** `boolean` _(default `true`)_ — Determines whether `autocomplete=\"one-time-code\"` attribute should be set on all inputs
+- **placeholder** `string` _(default `'○'`)_ — Inputs placeholder
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the user cannot edit the value
+- **rootRef** `Ref<HTMLDivElement>` — Assigns ref of the root element
+- **size** `MantineSize` _(default `'sm'`)_ — Controls inputs `width` and `height`
+- **success** `boolean` — Applies success styles to all inputs
+- **type** `\"number\" | RegExp | \"alphanumeric\"` _(default `'alphanumeric'`)_ — Determines which values can be entered
+- **value** `string` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled PinInput))
@@ -2987,46 +3113,47 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/popover
 
 Props (docgen 9.4.1):
-  arrowOffset (number) [default 5] — Arrow offset in px
-  arrowPosition ('center' | 'side') — Arrow position
-  arrowRadius (number) [default 0] — Arrow <code>border-radius</code> in px
-  arrowSize (number) [default 7] — Arrow size in px
-  children (React.ReactNode) — <code>Popover.Target</code> and <code>Popover.Dropdown</code> components
-  clickOutsideEvents (string[]) — Events that trigger outside clicks
-  closeOnClickOutside (boolean) [default true] — Determines whether dropdown should be closed on outside clicks
-  closeOnEscape (boolean) [default true] — Determines whether dropdown should be closed when <code>Escape</code> key is pressed
-  defaultOpened (boolean) — Initial opened state for uncontrolled component
-  disabled (boolean) — If set, popover dropdown will not be rendered
-  floatingStrategy (FloatingStrategy) [default 'absolute'] — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
-  hideDetached (boolean) [default true] — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
-  id (string) — Id base to create accessibility connections
-  keepMounted (boolean) — If set, the dropdown is not unmounted from the DOM when hidden. <code>display: none</code> styles are added instead.
-  keepMountedMode (\"activity\" | \"display-none\") [default 'activity'] — Controls how the dropdown is hidden when <code>keepMounted</code> is set: <code>'activity'</code> – hidden with React 19 <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  middlewares (PopoverMiddlewares) [default { flip: true, shift: true, inline: false }] — Floating ui middlewares to configure position handling
-  offset (number | FloatingAxesOffsets) [default 8] — Offset of the dropdown element
-  onChange ((opened: boolean) => void) — Called with current state when dropdown opens or closes
-  onClose (() => void) — Called when dropdown closes
-  onDismiss (() => void) — Called when the popover is dismissed by clicking outside or by pressing escape
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onOpen (() => void) — Called when dropdown opens
-  onPositionChange ((position: FloatingPosition) => void) — Called when dropdown position changes
-  opened (boolean) — Controlled dropdown opened state
-  overlayProps (OverlayProps & ElementProps<\"div\">) — Props passed down to <code>Overlay</code> component
-  portalProps (BasePortalProps) — Props to pass down to the <code>Portal</code> when <code>withinPortal</code> is true
-  position (FloatingPosition) [default 'bottom'] — Dropdown position relative to the target element
-  preventPositionChangeWhenVisible (boolean) [default true] — If <code>true</code>, the dropdown picks its side on open (flip runs once, preferring the <code>position</code> prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the <code>shift</code> middleware. Set to <code>false</code> to keep flip active and allow the dropdown to re-flip on every change.
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius
-  returnFocus (boolean) [default false] — Determines whether focus should be automatically returned to control when dropdown closes
-  shadow (MantineShadow) — Key of <code>theme.shadows</code> or any other valid CSS <code>box-shadow</code> value
-  transitionProps (TransitionProps) [default { duration: 150, transition: 'fade' }] — Props passed down to the <code>Transition</code> component. Use to configure duration and animation type.
-  trapFocus (boolean) [default false] — Determines whether focus should be trapped within dropdown
-  width (PopoverWidth) [default 'max-content'] — Dropdown width, or <code>'target'</code> to make dropdown width the same as target element
-  withArrow (boolean) [default false] — Determines whether component should have an arrow
-  withOverlay (boolean) [default false] — Determines whether the overlay should be displayed when the dropdown is opened
-  withRoles (boolean) [default true] — Determines whether dropdown and target elements should have accessible roles
-  withinPortal (boolean) [default true] — Determines whether dropdown should be rendered within the <code>Portal</code>
-  zIndex (string | number) [default 300] — Dropdown <code>z-index</code>
+
+- **arrowOffset** `number` _(default `5`)_ — Arrow offset in px
+- **arrowPosition** `'center' | 'side'` — Arrow position
+- **arrowRadius** `number` _(default `0`)_ — Arrow `border-radius` in px
+- **arrowSize** `number` _(default `7`)_ — Arrow size in px
+- **children** `React.ReactNode` — `Popover.Target` and `Popover.Dropdown` components
+- **clickOutsideEvents** `string[]` — Events that trigger outside clicks
+- **closeOnClickOutside** `boolean` _(default `true`)_ — Determines whether dropdown should be closed on outside clicks
+- **closeOnEscape** `boolean` _(default `true`)_ — Determines whether dropdown should be closed when `Escape` key is pressed
+- **defaultOpened** `boolean` — Initial opened state for uncontrolled component
+- **disabled** `boolean` — If set, popover dropdown will not be rendered
+- **floatingStrategy** `FloatingStrategy` _(default `'absolute'`)_ — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
+- **hideDetached** `boolean` _(default `true`)_ — If set, the dropdown is hidden when the element is hidden with styles or not visible on the screen
+- **id** `string` — Id base to create accessibility connections
+- **keepMounted** `boolean` — If set, the dropdown is not unmounted from the DOM when hidden. `display: none` styles are added instead.
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `'activity'`)_ — Controls how the dropdown is hidden when `keepMounted` is set: `'activity'` – hidden with React 19 `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **middlewares** `PopoverMiddlewares` _(default `{ flip: true, shift: true, inline: false }`)_ — Floating ui middlewares to configure position handling
+- **offset** `number | FloatingAxesOffsets` _(default `8`)_ — Offset of the dropdown element
+- **onChange** `(opened: boolean) => void` — Called with current state when dropdown opens or closes
+- **onClose** `() => void` — Called when dropdown closes
+- **onDismiss** `() => void` — Called when the popover is dismissed by clicking outside or by pressing escape
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onOpen** `() => void` — Called when dropdown opens
+- **onPositionChange** `(position: FloatingPosition) => void` — Called when dropdown position changes
+- **opened** `boolean` — Controlled dropdown opened state
+- **overlayProps** `OverlayProps & ElementProps<\"div\">` — Props passed down to `Overlay` component
+- **portalProps** `BasePortalProps` — Props to pass down to the `Portal` when `withinPortal` is true
+- **position** `FloatingPosition` _(default `'bottom'`)_ — Dropdown position relative to the target element
+- **preventPositionChangeWhenVisible** `boolean` _(default `true`)_ — If `true`, the dropdown picks its side on open (flip runs once, preferring the `position` prop) and then never changes side — scrolling, resizing, and content size changes will not flip the dropdown. The side is recalculated fresh on the next open. Does not affect the `shift` middleware. Set to `false` to keep flip active and allow the dropdown to re-flip on every change.
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius
+- **returnFocus** `boolean` _(default `false`)_ — Determines whether focus should be automatically returned to control when dropdown closes
+- **shadow** `MantineShadow` — Key of `theme.shadows` or any other valid CSS `box-shadow` value
+- **transitionProps** `TransitionProps` _(default `{ duration: 150, transition: 'fade' }`)_ — Props passed down to the `Transition` component. Use to configure duration and animation type.
+- **trapFocus** `boolean` _(default `false`)_ — Determines whether focus should be trapped within dropdown
+- **width** `PopoverWidth` _(default `'max-content'`)_ — Dropdown width, or `'target'` to make dropdown width the same as target element
+- **withArrow** `boolean` _(default `false`)_ — Determines whether component should have an arrow
+- **withOverlay** `boolean` _(default `false`)_ — Determines whether the overlay should be displayed when the dropdown is opened
+- **withRoles** `boolean` _(default `true`)_ — Determines whether dropdown and target elements should have accessible roles
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether dropdown should be rendered within the `Portal`
+- **zIndex** `string | number` _(default `300`)_ — Dropdown `z-index`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Popover)
@@ -3038,9 +3165,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/popover
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Element that opens the popover when right-clicked. Dropdown is positioned at the cursor. The trigger element must not call <code>event.preventDefault()</code> in its own <code>onContextMenu</code> handler, otherwise the native context menu is not suppressed.
-  disabled (boolean) — If set, the right-click trigger is disabled and the browser's default context menu is shown
-  longPressDelay (number) — Delay in ms before a touch long-press opens the dropdown on touch devices, <code>500</code> by default
+
+- **children** `React.ReactNode` **(required)** — Element that opens the popover when right-clicked. Dropdown is positioned at the cursor. The trigger element must not call `event.preventDefault()` in its own `onContextMenu` handler, otherwise the native context menu is not suppressed.
+- **disabled** `boolean` — If set, the right-click trigger is disabled and the browser's default context menu is shown
+- **longPressDelay** `number` — Delay in ms before a touch long-press opens the dropdown on touch devices, `500` by default
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PopoverContextMenu)
@@ -3059,9 +3187,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/popover
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Target element
-  popupType (string) [default 'dialog'] — Popup accessible type
-  refProp (string) — Key of the prop that should be used to access element ref
+
+- **children** `React.ReactNode` **(required)** — Target element
+- **popupType** `string` _(default `'dialog'`)_ — Popup accessible type
+- **refProp** `string` — Key of the prop that should be used to access element ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PopoverTarget)
@@ -3073,9 +3202,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/portal
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Content to render inside the portal
-  reuseTargetNode (boolean) [default true] — When true and target is not specified, all Portal instances share a single container node appended to document.body. When false, each Portal creates its own container node. Has no effect when target is specified.
-  target (string | HTMLElement) — Target element where portal should be rendered. Accepts: - HTMLElement: Renders portal inside this element - string: CSS selector - renders inside first matching element - undefined: Uses shared portal node or creates new one based on <code>reuseTargetNode</code> Note: If selector doesn't match any element, portal will not render
+
+- **children** `React.ReactNode` **(required)** — Content to render inside the portal
+- **reuseTargetNode** `boolean` _(default `true`)_ — When true and target is not specified, all Portal instances share a single container node appended to document.body. When false, each Portal creates its own container node. Has no effect when target is specified.
+- **target** `string | HTMLElement` — Target element where portal should be rendered. Accepts: - HTMLElement: Renders portal inside this element - string: CSS selector - renders inside first matching element - undefined: Uses shared portal node or creates new one based on `reuseTargetNode` Note: If selector doesn't match any element, portal will not render
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Portal)
@@ -3087,15 +3217,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/progress
 
 Props (docgen 9.4.1):
-  animated (boolean) [default false] — If set, the sections stripes are animated (automatically enables striped)
-  autoContrast (boolean) — If set, adjusts label text color based on section background color for readability
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS value
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Controls orientation
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  size (MantineSize | number) [default 'md'] — Controls track height
-  striped (boolean) [default false] — If set, the section has stripes
-  transitionDuration (number) [default 100] — Controls sections width transition duration, value is specified in ms
-  value (number) REQUIRED — Value of the progress
+
+- **animated** `boolean` _(default `false`)_ — If set, the sections stripes are animated (automatically enables striped)
+- **autoContrast** `boolean` — If set, adjusts label text color based on section background color for readability
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS value
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Controls orientation
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls track height
+- **striped** `boolean` _(default `false`)_ — If set, the section has stripes
+- **transitionDuration** `number` _(default `100`)_ — Controls sections width transition duration, value is specified in ms
+- **value** `number` **(required)** — Value of the progress
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Progress)
@@ -3107,11 +3238,12 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/progress
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts label text color based on section background color for readability
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Controls orientation
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  size (MantineSize | number) [default 'md'] — Controls track height
-  transitionDuration (number) [default 100] — Controls sections width transition duration, value is specified in ms
+
+- **autoContrast** `boolean` — If set, adjusts label text color based on section background color for readability
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Controls orientation
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls track height
+- **transitionDuration** `number` _(default `100`)_ — Controls sections width transition duration, value is specified in ms
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ProgressRoot)
@@ -3123,11 +3255,12 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/progress
 
 Props (docgen 9.4.1):
-  animated (boolean) [default false] — If set, the sections stripes are animated, <code>striped</code> prop is ignored
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS value
-  striped (boolean) [default false] — If set, the section has stripes
-  value (number) REQUIRED — Value of the section in 0–100 range
-  withAria (boolean) [default true] — Determines whether <code>aria-*</code> props should be added to the root element
+
+- **animated** `boolean` _(default `false`)_ — If set, the sections stripes are animated, `striped` prop is ignored
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS value
+- **striped** `boolean` _(default `false`)_ — If set, the section has stripes
+- **value** `number` **(required)** — Value of the section in 0–100 range
+- **withAria** `boolean` _(default `true`)_ — Determines whether `aria-*` props should be added to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ProgressSection)
@@ -3139,19 +3272,20 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/radio
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  color (MantineColor) [default theme.primaryColor] — Key of theme.colors or any valid CSS color to set radio background color in checked state
-  description (React.ReactNode) — Description displayed below the label
-  error (React.ReactNode) — Error displayed below the label
-  icon (FC<RadioIconProps>) — A component that replaces the default radio icon (centered dot)
-  iconColor (MantineColor) — Key of theme.colors or any valid CSS color to set icon color. When not set, icon color is determined automatically based on theme.autoContrast setting
-  label (React.ReactNode) — Content of the <code>label</code> associated with the radio
-  labelPosition (\"left\" | \"right\") [default 'right'] — Position of the label relative to the input
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  rootRef (Ref<HTMLDivElement>) — Assigns ref of the root element
-  size (MantineSize) [default 'sm'] — Controls size of the component
-  withErrorStyles (boolean) [default true] — If set, applies error styles to the radio when <code>error</code> prop is set
-  wrapperProps (React.ComponentProps<\"div\">) — Props passed down to the root element
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of theme.colors or any valid CSS color to set radio background color in checked state
+- **description** `React.ReactNode` — Description displayed below the label
+- **error** `React.ReactNode` — Error displayed below the label
+- **icon** `FC<RadioIconProps>` — A component that replaces the default radio icon (centered dot)
+- **iconColor** `MantineColor` — Key of theme.colors or any valid CSS color to set icon color. When not set, icon color is determined automatically based on theme.autoContrast setting
+- **label** `React.ReactNode` — Content of the `label` associated with the radio
+- **labelPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the label relative to the input
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **rootRef** `Ref<HTMLDivElement>` — Assigns ref of the root element
+- **size** `MantineSize` _(default `'sm'`)_ — Controls size of the component
+- **withErrorStyles** `boolean` _(default `true`)_ — If set, applies error styles to the radio when `error` prop is set
+- **wrapperProps** `React.ComponentProps<\"div\">` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Radio)
@@ -3163,11 +3297,12 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/radio
 
 Props (docgen 9.4.1):
-  checked (boolean) — Checked state
-  name (string) — Value used to associate all related radio cards, required for accessibility if used outside of <code>Radio.Group</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  value (string) — Value of the radio, used with Radio.Group
-  withBorder (boolean) — Adds border to the root element
+
+- **checked** `boolean` — Checked state
+- **name** `string` — Value used to associate all related radio cards, required for accessibility if used outside of `Radio.Group`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **value** `string` — Value of the radio, used with Radio.Group
+- **withBorder** `boolean` — Adds border to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RadioCard)
@@ -3186,29 +3321,30 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/radio
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — <code>Radio</code> components and any other elements
-  defaultValue (Primitive | null) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute, prevents interactions
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  id (string) — Static id used as base to generate <code>aria-</code> attributes, by default generates random id
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelElement (\"div\" | \"label\") [default 'label'] — Root element for the label. Use <code>'div'</code> when wrapper contains multiple input elements and you need to handle <code>htmlFor</code> manually.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  name (string) — <code>name</code> attribute of child radio inputs. By default, <code>name</code> is generated randomly.
-  onChange ((value: Value) => void) — Called when value changes
-  readOnly (boolean) — If set, value cannot be changed
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  size (MantineSize) [default 'sm'] — Controls size of the <code>Input.Wrapper</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (Primitive | null) — Controlled component value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  wrapperProps (React.ComponentProps<\"div\">) — Props passed down to the <code>Input.Wrapper</code>
+
+- **children** `React.ReactNode` **(required)** — `Radio` components and any other elements
+- **defaultValue** `Primitive | null` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute, prevents interactions
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **id** `string` — Static id used as base to generate `aria-` attributes, by default generates random id
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelElement** `\"div\" | \"label\"` _(default `'label'`)_ — Root element for the label. Use `'div'` when wrapper contains multiple input elements and you need to handle `htmlFor` manually.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **name** `string` — `name` attribute of child radio inputs. By default, `name` is generated randomly.
+- **onChange** `(value: Value) => void` — Called when value changes
+- **readOnly** `boolean` — If set, value cannot be changed
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **size** `MantineSize` _(default `'sm'`)_ — Controls size of the `Input.Wrapper`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `Primitive | null` — Controlled component value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **wrapperProps** `React.ComponentProps<\"div\">` — Props passed down to the `Input.Wrapper`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RadioGroup)
@@ -3227,14 +3363,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/radio
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  checked (boolean) — Checked state
-  color (MantineColor) [default theme.primaryColor] — Key of theme.colors or any valid CSS color to set indicator background color in checked state
-  disabled (boolean) — Disabled state
-  icon (FC<RadioIconProps>) — A component that replaces the default radio icon (centered dot)
-  iconColor (MantineColor) — Key of theme.colors or any valid CSS color to set icon color. When not set, icon color is determined automatically based on theme.autoContrast setting
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  size (MantineSize | number) [default 'sm'] — Controls size of the component
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **checked** `boolean` — Checked state
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of theme.colors or any valid CSS color to set indicator background color in checked state
+- **disabled** `boolean` — Disabled state
+- **icon** `FC<RadioIconProps>` — A component that replaces the default radio icon (centered dot)
+- **iconColor** `MantineColor` — Key of theme.colors or any valid CSS color to set icon color. When not set, icon color is determined automatically based on theme.autoContrast setting
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **size** `MantineSize | number` _(default `'sm'`)_ — Controls size of the component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RadioIndicator)
@@ -3246,40 +3383,41 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/range-slider
 
 Props (docgen 9.4.1):
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color, controls color of track and thumb
-  defaultValue (RangeSliderValue) — Uncontrolled component default value
-  disabled (boolean) — Disables slider
-  domain ([number, number]) [default [min, max]] — Domain of the slider, defines the selectable value range independently of min/max. Useful when you want to display a wider track range (min/max) but restrict actual selection to a subset (domain).
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  inverted (boolean) [default false] — Determines whether track values representation should be inverted
-  label (ReactNode | ((value: number) => ReactNode)) — Function to generate label or any react node to render instead, set to null to disable label
-  labelAlwaysOn (boolean) [default false] — Determines whether the label should be visible when the slider is not being dragged or hovered
-  labelTransitionProps (TransitionProps) [default { transition: 'fade', duration: 0 }] — Props passed down to the <code>Transition</code> component
-  marks (SliderMark[]) — Marks displayed on the track
-  max (number) [default 100] — Maximum possible value
-  maxRange (number) [default Infinity] — Maximum range interval
-  min (number) [default 0] — Minimal possible value
-  minRange (number) [default 10] — Minimal range interval between the two thumbs. Consider this value relative to the total range (max - min).
-  name (string) — Hidden input name, use with uncontrolled component
-  onChange ((value: RangeSliderValue) => void) — Called when value changes
-  onChangeEnd ((value: RangeSliderValue) => void) — Called when user stops dragging slider or changes value with arrows
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Slider orientation
-  precision (number) — Number of significant digits after the decimal point
-  pushOnOverlap (boolean) [default true] — Determines whether the other thumb should be pushed by the current thumb dragging when <code>minRange</code>/<code>maxRange</code> is reached
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  restrictToMarks (boolean) [default false] — Determines whether the selection should be only allowed from the given marks array
-  scale ((value: number) => number) — A transformation function to change the scale of the slider
-  showLabelOnHover (boolean) [default true] — Determines whether the label should be displayed when the slider is hovered
-  size (MantineSize | number) [default 'md'] — Controls size of the track
-  step (number) [default 1] — Number by which value will be incremented/decremented with thumb drag and arrows
-  thumbChildren (React.ReactNode) — Content rendered inside thumb
-  thumbFromLabel (string) — First thumb <code>aria-label</code>
-  thumbLabel (string) — <code>aria-label</code> for both thumbs (overridden by thumbFromLabel/thumbToLabel if provided)
-  thumbProps ((index: 0 | 1) => DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) — Props passed down to thumb element based on the thumb index
-  thumbSize (string | number) — Thumb <code>width</code> and <code>height</code>, by default value is computed based on <code>size</code> prop
-  thumbToLabel (string) — Second thumb <code>aria-label</code>
-  thumbValueText (string | ((value: number) => string)) — <code>aria-valuetext</code> for both thumbs. When a function is provided, it receives the scaled value.
-  value (RangeSliderValue) — Controlled component value
+
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color, controls color of track and thumb
+- **defaultValue** `RangeSliderValue` — Uncontrolled component default value
+- **disabled** `boolean` — Disables slider
+- **domain** `[number, number]` _(default `[min, max]`)_ — Domain of the slider, defines the selectable value range independently of min/max. Useful when you want to display a wider track range (min/max) but restrict actual selection to a subset (domain).
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **inverted** `boolean` _(default `false`)_ — Determines whether track values representation should be inverted
+- **label** `ReactNode | ((value: number) => ReactNode)` — Function to generate label or any react node to render instead, set to null to disable label
+- **labelAlwaysOn** `boolean` _(default `false`)_ — Determines whether the label should be visible when the slider is not being dragged or hovered
+- **labelTransitionProps** `TransitionProps` _(default `{ transition: 'fade', duration: 0 }`)_ — Props passed down to the `Transition` component
+- **marks** `SliderMark[]` — Marks displayed on the track
+- **max** `number` _(default `100`)_ — Maximum possible value
+- **maxRange** `number` _(default `Infinity`)_ — Maximum range interval
+- **min** `number` _(default `0`)_ — Minimal possible value
+- **minRange** `number` _(default `10`)_ — Minimal range interval between the two thumbs. Consider this value relative to the total range (max - min).
+- **name** `string` — Hidden input name, use with uncontrolled component
+- **onChange** `(value: RangeSliderValue) => void` — Called when value changes
+- **onChangeEnd** `(value: RangeSliderValue) => void` — Called when user stops dragging slider or changes value with arrows
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Slider orientation
+- **precision** `number` — Number of significant digits after the decimal point
+- **pushOnOverlap** `boolean` _(default `true`)_ — Determines whether the other thumb should be pushed by the current thumb dragging when `minRange`/`maxRange` is reached
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **restrictToMarks** `boolean` _(default `false`)_ — Determines whether the selection should be only allowed from the given marks array
+- **scale** `(value: number) => number` — A transformation function to change the scale of the slider
+- **showLabelOnHover** `boolean` _(default `true`)_ — Determines whether the label should be displayed when the slider is hovered
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls size of the track
+- **step** `number` _(default `1`)_ — Number by which value will be incremented/decremented with thumb drag and arrows
+- **thumbChildren** `React.ReactNode` — Content rendered inside thumb
+- **thumbFromLabel** `string` — First thumb `aria-label`
+- **thumbLabel** `string` — `aria-label` for both thumbs (overridden by thumbFromLabel/thumbToLabel if provided)
+- **thumbProps** `(index: 0 | 1) => DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>` — Props passed down to thumb element based on the thumb index
+- **thumbSize** `string | number` — Thumb `width` and `height`, by default value is computed based on `size` prop
+- **thumbToLabel** `string` — Second thumb `aria-label`
+- **thumbValueText** `string | ((value: number) => string)` — `aria-valuetext` for both thumbs. When a function is provided, it receives the scaled value.
+- **value** `RangeSliderValue` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled RangeSlider))
@@ -3291,21 +3429,22 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/rating
 
 Props (docgen 9.4.1):
-  allowClear (boolean) — When true, clicking the same rating value clears the rating to 0, default is false
-  color (MantineColor) — Key of theme.colors or any CSS color value, default is 'yellow'
-  count (number) — Number of rating items (stars), default is 5
-  defaultValue (number) — Uncontrolled component default value
-  emptySymbol (ReactNode | ((value: number) => ReactNode)) — Icon displayed for unselected rating items. Can be a function that receives the rating value.
-  fractions (number) — Number of fractions each item can be divided into, default is 1
-  fullSymbol (ReactNode | ((value: number) => ReactNode)) — Icon displayed for selected rating items. Can be a function that receives the rating value.
-  getSymbolLabel ((index: number) => string) — Function to generate aria-label for each rating value. Receives the rating value as argument, default is (value) => String(value)
-  highlightSelectedOnly (boolean) — When true, only the clicked rating item is highlighted, not all items up to the selected value, default is false
-  name (string) — Name attribute for form submission. If not provided, a unique id will be generated.
-  onChange ((value: number) => void) — Called when value changes
-  onHover ((value: number) => void) — Called when rating item is hovered. Receives -1 when hover ends.
-  readOnly (boolean) — When true, rating cannot be changed by user interaction, default is false
-  size (MantineSize | number) [default 'sm'] — Controls component size
-  value (number) — Controlled component value
+
+- **allowClear** `boolean` — When true, clicking the same rating value clears the rating to 0, default is false
+- **color** `MantineColor` — Key of theme.colors or any CSS color value, default is 'yellow'
+- **count** `number` — Number of rating items (stars), default is 5
+- **defaultValue** `number` — Uncontrolled component default value
+- **emptySymbol** `ReactNode | ((value: number) => ReactNode)` — Icon displayed for unselected rating items. Can be a function that receives the rating value.
+- **fractions** `number` — Number of fractions each item can be divided into, default is 1
+- **fullSymbol** `ReactNode | ((value: number) => ReactNode)` — Icon displayed for selected rating items. Can be a function that receives the rating value.
+- **getSymbolLabel** `(index: number) => string` — Function to generate aria-label for each rating value. Receives the rating value as argument, default is (value) => String(value)
+- **highlightSelectedOnly** `boolean` — When true, only the clicked rating item is highlighted, not all items up to the selected value, default is false
+- **name** `string` — Name attribute for form submission. If not provided, a unique id will be generated.
+- **onChange** `(value: number) => void` — Called when value changes
+- **onHover** `(value: number) => void` — Called when rating item is hovered. Receives -1 when hover ends.
+- **readOnly** `boolean` — When true, rating cannot be changed by user interaction, default is false
+- **size** `MantineSize | number` _(default `'sm'`)_ — Controls component size
+- **value** `number` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled Rating))
@@ -3317,15 +3456,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/ring-progress
 
 Props (docgen 9.4.1):
-  label (React.ReactNode) — Label displayed in the center of the ring
-  rootColor (MantineColor) — Color of the unfilled portion of the ring (background). Defaults to gray-2 in light mode, dark-4 in dark mode
-  roundCaps (boolean) [default false] — Applies rounded line caps to the start and end of visible sections
-  sectionGap (number) [default 0] — Gap between sections in degrees. Reduces the visual size of each section
-  sections (RingProgressSection[]) REQUIRED — Array of sections to display in the ring. Each section should have a <code>value</code> (0-100), <code>color</code>, and optional <code>tooltip</code>. Sections can also receive any valid SVG circle element props.
-  size (number) [default 120] — Width and height of the progress ring
-  startAngle (number) [default 270] — Starting angle in degrees. 0 = right, 90 = bottom, 180 = left, 270 = top
-  thickness (number) [default 12] — Ring thickness in pixels. Cannot exceed size / 4 and will be automatically clamped if necessary
-  transitionDuration (number) [default 0] — Transition duration in milliseconds for section value and color changes
+
+- **label** `React.ReactNode` — Label displayed in the center of the ring
+- **rootColor** `MantineColor` — Color of the unfilled portion of the ring (background). Defaults to gray-2 in light mode, dark-4 in dark mode
+- **roundCaps** `boolean` _(default `false`)_ — Applies rounded line caps to the start and end of visible sections
+- **sectionGap** `number` _(default `0`)_ — Gap between sections in degrees. Reduces the visual size of each section
+- **sections** `RingProgressSection[]` **(required)** — Array of sections to display in the ring. Each section should have a `value` (0-100), `color`, and optional `tooltip`. Sections can also receive any valid SVG circle element props.
+- **size** `number` _(default `120`)_ — Width and height of the progress ring
+- **startAngle** `number` _(default `270`)_ — Starting angle in degrees. 0 = right, 90 = bottom, 180 = left, 270 = top
+- **thickness** `number` _(default `12`)_ — Ring thickness in pixels. Cannot exceed size / 4 and will be automatically clamped if necessary
+- **transitionDuration** `number` _(default `0`)_ — Transition duration in milliseconds for section value and color changes
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RingProgress)
@@ -3337,17 +3477,18 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/rolling-number
 
 Props (docgen 9.4.1):
-  animationDuration (number) [default 600] — Animation duration in milliseconds
-  decimalScale (number) — Number of decimal places to display
-  decimalSeparator (string) [default '.'] — Character used as a decimal separator
-  fixedDecimalScale (boolean) [default false] — If set, trailing zeros are added to match <code>decimalScale</code>
-  prefix (string) — Prefix added before the value
-  suffix (string) — Suffix added after the value
-  tabularNumbers (boolean) [default true] — If set, use tabular (monospace) numbers
-  thousandSeparator (string | boolean) [default false] — Character used to separate thousands, set to <code>true</code> for <code>,</code>
-  timingFunction (string) [default 'ease'] — CSS timing function for animation
-  value (number) REQUIRED — Number value to display
-  withLiveRegion (boolean) [default false] — If set, the root element acts as an <code>aria-live=\"polite\"</code> region (<code>role=\"status\"</code>) and screen readers announce every value change. When <code>false</code>, the root uses <code>role=\"img\"</code> so the current value is still accessible but updates are not announced.
+
+- **animationDuration** `number` _(default `600`)_ — Animation duration in milliseconds
+- **decimalScale** `number` — Number of decimal places to display
+- **decimalSeparator** `string` _(default `'.'`)_ — Character used as a decimal separator
+- **fixedDecimalScale** `boolean` _(default `false`)_ — If set, trailing zeros are added to match `decimalScale`
+- **prefix** `string` — Prefix added before the value
+- **suffix** `string` — Suffix added after the value
+- **tabularNumbers** `boolean` _(default `true`)_ — If set, use tabular (monospace) numbers
+- **thousandSeparator** `string | boolean` _(default `false`)_ — Character used to separate thousands, set to `true` for `,`
+- **timingFunction** `string` _(default `'ease'`)_ — CSS timing function for animation
+- **value** `number` **(required)** — Number value to display
+- **withLiveRegion** `boolean` _(default `false`)_ — If set, the root element acts as an `aria-live=\"polite\"` region (`role=\"status\"`) and screen readers announce every value change. When `false`, the root uses `role=\"img\"` so the current value is still accessible but updates are not announced.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory RollingNumber)
@@ -3359,20 +3500,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/scroll-area
 
 Props (docgen 9.4.1):
-  offsetScrollbars (boolean | \"x\" | \"y\" | \"present\") [default false] — Determines whether scrollbars should be offset with padding on given axis - <code>true</code> - adds padding to offset both scrollbars (always) - <code>'x'</code> - adds padding to offset horizontal scrollbar (always) - <code>'y'</code> - adds padding to offset vertical scrollbar (always) - <code>'present'</code> - adds padding only when scrollbars are visible (dynamic)
-  onBottomReached (() => void) — Called when scrollarea is scrolled to the bottom (within 0.8px tolerance for sub-pixel rendering)
-  onLeftReached (() => void) — Called when scrollarea is scrolled to the left (within 0.8px tolerance for sub-pixel rendering)
-  onRightReached (() => void) — Called when scrollarea is scrolled to the right (within 0.8px tolerance for sub-pixel rendering)
-  onScrollPositionChange ((position: { x: number; y: number; }) => void) — Called with current position (<code>x</code> and <code>y</code> coordinates) when viewport is scrolled
-  onTopReached (() => void) — Called when scrollarea is scrolled all the way to the top
-  overscrollBehavior (OverscrollBehavior) — Defines <code>overscroll-behavior</code> of the viewport
-  scrollHideDelay (number) [default 1000] — Scroll hide delay in ms, applicable only when type is set to <code>hover</code> or <code>scroll</code>
-  scrollbarSize (string | number) — Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 12px (0.75rem)
-  scrollbars (false | \"x\" | \"y\" | \"xy\") [default 'xy'] — Axis at which scrollbars must be rendered - <code>'x'</code> - horizontal scrollbar only - <code>'y'</code> - vertical scrollbar only - <code>'xy'</code> - both scrollbars - <code>false</code> - no scrollbars rendered (content remains scrollable via mouse/touch)
-  startScrollPosition ({ x?: number; y?: number | undefined; } | undefined) — Initial scroll position set on mount
-  type (\"auto\" | \"scroll\" | \"always\" | \"hover\" | \"never\") [default 'hover'] — Defines scrollbars behavior - <code>'hover'</code> – scrollbars visible on hover (default) - <code>'scroll'</code> – scrollbars visible during scrolling - <code>'auto'</code> – scrollbars visible only when content overflows (like CSS overflow: auto) - <code>'always'</code> – scrollbars always visible, even when content doesn't overflow - <code>'never'</code> – scrollbars always hidden
-  viewportProps (React.ComponentProps<\"div\">) — Props passed down to the viewport element
-  viewportRef (Ref<HTMLDivElement>) — Assigns viewport element (scrollable container) ref
+
+- **offsetScrollbars** `boolean | \"x\" | \"y\" | \"present\"` _(default `false`)_ — Determines whether scrollbars should be offset with padding on given axis - `true` - adds padding to offset both scrollbars (always) - `'x'` - adds padding to offset horizontal scrollbar (always) - `'y'` - adds padding to offset vertical scrollbar (always) - `'present'` - adds padding only when scrollbars are visible (dynamic)
+- **onBottomReached** `() => void` — Called when scrollarea is scrolled to the bottom (within 0.8px tolerance for sub-pixel rendering)
+- **onLeftReached** `() => void` — Called when scrollarea is scrolled to the left (within 0.8px tolerance for sub-pixel rendering)
+- **onRightReached** `() => void` — Called when scrollarea is scrolled to the right (within 0.8px tolerance for sub-pixel rendering)
+- **onScrollPositionChange** `(position: { x: number; y: number; }) => void` — Called with current position (`x` and `y` coordinates) when viewport is scrolled
+- **onTopReached** `() => void` — Called when scrollarea is scrolled all the way to the top
+- **overscrollBehavior** `OverscrollBehavior` — Defines `overscroll-behavior` of the viewport
+- **scrollHideDelay** `number` _(default `1000`)_ — Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`
+- **scrollbarSize** `string | number` — Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 12px (0.75rem)
+- **scrollbars** `false | \"x\" | \"y\" | \"xy\"` _(default `'xy'`)_ — Axis at which scrollbars must be rendered - `'x'` - horizontal scrollbar only - `'y'` - vertical scrollbar only - `'xy'` - both scrollbars - `false` - no scrollbars rendered (content remains scrollable via mouse/touch)
+- **startScrollPosition** `{ x?: number; y?: number | undefined; } | undefined` — Initial scroll position set on mount
+- **type** `\"auto\" | \"scroll\" | \"always\" | \"hover\" | \"never\"` _(default `'hover'`)_ — Defines scrollbars behavior - `'hover'` – scrollbars visible on hover (default) - `'scroll'` – scrollbars visible during scrolling - `'auto'` – scrollbars visible only when content overflows (like CSS overflow: auto) - `'always'` – scrollbars always visible, even when content doesn't overflow - `'never'` – scrollbars always hidden
+- **viewportProps** `React.ComponentProps<\"div\">` — Props passed down to the viewport element
+- **viewportRef** `Ref<HTMLDivElement>` — Assigns viewport element (scrollable container) ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ScrollArea)
@@ -3382,21 +3524,22 @@ Optional leading props map; remaining args are children."
   "ScrollAreaAutosize
 
 Props (docgen 9.4.1):
-  offsetScrollbars (boolean | \"x\" | \"y\" | \"present\") [default false] — Determines whether scrollbars should be offset with padding on given axis - <code>true</code> - adds padding to offset both scrollbars (always) - <code>'x'</code> - adds padding to offset horizontal scrollbar (always) - <code>'y'</code> - adds padding to offset vertical scrollbar (always) - <code>'present'</code> - adds padding only when scrollbars are visible (dynamic)
-  onBottomReached (() => void) — Called when scrollarea is scrolled to the bottom (within 0.8px tolerance for sub-pixel rendering)
-  onLeftReached (() => void) — Called when scrollarea is scrolled to the left (within 0.8px tolerance for sub-pixel rendering)
-  onOverflowChange ((overflowing: boolean) => void) — Called when content overflows due to max-height, making the container scrollable
-  onRightReached (() => void) — Called when scrollarea is scrolled to the right (within 0.8px tolerance for sub-pixel rendering)
-  onScrollPositionChange ((position: { x: number; y: number; }) => void) — Called with current position (<code>x</code> and <code>y</code> coordinates) when viewport is scrolled
-  onTopReached (() => void) — Called when scrollarea is scrolled all the way to the top
-  overscrollBehavior (OverscrollBehavior) — Defines <code>overscroll-behavior</code> of the viewport
-  scrollHideDelay (number) [default 1000] — Scroll hide delay in ms, applicable only when type is set to <code>hover</code> or <code>scroll</code>
-  scrollbarSize (string | number) — Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 12px (0.75rem)
-  scrollbars (false | \"x\" | \"y\" | \"xy\") [default 'xy'] — Axis at which scrollbars must be rendered - <code>'x'</code> - horizontal scrollbar only - <code>'y'</code> - vertical scrollbar only - <code>'xy'</code> - both scrollbars - <code>false</code> - no scrollbars rendered (content remains scrollable via mouse/touch)
-  startScrollPosition ({ x?: number; y?: number | undefined; } | undefined) — Initial scroll position set on mount
-  type (\"auto\" | \"scroll\" | \"always\" | \"hover\" | \"never\") [default 'hover'] — Defines scrollbars behavior - <code>'hover'</code> – scrollbars visible on hover (default) - <code>'scroll'</code> – scrollbars visible during scrolling - <code>'auto'</code> – scrollbars visible only when content overflows (like CSS overflow: auto) - <code>'always'</code> – scrollbars always visible, even when content doesn't overflow - <code>'never'</code> – scrollbars always hidden
-  viewportProps (React.ComponentProps<\"div\">) — Props passed down to the viewport element
-  viewportRef (Ref<HTMLDivElement>) — Assigns viewport element (scrollable container) ref
+
+- **offsetScrollbars** `boolean | \"x\" | \"y\" | \"present\"` _(default `false`)_ — Determines whether scrollbars should be offset with padding on given axis - `true` - adds padding to offset both scrollbars (always) - `'x'` - adds padding to offset horizontal scrollbar (always) - `'y'` - adds padding to offset vertical scrollbar (always) - `'present'` - adds padding only when scrollbars are visible (dynamic)
+- **onBottomReached** `() => void` — Called when scrollarea is scrolled to the bottom (within 0.8px tolerance for sub-pixel rendering)
+- **onLeftReached** `() => void` — Called when scrollarea is scrolled to the left (within 0.8px tolerance for sub-pixel rendering)
+- **onOverflowChange** `(overflowing: boolean) => void` — Called when content overflows due to max-height, making the container scrollable
+- **onRightReached** `() => void` — Called when scrollarea is scrolled to the right (within 0.8px tolerance for sub-pixel rendering)
+- **onScrollPositionChange** `(position: { x: number; y: number; }) => void` — Called with current position (`x` and `y` coordinates) when viewport is scrolled
+- **onTopReached** `() => void` — Called when scrollarea is scrolled all the way to the top
+- **overscrollBehavior** `OverscrollBehavior` — Defines `overscroll-behavior` of the viewport
+- **scrollHideDelay** `number` _(default `1000`)_ — Scroll hide delay in ms, applicable only when type is set to `hover` or `scroll`
+- **scrollbarSize** `string | number` — Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 12px (0.75rem)
+- **scrollbars** `false | \"x\" | \"y\" | \"xy\"` _(default `'xy'`)_ — Axis at which scrollbars must be rendered - `'x'` - horizontal scrollbar only - `'y'` - vertical scrollbar only - `'xy'` - both scrollbars - `false` - no scrollbars rendered (content remains scrollable via mouse/touch)
+- **startScrollPosition** `{ x?: number; y?: number | undefined; } | undefined` — Initial scroll position set on mount
+- **type** `\"auto\" | \"scroll\" | \"always\" | \"hover\" | \"never\"` _(default `'hover'`)_ — Defines scrollbars behavior - `'hover'` – scrollbars visible on hover (default) - `'scroll'` – scrollbars visible during scrolling - `'auto'` – scrollbars visible only when content overflows (like CSS overflow: auto) - `'always'` – scrollbars always visible, even when content doesn't overflow - `'never'` – scrollbars always hidden
+- **viewportProps** `React.ComponentProps<\"div\">` — Props passed down to the viewport element
+- **viewportRef** `Ref<HTMLDivElement>` — Assigns viewport element (scrollable container) ref
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ScrollAreaAutosize)
@@ -3408,17 +3551,18 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/scroller
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Content to display
-  controlSize (string | number) [default 60px] — Size of the control buttons,
-  draggable (boolean) — Determines whether content can be scrolled by dragging with mouse, <code>true</code> by default
-  edgeGradientColor (string) — Background color for the gradient fade on controls, <code>'var(--mantine-color-body)'</code> by default
-  endControlIcon (React.ReactNode) — Icon component for the end control, AccordionChevron by default
-  endControlProps (React.ComponentProps<\"button\">) — Props passed to the end control button
-  scrollAmount (number) — Amount of pixels to scroll when clicking the control buttons, <code>200</code> by default
-  showEndControl (boolean) — Determines whether end control should always be visible regardless of scroll position, <code>false</code> by default
-  showStartControl (boolean) — Determines whether start control should always be visible regardless of scroll position, <code>false</code> by default
-  startControlIcon (React.ReactNode) — Icon component for the start control, AccordionChevron by default
-  startControlProps (React.ComponentProps<\"button\">) — Props passed to the start control button
+
+- **children** `React.ReactNode` **(required)** — Content to display
+- **controlSize** `string | number` _(default `60px`)_ — Size of the control buttons,
+- **draggable** `boolean` — Determines whether content can be scrolled by dragging with mouse, `true` by default
+- **edgeGradientColor** `string` — Background color for the gradient fade on controls, `'var(--mantine-color-body)'` by default
+- **endControlIcon** `React.ReactNode` — Icon component for the end control, AccordionChevron by default
+- **endControlProps** `React.ComponentProps<\"button\">` — Props passed to the end control button
+- **scrollAmount** `number` — Amount of pixels to scroll when clicking the control buttons, `200` by default
+- **showEndControl** `boolean` — Determines whether end control should always be visible regardless of scroll position, `false` by default
+- **showStartControl** `boolean` — Determines whether start control should always be visible regardless of scroll position, `false` by default
+- **startControlIcon** `React.ReactNode` — Icon component for the start control, AccordionChevron by default
+- **startControlProps** `React.ComponentProps<\"button\">` — Props passed to the start control button
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Scroller)
@@ -3430,22 +3574,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/segmented-control
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, automatically adjusts label text color for optimal contrast against the indicator background color
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color, changes indicator background color. By default, uses white in light mode and dark.5 in dark mode
-  data ((Value | SegmentedControlItem<Value>)[]) REQUIRED — Data based on which controls are rendered
-  defaultValue (Primitive) — Uncontrolled component default value
-  disabled (boolean) — Determines whether the component is disabled
-  fullWidth (boolean) [default false] — Determines whether the component should take 100% width of its parent
-  name (string) — Name attribute for the radio group. A random name is auto-generated if not provided
-  onChange ((value: Value) => void) — Called when value changes
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Component orientation
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set to <code>false</code>, prevents changing the value
-  size (MantineSize) [default 'sm'] — Controls <code>font-size</code>, <code>padding</code> and <code>height</code> properties
-  transitionDuration (number) [default 200] — Indicator <code>transition-duration</code> in ms, set <code>0</code> to turn off transitions
-  transitionTimingFunction (string) [default ease] — Indicator <code>transition-timing-function</code> property
-  value (Primitive) — Controlled component value
-  withItemsBorders (boolean) [default true] — Determines whether there should be borders between items
+
+- **autoContrast** `boolean` — If set, automatically adjusts label text color for optimal contrast against the indicator background color
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color, changes indicator background color. By default, uses white in light mode and dark.5 in dark mode
+- **data** `(Value | SegmentedControlItem<Value>)[]` **(required)** — Data based on which controls are rendered
+- **defaultValue** `Primitive` — Uncontrolled component default value
+- **disabled** `boolean` — Determines whether the component is disabled
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the component should take 100% width of its parent
+- **name** `string` — Name attribute for the radio group. A random name is auto-generated if not provided
+- **onChange** `(value: Value) => void` — Called when value changes
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Component orientation
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set to `false`, prevents changing the value
+- **size** `MantineSize` _(default `'sm'`)_ — Controls `font-size`, `padding` and `height` properties
+- **transitionDuration** `number` _(default `200`)_ — Indicator `transition-duration` in ms, set `0` to turn off transitions
+- **transitionTimingFunction** `string` _(default `ease`)_ — Indicator `transition-timing-function` property
+- **value** `Primitive` — Controlled component value
+- **withItemsBorders** `boolean` _(default `true`)_ — Determines whether there should be borders between items
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled SegmentedControl))
@@ -3457,72 +3602,73 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/select
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) [default true] — Allows deselecting the selected option by clicking it
-  autoSelectOnBlur (boolean) [default false] — Automatically selects the highlighted option when input loses focus
-  checkIconPosition (\"left\" | \"right\") [default 'left'] — Position of the check icon relative to the option label
-  chevronColor (MantineColor) — Controls color of the default chevron, by default depends on the color scheme
-  clearButtonProps (InputClearButtonProps) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — Displays clear button in the right section when component has value
-  comboboxProps (ComboboxProps) — Props passed down to <code>Combobox</code> component
-  data (ComboboxData<Value>) — Data used to generate options. Values must be unique, otherwise an error will be thrown and component will not render.
-  defaultDropdownOpened (boolean) — Uncontrolled dropdown initial opened state
-  defaultSearchValue (string) — Default search value
-  defaultValue (Primitive | null) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownOpened (boolean) — Controlled dropdown opened state
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  filter (OptionsFilter<Value>) — Function based on which items are filtered and sorted
-  floatingHeight (\"viewport\") — If set to <code>'viewport'</code>, the dropdown grows to fill the available vertical space in the viewport. Disables the <code>flip</code> middleware.
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  limit (number) — Maximum number of options displayed at a time, <code>Infinity</code> by default
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxDropdownHeight (string | number) — <code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default
-  nothingFoundMessage (React.ReactNode) — Message displayed when no options match the search query or when there is no data
-  onChange ((value: Value | null, option: ComboboxItem<Value>) => void) — Called when value changes
-  onClear (() => void) — Called when the clear button is clicked
-  onDropdownClose (() => void) — Called when dropdown closes
-  onDropdownOpen (() => void) — Called when dropdown opens
-  onOptionSubmit ((value: Value) => void) — Called when option is submitted from dropdown with mouse click or <code>Enter</code> key
-  onSearchChange ((value: string) => void) — Called when search changes
-  openOnFocus (boolean) [default true] — Opens dropdown when input receives focus (requires searchable={true})
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  renderOption ((item: ComboboxLikeRenderOptionInput<ComboboxItem<Value>>) => ReactNode) — A function to render content of the option, replaces the default content of the option
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  scrollAreaProps (ScrollAreaProps) — Props passed down to the underlying <code>ScrollArea</code> component in the dropdown
-  searchValue (string) — Controlled search value
-  searchable (boolean) [default false] — Determines whether the select should be searchable
-  selectFirstOptionOnChange (boolean) — If set, the first option is selected when value changes, <code>false</code> by default
-  selectFirstOptionOnDropdownOpen (boolean) — If set, the first option is selected when dropdown opens, <code>false</code> by default
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (Primitive | null) — Controlled component value
-  withAlignedLabels (boolean) [default false] — Aligns unchecked labels with the checked one
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCheckIcon (boolean) [default true] — Displays check icon near the selected option label
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withScrollArea (boolean) — Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **allowDeselect** `boolean` _(default `true`)_ — Allows deselecting the selected option by clicking it
+- **autoSelectOnBlur** `boolean` _(default `false`)_ — Automatically selects the highlighted option when input loses focus
+- **checkIconPosition** `\"left\" | \"right\"` _(default `'left'`)_ — Position of the check icon relative to the option label
+- **chevronColor** `MantineColor` — Controls color of the default chevron, by default depends on the color scheme
+- **clearButtonProps** `InputClearButtonProps` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — Displays clear button in the right section when component has value
+- **comboboxProps** `ComboboxProps` — Props passed down to `Combobox` component
+- **data** `ComboboxData<Value>` — Data used to generate options. Values must be unique, otherwise an error will be thrown and component will not render.
+- **defaultDropdownOpened** `boolean` — Uncontrolled dropdown initial opened state
+- **defaultSearchValue** `string` — Default search value
+- **defaultValue** `Primitive | null` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownOpened** `boolean` — Controlled dropdown opened state
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **filter** `OptionsFilter<Value>` — Function based on which items are filtered and sorted
+- **floatingHeight** `\"viewport\"` — If set to `'viewport'`, the dropdown grows to fill the available vertical space in the viewport. Disables the `flip` middleware.
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **limit** `number` — Maximum number of options displayed at a time, `Infinity` by default
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxDropdownHeight** `string | number` — `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default
+- **nothingFoundMessage** `React.ReactNode` — Message displayed when no options match the search query or when there is no data
+- **onChange** `(value: Value | null, option: ComboboxItem<Value>) => void` — Called when value changes
+- **onClear** `() => void` — Called when the clear button is clicked
+- **onDropdownClose** `() => void` — Called when dropdown closes
+- **onDropdownOpen** `() => void` — Called when dropdown opens
+- **onOptionSubmit** `(value: Value) => void` — Called when option is submitted from dropdown with mouse click or `Enter` key
+- **onSearchChange** `(value: string) => void` — Called when search changes
+- **openOnFocus** `boolean` _(default `true`)_ — Opens dropdown when input receives focus (requires searchable={true})
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **renderOption** `(item: ComboboxLikeRenderOptionInput<ComboboxItem<Value>>) => ReactNode` — A function to render content of the option, replaces the default content of the option
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **scrollAreaProps** `ScrollAreaProps` — Props passed down to the underlying `ScrollArea` component in the dropdown
+- **searchValue** `string` — Controlled search value
+- **searchable** `boolean` _(default `false`)_ — Determines whether the select should be searchable
+- **selectFirstOptionOnChange** `boolean` — If set, the first option is selected when value changes, `false` by default
+- **selectFirstOptionOnDropdownOpen** `boolean` — If set, the first option is selected when dropdown opens, `false` by default
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `Primitive | null` — Controlled component value
+- **withAlignedLabels** `boolean` _(default `false`)_ — Aligns unchecked labels with the checked one
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCheckIcon** `boolean` _(default `true`)_ — Displays check icon near the selected option label
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withScrollArea** `boolean` — Determines whether the options should be wrapped with `ScrollArea.AutoSize`, `true` by default
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled Select))
@@ -3534,16 +3680,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/semi-circle-progress
 
 Props (docgen 9.4.1):
-  emptySegmentColor (MantineColor) [default 'gray.2' in light mode, 'dark.4' in dark mode] — Key of <code>theme.colors</code> or any valid CSS color value
-  fillDirection (\"right-to-left\" | \"left-to-right\") [default 'left-to-right'] — Direction from which the circle is filled
-  filledSegmentColor (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color value
-  label (React.ReactNode) — Label rendered inside the circle
-  labelPosition (\"center\" | \"bottom\") [default 'bottom'] — Label position relative to the circle center
-  orientation (\"up\" | \"down\") [default 'up'] — Orientation of the circle
-  size (number) [default 200] — Width of the component and diameter of the full circle in px. The visible SVG height will be size/2
-  thickness (number) [default 12] — Stroke width of the circle segments in px
-  transitionDuration (number) [default 0] — Transition duration for the filled segment progress changes in ms. Does not affect color transitions
-  value (number) REQUIRED — Progress value from <code>0</code> to <code>100</code>
+
+- **emptySegmentColor** `MantineColor` _(default `'gray.2' in light mode, 'dark.4' in dark mode`)_ — Key of `theme.colors` or any valid CSS color value
+- **fillDirection** `\"right-to-left\" | \"left-to-right\"` _(default `'left-to-right'`)_ — Direction from which the circle is filled
+- **filledSegmentColor** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color value
+- **label** `React.ReactNode` — Label rendered inside the circle
+- **labelPosition** `\"center\" | \"bottom\"` _(default `'bottom'`)_ — Label position relative to the circle center
+- **orientation** `\"up\" | \"down\"` _(default `'up'`)_ — Orientation of the circle
+- **size** `number` _(default `200`)_ — Width of the component and diameter of the full circle in px. The visible SVG height will be size/2
+- **thickness** `number` _(default `12`)_ — Stroke width of the circle segments in px
+- **transitionDuration** `number` _(default `0`)_ — Transition duration for the filled segment progress changes in ms. Does not affect color transitions
+- **value** `number` **(required)** — Progress value from `0` to `100`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SemiCircleProgress)
@@ -3555,13 +3702,14 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/simple-grid
 
 Props (docgen 9.4.1):
-  autoFlow (\"auto-fit\" | \"auto-fill\") [default 'auto-fill'] — Grid repeat type when minColWidth is set
-  autoRows (string) — Sets the size of implicitly created grid rows
-  cols (StyleProp<number>) [default 1] — Number of columns
-  minColWidth (string | number) — Minimum column width when using auto-fit/auto-fill. When set, cols prop is ignored
-  spacing (StyleProp<MantineSpacing>) [default 'md'] — Spacing between columns
-  type (\"media\" | \"container\") [default 'media'] — Determines type of queries that are used for responsive styles
-  verticalSpacing (StyleProp<MantineSpacing>) [default undefined] — Spacing between rows. When not set, falls back to spacing value
+
+- **autoFlow** `\"auto-fit\" | \"auto-fill\"` _(default `'auto-fill'`)_ — Grid repeat type when minColWidth is set
+- **autoRows** `string` — Sets the size of implicitly created grid rows
+- **cols** `StyleProp<number>` _(default `1`)_ — Number of columns
+- **minColWidth** `string | number` — Minimum column width when using auto-fit/auto-fill. When set, cols prop is ignored
+- **spacing** `StyleProp<MantineSpacing>` _(default `'md'`)_ — Spacing between columns
+- **type** `\"media\" | \"container\"` _(default `'media'`)_ — Determines type of queries that are used for responsive styles
+- **verticalSpacing** `StyleProp<MantineSpacing>` _(default `undefined`)_ — Spacing between rows. When not set, falls back to spacing value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SimpleGrid)
@@ -3573,12 +3721,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/skeleton
 
 Props (docgen 9.4.1):
-  animate (boolean) [default true] — Enables animation
-  circle (boolean) [default false] — If set, Skeleton <code>width</code> and <code>border-radius</code> are equal to its <code>height</code>
-  height (Height<string | number>) [default auto] — Skeleton <code>height</code>, numbers are converted to rem
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem.
-  visible (boolean) [default true] — Determines whether Skeleton overlay should be displayed
-  width (React.CSSProperties[\"width\"]) [default 100%] — Skeleton <code>width</code>, numbers are converted to rem, ignored when <code>circle</code> prop is set.
+
+- **animate** `boolean` _(default `true`)_ — Enables animation
+- **circle** `boolean` _(default `false`)_ — If set, Skeleton `width` and `border-radius` are equal to its `height`
+- **height** `Height<string | number>` _(default `auto`)_ — Skeleton `height`, numbers are converted to rem
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem.
+- **visible** `boolean` _(default `true`)_ — Determines whether Skeleton overlay should be displayed
+- **width** `React.CSSProperties[\"width\"]` _(default `100%`)_ — Skeleton `width`, numbers are converted to rem, ignored when `circle` prop is set.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Skeleton)
@@ -3590,36 +3739,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/slider
 
 Props (docgen 9.4.1):
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color, controls color of track and thumb
-  defaultValue (number) — Uncontrolled component default value
-  disabled (boolean) — Disables slider
-  domain ([number, number]) [default [min, max]] — Domain of the slider, defines the selectable value range independently of min/max. Useful when you want to display a wider track range (min/max) but restrict actual selection to a subset (domain).
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  inverted (boolean) [default false] — Determines whether track value representation should be inverted
-  label (ReactNode | ((value: number) => ReactNode)) — Function to generate label or any react node to render instead, set to null to disable label
-  labelAlwaysOn (boolean) [default false] — Determines whether the label should be visible when the slider is not being dragged or hovered
-  labelTransitionProps (TransitionProps) [default { transition: 'fade', duration: 0 }] — Props passed down to the <code>Transition</code> component
-  marks (SliderMark[]) — Marks displayed on the track
-  max (number) [default 100] — Maximum possible value
-  min (number) [default 0] — Minimal possible value
-  name (string) — Hidden input name, use with uncontrolled component
-  onChange ((value: number) => void) — Called when value changes
-  onChangeEnd ((value: number) => void) — Called when user stops dragging slider or changes value with arrows
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Slider orientation
-  precision (number) — Number of significant digits after the decimal point
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  restrictToMarks (boolean) [default false] — Determines whether the selection should be only allowed from the given marks array
-  scale ((value: number) => number) — A transformation function to change the scale of the slider
-  showLabelOnHover (boolean) [default true] — Determines whether the label should be displayed when the slider is hovered
-  size (MantineSize | number) [default 'md'] — Controls size of the track
-  startPointValue (number) — Value at which the filled bar starts. When set, the bar extends from this point toward the current value. Ignored when <code>inverted</code> is set.
-  step (number) [default 1] — Number by which value will be incremented/decremented with thumb drag and arrows
-  thumbChildren (React.ReactNode) — Content rendered inside thumb
-  thumbLabel (string) — Thumb <code>aria-label</code>
-  thumbProps (React.ComponentProps<\"div\">) — Props passed down to thumb element
-  thumbSize (string | number) — Thumb <code>width</code> and <code>height</code>, by default value is computed based on <code>size</code> prop
-  thumbValueText (string | ((value: number) => string)) — Thumb <code>aria-valuetext</code>. When a function is provided, it receives the scaled value.
-  value (number) — Controlled component value
+
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color, controls color of track and thumb
+- **defaultValue** `number` — Uncontrolled component default value
+- **disabled** `boolean` — Disables slider
+- **domain** `[number, number]` _(default `[min, max]`)_ — Domain of the slider, defines the selectable value range independently of min/max. Useful when you want to display a wider track range (min/max) but restrict actual selection to a subset (domain).
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **inverted** `boolean` _(default `false`)_ — Determines whether track value representation should be inverted
+- **label** `ReactNode | ((value: number) => ReactNode)` — Function to generate label or any react node to render instead, set to null to disable label
+- **labelAlwaysOn** `boolean` _(default `false`)_ — Determines whether the label should be visible when the slider is not being dragged or hovered
+- **labelTransitionProps** `TransitionProps` _(default `{ transition: 'fade', duration: 0 }`)_ — Props passed down to the `Transition` component
+- **marks** `SliderMark[]` — Marks displayed on the track
+- **max** `number` _(default `100`)_ — Maximum possible value
+- **min** `number` _(default `0`)_ — Minimal possible value
+- **name** `string` — Hidden input name, use with uncontrolled component
+- **onChange** `(value: number) => void` — Called when value changes
+- **onChangeEnd** `(value: number) => void` — Called when user stops dragging slider or changes value with arrows
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Slider orientation
+- **precision** `number` — Number of significant digits after the decimal point
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **restrictToMarks** `boolean` _(default `false`)_ — Determines whether the selection should be only allowed from the given marks array
+- **scale** `(value: number) => number` — A transformation function to change the scale of the slider
+- **showLabelOnHover** `boolean` _(default `true`)_ — Determines whether the label should be displayed when the slider is hovered
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls size of the track
+- **startPointValue** `number` — Value at which the filled bar starts. When set, the bar extends from this point toward the current value. Ignored when `inverted` is set.
+- **step** `number` _(default `1`)_ — Number by which value will be incremented/decremented with thumb drag and arrows
+- **thumbChildren** `React.ReactNode` — Content rendered inside thumb
+- **thumbLabel** `string` — Thumb `aria-label`
+- **thumbProps** `React.ComponentProps<\"div\">` — Props passed down to thumb element
+- **thumbSize** `string | number` — Thumb `width` and `height`, by default value is computed based on `size` prop
+- **thumbValueText** `string | ((value: number) => string)` — Thumb `aria-valuetext`. When a function is provided, it receives the scaled value.
+- **value** `number` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled Slider))
@@ -3638,22 +3788,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/splitter
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Splitter panes
-  handleColor (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color for the separator line
-  handleIcon (React.ReactNode) — Custom icon displayed in the handle thumb, by default uses grip icon based on orientation
-  lineSize (string | number) [default 2] — CSS value for separator line thickness between panes
-  onCollapseChange ((panelIndex: number, collapsed: boolean) => void) — Called when a panel collapses or expands
-  onResizeEnd ((handleIndex: number, sizes: SplitterPaneSize[]) => void) — Called when drag ends
-  onResizeStart ((handleIndex: number) => void) — Called when drag starts
-  onSizeChange ((sizes: SplitterPaneSize[]) => void) — Called during resize with updated sizes, each value keeps its declared unit
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Layout direction
-  redistribute (\"nearest\" | \"equal\" | UseSplitterRedistributeFn) — How to redistribute space when immediate neighbor is at its min/max
-  resetOnDoubleClick (boolean) [default true] — Restore the two panes adjacent to a handle to their default ratio (preserving their combined size) when the handle is double-clicked
-  shiftStep (SplitterStep) [default 10] — Shift+arrow step size, a <code>number</code>/<code>%</code> is a percentage, <code>px</code>/<code>rem</code> is resolved to pixels
-  sizes (SplitterPaneSize[]) — Controlled sizes, each value keeps the unit it was declared in (number/<code>%</code> flexible, <code>px</code>/<code>rem</code> fixed)
-  splitterRef (RefObject<UseSplitterReturnValue<any> | null>) — Ref to imperative splitter API (sizes, collapse, expand, etc.)
-  step (SplitterStep) [default 1] — Keyboard step size, a <code>number</code>/<code>%</code> is a percentage, <code>px</code>/<code>rem</code> is resolved to pixels
-  withHandle (boolean) [default true] — Determines whether the thumb with grip icon is displayed on the handle
+
+- **children** `React.ReactNode` — Splitter panes
+- **handleColor** `MantineColor` — Key of `theme.colors` or any valid CSS color for the separator line
+- **handleIcon** `React.ReactNode` — Custom icon displayed in the handle thumb, by default uses grip icon based on orientation
+- **lineSize** `string | number` _(default `2`)_ — CSS value for separator line thickness between panes
+- **onCollapseChange** `(panelIndex: number, collapsed: boolean) => void` — Called when a panel collapses or expands
+- **onResizeEnd** `(handleIndex: number, sizes: SplitterPaneSize[]) => void` — Called when drag ends
+- **onResizeStart** `(handleIndex: number) => void` — Called when drag starts
+- **onSizeChange** `(sizes: SplitterPaneSize[]) => void` — Called during resize with updated sizes, each value keeps its declared unit
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Layout direction
+- **redistribute** `\"nearest\" | \"equal\" | UseSplitterRedistributeFn` — How to redistribute space when immediate neighbor is at its min/max
+- **resetOnDoubleClick** `boolean` _(default `true`)_ — Restore the two panes adjacent to a handle to their default ratio (preserving their combined size) when the handle is double-clicked
+- **shiftStep** `SplitterStep` _(default `10`)_ — Shift+arrow step size, a `number`/`%` is a percentage, `px`/`rem` is resolved to pixels
+- **sizes** `SplitterPaneSize[]` — Controlled sizes, each value keeps the unit it was declared in (number/`%` flexible, `px`/`rem` fixed)
+- **splitterRef** `RefObject<UseSplitterReturnValue<any> | null>` — Ref to imperative splitter API (sizes, collapse, expand, etc.)
+- **step** `SplitterStep` _(default `1`)_ — Keyboard step size, a `number`/`%` is a percentage, `px`/`rem` is resolved to pixels
+- **withHandle** `boolean` _(default `true`)_ — Determines whether the thumb with grip icon is displayed on the handle
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Splitter)
@@ -3665,16 +3816,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/spoiler
 
 Props (docgen 9.4.1):
-  controlRef (Ref<HTMLButtonElement>) — Ref of the toggle button element
-  defaultExpanded (boolean) [default false] — Initial expanded state in uncontrolled mode. If <code>true</code>, content starts expanded. If <code>false</code>, content starts collapsed
-  expanded (boolean) — Controlled expanded state value
-  hideAriaLabel (string) — Accessible label for the toggle button when expanded. If not set, <code>hideLabel</code> is used
-  hideLabel (React.ReactNode) REQUIRED — Content displayed in the toggle button when content is expanded (to collapse)
-  maxHeight (number) [default 100] — Maximum height of visible content in px. When content exceeds this height, the toggle control appears
-  onExpandedChange ((expanded: boolean) => void) — Called when expanded state changes (when spoiler visibility is toggled by the user)
-  showAriaLabel (string) — Accessible label for the toggle button when collapsed. If not set, <code>showLabel</code> is used
-  showLabel (React.ReactNode) REQUIRED — Content displayed in the toggle button when content is collapsed (to expand)
-  transitionDuration (number) [default 200] — Spoiler reveal transition duration in ms. Set to 0 to disable animation
+
+- **controlRef** `Ref<HTMLButtonElement>` — Ref of the toggle button element
+- **defaultExpanded** `boolean` _(default `false`)_ — Initial expanded state in uncontrolled mode. If `true`, content starts expanded. If `false`, content starts collapsed
+- **expanded** `boolean` — Controlled expanded state value
+- **hideAriaLabel** `string` — Accessible label for the toggle button when expanded. If not set, `hideLabel` is used
+- **hideLabel** `React.ReactNode` **(required)** — Content displayed in the toggle button when content is expanded (to collapse)
+- **maxHeight** `number` _(default `100`)_ — Maximum height of visible content in px. When content exceeds this height, the toggle control appears
+- **onExpandedChange** `(expanded: boolean) => void` — Called when expanded state changes (when spoiler visibility is toggled by the user)
+- **showAriaLabel** `string` — Accessible label for the toggle button when collapsed. If not set, `showLabel` is used
+- **showLabel** `React.ReactNode` **(required)** — Content displayed in the toggle button when content is collapsed (to expand)
+- **transitionDuration** `number` _(default `200`)_ — Spoiler reveal transition duration in ms. Set to 0 to disable animation
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Spoiler)
@@ -3686,9 +3838,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/stack
 
 Props (docgen 9.4.1):
-  align (AlignItems) [default 'stretch'] — Controls <code>align-items</code> CSS property
-  gap (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set <code>gap</code> property, numbers are converted to rem
-  justify (JustifyContent) [default 'flex-start'] — Controls <code>justify-content</code> CSS property
+
+- **align** `AlignItems` _(default `'stretch'`)_ — Controls `align-items` CSS property
+- **gap** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set `gap` property, numbers are converted to rem
+- **justify** `JustifyContent` _(default `'flex-start'`)_ — Controls `justify-content` CSS property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Stack)
@@ -3700,23 +3853,24 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/stepper
 
 Props (docgen 9.4.1):
-  active (number) REQUIRED — Index of the active step
-  allowNextStepsSelect (boolean) [default true] — When true, users can click and jump to any step. When false, users can only navigate to completed steps
-  autoContrast (boolean) — When true, automatically adjusts the icon color in completed steps to ensure sufficient contrast against the step background color
-  children (React.ReactNode) REQUIRED — <code>Stepper.Step</code> components
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color, controls colors of active and progress steps
-  completedIcon (ReactNode | StepFragmentComponent) [default CheckIcon] — Step icon displayed when step is completed
-  contentPadding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set <code>padding-top</code> of the content
-  icon (ReactNode | StepFragmentComponent) [default step index + 1] — Step icon
-  iconPosition (\"left\" | \"right\") [default 'left'] — Icon position relative to the step body
-  iconSize (string | number) — Controls size of the step icon, by default icon size is inferred from <code>size</code> prop
-  keepMounted (boolean) [default false] — If set, all step content is kept mounted. React 19 <code>Activity</code> is used to preserve state while content is hidden.
-  onStepClick ((stepIndex: number) => void) — Called when a clickable step is clicked with its 0-based index. Not called for the currently active step.
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Stepper orientation
-  progressIcon (ReactNode | StepFragmentComponent) [default step index + 1] — Step icon displayed when step is in progress
-  radius (MantineRadius | number) [default \"xl\"] — Key of <code>theme.radius</code> or any valid CSS value to set steps border-radius
-  size (MantineSize) — Controls size of various Stepper elements
-  wrap (boolean) [default true] — Determines whether steps should wrap to the next line if no space is available
+
+- **active** `number` **(required)** — Index of the active step
+- **allowNextStepsSelect** `boolean` _(default `true`)_ — When true, users can click and jump to any step. When false, users can only navigate to completed steps
+- **autoContrast** `boolean` — When true, automatically adjusts the icon color in completed steps to ensure sufficient contrast against the step background color
+- **children** `React.ReactNode` **(required)** — `Stepper.Step` components
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color, controls colors of active and progress steps
+- **completedIcon** `ReactNode | StepFragmentComponent` _(default `CheckIcon`)_ — Step icon displayed when step is completed
+- **contentPadding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set `padding-top` of the content
+- **icon** `ReactNode | StepFragmentComponent` _(default `step index + 1`)_ — Step icon
+- **iconPosition** `\"left\" | \"right\"` _(default `'left'`)_ — Icon position relative to the step body
+- **iconSize** `string | number` — Controls size of the step icon, by default icon size is inferred from `size` prop
+- **keepMounted** `boolean` _(default `false`)_ — If set, all step content is kept mounted. React 19 `Activity` is used to preserve state while content is hidden.
+- **onStepClick** `(stepIndex: number) => void` — Called when a clickable step is clicked with its 0-based index. Not called for the currently active step.
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Stepper orientation
+- **progressIcon** `ReactNode | StepFragmentComponent` _(default `step index + 1`)_ — Step icon displayed when step is in progress
+- **radius** `MantineRadius | number` _(default `\"xl\"`)_ — Key of `theme.radius` or any valid CSS value to set steps border-radius
+- **size** `MantineSize` — Controls size of various Stepper elements
+- **wrap** `boolean` _(default `true`)_ — Determines whether steps should wrap to the next line if no space is available
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Stepper)
@@ -3728,21 +3882,22 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/stepper
 
 Props (docgen 9.4.1):
-  allowStepClick (boolean) — Set to false to disable clicks on step
-  allowStepSelect (boolean) — Should step selection be allowed
-  color (MantineColor) — Key of <code>theme.colors</code>, by default controlled by Stepper component
-  completedIcon (ReactNode | StepFragmentComponent) — Step icon displayed when step is completed
-  description (ReactNode | StepFragmentComponent) — Step description
-  icon (ReactNode | StepFragmentComponent) — Step icon, defaults to <code>step index + 1</code> when rendered within Stepper
-  iconPosition (\"left\" | \"right\") — Icon position relative to step body, controlled by Stepper component
-  iconSize (string | number) — Icon wrapper size
-  label (ReactNode | StepFragmentComponent) — Step label, render after icon
-  loading (boolean) — Indicates loading state of the step
-  orientation (\"horizontal\" | \"vertical\") — Component orientation
-  progressIcon (ReactNode | StepFragmentComponent) — Step icon displayed when step is in progress
-  state (\"stepInactive\" | \"stepProgress\" | \"stepCompleted\") — Step state, automatically set by Stepper component based on active prop. stepInactive: not reached, stepProgress: current, stepCompleted: passed
-  step (number) — 0-based step index, automatically set by Stepper component
-  withIcon (boolean) [default true] — When false, hides the step icon. Useful for creating compact steppers with only labels
+
+- **allowStepClick** `boolean` — Set to false to disable clicks on step
+- **allowStepSelect** `boolean` — Should step selection be allowed
+- **color** `MantineColor` — Key of `theme.colors`, by default controlled by Stepper component
+- **completedIcon** `ReactNode | StepFragmentComponent` — Step icon displayed when step is completed
+- **description** `ReactNode | StepFragmentComponent` — Step description
+- **icon** `ReactNode | StepFragmentComponent` — Step icon, defaults to `step index + 1` when rendered within Stepper
+- **iconPosition** `\"left\" | \"right\"` — Icon position relative to step body, controlled by Stepper component
+- **iconSize** `string | number` — Icon wrapper size
+- **label** `ReactNode | StepFragmentComponent` — Step label, render after icon
+- **loading** `boolean` — Indicates loading state of the step
+- **orientation** `\"horizontal\" | \"vertical\"` — Component orientation
+- **progressIcon** `ReactNode | StepFragmentComponent` — Step icon displayed when step is in progress
+- **state** `\"stepInactive\" | \"stepProgress\" | \"stepCompleted\"` — Step state, automatically set by Stepper component based on active prop. stepInactive: not reached, stepProgress: current, stepCompleted: passed
+- **step** `number` — 0-based step index, automatically set by Stepper component
+- **withIcon** `boolean` _(default `true`)_ — When false, hides the step icon. Useful for creating compact steppers with only labels
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory StepperStep)
@@ -3754,20 +3909,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/switch
 
 Props (docgen 9.4.1):
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to set input color in checked state
-  description (React.ReactNode) — Description displayed below the label
-  error (React.ReactNode) — Error displayed below the label
-  id (string) — Id used to bind input and label, if not passed, unique id will be generated instead
-  label (React.ReactNode) — Content of the label associated with the switch
-  labelPosition (\"left\" | \"right\") [default 'right'] — Position of the label relative to the input
-  offLabel (React.ReactNode) — Inner label when the <code>Switch</code> is in unchecked state
-  onLabel (React.ReactNode) — Inner label when the <code>Switch</code> is in checked state
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  rootRef (Ref<HTMLDivElement>) — Assigns ref of the root element
-  size (MantineSize) — Controls size of all elements
-  thumbIcon (React.ReactNode) — Icon inside the thumb of the switch
-  withThumbIndicator (boolean) [default true] — If set, displays a colored dot inside the thumb that matches the track background color
-  wrapperProps (React.ComponentProps<\"div\">) — Props passed down to the root element
+
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to set input color in checked state
+- **description** `React.ReactNode` — Description displayed below the label
+- **error** `React.ReactNode` — Error displayed below the label
+- **id** `string` — Id used to bind input and label, if not passed, unique id will be generated instead
+- **label** `React.ReactNode` — Content of the label associated with the switch
+- **labelPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the label relative to the input
+- **offLabel** `React.ReactNode` — Inner label when the `Switch` is in unchecked state
+- **onLabel** `React.ReactNode` — Inner label when the `Switch` is in checked state
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **rootRef** `Ref<HTMLDivElement>` — Assigns ref of the root element
+- **size** `MantineSize` — Controls size of all elements
+- **thumbIcon** `React.ReactNode` — Icon inside the thumb of the switch
+- **withThumbIndicator** `boolean` _(default `true`)_ — If set, displays a colored dot inside the thumb that matches the track background color
+- **wrapperProps** `React.ComponentProps<\"div\">` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Switch)
@@ -3788,22 +3944,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/table
 
 Props (docgen 9.4.1):
-  borderColor (MantineColor) — Color of table borders, key of <code>theme.colors</code> or any valid CSS color
-  captionSide (\"bottom\" | \"top\") [default bottom] — Side of the <code>Table.Caption</code>
-  data (TableData) — Data used to generate table, ignored if <code>children</code> prop is set
-  highlightOnHover (boolean) [default false] — If set, table rows background changes to <code>highlightOnHoverColor</code> when hovered
-  highlightOnHoverColor (MantineColor) — Background color of table rows when hovered, key of <code>theme.colors</code> or any valid CSS color
-  horizontalSpacing (MantineSpacing) [default xs] — Horizontal cells spacing, key of <code>theme.spacing</code> or any valid CSS value for padding, numbers are converted to rem
-  layout (TableLayout) [default auto] — Value of <code>table-layout</code> style
-  stickyHeader (boolean) [default false] — If set, <code>Table.Thead</code> is sticky
-  stickyHeaderOffset (string | number) [default 0] — Offset from top at which <code>Table.Thead</code> should become sticky
-  striped (boolean | \"odd\" | \"even\") [default false] — If set, every odd/even row background changes to <code>stripedColor</code>, if set to <code>true</code>, then <code>odd</code> value will be used
-  stripedColor (MantineColor) — Background color of striped rows, key of <code>theme.colors</code> or any valid CSS color
-  tabularNums (boolean) [default false] — If set, <code>font-variant-numeric: tabular-nums</code> style is applied
-  verticalSpacing (MantineSpacing) [default xs] — Vertical cells spacing, key of <code>theme.spacing</code> or any valid CSS value for padding, numbers are converted to rem
-  withColumnBorders (boolean) [default false] — If set, the table has borders between columns
-  withRowBorders (boolean) [default true] — If set, the table has borders between rows
-  withTableBorder (boolean) [default false] — If set, the table has the outer border
+
+- **borderColor** `MantineColor` — Color of table borders, key of `theme.colors` or any valid CSS color
+- **captionSide** `\"bottom\" | \"top\"` _(default `bottom`)_ — Side of the `Table.Caption`
+- **data** `TableData` — Data used to generate table, ignored if `children` prop is set
+- **highlightOnHover** `boolean` _(default `false`)_ — If set, table rows background changes to `highlightOnHoverColor` when hovered
+- **highlightOnHoverColor** `MantineColor` — Background color of table rows when hovered, key of `theme.colors` or any valid CSS color
+- **horizontalSpacing** `MantineSpacing` _(default `xs`)_ — Horizontal cells spacing, key of `theme.spacing` or any valid CSS value for padding, numbers are converted to rem
+- **layout** `TableLayout` _(default `auto`)_ — Value of `table-layout` style
+- **stickyHeader** `boolean` _(default `false`)_ — If set, `Table.Thead` is sticky
+- **stickyHeaderOffset** `string | number` _(default `0`)_ — Offset from top at which `Table.Thead` should become sticky
+- **striped** `boolean | \"odd\" | \"even\"` _(default `false`)_ — If set, every odd/even row background changes to `stripedColor`, if set to `true`, then `odd` value will be used
+- **stripedColor** `MantineColor` — Background color of striped rows, key of `theme.colors` or any valid CSS color
+- **tabularNums** `boolean` _(default `false`)_ — If set, `font-variant-numeric: tabular-nums` style is applied
+- **verticalSpacing** `MantineSpacing` _(default `xs`)_ — Vertical cells spacing, key of `theme.spacing` or any valid CSS value for padding, numbers are converted to rem
+- **withColumnBorders** `boolean` _(default `false`)_ — If set, the table has borders between columns
+- **withRowBorders** `boolean` _(default `true`)_ — If set, the table has borders between rows
+- **withTableBorder** `boolean` _(default `false`)_ — If set, the table has the outer border
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Table)
@@ -3815,16 +3972,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/table-of-contents
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color value
-  depthOffset (string | number) — Controls padding on the left side of control, multiplied by (<code>depth</code> - <code>minDepthToOffset</code>), <code>20px</code> by default
-  getControlProps ((payload: TableOfContentsGetControlPropsPayload) => UnstyledButtonProps & ElementProps<\"button\"> & Record<...>) — A function to pass props down to controls, accepts values from <code>use-scroll-spy</code> hook as an argument and active state.
-  initialData (InitialTableOfContentsData[]) — Data used to render content until actual values are retrieved from the DOM
-  minDepthToOffset (number) — Minimum <code>depth</code> value that requires offset, <code>1</code> by default
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  reinitializeRef (RefObject<() => void>) — A function to reinitialize headings from <code>use-scroll-spy</code> hook
-  scrollSpyOptions (UseScrollSpyOptions) — Options passed down to <code>use-scroll-spy</code> hook
-  size (MantineSize | number) [default 'md'] — Controls font-size and padding of all elements
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color value
+- **depthOffset** `string | number` — Controls padding on the left side of control, multiplied by (`depth` - `minDepthToOffset`), `20px` by default
+- **getControlProps** `(payload: TableOfContentsGetControlPropsPayload) => UnstyledButtonProps & ElementProps<\"button\"> & Record<...>` — A function to pass props down to controls, accepts values from `use-scroll-spy` hook as an argument and active state.
+- **initialData** `InitialTableOfContentsData[]` — Data used to render content until actual values are retrieved from the DOM
+- **minDepthToOffset** `number` — Minimum `depth` value that requires offset, `1` by default
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **reinitializeRef** `RefObject<() => void>` — A function to reinitialize headings from `use-scroll-spy` hook
+- **scrollSpyOptions** `UseScrollSpyOptions` — Options passed down to `use-scroll-spy` hook
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls font-size and padding of all elements
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TableOfContents)
@@ -3836,22 +3994,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tabs
 
 Props (docgen 9.4.1):
-  activateTabWithKeyboard (boolean) [default true] — If set, tab is activated with arrow key press
-  allowTabDeactivation (boolean) [default false] — If set, tab can be deactivated
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>pills</code> variant
-  children (React.ReactNode) — Tabs content
-  color (MantineColor) — Changes colors of <code>Tabs.Tab</code> components when variant is <code>pills</code> or <code>default</code>, does nothing for other variants
-  defaultValue (string | null) — Uncontrolled component default value
-  id (string) — Base id, used to generate ids to connect labels with controls, generated randomly by default
-  inverted (boolean) [default false] — Determines whether tabs should have inverted styles
-  keepMounted (boolean) [default true] — If set to <code>false</code>, <code>Tabs.Panel</code> content will be unmounted when the associated tab is not active
-  keepMountedMode (\"activity\" | \"display-none\") [default 'activity'] — Controls how inactive tabs content is hidden when <code>keepMounted</code> is <code>true</code>, <code>'activity'</code> – hidden with <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  loop (boolean) [default true] — If set, arrow key presses loop though items (first to last and last to first)
-  onChange ((value: string | null) => void) — Called when value changes
-  orientation (\"horizontal\" | \"vertical\") [default 'horizontal'] — Tabs orientation
-  placement (\"left\" | \"right\") [default 'left'] — <code>Tabs.List</code> placement relative to <code>Tabs.Panel</code>, applicable only when <code>orientation=\"vertical\"</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  value (string | null) — Controlled component value
+
+- **activateTabWithKeyboard** `boolean` _(default `true`)_ — If set, tab is activated with arrow key press
+- **allowTabDeactivation** `boolean` _(default `false`)_ — If set, tab can be deactivated
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `pills` variant
+- **children** `React.ReactNode` — Tabs content
+- **color** `MantineColor` — Changes colors of `Tabs.Tab` components when variant is `pills` or `default`, does nothing for other variants
+- **defaultValue** `string | null` — Uncontrolled component default value
+- **id** `string` — Base id, used to generate ids to connect labels with controls, generated randomly by default
+- **inverted** `boolean` _(default `false`)_ — Determines whether tabs should have inverted styles
+- **keepMounted** `boolean` _(default `true`)_ — If set to `false`, `Tabs.Panel` content will be unmounted when the associated tab is not active
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `'activity'`)_ — Controls how inactive tabs content is hidden when `keepMounted` is `true`, `'activity'` – hidden with `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **loop** `boolean` _(default `true`)_ — If set, arrow key presses loop though items (first to last and last to first)
+- **onChange** `(value: string | null) => void` — Called when value changes
+- **orientation** `\"horizontal\" | \"vertical\"` _(default `'horizontal'`)_ — Tabs orientation
+- **placement** `\"left\" | \"right\"` _(default `'left'`)_ — `Tabs.List` placement relative to `Tabs.Panel`, applicable only when `orientation=\"vertical\"`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **value** `string | null` — Controlled component value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Tabs)
@@ -3863,9 +4022,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tabs
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — <code>Tabs.Tab</code> components
-  grow (boolean) [default false] — Determines whether tabs should take all available space
-  justify (JustifyContent) [default flex-start] — Tabs alignment
+
+- **children** `React.ReactNode` **(required)** — `Tabs.Tab` components
+- **grow** `boolean` _(default `false`)_ — Determines whether tabs should take all available space
+- **justify** `JustifyContent` _(default `flex-start`)_ — Tabs alignment
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TabsList)
@@ -3877,9 +4037,10 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tabs
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) REQUIRED — Panel content
-  keepMounted (boolean) — If set, the content is kept mounted, even if <code>keepMounted</code> is set <code>false</code> in the parent <code>Tabs</code> component
-  value (string) REQUIRED — Value of associated control
+
+- **children** `React.ReactNode` **(required)** — Panel content
+- **keepMounted** `boolean` — If set, the content is kept mounted, even if `keepMounted` is set `false` in the parent `Tabs` component
+- **value** `string` **(required)** — Value of associated control
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TabsPanel)
@@ -3891,12 +4052,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tabs
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Tab label
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color, controls tab color based on <code>variant</code>
-  leftSection (React.ReactNode) — Content displayed on the left side of the label
-  rightSection (React.ReactNode) — Content displayed on the right side of the label
-  size (string | number) — Size passed from parent component, sets <code>data-size</code> if value is not number like
-  value (string) REQUIRED — Value of associated panel
+
+- **children** `React.ReactNode` — Tab label
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color, controls tab color based on `variant`
+- **leftSection** `React.ReactNode` — Content displayed on the left side of the label
+- **rightSection** `React.ReactNode` — Content displayed on the right side of the label
+- **size** `string | number` — Size passed from parent component, sets `data-size` if value is not number like
+- **value** `string` **(required)** — Value of associated panel
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TabsTab)
@@ -3908,75 +4070,76 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tags-input
 
 Props (docgen 9.4.1):
-  acceptValueOnBlur (boolean) [default true] — If set, the value typed in by the user but not submitted is accepted when the input is blurred
-  allowDuplicates (boolean) [default false] — If set, duplicate tags are allowed
-  clearButtonProps (InputClearButtonProps) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, the clear button is displayed in the right section when the component has value
-  comboboxProps (ComboboxProps) — Props passed down to <code>Combobox</code> component
-  data (ComboboxGenericData) — Data displayed in the dropdown. Values must be unique.
-  defaultDropdownOpened (boolean) — Uncontrolled dropdown initial opened state
-  defaultSearchValue (string) — Default search value
-  defaultValue (string[]) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownOpened (boolean) — Controlled dropdown opened state
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  filter (OptionsFilter<string>) — Function based on which items are filtered and sorted
-  floatingHeight (\"viewport\") — If set to <code>'viewport'</code>, the dropdown grows to fill the available vertical space in the viewport. Disables the <code>flip</code> middleware.
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props passed down to the hidden input
-  hiddenInputValuesDivider (string) [default ','] — Divider used to separate values in the hidden input <code>value</code> attribute
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  isDuplicate ((value: string, currentValues: string[]) => boolean) — Custom function to determine if a tag is duplicate. Accepts tag value and array of current values. By default, checks if the tag exists case-insensitively.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  limit (number) — Maximum number of options displayed at a time, <code>Infinity</code> by default
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxDropdownHeight (string | number) — <code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default
-  maxTags (number) [default Infinity] — Maximum number of tags
-  onChange ((value: string[]) => void) — Called when value changes
-  onClear (() => void) — Called when the clear button is clicked
-  onDropdownClose (() => void) — Called when dropdown closes
-  onDropdownOpen (() => void) — Called when dropdown opens
-  onDuplicate ((value: string) => void) — Called when user tries to submit a duplicated tag
-  onMaxTags ((value: string) => void) — Called when user tries to add more tags than maxTags
-  onOptionSubmit ((value: string) => void) — Called when option is submitted from dropdown with mouse click or <code>Enter</code> key
-  onRemove ((value: string) => void) — Called when tag is removed
-  onSearchChange ((value: string) => void) — Called when search changes
-  openOnFocus (boolean) [default true] — If set, the dropdown opens when the input receives focus
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  renderOption ((input: ComboboxLikeRenderOptionInput<ComboboxGenericItem<string>>) => ReactNode) — A function to render content of the option, replaces the default content of the option
-  renderPill ((props: ComboboxRenderPillInput<string>) => ReactNode) — A function to render content of the pill, replaces the default content of the pill
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  scrollAreaProps (ScrollAreaProps) — Props passed down to the underlying <code>ScrollArea</code> component in the dropdown
-  searchValue (string) — Controlled search value
-  selectFirstOptionOnChange (boolean) — If set, the first option is selected when value changes, <code>false</code> by default
-  selectFirstOptionOnDropdownOpen (boolean) — If set, the first option is selected when dropdown opens, <code>false</code> by default
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  splitChars (string[]) — Characters that should trigger tags split, <code>[',']</code> by default
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (string[]) — Controlled component value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withPillsReorder (boolean) [default false] — If set, tags can be reordered by dragging pills. Disabled when <code>disabled</code> or <code>readOnly</code> is set.
-  withScrollArea (boolean) — Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **acceptValueOnBlur** `boolean` _(default `true`)_ — If set, the value typed in by the user but not submitted is accepted when the input is blurred
+- **allowDuplicates** `boolean` _(default `false`)_ — If set, duplicate tags are allowed
+- **clearButtonProps** `InputClearButtonProps` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, the clear button is displayed in the right section when the component has value
+- **comboboxProps** `ComboboxProps` — Props passed down to `Combobox` component
+- **data** `ComboboxGenericData` — Data displayed in the dropdown. Values must be unique.
+- **defaultDropdownOpened** `boolean` — Uncontrolled dropdown initial opened state
+- **defaultSearchValue** `string` — Default search value
+- **defaultValue** `string[]` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownOpened** `boolean` — Controlled dropdown opened state
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **filter** `OptionsFilter<string>` — Function based on which items are filtered and sorted
+- **floatingHeight** `\"viewport\"` — If set to `'viewport'`, the dropdown grows to fill the available vertical space in the viewport. Disables the `flip` middleware.
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props passed down to the hidden input
+- **hiddenInputValuesDivider** `string` _(default `','`)_ — Divider used to separate values in the hidden input `value` attribute
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **isDuplicate** `(value: string, currentValues: string[]) => boolean` — Custom function to determine if a tag is duplicate. Accepts tag value and array of current values. By default, checks if the tag exists case-insensitively.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **limit** `number` — Maximum number of options displayed at a time, `Infinity` by default
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxDropdownHeight** `string | number` — `max-height` of the dropdown, only applicable when `withScrollArea` prop is `true`, `250` by default
+- **maxTags** `number` _(default `Infinity`)_ — Maximum number of tags
+- **onChange** `(value: string[]) => void` — Called when value changes
+- **onClear** `() => void` — Called when the clear button is clicked
+- **onDropdownClose** `() => void` — Called when dropdown closes
+- **onDropdownOpen** `() => void` — Called when dropdown opens
+- **onDuplicate** `(value: string) => void` — Called when user tries to submit a duplicated tag
+- **onMaxTags** `(value: string) => void` — Called when user tries to add more tags than maxTags
+- **onOptionSubmit** `(value: string) => void` — Called when option is submitted from dropdown with mouse click or `Enter` key
+- **onRemove** `(value: string) => void` — Called when tag is removed
+- **onSearchChange** `(value: string) => void` — Called when search changes
+- **openOnFocus** `boolean` _(default `true`)_ — If set, the dropdown opens when the input receives focus
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **renderOption** `(input: ComboboxLikeRenderOptionInput<ComboboxGenericItem<string>>) => ReactNode` — A function to render content of the option, replaces the default content of the option
+- **renderPill** `(props: ComboboxRenderPillInput<string>) => ReactNode` — A function to render content of the pill, replaces the default content of the pill
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **scrollAreaProps** `ScrollAreaProps` — Props passed down to the underlying `ScrollArea` component in the dropdown
+- **searchValue** `string` — Controlled search value
+- **selectFirstOptionOnChange** `boolean` — If set, the first option is selected when value changes, `false` by default
+- **selectFirstOptionOnDropdownOpen** `boolean` — If set, the first option is selected when dropdown opens, `false` by default
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **splitChars** `string[]` — Characters that should trigger tags split, `[',']` by default
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `string[]` — Controlled component value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withPillsReorder** `boolean` _(default `false`)_ — If set, tags can be reordered by dragging pills. Disabled when `disabled` or `readOnly` is set.
+- **withScrollArea** `boolean` — Determines whether the options should be wrapped with `ScrollArea.AutoSize`, `true` by default
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled TagsInput))
@@ -3988,14 +4151,15 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/text
 
 Props (docgen 9.4.1):
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient configuration, ignored when <code>variant</code> is not <code>gradient</code>
-  inherit (boolean) [default false] — Determines whether font properties should be inherited from the parent
-  inline (boolean) [default false] — Sets <code>line-height</code> to 1 for centering
-  lineClamp (number) — Number of lines after which Text will be truncated
-  size (MantineSize | (string & {})) [default 'md'] — Controls <code>font-size</code> and <code>line-height</code>
-  span (boolean) — Shorthand for <code>component=\"span\"</code>
-  textWrap (\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\") — Controls <code>text-wrap</code> CSS property
-  truncate (TextTruncate) — Side on which Text must be truncated, if <code>true</code>, text is truncated from the start
+
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient configuration, ignored when `variant` is not `gradient`
+- **inherit** `boolean` _(default `false`)_ — Determines whether font properties should be inherited from the parent
+- **inline** `boolean` _(default `false`)_ — Sets `line-height` to 1 for centering
+- **lineClamp** `number` — Number of lines after which Text will be truncated
+- **size** `MantineSize | (string & {})` _(default `'md'`)_ — Controls `font-size` and `line-height`
+- **span** `boolean` — Shorthand for `component=\"span\"`
+- **textWrap** `\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\"` — Controls `text-wrap` CSS property
+- **truncate** `TextTruncate` — Side on which Text must be truncated, if `true`, text is truncated from the start
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Text)
@@ -4007,36 +4171,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/text-input
 
 Props (docgen 9.4.1):
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled TextInput))
@@ -4048,42 +4213,43 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/textarea
 
 Props (docgen 9.4.1):
-  autosize (boolean) [default false] — If set, enables textarea height growing with its content
-  bottomSection (React.ReactNode) — Content rendered at the bottom of the input, inside the border
-  bottomSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>bottomSection</code> element
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxRows (number) — Maximum rows for autosize textarea to grow, ignored if <code>autosize</code> prop is not set
-  minRows (number) — Minimum rows of autosize textarea, ignored if <code>autosize</code> prop is not set
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  resize (Resize) [default 'none'] — Controls <code>resize</code> CSS property
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **autosize** `boolean` _(default `false`)_ — If set, enables textarea height growing with its content
+- **bottomSection** `React.ReactNode` — Content rendered at the bottom of the input, inside the border
+- **bottomSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `bottomSection` element
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxRows** `number` — Maximum rows for autosize textarea to grow, ignored if `autosize` prop is not set
+- **minRows** `number` — Minimum rows of autosize textarea, ignored if `autosize` prop is not set
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **resize** `Resize` _(default `'none'`)_ — Controls `resize` CSS property
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled Textarea))
@@ -4095,12 +4261,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/theme-icon
 
 Props (docgen 9.4.1):
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Icon displayed inside the component
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color.
-  gradient (MantineGradient) [default theme.defaultGradient] — Gradient data used when <code>variant=\"gradient\"</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem.
-  size (MantineSize | number) [default 'md'] — Controls width and height of the button. Numbers are converted to rem.
+
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Icon displayed inside the component
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color.
+- **gradient** `MantineGradient` _(default `theme.defaultGradient`)_ — Gradient data used when `variant=\"gradient\"`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem.
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width and height of the button. Numbers are converted to rem.
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory ThemeIcon)
@@ -4112,15 +4279,16 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/timeline
 
 Props (docgen 9.4.1):
-  active (number) — Index of the active element
-  align (\"left\" | \"right\") [default 'left'] — Position of content relative to the bullet
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  bulletSize (string | number) [default 20] — Size of the bullet
-  children (React.ReactNode) — <code>Timeline.Item</code> components
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to control active item colors
-  lineWidth (string | number) — Control width of the line
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  reverseActive (boolean) [default false] — If set, the active items direction is reversed without reversing items order
+
+- **active** `number` — Index of the active element
+- **align** `\"left\" | \"right\"` _(default `'left'`)_ — Position of content relative to the bullet
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **bulletSize** `string | number` _(default `20`)_ — Size of the bullet
+- **children** `React.ReactNode` — `Timeline.Item` components
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to control active item colors
+- **lineWidth** `string | number` — Control width of the line
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **reverseActive** `boolean` _(default `false`)_ — If set, the active items direction is reversed without reversing items order
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Timeline)
@@ -4132,12 +4300,13 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/timeline
 
 Props (docgen 9.4.1):
-  bullet (React.ReactNode) — React node that should be rendered inside the bullet – icon, image, avatar, etc. By default, large white dot is displayed.
-  children (React.ReactNode) — Content displayed below the title
-  color (MantineColor) [default theme.primaryColor] — Key of <code>theme.colors</code> or any valid CSS color to control active item colors
-  lineVariant (\"dashed\" | \"dotted\" | \"solid\") [default 'solid'] — Controls line border style
-  radius (MantineRadius | number) [default 'xl'] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  title (React.ReactNode) — Item title, displayed next to the bullet
+
+- **bullet** `React.ReactNode` — React node that should be rendered inside the bullet – icon, image, avatar, etc. By default, large white dot is displayed.
+- **children** `React.ReactNode` — Content displayed below the title
+- **color** `MantineColor` _(default `theme.primaryColor`)_ — Key of `theme.colors` or any valid CSS color to control active item colors
+- **lineVariant** `\"dashed\" | \"dotted\" | \"solid\"` _(default `'solid'`)_ — Controls line border style
+- **radius** `MantineRadius | number` _(default `'xl'`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **title** `React.ReactNode` — Item title, displayed next to the bullet
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TimelineItem)
@@ -4149,10 +4318,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/title
 
 Props (docgen 9.4.1):
-  lineClamp (number) — Number of lines after which heading will be truncated
-  order (TitleOrder) [default 1] — Heading order (1-6), controls <code>font-size</code> style if <code>size</code> prop is not set
-  size (TitleSize) — Changes title size, if not set, then size is controlled by <code>order</code> prop
-  textWrap (\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\") [default 'wrap'] — Heading <code>text-wrap</code> CSS property
+
+- **lineClamp** `number` — Number of lines after which heading will be truncated
+- **order** `TitleOrder` _(default `1`)_ — Heading order (1-6), controls `font-size` style if `size` prop is not set
+- **size** `TitleSize` — Changes title size, if not set, then size is controlled by `order` prop
+- **textWrap** `\"wrap\" | \"nowrap\" | \"balance\" | \"pretty\" | \"stable\"` _(default `'wrap'`)_ — Heading `text-wrap` CSS property
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Title)
@@ -4164,36 +4334,37 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tooltip
 
 Props (docgen 9.4.1):
-  arrowOffset (number) [default 5] — Arrow offset in px
-  arrowPosition ('center' | 'side') [default side] — Arrow position relative to the tooltip
-  arrowRadius (number) [default 0] — Arrow <code>border-radius</code> in px
-  arrowSize (number) [default 4] — Arrow size in px
-  autoContrast (boolean) — If set, adjusts text color based on background color for <code>filled</code> variant
-  children (React.ReactNode) — Target element, must support <code>ref</code> prop and <code>...others</code>
-  closeDelay (number) [default 0] — Close delay in ms
-  color (MantineColor) — Key of <code>theme.colors</code> or any valid CSS color, controls tooltip background, by default set based on current color scheme
-  defaultOpened (boolean) — Uncontrolled tooltip initial opened state
-  disabled (boolean) — If set, tooltip element will not be rendered
-  events ({ hover: boolean; focus: boolean; touch: boolean; }) [default { hover: true, focus: false, touch: false }] — Determines which events will be used to show tooltip
-  floatingStrategy (FloatingStrategy) [default 'absolute'] — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
-  inline (boolean) — Must be set if the tooltip target is an inline element
-  keepMounted (boolean) — If set, the tooltip is not unmounted from the DOM when hidden, <code>display: none</code> styles are applied instead
-  label (React.ReactNode) REQUIRED — Tooltip content
-  middlewares (TooltipMiddlewares) — Floating ui middlewares to configure position handling, <code>{ flip: true, shift: true, inline: false }</code> by default
-  multiline (boolean) — Determines whether content should be wrapped on to the next line, <code>false</code> by default
-  offset (number | FloatingAxesOffsets) [default 5] — Space between target element and tooltip in px
-  onPositionChange ((position: FloatingPosition) => void) — Called when tooltip position changes
-  openDelay (number) — Open delay in ms
-  opened (boolean) — Controlled opened state
-  portalProps (Omit<BasePortalProps, \"withinPortal\">) — Props to pass down to the portal when withinPortal is true
-  position (FloatingPosition) — Tooltip position relative to target element (<code>Tooltip</code> component) or mouse (<code>Tooltip.Floating</code> component)
-  radius (MantineRadius | number) — Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem@default theme.defaultRadius
-  refProp (string) — Key of the prop that can be used to access element ref, <code>ref</code> by default
-  target (string | HTMLElement | RefObject<HTMLElement | null> | null) — Selector, ref of an element or element itself that should be used for positioning
-  transitionProps (TransitionProps) [default { duration: 100, transition: 'fade' }] — Props passed down to the <code>Transition</code> component that used to animate tooltip presence, use to configure duration and animation type
-  withArrow (boolean) [default false] — If set, the tooltip has an arrow
-  withinPortal (boolean) — Determines whether tooltip should be rendered within <code>Portal</code>, <code>true</code> by default
-  zIndex (string | number) — Tooltip z-index, <code>300</code> by default
+
+- **arrowOffset** `number` _(default `5`)_ — Arrow offset in px
+- **arrowPosition** `'center' | 'side'` _(default `side`)_ — Arrow position relative to the tooltip
+- **arrowRadius** `number` _(default `0`)_ — Arrow `border-radius` in px
+- **arrowSize** `number` _(default `4`)_ — Arrow size in px
+- **autoContrast** `boolean` — If set, adjusts text color based on background color for `filled` variant
+- **children** `React.ReactNode` — Target element, must support `ref` prop and `...others`
+- **closeDelay** `number` _(default `0`)_ — Close delay in ms
+- **color** `MantineColor` — Key of `theme.colors` or any valid CSS color, controls tooltip background, by default set based on current color scheme
+- **defaultOpened** `boolean` — Uncontrolled tooltip initial opened state
+- **disabled** `boolean` — If set, tooltip element will not be rendered
+- **events** `{ hover: boolean; focus: boolean; touch: boolean; }` _(default `{ hover: true, focus: false, touch: false }`)_ — Determines which events will be used to show tooltip
+- **floatingStrategy** `FloatingStrategy` _(default `'absolute'`)_ — Changes floating ui [position strategy](https://floating-ui.com/docs/usefloating#strategy)
+- **inline** `boolean` — Must be set if the tooltip target is an inline element
+- **keepMounted** `boolean` — If set, the tooltip is not unmounted from the DOM when hidden, `display: none` styles are applied instead
+- **label** `React.ReactNode` **(required)** — Tooltip content
+- **middlewares** `TooltipMiddlewares` — Floating ui middlewares to configure position handling, `{ flip: true, shift: true, inline: false }` by default
+- **multiline** `boolean` — Determines whether content should be wrapped on to the next line, `false` by default
+- **offset** `number | FloatingAxesOffsets` _(default `5`)_ — Space between target element and tooltip in px
+- **onPositionChange** `(position: FloatingPosition) => void` — Called when tooltip position changes
+- **openDelay** `number` — Open delay in ms
+- **opened** `boolean` — Controlled opened state
+- **portalProps** `Omit<BasePortalProps, \"withinPortal\">` — Props to pass down to the portal when withinPortal is true
+- **position** `FloatingPosition` — Tooltip position relative to target element (`Tooltip` component) or mouse (`Tooltip.Floating` component)
+- **radius** `MantineRadius | number` — Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem@default theme.defaultRadius
+- **refProp** `string` — Key of the prop that can be used to access element ref, `ref` by default
+- **target** `string | HTMLElement | RefObject<HTMLElement | null> | null` — Selector, ref of an element or element itself that should be used for positioning
+- **transitionProps** `TransitionProps` _(default `{ duration: 100, transition: 'fade' }`)_ — Props passed down to the `Transition` component that used to animate tooltip presence, use to configure duration and animation type
+- **withArrow** `boolean` _(default `false`)_ — If set, the tooltip has an arrow
+- **withinPortal** `boolean` — Determines whether tooltip should be rendered within `Portal`, `true` by default
+- **zIndex** `string | number` — Tooltip z-index, `300` by default
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Tooltip)
@@ -4205,20 +4376,21 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/transition
 
 Props (docgen 9.4.1):
-  children ((styles: CSSProperties) => Element) REQUIRED — Render function with transition styles argument
-  duration (number) [default 250] — Transition duration in ms
-  enterDelay (number) — Delay in ms before enter transition starts
-  exitDelay (number) — Delay in ms before exit transition starts
-  exitDuration (number) [default 250] — Exit transition duration in ms
-  keepMounted (boolean) — If set, the element is kept in the DOM when hidden. React 19 <code>Activity</code> is used to preserve state while the element is not visible.
-  keepMountedMode (\"activity\" | \"display-none\") [default activity] — Controls how the element is hidden when <code>keepMounted</code> is set: <code>'activity'</code> – hidden with React 19 <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles
-  mounted (boolean) REQUIRED — Determines whether component should be mounted to the DOM
-  onEnter (() => void) — Called when enter transition starts
-  onEntered (() => void) — Called when enter transition ends
-  onExit (() => void) — Called when exit transition starts
-  onExited (() => void) — Called when exit transition ends
-  timingFunction (string) [default ease] — Transition timing function
-  transition (MantineTransition) [default fade] — Transition name or object
+
+- **children** `(styles: CSSProperties) => Element` **(required)** — Render function with transition styles argument
+- **duration** `number` _(default `250`)_ — Transition duration in ms
+- **enterDelay** `number` — Delay in ms before enter transition starts
+- **exitDelay** `number` — Delay in ms before exit transition starts
+- **exitDuration** `number` _(default `250`)_ — Exit transition duration in ms
+- **keepMounted** `boolean` — If set, the element is kept in the DOM when hidden. React 19 `Activity` is used to preserve state while the element is not visible.
+- **keepMountedMode** `\"activity\" | \"display-none\"` _(default `activity`)_ — Controls how the element is hidden when `keepMounted` is set: `'activity'` – hidden with React 19 `Activity` component, `'display-none'` – hidden with `display: none` styles
+- **mounted** `boolean` **(required)** — Determines whether component should be mounted to the DOM
+- **onEnter** `() => void` — Called when enter transition starts
+- **onEntered** `() => void` — Called when enter transition ends
+- **onExit** `() => void` — Called when exit transition starts
+- **onExited** `() => void` — Called when exit transition ends
+- **timingFunction** `string` _(default `ease`)_ — Transition timing function
+- **transition** `MantineTransition` _(default `fade`)_ — Transition name or object
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Transition)
@@ -4230,21 +4402,22 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tree
 
 Props (docgen 9.4.1):
-  allowDrop (TreeAllowDrop) — Called for each potential drop target to determine whether a drop is allowed. When it returns <code>false</code>, the drop indicator is hidden and the drop is rejected.
-  allowRangeSelection (boolean) [default true] — If set, tree nodes range can be selected with click when <code>Shift</code> key is pressed
-  checkOnSpace (boolean) [default false] — If set, tree node is checked on space key press
-  clearSelectionOnOutsideClick (boolean) [default false] — If set, selection is cleared when user clicks outside of the tree
-  data (TreeNodeData[]) REQUIRED — Data used to render nodes
-  expandOnClick (boolean) [default true] — If set, tree node with children is expanded on click
-  expandOnSpace (boolean) [default true] — If set, tree node with children is expanded on space key press
-  keepMounted (boolean) [default false] — If set, subtree content is kept mounted when collapsed. React 19 <code>Activity</code> is used to preserve state.
-  levelOffset (MantineSpacing) [default 'lg'] — Horizontal padding of each subtree level, key of <code>theme.spacing</code> or any valid CSS value
-  onDragDrop ((payload: TreeDragDropPayload) => void) — Called when a node is dropped on another node, enables drag-and-drop when provided
-  renderNode (RenderNode) — A function to render tree node label
-  selectOnClick (boolean) [default false] — If set, tree node is selected on click
-  tree (UseTreeReturnType) — Use-tree hook instance that can be used to manipulate component state
-  withDragHandle (boolean) [default false] — If set, drag-and-drop must be initiated from an element that spreads <code>dragHandleProps</code> from the <code>renderNode</code> payload, rather than anywhere on the node.
-  withLines (boolean) [default false] — If set, connecting lines are rendered showing parent-child relationships
+
+- **allowDrop** `TreeAllowDrop` — Called for each potential drop target to determine whether a drop is allowed. When it returns `false`, the drop indicator is hidden and the drop is rejected.
+- **allowRangeSelection** `boolean` _(default `true`)_ — If set, tree nodes range can be selected with click when `Shift` key is pressed
+- **checkOnSpace** `boolean` _(default `false`)_ — If set, tree node is checked on space key press
+- **clearSelectionOnOutsideClick** `boolean` _(default `false`)_ — If set, selection is cleared when user clicks outside of the tree
+- **data** `TreeNodeData[]` **(required)** — Data used to render nodes
+- **expandOnClick** `boolean` _(default `true`)_ — If set, tree node with children is expanded on click
+- **expandOnSpace** `boolean` _(default `true`)_ — If set, tree node with children is expanded on space key press
+- **keepMounted** `boolean` _(default `false`)_ — If set, subtree content is kept mounted when collapsed. React 19 `Activity` is used to preserve state.
+- **levelOffset** `MantineSpacing` _(default `'lg'`)_ — Horizontal padding of each subtree level, key of `theme.spacing` or any valid CSS value
+- **onDragDrop** `(payload: TreeDragDropPayload) => void` — Called when a node is dropped on another node, enables drag-and-drop when provided
+- **renderNode** `RenderNode` — A function to render tree node label
+- **selectOnClick** `boolean` _(default `false`)_ — If set, tree node is selected on click
+- **tree** `UseTreeReturnType` — Use-tree hook instance that can be used to manipulate component state
+- **withDragHandle** `boolean` _(default `false`)_ — If set, drag-and-drop must be initiated from an element that spreads `dragHandleProps` from the `renderNode` payload, rather than anywhere on the node.
+- **withLines** `boolean` _(default `false`)_ — If set, connecting lines are rendered showing parent-child relationships
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Tree)
@@ -4256,78 +4429,79 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/core/tree-select
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) [default true] — Allows deselecting in single mode
-  checkStrictly (boolean) [default false] — Disables parent-child cascade in checkbox mode
-  checkedStrategy (CheckedStrategy) [default 'child'] — Controls which checked nodes appear in value/pills in checkbox mode
-  chevronAriaLabels (TreeSelectChevronAriaLabels) — aria-label values for the expand/collapse chevron button
-  chevronColor (MantineColor) — Controls the default chevron color
-  clearButtonProps (InputClearButtonProps) — Props for the clear button
-  clearSearchOnChange (boolean) [default true] — Clear search on selection change
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — Shows clear button
-  comboboxProps (Record<string, any>) — Props passed to the underlying Combobox
-  data (TreeNodeData[]) REQUIRED — Tree data
-  defaultDropdownOpened (boolean) — Default dropdown state
-  defaultExpandAll (boolean) [default false] — Expand all nodes by default
-  defaultExpandedValues (string[]) — Default expanded node values
-  defaultSearchValue (string) — Default search value
-  defaultValue (string | string[] | null) — Default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownOpened (boolean) — Controlled dropdown state
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  expandOnClick (boolean) [default false] — Also toggle expand when clicking a parent node (not just the chevron). In <code>single</code> and <code>multiple</code> modes, parent clicks only expand; only leaves can be selected. In <code>checkbox</code> mode, parent clicks both check and expand.
-  expandedValues (string[]) — Controlled expanded state
-  filter ((query: string, node: TreeNodeData) => boolean) — Custom filter function
-  hiddenInputProps (React.ComponentProps<\"input\">) — Props for the hidden input
-  hiddenInputValuesDivider (string) [default ','] — Divider for hidden input values
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxDisplayedValues (number) — Maximum displayed pills before \"+N more\"
-  maxDisplayedValuesContent (ReactNode | ((overflow: number) => ReactNode)) — Content shown when values overflow maxDisplayedValues
-  maxDropdownHeight (string | number) [default 220] — Max dropdown height
-  maxValues (number) — Maximum selectable values (multiple/checkbox mode)
-  mode (TreeSelectMode) [default 'single'] — Selection mode: 'single', 'multiple', or 'checkbox' (with cascade)
-  nothingFoundMessage (React.ReactNode) — Message when no nodes match search
-  onChange ((value: TreeSelectValue<Mode>) => void) — Called when value changes
-  onClear (() => void) — Called when clear button is clicked
-  onDropdownClose (() => void) — Called when dropdown closes
-  onDropdownOpen (() => void) — Called when dropdown opens
-  onExpandedChange ((values: string[]) => void) — Called when expanded state changes
-  onRemove ((value: string) => void) — Called with removed value in multiple/checkbox mode
-  onSearchChange ((value: string) => void) — Called when search changes
-  openOnFocus (boolean) [default true] — Opens dropdown on focus (searchable mode)
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  renderNode ((payload: TreeSelectRenderNodePayload) => ReactNode) — Custom node rendering in the dropdown
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  scrollAreaProps (ScrollAreaProps) — Props for the ScrollArea in the dropdown
-  searchValue (string) — Controlled search value
-  searchable (boolean) [default false] — Enables search filtering
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (string | string[] | null) — Controlled value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withLines (boolean) [default true] — Show tree connection lines between parent and child nodes
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **allowDeselect** `boolean` _(default `true`)_ — Allows deselecting in single mode
+- **checkStrictly** `boolean` _(default `false`)_ — Disables parent-child cascade in checkbox mode
+- **checkedStrategy** `CheckedStrategy` _(default `'child'`)_ — Controls which checked nodes appear in value/pills in checkbox mode
+- **chevronAriaLabels** `TreeSelectChevronAriaLabels` — aria-label values for the expand/collapse chevron button
+- **chevronColor** `MantineColor` — Controls the default chevron color
+- **clearButtonProps** `InputClearButtonProps` — Props for the clear button
+- **clearSearchOnChange** `boolean` _(default `true`)_ — Clear search on selection change
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — Shows clear button
+- **comboboxProps** `Record<string, any>` — Props passed to the underlying Combobox
+- **data** `TreeNodeData[]` **(required)** — Tree data
+- **defaultDropdownOpened** `boolean` — Default dropdown state
+- **defaultExpandAll** `boolean` _(default `false`)_ — Expand all nodes by default
+- **defaultExpandedValues** `string[]` — Default expanded node values
+- **defaultSearchValue** `string` — Default search value
+- **defaultValue** `string | string[] | null` — Default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownOpened** `boolean` — Controlled dropdown state
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **expandOnClick** `boolean` _(default `false`)_ — Also toggle expand when clicking a parent node (not just the chevron). In `single` and `multiple` modes, parent clicks only expand; only leaves can be selected. In `checkbox` mode, parent clicks both check and expand.
+- **expandedValues** `string[]` — Controlled expanded state
+- **filter** `(query: string, node: TreeNodeData) => boolean` — Custom filter function
+- **hiddenInputProps** `React.ComponentProps<\"input\">` — Props for the hidden input
+- **hiddenInputValuesDivider** `string` _(default `','`)_ — Divider for hidden input values
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxDisplayedValues** `number` — Maximum displayed pills before \"+N more\"
+- **maxDisplayedValuesContent** `ReactNode | ((overflow: number) => ReactNode)` — Content shown when values overflow maxDisplayedValues
+- **maxDropdownHeight** `string | number` _(default `220`)_ — Max dropdown height
+- **maxValues** `number` — Maximum selectable values (multiple/checkbox mode)
+- **mode** `TreeSelectMode` _(default `'single'`)_ — Selection mode: 'single', 'multiple', or 'checkbox' (with cascade)
+- **nothingFoundMessage** `React.ReactNode` — Message when no nodes match search
+- **onChange** `(value: TreeSelectValue<Mode>) => void` — Called when value changes
+- **onClear** `() => void` — Called when clear button is clicked
+- **onDropdownClose** `() => void` — Called when dropdown closes
+- **onDropdownOpen** `() => void` — Called when dropdown opens
+- **onExpandedChange** `(values: string[]) => void` — Called when expanded state changes
+- **onRemove** `(value: string) => void` — Called with removed value in multiple/checkbox mode
+- **onSearchChange** `(value: string) => void` — Called when search changes
+- **openOnFocus** `boolean` _(default `true`)_ — Opens dropdown on focus (searchable mode)
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **renderNode** `(payload: TreeSelectRenderNodePayload) => ReactNode` — Custom node rendering in the dropdown
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **scrollAreaProps** `ScrollAreaProps` — Props for the ScrollArea in the dropdown
+- **searchValue** `string` — Controlled search value
+- **searchable** `boolean` _(default `false`)_ — Enables search filtering
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `string | string[] | null` — Controlled value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withLines** `boolean` _(default `true`)_ — Show tree connection lines between parent and child nodes
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled TreeSelect))
@@ -4344,7 +4518,8 @@ Optional leading props map; remaining args are children."
   "UnstyledButton
 
 Props (docgen 9.4.1):
-  size (string | number) — Size passed from parent component, sets <code>data-size</code> if value is not number like
+
+- **size** `string | number` — Size passed from parent component, sets `data-size` if value is not number like
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory UnstyledButton)

@@ -11,55 +11,56 @@
 https://mantine.dev/x/spotlight
 
 Props (docgen 9.4.1):
-  actions (SpotlightActions[]) REQUIRED — Actions data, passed down to <code>Spotlight.Action</code> component
-  centered (boolean) [default false] — If set, the modal is centered vertically
-  children (React.ReactNode) — Modal content
-  clearQueryOnClose (boolean) [default true] — Determines whether the search query should be cleared when the spotlight is closed
-  closeOnActionTrigger (boolean) [default true] — Determines whether spotlight should be closed when one of the actions is triggered
-  closeOnClickOutside (boolean) [default true] — If set, the modal/drawer is closed when user clicks on the overlay
-  closeOnEscape (boolean) [default true] — If set, <code>onClose</code> is called when user presses the escape key
-  disabled (boolean) — If set, spotlight will not be rendered
-  filter (SpotlightFilterFunction) — Function to filter actions data based on search query, by default actions are filtered by title, description and keywords
-  forceOpened (boolean) — Forces opened state, useful for tests
-  fullScreen (boolean) [default false] — If set, the modal takes the entire screen
-  highlightQuery (boolean) [default false] — Determines whether search query should be highlighted in action label
-  id (string) — Id used to connect modal/drawer with body and title
-  keepMounted (boolean) [default false] — If set modal/drawer is not unmounted from the DOM when hidden. <code>display: none</code> styles are applied instead.
-  limit (number) [default Infinity] — Maximum number of actions displayed at a time
-  lockScroll (boolean) [default true] — If set, scroll is locked when <code>opened={true}</code>
-  maxHeight (MaxHeight<string | number>) [default 400] — Spotlight content max-height. Ignored unless <code>scrollable</code> prop is set.
-  nothingFound (React.ReactNode) — Message displayed when none of the actions match given <code>filter</code>
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onQueryChange ((query: string) => void) — Called when query changes
-  onSpotlightClose (() => void) — Called when spotlight closes
-  onSpotlightOpen (() => void) — Called when spotlight opens
-  overlayProps (ModalBaseOverlayProps) — Props passed down to the <code>Overlay</code> component, use to configure opacity, <code>background-color</code>, styles and other properties
-  padding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set content, header and footer padding
-  portalProps (BasePortalProps) — Props passed down to the Portal component when <code>withinPortal</code> is set
-  query (string) — Controlled Spotlight search query
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  removeScrollProps (RemoveScrollProps) — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
-  returnFocus (boolean) [default true] — If set, focus is returned to the last active element when <code>onClose</code> is called
-  scrollAreaComponent (ScrollAreaComponent) [default 'div'] — Scroll area component
-  scrollAreaProps (Partial<ScrollAreaAutosizeProps>) — Props passed down to the <code>ScrollArea</code> component
-  scrollable (boolean) [default false] — Determines whether the actions list should be scrollable. If not set, <code>maxHeight</code> is ignored
-  searchProps (SpotlightSearchProps) — Props passed down to the <code>Spotlight.Search</code>
-  shadow (MantineShadow) [default 'xl'] — Key of <code>theme.shadows</code> or any valid CSS box-shadow value
-  shortcut (string | string[] | null) [default 'mod + K'] — Keyboard shortcut or a list of shortcuts to trigger spotlight
-  size (MantineSize | number) [default 'md'] — Controls width of the content area
-  stackId (string) — Id of the modal in the <code>Modal.Stack</code>
-  store (SpotlightStore) — Spotlight store, can be used to create multiple instances of spotlight
-  tagsToIgnore (string[]) [default ['input', 'textarea', 'select']] — A list of tags which when focused will be ignored by shortcut
-  title (React.ReactNode) — Modal title
-  transitionProps (TransitionProps) — Props added to the <code>Transition</code> component that used to animate overlay and body, use to configure duration and animation type, <code>{ duration: 200, transition: 'fade-down' }</code> by default
-  trapFocus (boolean) [default true] — If set, focus is trapped within the modal/drawer
-  triggerOnContentEditable (boolean) [default false] — Determines whether shortcut should trigger based in contentEditable
-  withOverlay (boolean) [default true] — If set, the overlay is rendered
-  withinPortal (boolean) [default true] — If set, the component is rendered inside <code>Portal</code>
-  xOffset (MarginLeft<string | number>) [default 5vw] — Left/right modal offset
-  yOffset (MarginTop<string | number>) [default 5dvh] — Top/bottom modal offset
-  zIndex (string | number) [default 200] — <code>z-index</code> CSS property of the root element
+
+- **actions** `SpotlightActions[]` **(required)** — Actions data, passed down to `Spotlight.Action` component
+- **centered** `boolean` _(default `false`)_ — If set, the modal is centered vertically
+- **children** `React.ReactNode` — Modal content
+- **clearQueryOnClose** `boolean` _(default `true`)_ — Determines whether the search query should be cleared when the spotlight is closed
+- **closeOnActionTrigger** `boolean` _(default `true`)_ — Determines whether spotlight should be closed when one of the actions is triggered
+- **closeOnClickOutside** `boolean` _(default `true`)_ — If set, the modal/drawer is closed when user clicks on the overlay
+- **closeOnEscape** `boolean` _(default `true`)_ — If set, `onClose` is called when user presses the escape key
+- **disabled** `boolean` — If set, spotlight will not be rendered
+- **filter** `SpotlightFilterFunction` — Function to filter actions data based on search query, by default actions are filtered by title, description and keywords
+- **forceOpened** `boolean` — Forces opened state, useful for tests
+- **fullScreen** `boolean` _(default `false`)_ — If set, the modal takes the entire screen
+- **highlightQuery** `boolean` _(default `false`)_ — Determines whether search query should be highlighted in action label
+- **id** `string` — Id used to connect modal/drawer with body and title
+- **keepMounted** `boolean` _(default `false`)_ — If set modal/drawer is not unmounted from the DOM when hidden. `display: none` styles are applied instead.
+- **limit** `number` _(default `Infinity`)_ — Maximum number of actions displayed at a time
+- **lockScroll** `boolean` _(default `true`)_ — If set, scroll is locked when `opened={true}`
+- **maxHeight** `MaxHeight<string | number>` _(default `400`)_ — Spotlight content max-height. Ignored unless `scrollable` prop is set.
+- **nothingFound** `React.ReactNode` — Message displayed when none of the actions match given `filter`
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onQueryChange** `(query: string) => void` — Called when query changes
+- **onSpotlightClose** `() => void` — Called when spotlight closes
+- **onSpotlightOpen** `() => void` — Called when spotlight opens
+- **overlayProps** `ModalBaseOverlayProps` — Props passed down to the `Overlay` component, use to configure opacity, `background-color`, styles and other properties
+- **padding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set content, header and footer padding
+- **portalProps** `BasePortalProps` — Props passed down to the Portal component when `withinPortal` is set
+- **query** `string` — Controlled Spotlight search query
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **removeScrollProps** `RemoveScrollProps` — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
+- **returnFocus** `boolean` _(default `true`)_ — If set, focus is returned to the last active element when `onClose` is called
+- **scrollAreaComponent** `ScrollAreaComponent` _(default `'div'`)_ — Scroll area component
+- **scrollAreaProps** `Partial<ScrollAreaAutosizeProps>` — Props passed down to the `ScrollArea` component
+- **scrollable** `boolean` _(default `false`)_ — Determines whether the actions list should be scrollable. If not set, `maxHeight` is ignored
+- **searchProps** `SpotlightSearchProps` — Props passed down to the `Spotlight.Search`
+- **shadow** `MantineShadow` _(default `'xl'`)_ — Key of `theme.shadows` or any valid CSS box-shadow value
+- **shortcut** `string | string[] | null` _(default `'mod + K'`)_ — Keyboard shortcut or a list of shortcuts to trigger spotlight
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width of the content area
+- **stackId** `string` — Id of the modal in the `Modal.Stack`
+- **store** `SpotlightStore` — Spotlight store, can be used to create multiple instances of spotlight
+- **tagsToIgnore** `string[]` _(default `['input', 'textarea', 'select']`)_ — A list of tags which when focused will be ignored by shortcut
+- **title** `React.ReactNode` — Modal title
+- **transitionProps** `TransitionProps` — Props added to the `Transition` component that used to animate overlay and body, use to configure duration and animation type, `{ duration: 200, transition: 'fade-down' }` by default
+- **trapFocus** `boolean` _(default `true`)_ — If set, focus is trapped within the modal/drawer
+- **triggerOnContentEditable** `boolean` _(default `false`)_ — Determines whether shortcut should trigger based in contentEditable
+- **withOverlay** `boolean` _(default `true`)_ — If set, the overlay is rendered
+- **withinPortal** `boolean` _(default `true`)_ — If set, the component is rendered inside `Portal`
+- **xOffset** `MarginLeft<string | number>` _(default `5vw`)_ — Left/right modal offset
+- **yOffset** `MarginTop<string | number>` _(default `5dvh`)_ — Top/bottom modal offset
+- **zIndex** `string | number` _(default `200`)_ — `z-index` CSS property of the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Spotlight)
@@ -71,16 +72,17 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/x/spotlight
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Children override default action elements, if passed, label, description and sections are hidden
-  closeSpotlightOnTrigger (boolean) — Determines whether the spotlight should be closed when action is triggered, overrides <code>closeOnActionTrigger</code> prop set on <code>Spotlight</code>
-  description (string) — Action description, pass string to use in default filter
-  dimmedSections (boolean) [default true] — Determines whether left and right sections should have dimmed styles
-  highlightColor (MantineColor) [default 'yellow'] — Key of <code>theme.colors</code> of any valid CSS color that will be used to highlight search query
-  highlightQuery (boolean) [default false] — Determines whether search query should be highlighted in action label
-  keywords (string | string[]) — Keywords that are used for default filtering, not displayed anywhere, can be a string: \"react,router,javascript\" or an array: ['react', 'router', 'javascript']
-  label (string) — Action label, pass string to use in default filter
-  leftSection (React.ReactNode) — Section displayed on the left side of the label, for example, icon
-  rightSection (React.ReactNode) — Section displayed on the right side of the label, for example, hotkey
+
+- **children** `React.ReactNode` — Children override default action elements, if passed, label, description and sections are hidden
+- **closeSpotlightOnTrigger** `boolean` — Determines whether the spotlight should be closed when action is triggered, overrides `closeOnActionTrigger` prop set on `Spotlight`
+- **description** `string` — Action description, pass string to use in default filter
+- **dimmedSections** `boolean` _(default `true`)_ — Determines whether left and right sections should have dimmed styles
+- **highlightColor** `MantineColor` _(default `'yellow'`)_ — Key of `theme.colors` of any valid CSS color that will be used to highlight search query
+- **highlightQuery** `boolean` _(default `false`)_ — Determines whether search query should be highlighted in action label
+- **keywords** `string | string[]` — Keywords that are used for default filtering, not displayed anywhere, can be a string: \"react,router,javascript\" or an array: ['react', 'router', 'javascript']
+- **label** `string` — Action label, pass string to use in default filter
+- **leftSection** `React.ReactNode` — Section displayed on the left side of the label, for example, icon
+- **rightSection** `React.ReactNode` — Section displayed on the right side of the label, for example, hotkey
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SpotlightAction)
@@ -92,8 +94,9 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/x/spotlight
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — <code>Spotlight.Action</code> components
-  label (string) — Group label
+
+- **children** `React.ReactNode` — `Spotlight.Action` components
+- **label** `string` — Group label
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SpotlightActionsGroup)
@@ -105,48 +108,49 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/x/spotlight
 
 Props (docgen 9.4.1):
-  centered (boolean) [default false] — If set, the modal is centered vertically
-  children (React.ReactNode) — Modal content
-  clearQueryOnClose (boolean) [default true] — Determines whether the search query should be cleared when the spotlight is closed
-  closeOnActionTrigger (boolean) [default true] — Determines whether spotlight should be closed when one of the actions is triggered
-  closeOnClickOutside (boolean) [default true] — If set, the modal/drawer is closed when user clicks on the overlay
-  closeOnEscape (boolean) [default true] — If set, <code>onClose</code> is called when user presses the escape key
-  disabled (boolean) — If set, spotlight will not be rendered
-  forceOpened (boolean) — Forces opened state, useful for tests
-  fullScreen (boolean) [default false] — If set, the modal takes the entire screen
-  id (string) — Id used to connect modal/drawer with body and title
-  keepMounted (boolean) [default false] — If set modal/drawer is not unmounted from the DOM when hidden. <code>display: none</code> styles are applied instead.
-  lockScroll (boolean) [default true] — If set, scroll is locked when <code>opened={true}</code>
-  maxHeight (MaxHeight<string | number>) [default 400] — Spotlight content max-height. Ignored unless <code>scrollable</code> prop is set.
-  onEnterTransitionEnd (() => void) — Called when enter transition ends
-  onExitTransitionEnd (() => void) — Called when exit transition ends
-  onQueryChange ((query: string) => void) — Called when query changes
-  onSpotlightClose (() => void) — Called when spotlight closes
-  onSpotlightOpen (() => void) — Called when spotlight opens
-  overlayProps (ModalBaseOverlayProps) — Props passed down to the <code>Overlay</code> component, use to configure opacity, <code>background-color</code>, styles and other properties
-  padding (MantineSpacing) [default 'md'] — Key of <code>theme.spacing</code> or any valid CSS value to set content, header and footer padding
-  portalProps (BasePortalProps) — Props passed down to the Portal component when <code>withinPortal</code> is set
-  query (string) — Controlled Spotlight search query
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  removeScrollProps (RemoveScrollProps) — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
-  returnFocus (boolean) [default true] — If set, focus is returned to the last active element when <code>onClose</code> is called
-  scrollAreaComponent (ScrollAreaComponent) [default 'div'] — Scroll area component
-  scrollable (boolean) [default false] — Determines whether the actions list should be scrollable. If not set, <code>maxHeight</code> is ignored
-  shadow (MantineShadow) [default 'xl'] — Key of <code>theme.shadows</code> or any valid CSS box-shadow value
-  shortcut (string | string[] | null) [default 'mod + K'] — Keyboard shortcut or a list of shortcuts to trigger spotlight
-  size (MantineSize | number) [default 'md'] — Controls width of the content area
-  stackId (string) — Id of the modal in the <code>Modal.Stack</code>
-  store (SpotlightStore) — Spotlight store, can be used to create multiple instances of spotlight
-  tagsToIgnore (string[]) [default ['input', 'textarea', 'select']] — A list of tags which when focused will be ignored by shortcut
-  title (React.ReactNode) — Modal title
-  transitionProps (TransitionProps) — Props added to the <code>Transition</code> component that used to animate overlay and body, use to configure duration and animation type, <code>{ duration: 200, transition: 'fade-down' }</code> by default
-  trapFocus (boolean) [default true] — If set, focus is trapped within the modal/drawer
-  triggerOnContentEditable (boolean) [default false] — Determines whether shortcut should trigger based in contentEditable
-  withOverlay (boolean) [default true] — If set, the overlay is rendered
-  withinPortal (boolean) [default true] — If set, the component is rendered inside <code>Portal</code>
-  xOffset (MarginLeft<string | number>) [default 5vw] — Left/right modal offset
-  yOffset (MarginTop<string | number>) [default 5dvh] — Top/bottom modal offset
-  zIndex (string | number) [default 200] — <code>z-index</code> CSS property of the root element
+
+- **centered** `boolean` _(default `false`)_ — If set, the modal is centered vertically
+- **children** `React.ReactNode` — Modal content
+- **clearQueryOnClose** `boolean` _(default `true`)_ — Determines whether the search query should be cleared when the spotlight is closed
+- **closeOnActionTrigger** `boolean` _(default `true`)_ — Determines whether spotlight should be closed when one of the actions is triggered
+- **closeOnClickOutside** `boolean` _(default `true`)_ — If set, the modal/drawer is closed when user clicks on the overlay
+- **closeOnEscape** `boolean` _(default `true`)_ — If set, `onClose` is called when user presses the escape key
+- **disabled** `boolean` — If set, spotlight will not be rendered
+- **forceOpened** `boolean` — Forces opened state, useful for tests
+- **fullScreen** `boolean` _(default `false`)_ — If set, the modal takes the entire screen
+- **id** `string` — Id used to connect modal/drawer with body and title
+- **keepMounted** `boolean` _(default `false`)_ — If set modal/drawer is not unmounted from the DOM when hidden. `display: none` styles are applied instead.
+- **lockScroll** `boolean` _(default `true`)_ — If set, scroll is locked when `opened={true}`
+- **maxHeight** `MaxHeight<string | number>` _(default `400`)_ — Spotlight content max-height. Ignored unless `scrollable` prop is set.
+- **onEnterTransitionEnd** `() => void` — Called when enter transition ends
+- **onExitTransitionEnd** `() => void` — Called when exit transition ends
+- **onQueryChange** `(query: string) => void` — Called when query changes
+- **onSpotlightClose** `() => void` — Called when spotlight closes
+- **onSpotlightOpen** `() => void` — Called when spotlight opens
+- **overlayProps** `ModalBaseOverlayProps` — Props passed down to the `Overlay` component, use to configure opacity, `background-color`, styles and other properties
+- **padding** `MantineSpacing` _(default `'md'`)_ — Key of `theme.spacing` or any valid CSS value to set content, header and footer padding
+- **portalProps** `BasePortalProps` — Props passed down to the Portal component when `withinPortal` is set
+- **query** `string` — Controlled Spotlight search query
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **removeScrollProps** `RemoveScrollProps` — Props passed down to react-remove-scroll, can be used to customize scroll lock behavior
+- **returnFocus** `boolean` _(default `true`)_ — If set, focus is returned to the last active element when `onClose` is called
+- **scrollAreaComponent** `ScrollAreaComponent` _(default `'div'`)_ — Scroll area component
+- **scrollable** `boolean` _(default `false`)_ — Determines whether the actions list should be scrollable. If not set, `maxHeight` is ignored
+- **shadow** `MantineShadow` _(default `'xl'`)_ — Key of `theme.shadows` or any valid CSS box-shadow value
+- **shortcut** `string | string[] | null` _(default `'mod + K'`)_ — Keyboard shortcut or a list of shortcuts to trigger spotlight
+- **size** `MantineSize | number` _(default `'md'`)_ — Controls width of the content area
+- **stackId** `string` — Id of the modal in the `Modal.Stack`
+- **store** `SpotlightStore` — Spotlight store, can be used to create multiple instances of spotlight
+- **tagsToIgnore** `string[]` _(default `['input', 'textarea', 'select']`)_ — A list of tags which when focused will be ignored by shortcut
+- **title** `React.ReactNode` — Modal title
+- **transitionProps** `TransitionProps` — Props added to the `Transition` component that used to animate overlay and body, use to configure duration and animation type, `{ duration: 200, transition: 'fade-down' }` by default
+- **trapFocus** `boolean` _(default `true`)_ — If set, focus is trapped within the modal/drawer
+- **triggerOnContentEditable** `boolean` _(default `false`)_ — Determines whether shortcut should trigger based in contentEditable
+- **withOverlay** `boolean` _(default `true`)_ — If set, the overlay is rendered
+- **withinPortal** `boolean` _(default `true`)_ — If set, the component is rendered inside `Portal`
+- **xOffset** `MarginLeft<string | number>` _(default `5vw`)_ — Left/right modal offset
+- **yOffset** `MarginTop<string | number>` _(default `5dvh`)_ — Top/bottom modal offset
+- **zIndex** `string | number` _(default `200`)_ — `z-index` CSS property of the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SpotlightRoot)
@@ -158,31 +162,32 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/x/spotlight
 
 Props (docgen 9.4.1):
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Determines whether the input should have error styles and <code>aria-invalid</code> attribute
-  id (string) — Input element id
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  multiline (boolean) [default false] — Adjusts padding and sizing calculations for multiline inputs (use with <code>component=\"textarea\"</code>). Does not make the input multiline by itself.
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) — Sets <code>required</code> attribute on the <code>input</code> element
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  rootRef (Ref<HTMLDivElement>) — Root element ref
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Determines whether the input should have success styles
-  withAria (boolean) [default true] — Determines whether <code>aria-</code> and other accessibility attributes should be added to the input. Only disable when implementing custom accessibility handling.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element of the <code>Input</code> component
+
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Determines whether the input should have error styles and `aria-invalid` attribute
+- **id** `string` — Input element id
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **multiline** `boolean` _(default `false`)_ — Adjusts padding and sizing calculations for multiline inputs (use with `component=\"textarea\"`). Does not make the input multiline by itself.
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` — Sets `required` attribute on the `input` element
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **rootRef** `Ref<HTMLDivElement>` — Root element ref
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Determines whether the input should have success styles
+- **withAria** `boolean` _(default `true`)_ — Determines whether `aria-` and other accessibility attributes should be added to the input. Only disable when implementing custom accessibility handling.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element of the `Input` component
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory SpotlightSearch)

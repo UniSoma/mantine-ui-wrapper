@@ -13,19 +13,20 @@
 https://mantine.dev/x/notifications
 
 Props (docgen 9.4.1):
-  allowDragDismiss (boolean) [default true] — Determines whether notifications can be dismissed by dragging left or right
-  allowScrollDismiss (boolean) [default true] — Determines whether notifications can be dismissed with horizontal scroll gesture while hovered
-  autoClose (number | false) [default 4000] — Auto close timeout for all notifications in ms, <code>false</code> to disable auto close, can be overwritten for individual notifications in <code>notifications.show</code> function
-  containerWidth (string | number) [default 440] — Notification width, cannot exceed 100%
-  limit (number) [default 5] — Maximum number of notifications displayed at a time, other new notifications will be added to queue
-  notificationMaxHeight (string | number) [default 200] — Notification <code>max-height</code>, used for transitions
-  pauseResetOnHover (\"all\" | \"notification\") [default 'all'] — Determines which notifications should pause auto close on hover, <code>'all'</code> – pauses auto close for all notifications when any notification is hovered, <code>'notification'</code> – pauses auto close only for the hovered notification
-  portalProps (BasePortalProps) — Props passed down to the <code>Portal</code> component
-  position (NotificationPosition) [default 'bottom-right'] — Notifications default position
-  store (NotificationsStore) — Store for notifications state, can be used to create multiple instances of notifications system in your application
-  transitionDuration (number) [default 250] — Notification transition duration in ms
-  withinPortal (boolean) [default true] — Determines whether notifications container should be rendered inside <code>Portal</code>
-  zIndex (string | number) [default 400] — Notifications container z-index
+
+- **allowDragDismiss** `boolean` _(default `true`)_ — Determines whether notifications can be dismissed by dragging left or right
+- **allowScrollDismiss** `boolean` _(default `true`)_ — Determines whether notifications can be dismissed with horizontal scroll gesture while hovered
+- **autoClose** `number | false` _(default `4000`)_ — Auto close timeout for all notifications in ms, `false` to disable auto close, can be overwritten for individual notifications in `notifications.show` function
+- **containerWidth** `string | number` _(default `440`)_ — Notification width, cannot exceed 100%
+- **limit** `number` _(default `5`)_ — Maximum number of notifications displayed at a time, other new notifications will be added to queue
+- **notificationMaxHeight** `string | number` _(default `200`)_ — Notification `max-height`, used for transitions
+- **pauseResetOnHover** `\"all\" | \"notification\"` _(default `'all'`)_ — Determines which notifications should pause auto close on hover, `'all'` – pauses auto close for all notifications when any notification is hovered, `'notification'` – pauses auto close only for the hovered notification
+- **portalProps** `BasePortalProps` — Props passed down to the `Portal` component
+- **position** `NotificationPosition` _(default `'bottom-right'`)_ — Notifications default position
+- **store** `NotificationsStore` — Store for notifications state, can be used to create multiple instances of notifications system in your application
+- **transitionDuration** `number` _(default `250`)_ — Notification transition duration in ms
+- **withinPortal** `boolean` _(default `true`)_ — Determines whether notifications container should be rendered inside `Portal`
+- **zIndex** `string | number` _(default `400`)_ — Notifications container z-index
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Notifications)

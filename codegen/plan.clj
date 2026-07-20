@@ -147,13 +147,24 @@
                 (assoc v :inherited-from k)))
             component-docs)))
 
+(defn- md-description
+  "Sanitize a docgen description for cljdoc's Markdown renderer (ADR 0007).
+  Escape-then-convert: FIRST escape any literal backtick already in the raw text
+  so it can never open a code span, THEN turn Mantine's <code>…</code> into real,
+  balanced backtick code spans. The only active backticks in the output are the
+  ones we emit from balanced <code> pairs."
+  [d]
+  (-> (squash-ws d)
+      (str/replace "`" "\\`")
+      (str/replace #"<code>(.*?)</code>" "`$1`")))
+
 (defn- prop-lines [props]
   (for [[pname p] (sort-by key props)]
-    (str "  " pname " (" (squash-ws (get-in p ["type" "name"])) ")"
-         (when (get p "required") " REQUIRED")
-         (when-some [d (get p "defaultValue")] (str " [default " (squash-ws d) "]"))
+    (str "- **" pname "** `" (squash-ws (get-in p ["type" "name"])) "`"
+         (when (get p "required") " **(required)**")
+         (when-some [d (get p "defaultValue")] (str " _(default `" (squash-ws d) "`)_"))
          (let [d (get p "description")]
-           (when (seq d) (str " — " (squash-ws d)))))))
+           (when (seq d) (str " — " (md-description d)))))))
 
 (defn- component-docstring [{:keys [docgen component-docs mantine-version]} nm]
   (let [entry (docs-entry component-docs nm)
@@ -166,7 +177,7 @@
           (when (:polymorphic entry)
             ["" "Polymorphic: accepts :component / :render-root."])
           (when (seq props)
-            (into ["" (str "Props (docgen " mantine-version "):")] (prop-lines props)))
+            (into ["" (str "Props (docgen " mantine-version "):") ""] (prop-lines props)))
           ["" "Optional leading props map; remaining args are children."])
          (str/join "\n"))))
 

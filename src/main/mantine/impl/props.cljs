@@ -1,4 +1,4 @@
-(ns mantine.impl.props
+(ns ^:no-doc mantine.impl.props
   "CLJS map -> React/Mantine props conversion. ONE public converter (`convert`) that
   every generated factory and imperative fn funnels through, plus the children path
   (`convert-children`).

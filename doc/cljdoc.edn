@@ -1,0 +1,15 @@
+;; Curated cljdoc articles tree (mnt-01kxw0esqg67). Without this file cljdoc
+;; auto-discovers the entire docs/ folder — including reader-irrelevant internals
+;; (docs/agents, docs/prototypes, docs/research, release.md, version-bump.md).
+;; This explicit tree publishes only the README, the concepts doc, and the ADRs.
+{:cljdoc.doc/tree
+ [["Readme" {:file "README.md"}]
+  ["Concepts & vocabulary" {:file "CONTEXT.md"}]
+  ["Architecture decisions"
+   ["Releasing to Clojars"           {:file "docs/adr/0001-clojars-release-process.md"}]
+   ["Backfilling non-docgen surface" {:file "docs/adr/0002-backfilling-non-docgen-surface.md"}]
+   ["Generated hooks barrel"         {:file "docs/adr/0003-hooks-barrel-utilities-generated-not-supplemented.md"}]
+   ["Wrapper plan (deep module)"     {:file "docs/adr/0004-wrapper-plan-deep-module.md"}]
+   ["Single-sourced Mantine anchor"  {:file "docs/adr/0005-single-source-the-mantine-anchor.md"}]
+   ["Deep-by-default converter"      {:file "docs/adr/0006-converter-deep-by-default-with-camelize-denylist-and-raw-escape.md"}]
+   ["Markdown-safe docstrings"       {:file "docs/adr/0007-generated-docstrings-are-markdown-safe.md"}]]]}

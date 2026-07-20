@@ -11,58 +11,59 @@
 https://mantine.dev/dates/calendar
 
 Props (docgen 9.4.1):
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level in uncontrolled mode
-  enableKeyboardNavigation (boolean) — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level displayed in controlled mode
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\") [default 'decade'] — Max level that user can go up to (decade, year, month)
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minLevel (\"month\" | \"year\" | \"decade\") [default 'month'] — Min level that user can go down to (decade, year, month)
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onDateChange ((date: string) => void) — Called when date changes
-  onLevelChange ((level: CalendarLevel) => void) — Called when level changes
-  onMonthMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters month control
-  onMonthSelect ((date: string) => void) — Called when user selects month
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextMonth ((date: string) => void) — Called when the next month button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousMonth ((date: string) => void) — Called when the previous month button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  onYearMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters year control
-  onYearSelect ((date: string) => void) — Called when user selects year
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  size (MantineSize) — Component size
-  static (boolean) — Determines whether days should be static, static days can be used to display month if it is not expected that user will interact with the component in any way
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level in uncontrolled mode
+- **enableKeyboardNavigation** `boolean` — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level displayed in controlled mode
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"` _(default `'decade'`)_ — Max level that user can go up to (decade, year, month)
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **minLevel** `\"month\" | \"year\" | \"decade\"` _(default `'month'`)_ — Min level that user can go down to (decade, year, month)
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onLevelChange** `(level: CalendarLevel) => void` — Called when level changes
+- **onMonthMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters month control
+- **onMonthSelect** `(date: string) => void` — Called when user selects month
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextMonth** `(date: string) => void` — Called when the next month button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousMonth** `(date: string) => void` — Called when the previous month button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **onYearMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters year control
+- **onYearSelect** `(date: string) => void` — Called when user selects year
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **size** `MantineSize` — Component size
+- **static** `boolean` — Determines whether days should be static, static days can be used to display month if it is not expected that user will interact with the component in any way
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Calendar)
@@ -72,23 +73,24 @@ Optional leading props map; remaining args are children."
   "CalendarHeader
 
 Props (docgen 9.4.1):
-  fullWidth (boolean) [default false] — Determines whether the header should take the full width of its container
-  hasNextLevel (boolean) [default true] — Determines whether next level button should be enabled
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  label (React.ReactNode) REQUIRED — Label displayed between next and previous buttons
-  levelControlAriaLabel (string) — Level control <code>aria-label</code>
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  onLevelClick (() => void) — Called when the level button is clicked
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  withNext (boolean) [default true] — Determines whether next control should be rendered
-  withPrevious (boolean) [default true] — Determines whether previous control should be rendered
+
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the header should take the full width of its container
+- **hasNextLevel** `boolean` _(default `true`)_ — Determines whether next level button should be enabled
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **label** `React.ReactNode` **(required)** — Label displayed between next and previous buttons
+- **levelControlAriaLabel** `string` — Level control `aria-label`
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **onLevelClick** `() => void` — Called when the level button is clicked
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **withNext** `boolean` _(default `true`)_ — Determines whether next control should be rendered
+- **withPrevious** `boolean` _(default `true`)_ — Determines whether previous control should be rendered
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory CalendarHeader)
@@ -100,101 +102,102 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/date-input
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — If set, the value can be deselected by deleting everything from the input or by clicking the selected date in the dropdown. By default, <code>true</code> if <code>clearable</code> prop is set, <code>false</code> otherwise.
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, clear button is displayed in the <code>rightSection</code> when the component has value. Ignored if <code>rightSection</code> prop is set.
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  dateParser ((value: string) => string | Date | null) — A function to parse user input and convert it to date string value
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level (uncontrolled)
-  defaultValue (DateValue) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fixOnBlur (boolean) — If set to <code>false</code>, invalid user input is preserved and is not corrected on blur
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  hasNextLevel (boolean) [default true] — Determines whether next level button should be enabled
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level (controlled)
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\") [default 'decade'] — Max level that user can go up to
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: string | null) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onLevelChange ((level: CalendarLevel) => void) — Called when the level changes
-  onLevelClick (() => void) — Called when the level button is clicked
-  onNext (() => void) — Called when the next button is clicked
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextMonth ((date: string) => void) — Called when the next month button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousMonth ((date: string) => void) — Called when the previous month button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (Partial<Omit<PopoverProps, \"children\">>) — Props passed down to the <code>Popover</code> component
-  presets (DatePickerPreset<\"default\">[]) — Predefined values to pick from
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) — Component size
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  value (DateValue) — Controlled component value
-  valueFormat (string) — <code>dayjs</code> format to display input value, <code>\"MMMM D, YYYY\"</code> by default
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withNext (boolean) [default true] — Determines whether next control should be rendered
-  withPrevious (boolean) [default true] — Determines whether previous control should be rendered
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  withTime (boolean) [default false] — If set to <code>true</code>, the time part of the value is preserved. Set this to <code>true</code> when <code>valueFormat</code> includes time (e.g. <code>\"YYYY-MM-DD HH:mm\"</code>).
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
-  wrapperProps (WrapperProps) — Props passed down to the root element
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — If set, the value can be deselected by deleting everything from the input or by clicking the selected date in the dropdown. By default, `true` if `clearable` prop is set, `false` otherwise.
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, clear button is displayed in the `rightSection` when the component has value. Ignored if `rightSection` prop is set.
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **dateParser** `(value: string) => string | Date | null` — A function to parse user input and convert it to date string value
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level (uncontrolled)
+- **defaultValue** `DateValue` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fixOnBlur** `boolean` — If set to `false`, invalid user input is preserved and is not corrected on blur
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **hasNextLevel** `boolean` _(default `true`)_ — Determines whether next level button should be enabled
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level (controlled)
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"` _(default `'decade'`)_ — Max level that user can go up to
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: string | null) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onLevelChange** `(level: CalendarLevel) => void` — Called when the level changes
+- **onLevelClick** `() => void` — Called when the level button is clicked
+- **onNext** `() => void` — Called when the next button is clicked
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextMonth** `(date: string) => void` — Called when the next month button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousMonth** `(date: string) => void` — Called when the previous month button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `Partial<Omit<PopoverProps, \"children\">>` — Props passed down to the `Popover` component
+- **presets** `DatePickerPreset<\"default\">[]` — Predefined values to pick from
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` — Component size
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **value** `DateValue` — Controlled component value
+- **valueFormat** `string` — `dayjs` format to display input value, `\"MMMM D, YYYY\"` by default
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withNext** `boolean` _(default `true`)_ — Determines whether next control should be rendered
+- **withPrevious** `boolean` _(default `true`)_ — Determines whether previous control should be rendered
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **withTime** `boolean` _(default `false`)_ — If set to `true`, the time part of the value is preserved. Set this to `true` when `valueFormat` includes time (e.g. `\"YYYY-MM-DD HH:mm\"`).
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled DateInput))
@@ -206,63 +209,64 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/date-picker
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level (uncontrolled)
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  enableKeyboardNavigation (boolean) — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level (controlled)
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\")
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onLevelChange ((level: CalendarLevel) => void) — Called when level changes
-  onMonthMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters month control
-  onMonthSelect ((date: string) => void) — Called when user selects month
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextMonth ((date: string) => void) — Called when the next month button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousMonth ((date: string) => void) — Called when the previous month button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  onYearMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters year control
-  onYearSelect ((date: string) => void) — Called when user selects year
-  presets (DatePickerPreset<Type>[]) — Predefined values to pick from
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  size (MantineSize) — Component size
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level (uncontrolled)
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **enableKeyboardNavigation** `boolean` — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level (controlled)
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"`
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onLevelChange** `(level: CalendarLevel) => void` — Called when level changes
+- **onMonthMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters month control
+- **onMonthSelect** `(date: string) => void` — Called when user selects month
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextMonth** `(date: string) => void` — Called when the next month button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousMonth** `(date: string) => void` — Called when the previous month button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **onYearMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters year control
+- **onYearSelect** `(date: string) => void` — Called when user selects year
+- **presets** `DatePickerPreset<Type>[]` — Predefined values to pick from
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **size** `MantineSize` — Component size
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled DatePicker))
@@ -274,106 +278,107 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/date-picker-input
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, clear button is displayed in the <code>rightSection</code> when the component has value. Ignored if <code>rightSection</code> prop is set.
-  closeOnChange (boolean) [default true] — Determines whether the dropdown is closed when date is selected, not applicable with <code>type=\"multiple\"</code>
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level (uncontrolled)
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownType (\"popover\" | \"modal\") [default 'popover'] — Type of the dropdown
-  enableKeyboardNavigation (boolean) — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  labelSeparator (string) — Separator between range value
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level (controlled)
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\")
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  modalProps (Partial<Omit<ModalProps, \"children\">>) — Props passed down to <code>Modal</code> component
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onDropdownClose (() => void) — Called when the dropdown is closed
-  onLevelChange ((level: CalendarLevel) => void) — Called when level changes
-  onMonthMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters month control
-  onMonthSelect ((date: string) => void) — Called when user selects month
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextMonth ((date: string) => void) — Called when the next month button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousMonth ((date: string) => void) — Called when the previous month button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  onYearMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters year control
-  onYearSelect ((date: string) => void) — Called when user selects year
-  placeholder (string) — Input placeholder
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (Partial<Omit<PopoverProps, \"children\">>) — Props passed down to <code>Popover</code> component
-  presets (DatePickerPreset<Type>[]) — Predefined values to pick from
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the component value cannot be changed by the user
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) — Component size
-  sortDates (boolean) [default true] — Determines whether dates values should be sorted before <code>onChange</code> call, only applicable with type=\"multiple\"
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  valueFormat (string) [default \"MMMM D, YYYY\"] — <code>dayjs</code> format for input value
-  valueFormatter (DateFormatter) — A function to format selected dates values into a string. By default, date is formatted based on the input type.
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
-  wrapperProps (WrapperProps) — Props passed down to the root element
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, clear button is displayed in the `rightSection` when the component has value. Ignored if `rightSection` prop is set.
+- **closeOnChange** `boolean` _(default `true`)_ — Determines whether the dropdown is closed when date is selected, not applicable with `type=\"multiple\"`
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level (uncontrolled)
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownType** `\"popover\" | \"modal\"` _(default `'popover'`)_ — Type of the dropdown
+- **enableKeyboardNavigation** `boolean` — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **labelSeparator** `string` — Separator between range value
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level (controlled)
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"`
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **modalProps** `Partial<Omit<ModalProps, \"children\">>` — Props passed down to `Modal` component
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onDropdownClose** `() => void` — Called when the dropdown is closed
+- **onLevelChange** `(level: CalendarLevel) => void` — Called when level changes
+- **onMonthMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters month control
+- **onMonthSelect** `(date: string) => void` — Called when user selects month
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextMonth** `(date: string) => void` — Called when the next month button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousMonth** `(date: string) => void` — Called when the previous month button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **onYearMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters year control
+- **onYearSelect** `(date: string) => void` — Called when user selects year
+- **placeholder** `string` — Input placeholder
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `Partial<Omit<PopoverProps, \"children\">>` — Props passed down to `Popover` component
+- **presets** `DatePickerPreset<Type>[]` — Predefined values to pick from
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the component value cannot be changed by the user
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` — Component size
+- **sortDates** `boolean` _(default `true`)_ — Determines whether dates values should be sorted before `onChange` call, only applicable with type=\"multiple\"
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **valueFormat** `string` _(default `\"MMMM D, YYYY\"`)_ — `dayjs` format for input value
+- **valueFormatter** `DateFormatter` — A function to format selected dates values into a string. By default, date is formatted based on the input type.
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled DatePickerInput))
@@ -385,105 +390,106 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/date-time-picker
 
 Props (docgen 9.4.1):
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, clear button is displayed in the <code>rightSection</code> when the component has value. Ignored if <code>rightSection</code> prop is set.
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level in uncontrolled mode
-  defaultTimeValue (string) — Default time value in HH:mm<code> or </code>HH:mm:ss` format. Assigned to time when date is selected.
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownType (\"popover\" | \"modal\") [default 'popover'] — Type of the dropdown
-  endTimePickerProps (Omit<TimePickerProps, \"value\" | \"defaultValue\">) — Props passed down to the end time <code>TimePicker</code> component in range mode
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  labelSeparator (string) — Separator between range values
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level displayed in controlled mode
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\") [default 'decade'] — Max level that user can go up to
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  modalProps (Partial<Omit<ModalProps, \"children\">>) — Props passed down to <code>Modal</code> component
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onDropdownClose (() => void) — Called when the dropdown is closed
-  onLevelChange ((level: CalendarLevel) => void) — Called when level changes
-  onMonthSelect ((date: string) => void) — Called when user selects month
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextMonth ((date: string) => void) — Called when the next month button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousMonth ((date: string) => void) — Called when the previous month button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  onYearSelect ((date: string) => void) — Called when user selects year
-  placeholder (string) — Input placeholder
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (Partial<Omit<PopoverProps, \"children\">>) — Props passed down to <code>Popover</code> component
-  presets (DatePickerPreset<Type>[]) — Presets values
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the component value cannot be changed by the user
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) — Component size
-  sortDates (boolean) [default true] — Determines whether dates values should be sorted before <code>onChange</code> call, only applicable with type=\"multiple\"
-  submitButtonProps (ActionIconProps & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>) — Props passed down to the submit button
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  timePickerProps (Omit<TimePickerProps, \"value\" | \"defaultValue\">) — Props passed down to <code>TimePicker</code> component
-  type (\"range\" | \"multiple\" | \"default\") [default 'default'] — Picker type: range or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Controlled component value
-  valueFormat (string | ((date: string) => string)) [default \"DD/MM/YYYY HH:mm\"] — <code>dayjs</code> format for input value, or a function that receives the value as a <code>YYYY-MM-DD HH:mm:ss</code> string and returns the formatted value
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSeconds (boolean) [default false] — Determines whether the seconds input should be displayed
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
-  wrapperProps (WrapperProps) — Props passed down to the root element
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, clear button is displayed in the `rightSection` when the component has value. Ignored if `rightSection` prop is set.
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level in uncontrolled mode
+- **defaultTimeValue** `string` — Default time value in HH:mm` or `HH:mm:ss\\` format. Assigned to time when date is selected.
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownType** `\"popover\" | \"modal\"` _(default `'popover'`)_ — Type of the dropdown
+- **endTimePickerProps** `Omit<TimePickerProps, \"value\" | \"defaultValue\">` — Props passed down to the end time `TimePicker` component in range mode
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **labelSeparator** `string` — Separator between range values
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level displayed in controlled mode
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"` _(default `'decade'`)_ — Max level that user can go up to
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **modalProps** `Partial<Omit<ModalProps, \"children\">>` — Props passed down to `Modal` component
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onDropdownClose** `() => void` — Called when the dropdown is closed
+- **onLevelChange** `(level: CalendarLevel) => void` — Called when level changes
+- **onMonthSelect** `(date: string) => void` — Called when user selects month
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextMonth** `(date: string) => void` — Called when the next month button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousMonth** `(date: string) => void` — Called when the previous month button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **onYearSelect** `(date: string) => void` — Called when user selects year
+- **placeholder** `string` — Input placeholder
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `Partial<Omit<PopoverProps, \"children\">>` — Props passed down to `Popover` component
+- **presets** `DatePickerPreset<Type>[]` — Presets values
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the component value cannot be changed by the user
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` — Component size
+- **sortDates** `boolean` _(default `true`)_ — Determines whether dates values should be sorted before `onChange` call, only applicable with type=\"multiple\"
+- **submitButtonProps** `ActionIconProps & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>` — Props passed down to the submit button
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **timePickerProps** `Omit<TimePickerProps, \"value\" | \"defaultValue\">` — Props passed down to `TimePicker` component
+- **type** `\"range\" | \"multiple\" | \"default\"` _(default `'default'`)_ — Picker type: range or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Controlled component value
+- **valueFormat** `string | ((date: string) => string)` _(default `\"DD/MM/YYYY HH:mm\"`)_ — `dayjs` format for input value, or a function that receives the value as a `YYYY-MM-DD HH:mm:ss` string and returns the formatted value
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSeconds** `boolean` _(default `false`)_ — Determines whether the seconds input should be displayed
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled DateTimePicker))
@@ -493,7 +499,8 @@ Optional leading props map; remaining args are children."
   "DatesProvider
 
 Props (docgen 9.4.1):
-  settings (Partial<DatesProviderValue>) REQUIRED
+
+- **settings** `Partial<DatesProviderValue>` **(required)**
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DatesProvider)
@@ -503,19 +510,20 @@ Optional leading props map; remaining args are children."
   "Day
 
 Props (docgen 9.4.1):
-  date (string) REQUIRED — Date that is displayed in <code>YYYY-MM-DD</code> format
-  firstInRange (boolean) [default false] — Determines whether the day is first in range selection
-  fullWidth (boolean) [default false] — Determines whether the day should take the full width of its cell
-  hidden (boolean) [default false] — Determines whether the day should not be displayed
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  inRange (boolean) [default false] — Determines whether the day is selected in range
-  lastInRange (boolean) [default false] — Determines whether the day is last in range selection
-  outside (boolean) [default false] — Determines whether the day is outside of the current month
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  selected (boolean) [default false] — Determines whether the day is selected
-  size (MantineSize) [default 'sm'] — Control width and height of the day
-  static (boolean) — Determines which element is used as root, <code>'button'</code> by default, <code>'div'</code> if static prop is set
-  weekend (boolean) [default false] — Determines whether the day is considered to be a weekend
+
+- **date** `string` **(required)** — Date that is displayed in `YYYY-MM-DD` format
+- **firstInRange** `boolean` _(default `false`)_ — Determines whether the day is first in range selection
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the day should take the full width of its cell
+- **hidden** `boolean` _(default `false`)_ — Determines whether the day should not be displayed
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **inRange** `boolean` _(default `false`)_ — Determines whether the day is selected in range
+- **lastInRange** `boolean` _(default `false`)_ — Determines whether the day is last in range selection
+- **outside** `boolean` _(default `false`)_ — Determines whether the day is outside of the current month
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **selected** `boolean` _(default `false`)_ — Determines whether the day is selected
+- **size** `MantineSize` _(default `'sm'`)_ — Control width and height of the day
+- **static** `boolean` — Determines which element is used as root, `'button'` by default, `'div'` if static prop is set
+- **weekend** `boolean` _(default `false`)_ — Determines whether the day is considered to be a weekend
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Day)
@@ -525,28 +533,29 @@ Optional leading props map; remaining args are children."
   "DecadeLevel
 
 Props (docgen 9.4.1):
-  decade (string) REQUIRED — Displayed decade
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  levelControlAriaLabel (string) — Level control <code>aria-label</code>
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withNext (boolean) [default true] — Determines whether next control should be rendered
-  withPrevious (boolean) [default true] — Determines whether previous control should be rendered
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **decade** `string` **(required)** — Displayed decade
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **levelControlAriaLabel** `string` — Level control `aria-label`
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withNext** `boolean` _(default `true`)_ — Determines whether next control should be rendered
+- **withPrevious** `boolean` _(default `true`)_ — Determines whether previous control should be rendered
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DecadeLevel)
@@ -556,27 +565,28 @@ Optional leading props map; remaining args are children."
   "DecadeLevelGroup
 
 Props (docgen 9.4.1):
-  decade (string) REQUIRED — Displayed decade
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  levelControlAriaLabel (string | ((decade: string) => string)) — Function that returns level control <code>aria-label</code> based on year date
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) — Number of columns to display next to each other
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **decade** `string` **(required)** — Displayed decade
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **levelControlAriaLabel** `string | ((decade: string) => string)` — Function that returns level control `aria-label` based on year date
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` — Number of columns to display next to each other
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DecadeLevelGroup)
@@ -586,11 +596,12 @@ Optional leading props map; remaining args are children."
   "HiddenDatesInput
 
 Props (docgen 9.4.1):
-  form (string) REQUIRED
-  name (string) REQUIRED
-  type (DatePickerType) REQUIRED
-  value (HiddenDatesInputValue) REQUIRED
-  withTime (boolean) [default false]
+
+- **form** `string` **(required)**
+- **name** `string` **(required)**
+- **type** `DatePickerType` **(required)**
+- **value** `HiddenDatesInputValue` **(required)**
+- **withTime** `boolean` _(default `false`)_
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory HiddenDatesInput)
@@ -602,71 +613,72 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/inline-date-time-picker
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level (uncontrolled)
-  defaultTimeValue (string) — Default time value in <code>HH:mm</code> or <code>HH:mm:ss</code> format. Assigned to time when date is selected.
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  enableKeyboardNavigation (boolean) — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
-  endTimePickerProps (Omit<TimePickerProps, \"value\" | \"defaultValue\">) — Props passed down to the end time <code>TimePicker</code> component in range mode
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  labelSeparator (string) — Separator between range values
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level (controlled)
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Max date
-  maxLevel (\"month\" | \"year\" | \"decade\")
-  minDate (string | Date) — Min date
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onLevelChange ((level: CalendarLevel) => void) — Called when level changes
-  onMonthMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters month control
-  onMonthSelect ((date: string) => void) — Called when user selects month
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextMonth ((date: string) => void) — Called when the next month button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousMonth ((date: string) => void) — Called when the previous month button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  onSubmit (() => void) — Called when the submit button is clicked
-  onYearMouseEnter ((event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void) — Called when mouse enters year control
-  onYearSelect ((date: string) => void) — Called when user selects year
-  presets (DatePickerPreset<Type>[]) — Predefined values to pick from
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  size (MantineSize) [default 'sm'] — Component size
-  submitButtonProps (ActionIconProps & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>) — Props passed down to the submit button
-  timePickerProps (Omit<TimePickerProps, \"value\" | \"defaultValue\">) — Props passed down to <code>TimePicker</code> component
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  valueFormat (string | ((date: string) => string)) [default \"DD/MM/YYYY HH:mm\"] — <code>dayjs</code> format for range display, or a function that receives the value as a <code>YYYY-MM-DD HH:mm:ss</code> string and returns the formatted value
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withSeconds (boolean) [default false] — Determines whether the seconds input should be displayed
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level (uncontrolled)
+- **defaultTimeValue** `string` — Default time value in `HH:mm` or `HH:mm:ss` format. Assigned to time when date is selected.
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **enableKeyboardNavigation** `boolean` — Enable enhanced keyboard navigation (Ctrl/Cmd + Arrow keys for year navigation, Ctrl/Cmd + Shift + Arrow keys for decade navigation, Y key to open year view)
+- **endTimePickerProps** `Omit<TimePickerProps, \"value\" | \"defaultValue\">` — Props passed down to the end time `TimePicker` component in range mode
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **labelSeparator** `string` — Separator between range values
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level (controlled)
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Max date
+- **maxLevel** `\"month\" | \"year\" | \"decade\"`
+- **minDate** `string | Date` — Min date
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onLevelChange** `(level: CalendarLevel) => void` — Called when level changes
+- **onMonthMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters month control
+- **onMonthSelect** `(date: string) => void` — Called when user selects month
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextMonth** `(date: string) => void` — Called when the next month button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousMonth** `(date: string) => void` — Called when the previous month button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **onSubmit** `() => void` — Called when the submit button is clicked
+- **onYearMouseEnter** `(event: MouseEvent<HTMLButtonElement, MouseEvent>, date: string) => void` — Called when mouse enters year control
+- **onYearSelect** `(date: string) => void` — Called when user selects year
+- **presets** `DatePickerPreset<Type>[]` — Predefined values to pick from
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **size** `MantineSize` _(default `'sm'`)_ — Component size
+- **submitButtonProps** `ActionIconProps & ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>` — Props passed down to the submit button
+- **timePickerProps** `Omit<TimePickerProps, \"value\" | \"defaultValue\">` — Props passed down to `TimePicker` component
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **valueFormat** `string | ((date: string) => string)` _(default `\"DD/MM/YYYY HH:mm\"`)_ — `dayjs` format for range display, or a function that receives the value as a `YYYY-MM-DD HH:mm:ss` string and returns the formatted value
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withSeconds** `boolean` _(default `false`)_ — Determines whether the seconds input should be displayed
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled InlineDateTimePicker))
@@ -676,8 +688,9 @@ Optional leading props map; remaining args are children."
   "LevelsGroup
 
 Props (docgen 9.4.1):
-  fullWidth (boolean) [default false] — Determines whether the group should take the full width of its container
-  size (MantineSize)
+
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the group should take the full width of its container
+- **size** `MantineSize`
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory LevelsGroup)
@@ -689,22 +702,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/mini-calendar
 
 Props (docgen 9.4.1):
-  date (string | Date) — Controlled component date value, start date of the interval
-  defaultDate (string | Date) — Uncontrolled component default value, start date of the interval
-  getDayProps ((date: string) => Record<string, any>) — Props passed down to the day component
-  locale (string) — dayjs locale used for formatting
-  maxDate (string | Date) — Maximum date that can be selected, date object or date string in <code>YYYY-MM-DD</code> format
-  minDate (string | Date) — Minimum date that can be selected, date object or date string in <code>YYYY-MM-DD</code> format
-  monthLabelFormat (string) [default MMM] — Dayjs format string for month label
-  nextControlProps (React.ComponentProps<'button'>) — Props passed to next control button
-  numberOfDays (number) [default 7] — Number of days to display in the calendar
-  onChange ((date: string) => void) — Called with date in <code>YYYY-MM-DD</code> format when date changes
-  onDateChange ((date: string) => void) — Called with date in <code>YYYY-MM-DD</code> format when date internal changes
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousControlProps (React.ComponentProps<'button'>) — Props passed to previous control button
-  size (MantineSize) [default 'sm'] — Component size
-  value (string | Date | null) — Selected date, controlled value
+
+- **date** `string | Date` — Controlled component date value, start date of the interval
+- **defaultDate** `string | Date` — Uncontrolled component default value, start date of the interval
+- **getDayProps** `(date: string) => Record<string, any>` — Props passed down to the day component
+- **locale** `string` — dayjs locale used for formatting
+- **maxDate** `string | Date` — Maximum date that can be selected, date object or date string in `YYYY-MM-DD` format
+- **minDate** `string | Date` — Minimum date that can be selected, date object or date string in `YYYY-MM-DD` format
+- **monthLabelFormat** `string` _(default `MMM`)_ — Dayjs format string for month label
+- **nextControlProps** `React.ComponentProps<'button'>` — Props passed to next control button
+- **numberOfDays** `number` _(default `7`)_ — Number of days to display in the calendar
+- **onChange** `(date: string) => void` — Called with date in `YYYY-MM-DD` format when date changes
+- **onDateChange** `(date: string) => void` — Called with date in `YYYY-MM-DD` format when date internal changes
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousControlProps** `React.ComponentProps<'button'>` — Props passed to previous control button
+- **size** `MantineSize` _(default `'sm'`)_ — Component size
+- **value** `string | Date | null` — Selected date, controlled value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled MiniCalendar))
@@ -714,25 +728,26 @@ Optional leading props map; remaining args are children."
   "Month
 
 Props (docgen 9.4.1):
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the month should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  locale (string) — <code>dayjs</code> locale, the default value is defined by <code>DatesProvider</code>
-  maxDate (string | Date) — Maximum possible date, in <code>YYYY-MM-DD</code> format
-  minDate (string | Date) — Minimum possible date, in <code>YYYY-MM-DD</code> format
-  month (string) REQUIRED — Month to display, value <code>YYYY-MM-DD</code>
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  size (MantineSize) — Controls size
-  static (boolean) — Determines whether days should be static, static days can be used to display month if it is not expected that user will interact with the component in any way
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated by space
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
+
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the month should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **locale** `string` — `dayjs` locale, the default value is defined by `DatesProvider`
+- **maxDate** `string | Date` — Maximum possible date, in `YYYY-MM-DD` format
+- **minDate** `string | Date` — Minimum possible date, in `YYYY-MM-DD` format
+- **month** `string` **(required)** — Month to display, value `YYYY-MM-DD`
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **size** `MantineSize` — Controls size
+- **static** `boolean` — Determines whether days should be static, static days can be used to display month if it is not expected that user will interact with the component in any way
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated by space
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory Month)
@@ -742,40 +757,41 @@ Optional leading props map; remaining args are children."
   "MonthLevel
 
 Props (docgen 9.4.1):
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  hasNextLevel (boolean) [default true] — Determines whether next level button should be enabled
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  levelControlAriaLabel (string) — Aria-label for change level control
-  locale (string) — <code>dayjs</code> locale, the default value is defined by <code>DatesProvider</code>
-  maxDate (string | Date) — Maximum possible date, in <code>YYYY-MM-DD</code> format
-  minDate (string | Date) — Minimum possible date, in <code>YYYY-MM-DD</code> format
-  month (string) REQUIRED — Month that is currently displayed
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  onLevelClick (() => void) — Called when the level button is clicked
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  size (MantineSize) — Controls size
-  static (boolean) — Determines whether days should be static, static days can be used to display month if it is not expected that user will interact with the component in any way
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated by space
-  withNext (boolean) [default true] — Determines whether next control should be rendered
-  withPrevious (boolean) [default true] — Determines whether previous control should be rendered
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
+
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **hasNextLevel** `boolean` _(default `true`)_ — Determines whether next level button should be enabled
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **levelControlAriaLabel** `string` — Aria-label for change level control
+- **locale** `string` — `dayjs` locale, the default value is defined by `DatesProvider`
+- **maxDate** `string | Date` — Maximum possible date, in `YYYY-MM-DD` format
+- **minDate** `string | Date` — Minimum possible date, in `YYYY-MM-DD` format
+- **month** `string` **(required)** — Month that is currently displayed
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **onLevelClick** `() => void` — Called when the level button is clicked
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **size** `MantineSize` — Controls size
+- **static** `boolean` — Determines whether days should be static, static days can be used to display month if it is not expected that user will interact with the component in any way
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated by space
+- **withNext** `boolean` _(default `true`)_ — Determines whether next control should be rendered
+- **withPrevious** `boolean` _(default `true`)_ — Determines whether previous control should be rendered
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MonthLevel)
@@ -785,39 +801,40 @@ Optional leading props map; remaining args are children."
   "MonthLevelGroup
 
 Props (docgen 9.4.1):
-  excludeDate ((date: string) => boolean) — Callback function to determine whether the day should be disabled
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, where 0 – Sunday and 6 – Saturday.
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getDayAriaLabel ((date: string) => string) — Assigns <code>aria-label</code> to <code>Day</code> components based on date
-  getDayProps ((date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes) — Passes props down to <code>Day</code> components
-  hasNextLevel (boolean) [default true] — Determines whether next level button should be enabled
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  hideOutsideDates (boolean) [default false] — Determines whether outside dates should be hidden
-  hideWeekdays (boolean) [default false] — Determines whether weekdays row should be hidden
-  highlightToday (boolean) [default false] — Determines whether today should be highlighted with a border
-  levelControlAriaLabel (string | ((month: string) => string)) — Function that returns level control <code>aria-label</code> based on month date
-  locale (string) — <code>dayjs</code> locale, the default value is defined by <code>DatesProvider</code>
-  maxDate (string | Date) — Maximum possible date, in <code>YYYY-MM-DD</code> format
-  minDate (string | Date) — Minimum possible date, in <code>YYYY-MM-DD</code> format
-  month (string) REQUIRED — Month to display
-  monthLabelFormat (string | ((date: string) => string)) [default \"MMMM YYYY\"] — dayjs label format to display month label or a function that returns month label based on month value
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) — Number of columns to display next to each other
-  onLevelClick (() => void) — Called when the level button is clicked
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  renderDay ((date: string) => React.ReactNode) — Controls day value rendering
-  size (MantineSize) — Controls size
-  static (boolean) — Passed as <code>isStatic</code> prop to <code>Month</code> component
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — <code>dayjs</code> format for weekdays names
-  weekendDays ((0 | 1 | 2 | 3 | 4 | 5 | 6)[]) — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by <code>DatesProvider</code>.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated by space
-  withWeekNumbers (boolean) [default false] — Determines whether week numbers should be displayed
+
+- **excludeDate** `(date: string) => boolean` — Callback function to determine whether the day should be disabled
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, where 0 – Sunday and 6 – Saturday.
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getDayAriaLabel** `(date: string) => string` — Assigns `aria-label` to `Day` components based on date
+- **getDayProps** `(date: string) => Omit<Partial<DayProps>, \"vars\" | \"classNames\" | \"styles\"> & DataAttributes` — Passes props down to `Day` components
+- **hasNextLevel** `boolean` _(default `true`)_ — Determines whether next level button should be enabled
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **hideOutsideDates** `boolean` _(default `false`)_ — Determines whether outside dates should be hidden
+- **hideWeekdays** `boolean` _(default `false`)_ — Determines whether weekdays row should be hidden
+- **highlightToday** `boolean` _(default `false`)_ — Determines whether today should be highlighted with a border
+- **levelControlAriaLabel** `string | ((month: string) => string)` — Function that returns level control `aria-label` based on month date
+- **locale** `string` — `dayjs` locale, the default value is defined by `DatesProvider`
+- **maxDate** `string | Date` — Maximum possible date, in `YYYY-MM-DD` format
+- **minDate** `string | Date` — Minimum possible date, in `YYYY-MM-DD` format
+- **month** `string` **(required)** — Month to display
+- **monthLabelFormat** `string | ((date: string) => string)` _(default `\"MMMM YYYY\"`)_ — dayjs label format to display month label or a function that returns month label based on month value
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` — Number of columns to display next to each other
+- **onLevelClick** `() => void` — Called when the level button is clicked
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **renderDay** `(date: string) => React.ReactNode` — Controls day value rendering
+- **size** `MantineSize` — Controls size
+- **static** `boolean` — Passed as `isStatic` prop to `Month` component
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — `dayjs` format for weekdays names
+- **weekendDays** `(0 | 1 | 2 | 3 | 4 | 5 | 6)[]` — Indices of weekend days, 0-6, where 0 is Sunday and 6 is Saturday. The default value is defined by `DatesProvider`.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated by space
+- **withWeekNumbers** `boolean` _(default `false`)_ — Determines whether week numbers should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MonthLevelGroup)
@@ -829,42 +846,43 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/month-picker
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level (uncontrolled)
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level (controlled)
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\") [default 'decade'] — Max level that user can go up to
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onLevelChange ((level: MonthPickerLevel) => void) — Called when level changes
-  onMonthSelect ((date: string) => void) — Called when month is selected
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  presets (MonthPickerPreset<Type>[]) — Predefined values to pick from
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level (uncontrolled)
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level (controlled)
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"` _(default `'decade'`)_ — Max level that user can go up to
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onLevelChange** `(level: MonthPickerLevel) => void` — Called when level changes
+- **onMonthSelect** `(date: string) => void` — Called when month is selected
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **presets** `MonthPickerPreset<Type>[]` — Predefined values to pick from
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled MonthPicker))
@@ -876,84 +894,85 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/month-picker-input
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, clear button is displayed in the <code>rightSection</code> when the component has value. Ignored if <code>rightSection</code> prop is set.
-  closeOnChange (boolean) [default true] — Determines whether the dropdown is closed when date is selected, not applicable with <code>type=\"multiple\"</code>
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultLevel (\"month\" | \"year\" | \"decade\") — Initial displayed level (uncontrolled)
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownType (\"popover\" | \"modal\") [default 'popover'] — Type of the dropdown
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  labelSeparator (string) — Separator between range value
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  level (\"month\" | \"year\" | \"decade\") — Current displayed level (controlled)
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  maxLevel (\"month\" | \"year\" | \"decade\") [default 'decade'] — Max level that user can go up to
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  modalProps (Partial<Omit<ModalProps, \"children\">>) — Props passed down to <code>Modal</code> component
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onDropdownClose (() => void) — Called when the dropdown is closed
-  onLevelChange ((level: MonthPickerLevel) => void) — Called when level changes
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onNextYear ((date: string) => void) — Called when the next year button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onPreviousYear ((date: string) => void) — Called when the previous year button is clicked
-  placeholder (string) — Input placeholder
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (Partial<Omit<PopoverProps, \"children\">>) — Props passed down to <code>Popover</code> component
-  presets (MonthPickerPreset<Type>[]) — Predefined values to pick from
-  previousLabel (string) — Previous button <code>aria-label</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the component value cannot be changed by the user
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) — Component size
-  sortDates (boolean) [default true] — Determines whether dates values should be sorted before <code>onChange</code> call, only applicable with type=\"multiple\"
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  valueFormat (string) [default \"MMMM YYYY\"] — <code>dayjs</code> format for input value
-  valueFormatter (DateFormatter) — A function to format selected dates values into a string. By default, date is formatted based on the input type.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, clear button is displayed in the `rightSection` when the component has value. Ignored if `rightSection` prop is set.
+- **closeOnChange** `boolean` _(default `true`)_ — Determines whether the dropdown is closed when date is selected, not applicable with `type=\"multiple\"`
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultLevel** `\"month\" | \"year\" | \"decade\"` — Initial displayed level (uncontrolled)
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownType** `\"popover\" | \"modal\"` _(default `'popover'`)_ — Type of the dropdown
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **labelSeparator** `string` — Separator between range value
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **level** `\"month\" | \"year\" | \"decade\"` — Current displayed level (controlled)
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **maxLevel** `\"month\" | \"year\" | \"decade\"` _(default `'decade'`)_ — Max level that user can go up to
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **modalProps** `Partial<Omit<ModalProps, \"children\">>` — Props passed down to `Modal` component
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onDropdownClose** `() => void` — Called when the dropdown is closed
+- **onLevelChange** `(level: MonthPickerLevel) => void` — Called when level changes
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onNextYear** `(date: string) => void` — Called when the next year button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onPreviousYear** `(date: string) => void` — Called when the previous year button is clicked
+- **placeholder** `string` — Input placeholder
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `Partial<Omit<PopoverProps, \"children\">>` — Props passed down to `Popover` component
+- **presets** `MonthPickerPreset<Type>[]` — Predefined values to pick from
+- **previousLabel** `string` — Previous button `aria-label`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the component value cannot be changed by the user
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` — Component size
+- **sortDates** `boolean` _(default `true`)_ — Determines whether dates values should be sorted before `onChange` call, only applicable with type=\"multiple\"
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **valueFormat** `string` _(default `\"MMMM YYYY\"`)_ — `dayjs` format for input value
+- **valueFormatter** `DateFormatter` — A function to format selected dates values into a string. By default, date is formatted based on the input type.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled MonthPickerInput))
@@ -963,15 +982,16 @@ Optional leading props map; remaining args are children."
   "MonthsList
 
 Props (docgen 9.4.1):
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  size (MantineSize) — Component size
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  year (string) REQUIRED — Year for which months list should be displayed
+
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **size** `MantineSize` — Component size
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **year** `string` **(required)** — Year for which months list should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory MonthsList)
@@ -981,14 +1001,15 @@ Optional leading props map; remaining args are children."
   "PickerControl
 
 Props (docgen 9.4.1):
-  children (React.ReactNode) — Control children
-  disabled (boolean) — Disables control
-  firstInRange (boolean) — Assigns first in range styles
-  fullWidth (boolean) [default false] — Determines whether the control should take the full width of its cell
-  inRange (boolean) — Assigns in range styles
-  lastInRange (boolean) — Assigns last in range styles
-  selected (boolean) — Assigns selected styles
-  size (MantineSize) — Component size
+
+- **children** `React.ReactNode` — Control children
+- **disabled** `boolean` — Disables control
+- **firstInRange** `boolean` — Assigns first in range styles
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the control should take the full width of its cell
+- **inRange** `boolean` — Assigns in range styles
+- **lastInRange** `boolean` — Assigns last in range styles
+- **selected** `boolean` — Assigns selected styles
+- **size** `MantineSize` — Component size
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PickerControl)
@@ -998,57 +1019,58 @@ Optional leading props map; remaining args are children."
   "PickerInputBase
 
 Props (docgen 9.4.1):
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, clear button is displayed in the <code>rightSection</code> when the component has value. Ignored if <code>rightSection</code> prop is set.
-  closeOnChange (boolean) [default true] — Determines whether the dropdown is closed when date is selected, not applicable with <code>type=\"multiple\"</code>
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownHandlers (UseDisclosureHandlers) REQUIRED
-  dropdownOpened (boolean) REQUIRED
-  dropdownType (\"popover\" | \"modal\") [default 'popover'] — Type of the dropdown
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  formattedValue (string | null) REQUIRED
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  labelSeparator (string) — Separator between range value
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  modalProps (Partial<Omit<ModalProps, \"children\">>) — Props passed down to <code>Modal</code> component
-  onClear (() => void) REQUIRED
-  onDropdownClose (() => void) — Called when the dropdown is closed
-  placeholder (string) — Input placeholder
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (Partial<Omit<PopoverProps, \"children\">>) — Props passed down to <code>Popover</code> component
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the component value cannot be changed by the user
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  shouldClear (boolean) REQUIRED
-  size (MantineSize)
-  sortDates (boolean) [default true] — Determines whether dates values should be sorted before <code>onChange</code> call, only applicable with type=\"multiple\"
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  type (DatePickerType) REQUIRED
-  value (HiddenDatesInputValue) REQUIRED
-  valueFormatter (DateFormatter) — A function to format selected dates values into a string. By default, date is formatted based on the input type.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  withTime (boolean)
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, clear button is displayed in the `rightSection` when the component has value. Ignored if `rightSection` prop is set.
+- **closeOnChange** `boolean` _(default `true`)_ — Determines whether the dropdown is closed when date is selected, not applicable with `type=\"multiple\"`
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownHandlers** `UseDisclosureHandlers` **(required)**
+- **dropdownOpened** `boolean` **(required)**
+- **dropdownType** `\"popover\" | \"modal\"` _(default `'popover'`)_ — Type of the dropdown
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **formattedValue** `string | null` **(required)**
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **labelSeparator** `string` — Separator between range value
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **modalProps** `Partial<Omit<ModalProps, \"children\">>` — Props passed down to `Modal` component
+- **onClear** `() => void` **(required)**
+- **onDropdownClose** `() => void` — Called when the dropdown is closed
+- **placeholder** `string` — Input placeholder
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `Partial<Omit<PopoverProps, \"children\">>` — Props passed down to `Popover` component
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the component value cannot be changed by the user
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **shouldClear** `boolean` **(required)**
+- **size** `MantineSize`
+- **sortDates** `boolean` _(default `true`)_ — Determines whether dates values should be sorted before `onChange` call, only applicable with type=\"multiple\"
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **type** `DatePickerType` **(required)**
+- **value** `HiddenDatesInputValue` **(required)**
+- **valueFormatter** `DateFormatter` — A function to format selected dates values into a string. By default, date is formatted based on the input type.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **withTime** `boolean`
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory PickerInputBase)
@@ -1060,22 +1082,23 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/time-grid
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) [default false] — Determines whether the value can be deselected when the current active option is clicked or activated with keyboard
-  amPmLabels ({ am: string; pm: string }) [default { am: 'AM', pm: 'PM' }] — Labels used for am/pm values
-  data (string[]) REQUIRED — Time data in 24h format to be displayed in the grid, for example <code>['10:00', '18:30', '22:00']</code>. Time values must be unique.
-  defaultValue (string | null) — Uncontrolled component default value
-  disableTime (string[] | ((time: string) => boolean)) — Array of time values to disable
-  disabled (boolean) — If set, all controls are disabled
-  format (\"12h\" | \"24h\") [default '24h'] — Time format displayed in the grid
-  getControlProps ((time: string) => ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes) — A function to pass props down to control based on the time value
-  maxTime (string) — All controls after this time are disabled
-  minTime (string) — All controls before this time are disabled
-  onChange ((value: string | null) => void) — Called when value changes
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>
-  simpleGridProps (SimpleGridProps) [default { cols: 3, spacing: 'xs' }] — Props passed down to the underlying <code>SimpleGrid</code> component
-  size (MantineSize) [default 'sm'] — Control <code>font-size</code> of controls, key of <code>theme.fontSizes</code> or any valid CSS value
-  value (string | null) — Controlled component value
-  withSeconds (boolean) [default false] — Determines whether the seconds part should be displayed
+
+- **allowDeselect** `boolean` _(default `false`)_ — Determines whether the value can be deselected when the current active option is clicked or activated with keyboard
+- **amPmLabels** `{ am: string; pm: string }` _(default `{ am: 'AM', pm: 'PM' }`)_ — Labels used for am/pm values
+- **data** `string[]` **(required)** — Time data in 24h format to be displayed in the grid, for example `['10:00', '18:30', '22:00']`. Time values must be unique.
+- **defaultValue** `string | null` — Uncontrolled component default value
+- **disableTime** `string[] | ((time: string) => boolean)` — Array of time values to disable
+- **disabled** `boolean` — If set, all controls are disabled
+- **format** `\"12h\" | \"24h\"` _(default `'24h'`)_ — Time format displayed in the grid
+- **getControlProps** `(time: string) => ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes` — A function to pass props down to control based on the time value
+- **maxTime** `string` — All controls after this time are disabled
+- **minTime** `string` — All controls before this time are disabled
+- **onChange** `(value: string | null) => void` — Called when value changes
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`
+- **simpleGridProps** `SimpleGridProps` _(default `{ cols: 3, spacing: 'xs' }`)_ — Props passed down to the underlying `SimpleGrid` component
+- **size** `MantineSize` _(default `'sm'`)_ — Control `font-size` of controls, key of `theme.fontSizes` or any valid CSS value
+- **value** `string | null` — Controlled component value
+- **withSeconds** `boolean` _(default `false`)_ — Determines whether the seconds part should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled TimeGrid))
@@ -1087,39 +1110,40 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/time-input
 
 Props (docgen 9.4.1):
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  maxTime (string) — Maximum possible string time, if <code>withSeconds</code> is true, time should be in format HH:mm:ss, otherwise HH:mm
-  minTime (string) — Minimum possible string time, if <code>withSeconds</code> is true, time should be in format HH:mm:ss, otherwise HH:mm
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSeconds (boolean) [default false] — Determines whether seconds input should be displayed
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **maxTime** `string` — Maximum possible string time, if `withSeconds` is true, time should be in format HH:mm:ss, otherwise HH:mm
+- **minTime** `string` — Minimum possible string time, if `withSeconds` is true, time should be in format HH:mm:ss, otherwise HH:mm
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSeconds** `boolean` _(default `false`)_ — Determines whether seconds input should be displayed
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TimeInput)
@@ -1131,81 +1155,82 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/time-picker
 
 Props (docgen 9.4.1):
-  amPmInputLabel (string) — <code>aria-label</code> of am/pm input
-  amPmLabels ({ am: string; pm: string }) [default { am: 'AM', pm: 'PM' }] — Labels used for am/pm values
-  amPmRef (Ref<HTMLSelectElement>) — A ref object to get node reference of the am/pm select
-  amPmSelectProps (ClassAttributes<HTMLSelectElement> & SelectHTMLAttributes<HTMLSelectElement> & DataAttributes) — Props passed down to am/pm select
-  clearButtonProps (CloseButtonProps) — Props passed down to clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — Determines whether the clear button should be displayed
-  closeDropdownOnPresetSelect (boolean) [default false] — If set, the dropdown is closed when a value is selected from the presets list
-  defaultValue (string) — Uncontrolled component default value
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — If set, the component becomes disabled
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  form (string) — <code>form</code> prop passed down to the hidden input
-  format (\"12h\" | \"24h\") — Time format, <code>'24h'</code> by default
-  hiddenInputProps (ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes) — Props passed down to the hidden input
-  hoursInputLabel (string) — <code>aria-label</code> of hours input
-  hoursInputProps (ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes) — Props passed down to hours input
-  hoursPlaceholder (string) [default --] — Hours input placeholder,
-  hoursRef (Ref<HTMLInputElement>) — A ref object to get node reference of the hours input
-  hoursStep (number) [default 1] — Number by which hours are incremented/decremented
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  max (string) — Max possible time value in <code>hh:mm:ss</code> format
-  maxDropdownContentHeight (number) [default 200] — Maximum height of the content displayed in the dropdown in px
-  min (string) — Min possible time value in <code>hh:mm:ss</code> format
-  minHoursDigits (number) [default 2] — Minimum number of digits displayed in the hours input, applicable only when <code>type=\"duration\"</code> is set
-  minutesInputLabel (string) — <code>aria-label</code> of minutes input
-  minutesInputProps (ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes) — Props passed down to minutes input
-  minutesPlaceholder (string) [default --] — Minutes input placeholder,
-  minutesRef (Ref<HTMLInputElement>) — A ref object to get node reference of the minutes input
-  minutesStep (number) [default 1] — Number by which minutes are incremented/decremented
-  name (string) — <code>name</code> prop passed down to the hidden input
-  onBlur ((event: FocusEvent<HTMLDivElement, Element>) => void) — Called once when the focus is no longer on any of the inputs
-  onChange ((value: string) => void) — Called when the value changes
-  onFocus ((event: FocusEvent<HTMLInputElement, Element>) => void) — Called once when one of the inputs is focused, not called when focused is shifted between hours, minutes, seconds and am/pm inputs
-  pasteSplit (TimePickerPasteSplit) — A function to transform paste values, by default time in 24h format can be parsed on paste for example <code>23:34:22</code>
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (PopoverProps) — Props passed down to <code>Popover</code> component
-  presets (TimePickerPresets) — Time presets to display in the dropdown
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the value cannot be updated
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  reverseTimeControlsList (boolean) [default false] — If set, the time controls list are reversed,
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  scrollAreaProps (ScrollAreaProps) — Props passed down to all underlying <code>ScrollArea</code> components
-  secondsInputLabel (string) — <code>aria-label</code> of seconds input
-  secondsInputProps (ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes) — Props passed down to seconds input
-  secondsPlaceholder (string) [default --] — Seconds input placeholder,
-  secondsRef (Ref<HTMLInputElement>) — A ref object to get node reference of the seconds input
-  secondsStep (number) [default 1] — Number by which seconds are incremented/decremented
-  size (MantineSize) [default 'sm'] — Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  type (TimePickerType) [default 'time'] — TimePicker type, <code>'time'</code> for regular time input, <code>'duration'</code> for duration input that allows values greater than 24 hours
-  value (string) — Controlled component value
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withDropdown (boolean) [default false] — Determines whether the dropdown with time controls list should be visible when the input has focus
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSeconds (boolean) [default false] — Determines whether the seconds input should be displayed
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
+
+- **amPmInputLabel** `string` — `aria-label` of am/pm input
+- **amPmLabels** `{ am: string; pm: string }` _(default `{ am: 'AM', pm: 'PM' }`)_ — Labels used for am/pm values
+- **amPmRef** `Ref<HTMLSelectElement>` — A ref object to get node reference of the am/pm select
+- **amPmSelectProps** `ClassAttributes<HTMLSelectElement> & SelectHTMLAttributes<HTMLSelectElement> & DataAttributes` — Props passed down to am/pm select
+- **clearButtonProps** `CloseButtonProps` — Props passed down to clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — Determines whether the clear button should be displayed
+- **closeDropdownOnPresetSelect** `boolean` _(default `false`)_ — If set, the dropdown is closed when a value is selected from the presets list
+- **defaultValue** `string` — Uncontrolled component default value
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — If set, the component becomes disabled
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **form** `string` — `form` prop passed down to the hidden input
+- **format** `\"12h\" | \"24h\"` — Time format, `'24h'` by default
+- **hiddenInputProps** `ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes` — Props passed down to the hidden input
+- **hoursInputLabel** `string` — `aria-label` of hours input
+- **hoursInputProps** `ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes` — Props passed down to hours input
+- **hoursPlaceholder** `string` _(default `--`)_ — Hours input placeholder,
+- **hoursRef** `Ref<HTMLInputElement>` — A ref object to get node reference of the hours input
+- **hoursStep** `number` _(default `1`)_ — Number by which hours are incremented/decremented
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **max** `string` — Max possible time value in `hh:mm:ss` format
+- **maxDropdownContentHeight** `number` _(default `200`)_ — Maximum height of the content displayed in the dropdown in px
+- **min** `string` — Min possible time value in `hh:mm:ss` format
+- **minHoursDigits** `number` _(default `2`)_ — Minimum number of digits displayed in the hours input, applicable only when `type=\"duration\"` is set
+- **minutesInputLabel** `string` — `aria-label` of minutes input
+- **minutesInputProps** `ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes` — Props passed down to minutes input
+- **minutesPlaceholder** `string` _(default `--`)_ — Minutes input placeholder,
+- **minutesRef** `Ref<HTMLInputElement>` — A ref object to get node reference of the minutes input
+- **minutesStep** `number` _(default `1`)_ — Number by which minutes are incremented/decremented
+- **name** `string` — `name` prop passed down to the hidden input
+- **onBlur** `(event: FocusEvent<HTMLDivElement, Element>) => void` — Called once when the focus is no longer on any of the inputs
+- **onChange** `(value: string) => void` — Called when the value changes
+- **onFocus** `(event: FocusEvent<HTMLInputElement, Element>) => void` — Called once when one of the inputs is focused, not called when focused is shifted between hours, minutes, seconds and am/pm inputs
+- **pasteSplit** `TimePickerPasteSplit` — A function to transform paste values, by default time in 24h format can be parsed on paste for example `23:34:22`
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `PopoverProps` — Props passed down to `Popover` component
+- **presets** `TimePickerPresets` — Time presets to display in the dropdown
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the value cannot be updated
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **reverseTimeControlsList** `boolean` _(default `false`)_ — If set, the time controls list are reversed,
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **scrollAreaProps** `ScrollAreaProps` — Props passed down to all underlying `ScrollArea` components
+- **secondsInputLabel** `string` — `aria-label` of seconds input
+- **secondsInputProps** `ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement> & DataAttributes` — Props passed down to seconds input
+- **secondsPlaceholder** `string` _(default `--`)_ — Seconds input placeholder,
+- **secondsRef** `Ref<HTMLInputElement>` — A ref object to get node reference of the seconds input
+- **secondsStep** `number` _(default `1`)_ — Number by which seconds are incremented/decremented
+- **size** `MantineSize` _(default `'sm'`)_ — Controls input `height`, horizontal `padding`, and `font-size`
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **type** `TimePickerType` _(default `'time'`)_ — TimePicker type, `'time'` for regular time input, `'duration'` for duration input that allows values greater than 24 hours
+- **value** `string` — Controlled component value
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withDropdown** `boolean` _(default `false`)_ — Determines whether the dropdown with time controls list should be visible when the input has focus
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSeconds** `boolean` _(default `false`)_ — Determines whether the seconds input should be displayed
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled TimePicker))
@@ -1217,10 +1242,11 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/time-value
 
 Props (docgen 9.4.1):
-  amPmLabels ({ am: string; pm: string }) [default { am: 'AM', pm: 'PM' }] — AM/PM labels
-  format (\"12h\" | \"24h\") [default 24h] — Time format
-  value (string | Date) REQUIRED — Time to format
-  withSeconds (boolean) [default false] — Determines whether seconds should be displayed
+
+- **amPmLabels** `{ am: string; pm: string }` _(default `{ am: 'AM', pm: 'PM' }`)_ — AM/PM labels
+- **format** `\"12h\" | \"24h\"` _(default `24h`)_ — Time format
+- **value** `string | Date` **(required)** — Time to format
+- **withSeconds** `boolean` _(default `false`)_ — Determines whether seconds should be displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory TimeValue)
@@ -1230,12 +1256,13 @@ Optional leading props map; remaining args are children."
   "WeekdaysRow
 
 Props (docgen 9.4.1):
-  cellComponent (\"td\" | \"th\") [default 'th'] — Sets cell type that is used for weekdays
-  firstDayOfWeek (0 | 1 | 2 | 3 | 4 | 5 | 6) [default 1 – Monday] — Number 0-6, 0 – Sunday, 6 – Saturday
-  locale (string) — dayjs locale
-  size (MantineSize) — Controls size
-  weekdayFormat (string | ((date: string) => string)) [default 'dd'] — dayjs format to get weekday name
-  withWeekNumbers (boolean) — If set, heading for week numbers is displayed
+
+- **cellComponent** `\"td\" | \"th\"` _(default `'th'`)_ — Sets cell type that is used for weekdays
+- **firstDayOfWeek** `0 | 1 | 2 | 3 | 4 | 5 | 6` _(default `1 – Monday`)_ — Number 0-6, 0 – Sunday, 6 – Saturday
+- **locale** `string` — dayjs locale
+- **size** `MantineSize` — Controls size
+- **weekdayFormat** `string | ((date: string) => string)` _(default `'dd'`)_ — dayjs format to get weekday name
+- **withWeekNumbers** `boolean` — If set, heading for week numbers is displayed
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory WeekdaysRow)
@@ -1245,30 +1272,31 @@ Optional leading props map; remaining args are children."
   "YearLevel
 
 Props (docgen 9.4.1):
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  hasNextLevel (boolean) [default true] — Determines whether next level button should be enabled
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  levelControlAriaLabel (string) — <code>aria-label</code> for change level control
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  onLevelClick (() => void) — Called when the level button is clicked
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withNext (boolean) [default true] — Determines whether next control should be rendered
-  withPrevious (boolean) [default true] — Determines whether previous control should be rendered
-  year (string) REQUIRED — Displayed year value in <code>YYYY-MM-DD</code> format
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
+
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **hasNextLevel** `boolean` _(default `true`)_ — Determines whether next level button should be enabled
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **levelControlAriaLabel** `string` — `aria-label` for change level control
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **onLevelClick** `() => void` — Called when the level button is clicked
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withNext** `boolean` _(default `true`)_ — Determines whether next control should be rendered
+- **withPrevious** `boolean` _(default `true`)_ — Determines whether previous control should be rendered
+- **year** `string` **(required)** — Displayed year value in `YYYY-MM-DD` format
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory YearLevel)
@@ -1278,29 +1306,30 @@ Optional leading props map; remaining args are children."
   "YearLevelGroup
 
 Props (docgen 9.4.1):
-  fullWidth (boolean) [default false] — Determines whether the calendar should take the full width of its container
-  getMonthControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down month picker control
-  hasNextLevel (boolean) [default true] — Determines whether next level button should be enabled
-  headerControlsOrder ((\"next\" | \"previous\" | \"level\")[]) [default ['previous', 'level', 'next']] — Controls order
-  levelControlAriaLabel (string | ((year: string) => string)) — Function that returns level control <code>aria-label</code>
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  monthsListFormat (string) — <code>dayjs</code> format for months list
-  nextDisabled (boolean) — Disables next control
-  nextIcon (React.ReactNode) — Change next icon
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) — Number of columns displayed next to each other
-  onLevelClick (() => void) — Called when the level button is clicked
-  onNext (() => void) — Called when the next button is clicked
-  onPrevious (() => void) — Called when the previous button is clicked
-  previousDisabled (boolean) — Disables previous control
-  previousIcon (React.ReactNode) — Change previous icon
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  year (string) REQUIRED — Displayed year
-  yearLabelFormat (string | ((date: string) => string)) [default \"YYYY\"] — dayjs label format to display year label or a function that returns year label based on year value
+
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the calendar should take the full width of its container
+- **getMonthControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down month picker control
+- **hasNextLevel** `boolean` _(default `true`)_ — Determines whether next level button should be enabled
+- **headerControlsOrder** `(\"next\" | \"previous\" | \"level\")[]` _(default `['previous', 'level', 'next']`)_ — Controls order
+- **levelControlAriaLabel** `string | ((year: string) => string)` — Function that returns level control `aria-label`
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **monthsListFormat** `string` — `dayjs` format for months list
+- **nextDisabled** `boolean` — Disables next control
+- **nextIcon** `React.ReactNode` — Change next icon
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` — Number of columns displayed next to each other
+- **onLevelClick** `() => void` — Called when the level button is clicked
+- **onNext** `() => void` — Called when the next button is clicked
+- **onPrevious** `() => void` — Called when the previous button is clicked
+- **previousDisabled** `boolean` — Disables previous control
+- **previousIcon** `React.ReactNode` — Change previous icon
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **year** `string` **(required)** — Displayed year
+- **yearLabelFormat** `string | ((date: string) => string)` _(default `\"YYYY\"`)_ — dayjs label format to display year label or a function that returns year label based on year value
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory YearLevelGroup)
@@ -1312,33 +1341,34 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/year-picker
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  onYearSelect ((date: string) => void) — Called when year is selected
-  presets (YearPickerPreset<Type>[]) — Predefined values to pick from
-  previousLabel (string) — Previous button <code>aria-label</code>
-  size (MantineSize) — Component size
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **onYearSelect** `(date: string) => void` — Called when year is selected
+- **presets** `YearPickerPreset<Type>[]` — Predefined values to pick from
+- **previousLabel** `string` — Previous button `aria-label`
+- **size** `MantineSize` — Component size
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled YearPicker))
@@ -1350,75 +1380,76 @@ Optional leading props map; remaining args are children."
 https://mantine.dev/dates/year-picker-input
 
 Props (docgen 9.4.1):
-  allowDeselect (boolean) — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
-  allowSingleDateInRange (boolean) — Determines whether a single day can be selected as range, applicable only when type=\"range\"
-  ariaLabels (CalendarAriaLabels) — <code>aria-label</code> attributes for controls on different levels
-  clearButtonProps (React.ComponentProps<\"button\">) — Props passed down to the clear button
-  clearSectionMode (ClearSectionMode) [default 'both'] — Determines how the clear button and rightSection are rendered
-  clearable (boolean) [default false] — If set, clear button is displayed in the <code>rightSection</code> when the component has value. Ignored if <code>rightSection</code> prop is set.
-  closeOnChange (boolean) [default true] — Determines whether the dropdown is closed when date is selected, not applicable with <code>type=\"multiple\"</code>
-  columnsToScroll (number) — Number of columns to scroll with next/prev buttons, same as <code>numberOfColumns</code> if not set explicitly
-  date (string | Date) — Displayed date in controlled mode
-  decadeLabelFormat (string | ((startOfDecade: string, endOfDecade: string) => ReactNode)) [default \"YYYY\"] — <code>dayjs</code> format for decade label or a function that returns decade label based on the date value
-  defaultDate (string | Date) — Initial displayed date in uncontrolled mode
-  defaultValue (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Default value for uncontrolled component
-  description (React.ReactNode) — Contents of <code>Input.Description</code> component. If not set, description is not displayed.
-  descriptionProps (InputDescriptionProps) — Props passed down to the <code>Input.Description</code> component
-  disabled (boolean) — Sets <code>disabled</code> attribute on the <code>input</code> element
-  dropdownType (\"popover\" | \"modal\") [default 'popover'] — Type of the dropdown
-  error (React.ReactNode) — Contents of <code>Input.Error</code> component. If not set, error is not displayed.
-  errorProps (InputErrorProps) — Props passed down to the <code>Input.Error</code> component
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  inputContainer ((children: ReactNode) => ReactNode) [default React.Fragment] — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
-  inputSize (string) — HTML <code>size</code> attribute for the input element (number of visible characters)
-  inputWrapperOrder ((\"input\" | \"label\" | \"description\" | \"error\")[]) [default ['label', 'description', 'input', 'error']] — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
-  label (React.ReactNode) — Contents of <code>Input.Label</code> component. If not set, label is not displayed.
-  labelProps (InputLabelProps) — Props passed down to the <code>Input.Label</code> component
-  labelSeparator (string) — Separator between range value
-  leftSection (React.ReactNode) — Content section displayed on the left side of the input
-  leftSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  leftSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>leftSection</code> element
-  leftSectionWidth (React.CSSProperties[\"width\"]) — Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height
-  loading (boolean) [default false] — Displays loading indicator in the left or right section
-  loadingPosition (\"left\" | \"right\") [default 'right'] — Position of the loading indicator
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  modalProps (Partial<Omit<ModalProps, \"children\">>) — Props passed down to <code>Modal</code> component
-  nextLabel (string) — Next button <code>aria-label</code>
-  numberOfColumns (number) [default 1] — Number of columns displayed next to each other
-  onChange ((value: DatePickerValue<Type, string>) => void) — Called when value changes
-  onDateChange ((date: string) => void) — Called when date changes
-  onDropdownClose (() => void) — Called when the dropdown is closed
-  onNextDecade ((date: string) => void) — Called when the next decade button is clicked
-  onPreviousDecade ((date: string) => void) — Called when the previous decade button is clicked
-  placeholder (string) — Input placeholder
-  pointer (boolean) [default false] — Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).
-  popoverProps (Partial<Omit<PopoverProps, \"children\">>) — Props passed down to <code>Popover</code> component
-  presets (YearPickerPreset<Type>[]) — Predefined values to pick from
-  previousLabel (string) — Previous button <code>aria-label</code>
-  radius (MantineRadius | number) [default theme.defaultRadius] — Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem
-  readOnly (boolean) — If set, the component value cannot be changed by the user
-  required (boolean) [default false] — Adds required attribute to the input and a red asterisk on the right side of label
-  rightSection (React.ReactNode) — Content section displayed on the right side of the input
-  rightSectionPointerEvents (React.CSSProperties[\"pointerEvents\"]) [default 'none'] — Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).
-  rightSectionProps (React.ComponentProps<\"div\">) — Props passed down to the <code>rightSection</code> element
-  rightSectionWidth (React.CSSProperties[\"width\"]) — Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height
-  size (MantineSize) — Component size
-  sortDates (boolean) [default true] — Determines whether dates values should be sorted before <code>onChange</code> call, only applicable with type=\"multiple\"
-  success (React.ReactNode) — Contents of <code>Input.Success</code> component. If not set, success is not displayed.
-  successProps (InputSuccessProps & DataAttributes) — Props passed down to the <code>Input.Success</code> component
-  type (\"range\" | \"multiple\" | \"default\") — Picker type: range, multiple or default
-  value (DateValue | DatesRangeValue<DateValue> | DateValue[]) — Value for controlled component
-  valueFormat (string) [default \"YYYY\"] — <code>dayjs</code> format to display input value
-  valueFormatter (DateFormatter) — A function to format selected dates values into a string. By default, date is formatted based on the input type.
-  withAsterisk (boolean) [default false] — If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  withErrorStyles (boolean) [default true] — Determines whether the input should have red border and red text color when the <code>error</code> prop is set
-  withSuccessStyles (boolean) [default true] — Determines whether the input should have green border when the <code>success</code> prop is set
-  wrapperProps (WrapperProps) — Props passed down to the root element
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **allowDeselect** `boolean` — Determines whether user can deselect the date by clicking on selected item, applicable only when type=\"default\"
+- **allowSingleDateInRange** `boolean` — Determines whether a single day can be selected as range, applicable only when type=\"range\"
+- **ariaLabels** `CalendarAriaLabels` — `aria-label` attributes for controls on different levels
+- **clearButtonProps** `React.ComponentProps<\"button\">` — Props passed down to the clear button
+- **clearSectionMode** `ClearSectionMode` _(default `'both'`)_ — Determines how the clear button and rightSection are rendered
+- **clearable** `boolean` _(default `false`)_ — If set, clear button is displayed in the `rightSection` when the component has value. Ignored if `rightSection` prop is set.
+- **closeOnChange** `boolean` _(default `true`)_ — Determines whether the dropdown is closed when date is selected, not applicable with `type=\"multiple\"`
+- **columnsToScroll** `number` — Number of columns to scroll with next/prev buttons, same as `numberOfColumns` if not set explicitly
+- **date** `string | Date` — Displayed date in controlled mode
+- **decadeLabelFormat** `string | ((startOfDecade: string, endOfDecade: string) => ReactNode)` _(default `\"YYYY\"`)_ — `dayjs` format for decade label or a function that returns decade label based on the date value
+- **defaultDate** `string | Date` — Initial displayed date in uncontrolled mode
+- **defaultValue** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Default value for uncontrolled component
+- **description** `React.ReactNode` — Contents of `Input.Description` component. If not set, description is not displayed.
+- **descriptionProps** `InputDescriptionProps` — Props passed down to the `Input.Description` component
+- **disabled** `boolean` — Sets `disabled` attribute on the `input` element
+- **dropdownType** `\"popover\" | \"modal\"` _(default `'popover'`)_ — Type of the dropdown
+- **error** `React.ReactNode` — Contents of `Input.Error` component. If not set, error is not displayed.
+- **errorProps** `InputErrorProps` — Props passed down to the `Input.Error` component
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **inputContainer** `(children: ReactNode) => ReactNode` _(default `React.Fragment`)_ — Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.
+- **inputSize** `string` — HTML `size` attribute for the input element (number of visible characters)
+- **inputWrapperOrder** `(\"input\" | \"label\" | \"description\" | \"error\")[]` _(default `['label', 'description', 'input', 'error']`)_ — Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.
+- **label** `React.ReactNode` — Contents of `Input.Label` component. If not set, label is not displayed.
+- **labelProps** `InputLabelProps` — Props passed down to the `Input.Label` component
+- **labelSeparator** `string` — Separator between range value
+- **leftSection** `React.ReactNode` — Content section displayed on the left side of the input
+- **leftSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `leftSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **leftSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `leftSection` element
+- **leftSectionWidth** `React.CSSProperties[\"width\"]` — Left section width, used to set `width` of the section and input `padding-left`, by default equals to the input height
+- **loading** `boolean` _(default `false`)_ — Displays loading indicator in the left or right section
+- **loadingPosition** `\"left\" | \"right\"` _(default `'right'`)_ — Position of the loading indicator
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **modalProps** `Partial<Omit<ModalProps, \"children\">>` — Props passed down to `Modal` component
+- **nextLabel** `string` — Next button `aria-label`
+- **numberOfColumns** `number` _(default `1`)_ — Number of columns displayed next to each other
+- **onChange** `(value: DatePickerValue<Type, string>) => void` — Called when value changes
+- **onDateChange** `(date: string) => void` — Called when date changes
+- **onDropdownClose** `() => void` — Called when the dropdown is closed
+- **onNextDecade** `(date: string) => void` — Called when the next decade button is clicked
+- **onPreviousDecade** `(date: string) => void` — Called when the previous decade button is clicked
+- **placeholder** `string` — Input placeholder
+- **pointer** `boolean` _(default `false`)_ — Determines whether the input should have `cursor: pointer` style. Use when input acts as a button-like trigger (e.g., `component=\"button\"` for Select/DatePicker).
+- **popoverProps** `Partial<Omit<PopoverProps, \"children\">>` — Props passed down to `Popover` component
+- **presets** `YearPickerPreset<Type>[]` — Predefined values to pick from
+- **previousLabel** `string` — Previous button `aria-label`
+- **radius** `MantineRadius | number` _(default `theme.defaultRadius`)_ — Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem
+- **readOnly** `boolean` — If set, the component value cannot be changed by the user
+- **required** `boolean` _(default `false`)_ — Adds required attribute to the input and a red asterisk on the right side of label
+- **rightSection** `React.ReactNode` — Content section displayed on the right side of the input
+- **rightSectionPointerEvents** `React.CSSProperties[\"pointerEvents\"]` _(default `'none'`)_ — Sets `pointer-events` styles on the `rightSection` element. Use `'all'` when section contains interactive elements (buttons, links).
+- **rightSectionProps** `React.ComponentProps<\"div\">` — Props passed down to the `rightSection` element
+- **rightSectionWidth** `React.CSSProperties[\"width\"]` — Right section width, used to set `width` of the section and input `padding-right`, by default equals to the input height
+- **size** `MantineSize` — Component size
+- **sortDates** `boolean` _(default `true`)_ — Determines whether dates values should be sorted before `onChange` call, only applicable with type=\"multiple\"
+- **success** `React.ReactNode` — Contents of `Input.Success` component. If not set, success is not displayed.
+- **successProps** `InputSuccessProps & DataAttributes` — Props passed down to the `Input.Success` component
+- **type** `\"range\" | \"multiple\" | \"default\"` — Picker type: range, multiple or default
+- **value** `DateValue | DatesRangeValue<DateValue> | DateValue[]` — Value for controlled component
+- **valueFormat** `string` _(default `\"YYYY\"`)_ — `dayjs` format to display input value
+- **valueFormatter** `DateFormatter` — A function to format selected dates values into a string. By default, date is formatted based on the input type.
+- **withAsterisk** `boolean` _(default `false`)_ — If set, the required asterisk is displayed next to the label. Overrides `required` prop. Does not add required attribute to the input.
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **withErrorStyles** `boolean` _(default `true`)_ — Determines whether the input should have red border and red text color when the `error` prop is set
+- **withSuccessStyles** `boolean` _(default `true`)_ — Determines whether the input should have green border when the `success` prop is set
+- **wrapperProps** `WrapperProps` — Props passed down to the root element
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory (f/controlled YearPickerInput))
@@ -1428,15 +1459,16 @@ Optional leading props map; remaining args are children."
   "YearsList
 
 Props (docgen 9.4.1):
-  decade (string) REQUIRED — Decade value to display
-  fullWidth (boolean) [default false] — Determines whether the list should take the full width of its container
-  getYearControlProps ((date: string) => Partial<PickerControlProps> & DataAttributes) — Passes props down to year picker control based on date
-  locale (string) — Dayjs locale, defaults to value defined in DatesProvider
-  maxDate (string | Date) — Maximum possible date in <code>YYYY-MM-DD</code> format or Date object
-  minDate (string | Date) — Minimum possible date in <code>YYYY-MM-DD</code> format or Date object
-  size (MantineSize) — Component size
-  withCellSpacing (boolean) [default true] — Determines whether controls should be separated
-  yearsListFormat (string) [default 'YYYY'] — dayjs format for years list
+
+- **decade** `string` **(required)** — Decade value to display
+- **fullWidth** `boolean` _(default `false`)_ — Determines whether the list should take the full width of its container
+- **getYearControlProps** `(date: string) => Partial<PickerControlProps> & DataAttributes` — Passes props down to year picker control based on date
+- **locale** `string` — Dayjs locale, defaults to value defined in DatesProvider
+- **maxDate** `string | Date` — Maximum possible date in `YYYY-MM-DD` format or Date object
+- **minDate** `string | Date` — Minimum possible date in `YYYY-MM-DD` format or Date object
+- **size** `MantineSize` — Component size
+- **withCellSpacing** `boolean` _(default `true`)_ — Determines whether controls should be separated
+- **yearsListFormat** `string` _(default `'YYYY'`)_ — dayjs format for years list
 
 Optional leading props map; remaining args are children."
   #?(:cljs (f/factory YearsList)
