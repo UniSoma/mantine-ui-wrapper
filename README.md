@@ -86,7 +86,11 @@ Conventions:
   `(mc/raw (clj->js m))` or the `:&` escape hatch (plain `clj->js`, hyphens
   preserved).
 - Hooks return raw JS, unconverted; destructure tuples positionally.
-- Polymorphic components accept `:component` (`{:component "a" :href …}`).
+- Polymorphic components accept `:component` (`{:component "a" :href …}`). To pass the
+  underlying Mantine component of another wrapper into such a slot (or for interop a
+  wrapper does not cover), use `(mantine.interop/raw-component mc/anchor)` — it returns
+  the raw React component from any wrapper var, reading through the controlled-input
+  shim so curated inputs (e.g. `mc/text-input`) yield the true component.
 - Imperative packages (`notifications`, `modals`, `spotlight`) expose both a provider and
   call functions (`mn/show`, `mm/open`/`mm/close`, `ms/toggle`).
 - Every `def`'s docstring carries the Mantine.dev URL and full prop table.

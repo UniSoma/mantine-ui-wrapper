@@ -18,18 +18,39 @@
                     {:wrapper wrapper-name}))))
 
 #?(:cljs
+   (def ^:private raw-key
+     "String JS property key under which a wrapper fn carries its underlying Mantine
+     component, so mantine.interop/raw-component can reach it. :advanced-safe."
+     "mantine$raw"))
+
+#?(:cljs
+   (defn component-of
+     "The raw Mantine component tagged on `wrapper` by `factory`, or nil if `wrapper`
+     is not one of our wrappers. Backs mantine.interop/raw-component."
+     [wrapper]
+     (when (fn? wrapper) (unchecked-get wrapper raw-key))))
+
+#?(:cljs
    (defn factory
      "Wrap a React component in a variadic CLJS factory. The optional leading props
      map is detected with map? — (button \"Click\") and (button {:color \"teal\"} \"Click\")
-     both work; everything after the props is children."
+     both work; everything after the props is children.
+
+     Tags the returned fn with its underlying Mantine component (JS prop `mantine$raw`)
+     so raw-component can recover it. If `component` is itself a tagged shim (from
+     `controlled`), the tag is read through so the true component — not the shim — is
+     recorded."
      [component]
-     (fn [& args]
-       (let [[props children] (if (map? (first args))
-                                [(first args) (rest args)]
-                                [nil args])]
-         (.apply react/createElement nil
-                 (.concat #js [component (p/convert props)]
-                          (p/convert-children children)))))))
+     (let [raw (or (component-of component) component)
+           wrapper (fn [& args]
+                     (let [[props children] (if (map? (first args))
+                                              [(first args) (rest args)]
+                                              [nil args])]
+                       (.apply react/createElement nil
+                               (.concat #js [component (p/convert props)]
+                                        (p/convert-children children)))))]
+       (unchecked-set wrapper raw-key raw)
+       wrapper)))
 
 #?(:cljs
    (defn- change-event-value
@@ -46,25 +67,31 @@
      state that is updated synchronously on change (so the cursor doesn't jump when the
      owner re-renders asynchronously) and re-synced when the external :value prop
      changes. Uncontrolled usage (no :value) passes straight through. Value + onChange
-     only — not a form abstraction."
+     only — not a form abstraction.
+
+     Tags the returned shim with the underlying `component` (JS prop `mantine$raw`) so
+     `factory` records the true Mantine component, not this shim, for raw-component."
      [component]
-     (fn [^js js-props]
-       (let [ext (.-value js-props)
-             controlled? (not (undefined? ext))
-             [local set-local] (react/useState ext)
-             last-ext (react/useRef ext)]
-         ;; external value changed -> adopt it (React render-phase state adjustment)
-         (when (and controlled? (not= ext (.-current last-ext)))
-           (set! (.-current last-ext) ext)
-           (set-local ext))
-         (if-not controlled?
-           (react/createElement component js-props)
-           (let [user-on-change (.-onChange js-props)]
-             (react/createElement
-              component
-              (js/Object.assign
-               #js {} js-props
-               #js {:value (if (undefined? local) "" local)
-                    :onChange (fn [e]
-                                (set-local (change-event-value e))
-                                (when user-on-change (user-on-change e)))}))))))))
+     (let [shim
+           (fn [^js js-props]
+             (let [ext (.-value js-props)
+                   controlled? (not (undefined? ext))
+                   [local set-local] (react/useState ext)
+                   last-ext (react/useRef ext)]
+               ;; external value changed -> adopt it (React render-phase state adjustment)
+               (when (and controlled? (not= ext (.-current last-ext)))
+                 (set! (.-current last-ext) ext)
+                 (set-local ext))
+               (if-not controlled?
+                 (react/createElement component js-props)
+                 (let [user-on-change (.-onChange js-props)]
+                   (react/createElement
+                    component
+                    (js/Object.assign
+                     #js {} js-props
+                     #js {:value (if (undefined? local) "" local)
+                          :onChange (fn [e]
+                                      (set-local (change-event-value e))
+                                      (when user-on-change (user-on-change e)))}))))))]
+       (unchecked-set shim raw-key component)
+       shim)))

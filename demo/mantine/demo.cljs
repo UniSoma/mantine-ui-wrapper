@@ -13,6 +13,7 @@
             [mantine.dropzone :as mdz]
             [mantine.form :as mfrm]
             [mantine.hooks :as mh]
+            [mantine.interop :as mi]
             [mantine.notifications :as mn]
             [mantine.schedule :as msch]
             [mantine.modals :as mm]
@@ -77,6 +78,16 @@
        (mc/button
         {:id "btn-anchor" :component "a" :href "https://mantine.dev" :variant "outline"}
         "Polymorphic anchor button")
+
+       ;; interop: raw-component recovers a wrapper's underlying Mantine component for
+       ;; slot props. Here Button renders as Mantine's Anchor (real core component,
+       ;; not our factory fn) via the :component slot.
+       (mc/button
+        {:id "btn-raw-component"
+         :component (mi/raw-component mc/anchor)
+         :href "https://mantine.dev"
+         :variant "subtle"}
+        "raw-component -> Anchor")
 
        ;; controlled input through the controlled shim
        (mc/text-input
