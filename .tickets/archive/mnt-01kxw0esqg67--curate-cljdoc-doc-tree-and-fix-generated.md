@@ -1,12 +1,13 @@
 ---
 id: mnt-01kxw0esqg67
 title: Curate cljdoc doc tree and fix generated-docstring Markdown rendering
-status: in_progress
+status: closed
 type: task
 priority: 2
 mode: hitl
 created: '2026-07-19T01:39:38.864133394Z'
-updated: '2026-07-20T13:06:53.441508580Z'
+updated: '2026-07-20T14:12:54.287812953Z'
+closed: '2026-07-20T14:12:54.287812953Z'
 tags:
 - codegen
 - docs
@@ -19,7 +20,7 @@ acceptance:
     - `mantine.impl.*` implementation namespaces are excluded from the cljdoc API section.
     - Docstring change is produced through codegen (`bb generate` / `codegen/plan.clj`), not hand-edited into generated files, and existing codegen tests still pass.
     - A rebuilt cljdoc SNAPSHOT (via the `bb cljdoc` task) reflects the fixes.
-  done: false
+  done: true
 ---
 
 ## Description
@@ -80,3 +81,7 @@ Implemented per settled design:
 VERIFIED: bb plan-test 27 tests/78 assertions 0 fail; bb generate regenerated 9 ns; bb jvm-load OK; no <code> leftover in any generated ns; stray-backtick prop (DateTimePicker.defaultTimeValue) neutralized (escaped + balanced span, no doc-eating open span).
 
 REMAINING (user-gated): 'bb cljdoc' rebuild reflects fixes only after a new SNAPSHOT is DEPLOYED to Clojars (analysis is cached against the deployed artifact). That is an outward publish step — awaiting go-ahead. Generated sources also need committing for bb drift to pass.
+
+**2026-07-20T14:12:54.287812953Z**
+
+done

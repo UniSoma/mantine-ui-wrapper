@@ -1,6 +1,7 @@
 # mantine-ui-wrapper
 
 [![Clojars Project](https://img.shields.io/clojars/v/io.github.unisoma/mantine-ui-wrapper.svg)](https://clojars.org/io.github.unisoma/mantine-ui-wrapper)
+[![cljdoc](https://cljdoc.org/badge/io.github.unisoma/mantine-ui-wrapper)](https://cljdoc.org/d/io.github.unisoma/mantine-ui-wrapper/CURRENT)
 [![Mantine](https://img.shields.io/github/package-json/dependency-version/UniSoma/mantine-ui-wrapper/dev/@mantine/core?label=Mantine&color=339af0)](https://mantine.dev)
 [![CI](https://github.com/UniSoma/mantine-ui-wrapper/actions/workflows/ci.yml/badge.svg)](https://github.com/UniSoma/mantine-ui-wrapper/actions/workflows/ci.yml)
 
