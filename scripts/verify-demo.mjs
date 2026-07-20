@@ -65,6 +65,10 @@ try {
   assert(anchor.tagName === 'A' && anchor.getAttribute('href') === 'https://mantine.dev',
     'polymorphic :component "a" renders an anchor with href');
 
+  const noConvert = doc.getElementById('no-convert-demo');
+  assert(noConvert && noConvert.style.fontWeight === '700',
+    'mi/no-convert passes a raw JS style object through untouched');
+
   const badges = await poll('badges rendered', () => {
     const b = doc.querySelectorAll('[id^="badge-"]');
     return b.length === 3 ? b : null;

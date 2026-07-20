@@ -3,7 +3,16 @@
   reaching past the wrappers to the underlying Mantine primitives when a wrapper
   does not cover some interop — e.g. passing a component to a slot prop like
   `:component`."
-  (:require [mantine.impl.factory :as f]))
+  (:require [mantine.impl.factory :as f]
+            #?(:cljs [mantine.impl.props :as p])))
+
+(def no-convert
+  "Tag a value so the props converter passes it through untouched (kept as-is
+  CLJS) instead of deep-converting it. Honored at any depth. A wrapper VALUE,
+  not metadata — it survives merge/select-keys/map rebuilds. The general opt-out
+  for raw-CLJS payloads; :inner-props gets this treatment automatically."
+  #?(:cljs p/no-convert
+     :clj (f/not-implemented "mantine.interop/no-convert")))
 
 (def raw-component
   "Given a wrapper var from any generated namespace (e.g. `mc/button`,

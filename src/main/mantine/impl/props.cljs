@@ -12,7 +12,7 @@
     (React elements, fns, primitives, #js values) passes through untouched;
     keyword VALUES are NOT stringified (convert is not clj->js).
   - Raw passthrough opt-outs: keys in `raw-value-keys` (:inner-props) camelize but
-    their VALUES stay untouched CLJS; `(raw v)` tags any value to skip conversion
+    their VALUES stay untouched CLJS; `(no-convert v)` tags any value to skip conversion
     at any depth — a wrapper VALUE, so it survives merge/select-keys/map rebuilds.
   - :style / inner style maps: keys camelCased, --* verbatim, values passthrough.
   - class values (top-level :class/:className + classNames members): string or
@@ -33,11 +33,11 @@
 
 (deftype Raw [v])
 
-(defn raw
+(defn no-convert
   "Tag a value so `convert` emits it untouched (kept as-is, e.g. a raw CLJS map)
   instead of deep-converting it. Honored at any depth. A wrapper VALUE, not
-  metadata — it survives merge/select-keys/map rebuilds. Hoisted into
-  mantine.core/raw for consumers."
+  metadata — it survives merge/select-keys/map rebuilds. Delegated to by
+  mantine.interop/no-convert for consumers."
   [x]
   (->Raw x))
 

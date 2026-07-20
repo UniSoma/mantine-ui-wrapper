@@ -15,8 +15,7 @@
   (:refer-clojure :exclude [rem])
   (:require
    [mantine.impl.factory :as f]
-   #?@(:cljs [[mantine.impl.props :as p]
-              ["@mantine/core" :as mantine-core
+   #?@(:cljs [["@mantine/core" :as mantine-core
                :refer [AccordionChevron AccordionPanel ActionIconGroupSection AppShellMain
                        Box ComboboxChevron ComboboxClearButton ComboboxEmpty
                        ComboboxFooter ComboboxHeader ComboboxHiddenInput ComboboxOptions
@@ -74,14 +73,6 @@
   or string; returns a rem string)."
   #?(:cljs mantine-core/rem
      :clj (f/not-implemented "mantine.core/rem")))
-
-(def raw
-  "Tag a value so the props converter passes it through untouched (kept as-is
-  CLJS) instead of deep-converting it. Honored at any depth. A wrapper VALUE,
-  not metadata — it survives merge/select-keys/map rebuilds. The general opt-out
-  for raw-CLJS payloads; :inner-props gets this treatment automatically."
-  #?(:cljs p/raw
-     :clj (f/not-implemented "mantine.core/raw")))
 
 ;; ---- hooks (raw passthrough) ----
 

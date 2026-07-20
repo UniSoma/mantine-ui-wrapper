@@ -102,7 +102,7 @@
 
 ;; ---------------------------------------------------------------------------
 ;; Deep-by-default (ADR 0006): nested maps and vectors-of-maps convert at every
-;; depth; :inner-props denylisted; `raw` wrapper opts any value out.
+;; depth; :inner-props denylisted; `no-convert` wrapper opts any value out.
 ;; ---------------------------------------------------------------------------
 
 (deftest nested-maps-convert-recursively
@@ -133,16 +133,16 @@
     (is (identical? payload (gobj/get o "innerProps")) "value is the untouched CLJS map")
     (is (= 7 (:app/id (gobj/get o "innerProps"))) "qualified keyword lookup still works")))
 
-(deftest raw-wrapper-skips-conversion-at-any-depth
+(deftest no-convert-wrapper-skips-conversion-at-any-depth
   (let [payload {:qualified/key 1}
-        o (p/convert {:payload (p/raw payload)
-                      :nested {:inner (p/raw payload)}})]
+        o (p/convert {:payload (p/no-convert payload)
+                      :nested {:inner (p/no-convert payload)}})]
     (is (identical? payload (gobj/get o "payload")) "top-level raw value untouched")
     (is (identical? payload (gobj/getValueByKeys o "nested" "inner")) "raw honored below top level")))
 
 (deftest raw-wrapper-survives-merge-and-select-keys
   (let [payload {:qualified/key 1}
-        assembled (-> (merge {:payload (p/raw payload)} {:other 2})
+        assembled (-> (merge {:payload (p/no-convert payload)} {:other 2})
                       (select-keys [:payload]))
         o (p/convert assembled)]
     (is (identical? payload (gobj/get o "payload"))

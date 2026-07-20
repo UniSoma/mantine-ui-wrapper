@@ -89,6 +89,14 @@
          :variant "subtle"}
         "raw-component -> Anchor")
 
+       ;; interop: no-convert tags a value so the converter emits it untouched.
+       ;; Here a pre-built raw JS style object is passed through as-is (bypassing
+       ;; the usual :style CLJS handling).
+       (mc/text
+        {:id "no-convert-demo"
+         :style (mi/no-convert #js {:fontWeight 700})}
+        "no-convert passthrough")
+
        ;; controlled input through the controlled shim
        (mc/text-input
         {:id "input-name"
