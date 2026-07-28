@@ -67,6 +67,15 @@
           "name": "boolean"
         }
       },
+      "disableCollapse": {
+        "defaultValue": "false",
+        "description": "If set, the open item cannot be collapsed by clicking it again, so one item always stays open. Only applies when <code>multiple</code> is <code>false</code>.",
+        "name": "disableCollapse",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "keepMounted": {
         "defaultValue": "true",
         "description": "If set to <code>false</code>, panels are unmounted when collapsed. By default, panels stay mounted when collapsed.",
@@ -74,6 +83,27 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "keepMountedMode": {
+        "defaultValue": "'activity'",
+        "description": "Controls how inactive panels content is hidden when <code>keepMounted</code> is <code>true</code>, <code>'activity'</code> – hidden with <code>Activity</code> component, <code>'display-none'</code> – hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
         }
       },
       "loop": {
@@ -1996,6 +2026,790 @@
       }
     }
   },
+  "Cascader": {
+    "props": {
+      "allowDeselect": {
+        "defaultValue": "true",
+        "description": "If set, the selected value can be deselected by selecting it again",
+        "name": "allowDeselect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "changeOnSelect": {
+        "defaultValue": "false",
+        "description": "If set, any intermediate option can be selected, not only leaf options",
+        "name": "changeOnSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "checkIconPosition": {
+        "defaultValue": "'right'",
+        "description": "Position of the check icon relative to the option label",
+        "name": "checkIconPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\"",
+          "raw": "\"left\" | \"right\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            }
+          ]
+        }
+      },
+      "chevronColor": {
+        "defaultValue": null,
+        "description": "Controls the default chevron color",
+        "name": "chevronColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "clearButtonProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the clear button",
+        "name": "clearButtonProps",
+        "required": false,
+        "type": {
+          "name": "InputClearButtonProps"
+        }
+      },
+      "clearSectionMode": {
+        "defaultValue": "'both'",
+        "description": "Determines how the clear button and <code>rightSection</code> are rendered",
+        "name": "clearSectionMode",
+        "required": false,
+        "type": {
+          "name": "ClearSectionMode",
+          "raw": "ClearSectionMode | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"both\""
+            },
+            {
+              "value": "\"rightSection\""
+            },
+            {
+              "value": "\"clear\""
+            }
+          ]
+        }
+      },
+      "clearable": {
+        "defaultValue": "false",
+        "description": "If set, the clear button is displayed when a value is selected",
+        "name": "clearable",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeOnSelect": {
+        "defaultValue": null,
+        "description": "Determines whether the dropdown should be closed when a value is selected, defaults to <code>!allowDeselect</code>",
+        "name": "closeOnSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "columnWidth": {
+        "defaultValue": null,
+        "description": "Width of each column",
+        "name": "columnWidth",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "comboboxProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the underlying <code>Combobox</code> component",
+        "name": "comboboxProps",
+        "required": false,
+        "type": {
+          "name": "Record<string, any>"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Hierarchical options data",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "CascaderOption[]"
+        }
+      },
+      "defaultDropdownOpened": {
+        "defaultValue": null,
+        "description": "Uncontrolled dropdown opened state",
+        "name": "defaultDropdownOpened",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "defaultSearchValue": {
+        "defaultValue": null,
+        "description": "Uncontrolled search value",
+        "name": "defaultSearchValue",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Uncontrolled selected path from root to node",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string[] | null"
+        }
+      },
+      "description": {
+        "defaultValue": null,
+        "description": "Contents of <code>Input.Description</code> component. If not set, description is not displayed.",
+        "name": "description",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "descriptionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Description</code> component",
+        "name": "descriptionProps",
+        "required": false,
+        "type": {
+          "name": "InputDescriptionProps"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Sets <code>disabled</code> attribute on the <code>input</code> element",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "dropdownOpened": {
+        "defaultValue": null,
+        "description": "Controlled dropdown opened state",
+        "name": "dropdownOpened",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "error": {
+        "defaultValue": null,
+        "description": "Contents of <code>Input.Error</code> component. If not set, error is not displayed.",
+        "name": "error",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "errorProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Error</code> component",
+        "name": "errorProps",
+        "required": false,
+        "type": {
+          "name": "InputErrorProps"
+        }
+      },
+      "expandTrigger": {
+        "defaultValue": "'click'",
+        "description": "Determines how the next column is opened",
+        "name": "expandTrigger",
+        "required": false,
+        "type": {
+          "name": "\"hover\" | \"click\"",
+          "raw": "\"hover\" | \"click\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"hover\""
+            },
+            {
+              "value": "\"click\""
+            }
+          ]
+        }
+      },
+      "filter": {
+        "defaultValue": null,
+        "description": "Custom search filter, matched against the full option path",
+        "name": "filter",
+        "required": false,
+        "type": {
+          "name": "(query: string, options: CascaderOption[]) => boolean"
+        }
+      },
+      "formatValue": {
+        "defaultValue": null,
+        "description": "A function to format the selected path displayed in the input, should return a string",
+        "name": "formatValue",
+        "required": false,
+        "type": {
+          "name": "CascaderFormatValue"
+        }
+      },
+      "hiddenInputProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the hidden input",
+        "name": "hiddenInputProps",
+        "required": false,
+        "type": {
+          "name": "React.ComponentProps<\"input\">"
+        }
+      },
+      "inputContainer": {
+        "defaultValue": "React.Fragment",
+        "description": "Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.",
+        "name": "inputContainer",
+        "required": false,
+        "type": {
+          "name": "(children: ReactNode) => ReactNode"
+        }
+      },
+      "inputSize": {
+        "defaultValue": null,
+        "description": "HTML <code>size</code> attribute for the input element (number of visible characters)",
+        "name": "inputSize",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "inputWrapperOrder": {
+        "defaultValue": "['label', 'description', 'input', 'error']",
+        "description": "Controls order and visibility of wrapper elements. Only elements included in this array will be rendered.",
+        "name": "inputWrapperOrder",
+        "required": false,
+        "type": {
+          "name": "(\"input\" | \"label\" | \"description\" | \"error\")[]"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Contents of <code>Input.Label</code> component. If not set, label is not displayed.",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "labelProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Label</code> component",
+        "name": "labelProps",
+        "required": false,
+        "type": {
+          "name": "InputLabelProps"
+        }
+      },
+      "leftSection": {
+        "defaultValue": null,
+        "description": "Content section displayed on the left side of the input",
+        "name": "leftSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "leftSectionPointerEvents": {
+        "defaultValue": "'none'",
+        "description": "Sets <code>pointer-events</code> styles on the <code>leftSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).",
+        "name": "leftSectionPointerEvents",
+        "required": false,
+        "type": {
+          "name": "React.CSSProperties[\"pointerEvents\"]",
+          "raw": "PointerEvents | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"-moz-initial\""
+            },
+            {
+              "value": "\"inherit\""
+            },
+            {
+              "value": "\"initial\""
+            },
+            {
+              "value": "\"revert\""
+            },
+            {
+              "value": "\"revert-layer\""
+            },
+            {
+              "value": "\"unset\""
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"auto\""
+            },
+            {
+              "value": "\"all\""
+            },
+            {
+              "value": "\"fill\""
+            },
+            {
+              "value": "\"painted\""
+            },
+            {
+              "value": "\"stroke\""
+            },
+            {
+              "value": "\"visible\""
+            },
+            {
+              "value": "\"visibleFill\""
+            },
+            {
+              "value": "\"visiblePainted\""
+            },
+            {
+              "value": "\"visibleStroke\""
+            }
+          ]
+        }
+      },
+      "leftSectionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>leftSection</code> element",
+        "name": "leftSectionProps",
+        "required": false,
+        "type": {
+          "name": "React.ComponentProps<\"div\">"
+        }
+      },
+      "leftSectionWidth": {
+        "defaultValue": null,
+        "description": "Left section width, used to set <code>width</code> of the section and input <code>padding-left</code>, by default equals to the input height",
+        "name": "leftSectionWidth",
+        "required": false,
+        "type": {
+          "name": "React.CSSProperties[\"width\"]"
+        }
+      },
+      "loading": {
+        "defaultValue": "false",
+        "description": "Displays loading indicator in the left or right section",
+        "name": "loading",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "loadingPosition": {
+        "defaultValue": "'right'",
+        "description": "Position of the loading indicator",
+        "name": "loadingPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\"",
+          "raw": "\"left\" | \"right\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            }
+          ]
+        }
+      },
+      "maxDisplayedLevels": {
+        "defaultValue": "3",
+        "description": "Maximum number of columns (levels) displayed next to each other, deeper levels replace earlier ones",
+        "name": "maxDisplayedLevels",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "maxDropdownHeight": {
+        "defaultValue": "260",
+        "description": "Max height of a column before it becomes scrollable",
+        "name": "maxDropdownHeight",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "nextLevelsControlLabel": {
+        "defaultValue": "'Show next levels'",
+        "description": "<code>aria-label</code> and <code>title</code> of the control that reveals levels hidden after the visible ones by <code>maxDisplayedLevels</code>",
+        "name": "nextLevelsControlLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "nothingFoundMessage": {
+        "defaultValue": null,
+        "description": "Message displayed when there are no options or search results",
+        "name": "nothingFoundMessage",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called when the selected path changes with the path and the resolved option chain",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "(value: string[] | null, options: CascaderOption[]) => void"
+        }
+      },
+      "onClear": {
+        "defaultValue": null,
+        "description": "Called when the clear button is clicked",
+        "name": "onClear",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onDropdownClose": {
+        "defaultValue": null,
+        "description": "Called when the dropdown closes",
+        "name": "onDropdownClose",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onDropdownOpen": {
+        "defaultValue": null,
+        "description": "Called when the dropdown opens",
+        "name": "onDropdownOpen",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onSearchChange": {
+        "defaultValue": null,
+        "description": "Called when the search value changes",
+        "name": "onSearchChange",
+        "required": false,
+        "type": {
+          "name": "(value: string) => void"
+        }
+      },
+      "openOnFocus": {
+        "defaultValue": "true",
+        "description": "Opens the dropdown when the input is focused in <code>searchable</code> mode",
+        "name": "openOnFocus",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "pointer": {
+        "defaultValue": "false",
+        "description": "Determines whether the input should have <code>cursor: pointer</code> style. Use when input acts as a button-like trigger (e.g., <code>component=\"button\"</code> for Select/DatePicker).",
+        "name": "pointer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "previousLevelsControlLabel": {
+        "defaultValue": "'Show previous levels'",
+        "description": "<code>aria-label</code> and <code>title</code> of the control that reveals levels hidden before the visible ones by <code>maxDisplayedLevels</code>",
+        "name": "previousLevelsControlLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "radius": {
+        "defaultValue": "theme.defaultRadius",
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "MantineRadius | number"
+        }
+      },
+      "renderOption": {
+        "defaultValue": null,
+        "description": "Custom rendering of an option in columns",
+        "name": "renderOption",
+        "required": false,
+        "type": {
+          "name": "(option: CascaderOption, level: number) => ReactNode"
+        }
+      },
+      "renderSearchOption": {
+        "defaultValue": null,
+        "description": "Custom rendering of a search result row",
+        "name": "renderSearchOption",
+        "required": false,
+        "type": {
+          "name": "(query: string, options: CascaderOption[]) => ReactNode"
+        }
+      },
+      "required": {
+        "defaultValue": "false",
+        "description": "Adds required attribute to the input and a red asterisk on the right side of label",
+        "name": "required",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "rightSection": {
+        "defaultValue": null,
+        "description": "Content section displayed on the right side of the input",
+        "name": "rightSection",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "rightSectionPointerEvents": {
+        "defaultValue": "'none'",
+        "description": "Sets <code>pointer-events</code> styles on the <code>rightSection</code> element. Use <code>'all'</code> when section contains interactive elements (buttons, links).",
+        "name": "rightSectionPointerEvents",
+        "required": false,
+        "type": {
+          "name": "React.CSSProperties[\"pointerEvents\"]",
+          "raw": "PointerEvents | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"-moz-initial\""
+            },
+            {
+              "value": "\"inherit\""
+            },
+            {
+              "value": "\"initial\""
+            },
+            {
+              "value": "\"revert\""
+            },
+            {
+              "value": "\"revert-layer\""
+            },
+            {
+              "value": "\"unset\""
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"auto\""
+            },
+            {
+              "value": "\"all\""
+            },
+            {
+              "value": "\"fill\""
+            },
+            {
+              "value": "\"painted\""
+            },
+            {
+              "value": "\"stroke\""
+            },
+            {
+              "value": "\"visible\""
+            },
+            {
+              "value": "\"visibleFill\""
+            },
+            {
+              "value": "\"visiblePainted\""
+            },
+            {
+              "value": "\"visibleStroke\""
+            }
+          ]
+        }
+      },
+      "rightSectionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>rightSection</code> element",
+        "name": "rightSectionProps",
+        "required": false,
+        "type": {
+          "name": "React.ComponentProps<\"div\">"
+        }
+      },
+      "rightSectionWidth": {
+        "defaultValue": null,
+        "description": "Right section width, used to set <code>width</code> of the section and input <code>padding-right</code>, by default equals to the input height",
+        "name": "rightSectionWidth",
+        "required": false,
+        "type": {
+          "name": "React.CSSProperties[\"width\"]"
+        }
+      },
+      "scrollAreaProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the dropdown <code>ScrollArea</code>",
+        "name": "scrollAreaProps",
+        "required": false,
+        "type": {
+          "name": "ScrollAreaProps"
+        }
+      },
+      "searchValue": {
+        "defaultValue": null,
+        "description": "Controlled search value",
+        "name": "searchValue",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "searchable": {
+        "defaultValue": "false",
+        "description": "If set, options can be searched by their flattened paths",
+        "name": "searchable",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "separator": {
+        "defaultValue": "'/'",
+        "description": "Path separator displayed in the input and search results",
+        "name": "separator",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "size": {
+        "defaultValue": "'sm'",
+        "description": "Controls input <code>height</code>, horizontal <code>padding</code>, and <code>font-size</code>",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "MantineSize"
+        }
+      },
+      "success": {
+        "defaultValue": null,
+        "description": "Contents of <code>Input.Success</code> component. If not set, success is not displayed.",
+        "name": "success",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "successProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Input.Success</code> component",
+        "name": "successProps",
+        "required": false,
+        "type": {
+          "name": "InputSuccessProps & DataAttributes"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Controlled selected path from root to node",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string[] | null"
+        }
+      },
+      "withAsterisk": {
+        "defaultValue": "false",
+        "description": "If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input.",
+        "name": "withAsterisk",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withCheckIcon": {
+        "defaultValue": "true",
+        "description": "If set, the check icon is displayed on the selected option",
+        "name": "withCheckIcon",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withColumns": {
+        "defaultValue": "true",
+        "description": "Renders the dropdown as cascading columns. When <code>false</code>, options are rendered as a flat list of paths, the same way as search results (useful for narrow/mobile layouts)",
+        "name": "withColumns",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withErrorStyles": {
+        "defaultValue": "true",
+        "description": "Determines whether the input should have red border and red text color when the <code>error</code> prop is set",
+        "name": "withErrorStyles",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withSuccessStyles": {
+        "defaultValue": "true",
+        "description": "Determines whether the input should have green border when the <code>success</code> prop is set",
+        "name": "withSuccessStyles",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "wrapperProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the root element",
+        "name": "wrapperProps",
+        "required": false,
+        "type": {
+          "name": "WrapperProps"
+        }
+      }
+    }
+  },
   "Center": {
     "props": {
       "children": {
@@ -2430,6 +3244,27 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "keepMountedMode": {
+        "defaultValue": "'activity'",
+        "description": "Controls how the element is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> – hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> – hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
         }
       },
       "onTransitionEnd": {
@@ -5163,6 +5998,27 @@
           "name": "boolean"
         }
       },
+      "keepMountedMode": {
+        "defaultValue": "'activity'",
+        "description": "Controls how the modal/drawer is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> - hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> - hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
+        }
+      },
       "lockScroll": {
         "defaultValue": "true",
         "description": "If set, scroll is locked when <code>opened={true}</code>",
@@ -6344,6 +7200,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "dimensions": {
+        "defaultValue": null,
+        "description": "Dimensions configuration for resizable floating window",
+        "name": "dimensions",
+        "required": false,
+        "type": {
+          "name": "FloatingWindowDimensions"
         }
       },
       "dragHandleSelector": {
@@ -10649,6 +11514,27 @@
           "name": "boolean"
         }
       },
+      "keepMountedMode": {
+        "defaultValue": "'activity'",
+        "description": "Controls how the modal/drawer is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> - hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> - hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
+        }
+      },
       "lockScroll": {
         "defaultValue": "true",
         "description": "If set, scroll is locked when <code>opened={true}</code>",
@@ -10912,6 +11798,27 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "keepMountedMode": {
+        "defaultValue": "activity",
+        "description": "Controls how the modal/drawer is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> - hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> - hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
         }
       },
       "lockScroll": {
@@ -16267,6 +17174,27 @@
           ]
         }
       },
+      "verticalScrollbarPosition": {
+        "defaultValue": null,
+        "description": "Pins the vertical scrollbar to a physical side (<code>left</code> or <code>right</code>) regardless of direction.\nBy default, the scrollbar follows the inline-end edge (right in LTR, left in RTL).",
+        "name": "verticalScrollbarPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\"",
+          "raw": "\"left\" | \"right\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            }
+          ]
+        }
+      },
       "viewportProps": {
         "defaultValue": null,
         "description": "Props passed down to the viewport element",
@@ -16423,6 +17351,27 @@
             },
             {
               "value": "\"never\""
+            }
+          ]
+        }
+      },
+      "verticalScrollbarPosition": {
+        "defaultValue": null,
+        "description": "Pins the vertical scrollbar to a physical side (<code>left</code> or <code>right</code>) regardless of direction.\nBy default, the scrollbar follows the inline-end edge (right in LTR, left in RTL).",
+        "name": "verticalScrollbarPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\"",
+          "raw": "\"left\" | \"right\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
             }
           ]
         }
@@ -21235,7 +22184,7 @@
       },
       "keepMountedMode": {
         "defaultValue": "activity",
-        "description": "Controls how the element is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> – hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> – hidden with <code>display: none</code> styles",
+        "description": "Controls how the element is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> - hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> - hidden with <code>display: none</code> styles",
         "name": "keepMountedMode",
         "required": false,
         "type": {
@@ -22847,6 +23796,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withWeekNumbers": {
         "defaultValue": "false",
         "description": "Determines whether week numbers should be displayed",
@@ -22872,6 +23830,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -23034,6 +24001,15 @@
           ]
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withNext": {
         "defaultValue": "true",
         "description": "Determines whether next control should be rendered",
@@ -23050,6 +24026,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -24067,6 +25052,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withNext": {
         "defaultValue": "true",
         "description": "Determines whether next control should be rendered",
@@ -24137,6 +25131,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -24737,6 +25740,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withWeekNumbers": {
         "defaultValue": "false",
         "description": "Determines whether week numbers should be displayed",
@@ -24762,6 +25774,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -25878,6 +26899,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withSuccessStyles": {
         "defaultValue": "true",
         "description": "Determines whether the input should have green border when the <code>success</code> prop is set",
@@ -25921,6 +26951,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -27019,6 +28058,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withSeconds": {
         "defaultValue": "false",
         "description": "Determines whether the seconds input should be displayed",
@@ -27071,6 +28119,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -27428,6 +28485,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withNext": {
         "defaultValue": "true",
         "description": "Determines whether next control should be rendered",
@@ -27453,6 +28519,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -27660,6 +28735,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "yearsListFormat": {
         "defaultValue": "'YYYY'",
         "description": "dayjs format for years list",
@@ -27667,6 +28751,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -28391,6 +29484,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withSeconds": {
         "defaultValue": "false",
         "description": "Determines whether the seconds input should be displayed",
@@ -28425,6 +29527,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -29193,6 +30304,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withNext": {
         "defaultValue": "true",
         "description": "Determines whether next control should be rendered",
@@ -29218,6 +30338,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -29560,6 +30689,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withWeekNumbers": {
         "defaultValue": "false",
         "description": "Determines whether week numbers should be displayed",
@@ -29567,6 +30705,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -29955,6 +31102,15 @@
         "defaultValue": "true",
         "description": "Determines whether controls should be separated",
         "name": "withCellSpacing",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
         "required": false,
         "type": {
           "name": "boolean"
@@ -30871,6 +32027,15 @@
         "defaultValue": "true",
         "description": "Determines whether the input should have red border and red text color when the <code>error</code> prop is set",
         "name": "withErrorStyles",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
         "required": false,
         "type": {
           "name": "boolean"
@@ -33676,6 +34841,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withNext": {
         "defaultValue": "true",
         "description": "Determines whether next control should be rendered",
@@ -33710,6 +34884,15 @@
         "required": false,
         "type": {
           "name": "string | ((date: string) => string)"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -33926,6 +35109,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "year": {
         "defaultValue": null,
         "description": "Displayed year",
@@ -33942,6 +35134,15 @@
         "required": false,
         "type": {
           "name": "string | ((date: string) => string)"
+        }
+      },
+      "yearsSelectRange": {
+        "defaultValue": null,
+        "description": "Year range for native level select, tuple of <code>[startYear, endYear]</code>. Defaults to <code>[currentYear - 100, currentYear + 50]</code> or values derived from <code>minDate</code>/<code>maxDate</code> if set.",
+        "name": "yearsSelectRange",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
         }
       }
     }
@@ -34213,6 +35414,15 @@
         "defaultValue": "true",
         "description": "Determines whether controls should be separated",
         "name": "withCellSpacing",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
         "required": false,
         "type": {
           "name": "boolean"
@@ -35008,6 +36218,15 @@
           "name": "boolean"
         }
       },
+      "withNativeLevelSelect": {
+        "defaultValue": "false",
+        "description": "Determines whether level select controls should be rendered as native <code><select></code> elements",
+        "name": "withNativeLevelSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withSuccessStyles": {
         "defaultValue": "true",
         "description": "Determines whether the input should have green border when the <code>success</code> prop is set",
@@ -35145,6 +36364,15 @@
   },
   "AreaChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "activeDotProps": {
         "defaultValue": null,
         "description": "Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.",
@@ -35170,6 +36398,15 @@
         "required": false,
         "type": {
           "name": "((series: AreaChartSeries) => Partial<Omit<Props<any, any>, \"ref\">>) | Partial<Omit<Props<any, any>, \"ref\">>"
+        }
+      },
+      "brushProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Brush</code> component",
+        "name": "brushProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
         }
       },
       "children": {
@@ -35508,6 +36745,15 @@
           "name": "(value: number) => string"
         }
       },
+      "withBrush": {
+        "defaultValue": null,
+        "description": "Determines whether a brush (range selector) should be displayed under the chart, <code>false</code> by default",
+        "name": "withBrush",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withDots": {
         "defaultValue": "true",
         "description": "Determines whether dots should be displayed",
@@ -35620,6 +36866,15 @@
   },
   "BarChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "barChartProps": {
         "defaultValue": null,
         "description": "Props passed down to recharts <code>BarChart</code> component",
@@ -35645,6 +36900,15 @@
         "required": false,
         "type": {
           "name": "((series: BarChartSeries) => Partial<Omit<Props, \"ref\">>) | Partial<Omit<Props, \"ref\">>"
+        }
+      },
+      "brushProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Brush</code> component",
+        "name": "brushProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
         }
       },
       "children": {
@@ -35956,6 +37220,15 @@
           "name": "boolean"
         }
       },
+      "withBrush": {
+        "defaultValue": null,
+        "description": "Determines whether a brush (range selector) should be displayed under the chart, <code>false</code> by default",
+        "name": "withBrush",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withLegend": {
         "defaultValue": null,
         "description": "Determines whether chart legend should be displayed, <code>false</code> by default",
@@ -36153,6 +37426,15 @@
   },
   "BubbleChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "color": {
         "defaultValue": "blue.6",
         "description": "Color of the chart items. Key of <code>theme.colors</code> or any valid CSS color.",
@@ -36280,6 +37562,152 @@
         }
       }
     }
+  },
+  "BulletChart": {
+    "props": {
+      "barColor": {
+        "defaultValue": "'white'",
+        "description": "Color of the actual value bar,",
+        "name": "barColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "barSize": {
+        "defaultValue": "16",
+        "description": "Height of the actual value bar,",
+        "name": "barSize",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "getTooltipLabel": {
+        "defaultValue": null,
+        "description": "Custom tooltip content",
+        "name": "getTooltipLabel",
+        "required": false,
+        "type": {
+          "name": "((data: { value: number; target?: number; }) => ReactNode) | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label displayed next to the chart",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "orientation": {
+        "defaultValue": "'horizontal'",
+        "description": "Orientation,",
+        "name": "orientation",
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\"",
+          "raw": "\"horizontal\" | \"vertical\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"horizontal\""
+            },
+            {
+              "value": "\"vertical\""
+            }
+          ]
+        }
+      },
+      "ranges": {
+        "defaultValue": null,
+        "description": "Qualitative ranges displayed as background bands",
+        "name": "ranges",
+        "required": true,
+        "type": {
+          "name": "BulletChartRange[]"
+        }
+      },
+      "size": {
+        "defaultValue": "32",
+        "description": "Height of the chart track area (ranges),",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "Target value, displayed as a marker line",
+        "name": "target",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "targetColor": {
+        "defaultValue": "'dark' for light, 'white' for dark",
+        "description": "Color of the target marker,",
+        "name": "targetColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "targetRatio": {
+        "defaultValue": "0.7",
+        "description": "Target marker size relative to chart size,",
+        "name": "targetRatio",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "targetSize": {
+        "defaultValue": "2",
+        "description": "Target marker thickness,",
+        "name": "targetSize",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Current actual value",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "valueFormatter": {
+        "defaultValue": null,
+        "description": "Value formatter for tooltip/display and labels",
+        "name": "valueFormatter",
+        "required": false,
+        "type": {
+          "name": "(value: number) => string"
+        }
+      },
+      "withTooltip": {
+        "defaultValue": "false",
+        "description": "Whether to show tooltip on hover,",
+        "name": "withTooltip",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
+  "ChartBrush": {
+    "description": "",
+    "props": {}
   },
   "ChartLegend": {
     "props": {
@@ -36444,6 +37872,15 @@
   },
   "CompositeChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "activeDotProps": {
         "defaultValue": null,
         "description": "Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.",
@@ -36469,6 +37906,15 @@
         "required": false,
         "type": {
           "name": "Partial<Omit<Props, \"ref\">> | ((series: CompositeChartSeries) => Partial<Omit<Props, \"ref\">>)"
+        }
+      },
+      "brushProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Brush</code> component",
+        "name": "brushProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
         }
       },
       "children": {
@@ -36777,6 +38223,15 @@
           "name": "boolean"
         }
       },
+      "withBrush": {
+        "defaultValue": null,
+        "description": "Determines whether a brush (range selector) should be displayed under the chart, <code>false</code> by default",
+        "name": "withBrush",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withDots": {
         "defaultValue": "true",
         "description": "Determines whether dots should be displayed",
@@ -36880,6 +38335,15 @@
   },
   "DonutChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "cellProps": {
         "defaultValue": null,
         "description": "Props passed down to each segment of the chart",
@@ -37127,6 +38591,15 @@
   },
   "FunnelChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "children": {
         "defaultValue": null,
         "description": "Additional elements rendered inside <code>FunnelChart</code> component",
@@ -37437,6 +38910,27 @@
           "name": "string[]"
         }
       },
+      "monthLabelsPosition": {
+        "defaultValue": "'top'",
+        "description": "Month labels position relative to the heatmap",
+        "name": "monthLabelsPosition",
+        "required": false,
+        "type": {
+          "name": "\"bottom\" | \"top\"",
+          "raw": "\"bottom\" | \"top\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"top\""
+            }
+          ]
+        }
+      },
       "monthsLabelsHeight": {
         "defaultValue": "30",
         "description": "Height of month labels row",
@@ -37558,6 +39052,15 @@
   },
   "LineChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "activeDotProps": {
         "defaultValue": null,
         "description": "Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.",
@@ -37565,6 +39068,15 @@
         "required": false,
         "type": {
           "name": "MantineChartDotProps"
+        }
+      },
+      "brushProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Brush</code> component",
+        "name": "brushProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
         }
       },
       "children": {
@@ -37906,6 +39418,15 @@
           "name": "(value: number) => string"
         }
       },
+      "withBrush": {
+        "defaultValue": null,
+        "description": "Determines whether a brush (range selector) should be displayed under the chart, <code>false</code> by default",
+        "name": "withBrush",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withDots": {
         "defaultValue": "true",
         "description": "Determines whether dots should be displayed",
@@ -38009,6 +39530,15 @@
   },
   "PieChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "cellProps": {
         "defaultValue": null,
         "description": "Props passed down to each segment of the chart",
@@ -38299,6 +39829,15 @@
   },
   "RadarChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "activeDotProps": {
         "defaultValue": null,
         "description": "Props passed down to all active dots. Ignored if <code>withDots={false}</code> is set.",
@@ -38501,6 +40040,15 @@
   },
   "RadialBarChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "barSize": {
         "defaultValue": null,
         "description": "Size of bars in px, <code>20</code> by default",
@@ -38788,6 +40336,15 @@
   },
   "ScatterChart": {
     "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "data": {
         "defaultValue": null,
         "description": "Data that is used to build the chart",
@@ -39225,6 +40782,145 @@
         "defaultValue": "true",
         "description": "Determines whether the chart fill should be a gradient",
         "name": "withGradient",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
+  "SunburstChart": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Additional elements rendered inside <code>SunburstChart</code> component",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Data used to render chart",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "SunburstChartData[]"
+        }
+      },
+      "dataKey": {
+        "defaultValue": "'value'",
+        "description": "Key in data object for the value",
+        "name": "dataKey",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "endAngle": {
+        "defaultValue": "360",
+        "description": "Angle in degrees at which the chart should end",
+        "name": "endAngle",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "gap": {
+        "defaultValue": "1",
+        "description": "Gap between sectors and rings in px",
+        "name": "gap",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "innerRadius": {
+        "defaultValue": "50",
+        "description": "Controls the radius of the inner circle at the center of the chart",
+        "name": "innerRadius",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "size": {
+        "defaultValue": "300",
+        "description": "Controls chart width and height",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "startAngle": {
+        "defaultValue": "0",
+        "description": "Angle in degrees from which the chart should start",
+        "name": "startAngle",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "strokeColor": {
+        "defaultValue": null,
+        "description": "Controls color of the sectors stroke, by default depends on color scheme",
+        "name": "strokeColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "sunburstChartProps": {
+        "defaultValue": null,
+        "description": "Props passed down to recharts <code>SunburstChart</code> component",
+        "name": "sunburstChartProps",
+        "required": false,
+        "type": {
+          "name": "Partial<Omit<SunburstChartProps, \"data\" | \"ref\" | \"dataKey\">>"
+        }
+      },
+      "tooltipAnimationDuration": {
+        "defaultValue": "0",
+        "description": "Tooltip animation duration in ms",
+        "name": "tooltipAnimationDuration",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "tooltipProps": {
+        "defaultValue": null,
+        "description": "Props passed down to <code>Tooltip</code> recharts component",
+        "name": "tooltipProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
+        }
+      },
+      "valueFormatter": {
+        "defaultValue": null,
+        "description": "A function to format values inside the tooltip and labels",
+        "name": "valueFormatter",
+        "required": false,
+        "type": {
+          "name": "(value: number) => string"
+        }
+      },
+      "withLabels": {
+        "defaultValue": "false",
+        "description": "Determines whether value labels are displayed inside each sector",
+        "name": "withLabels",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withTooltip": {
+        "defaultValue": "true",
+        "description": "Determines whether the tooltip should be displayed when a node is hovered",
+        "name": "withTooltip",
         "required": false,
         "type": {
           "name": "boolean"
@@ -43589,6 +45285,15 @@
   },
   "TimelineItem": {
     "props": {
+      "alternate": {
+        "defaultValue": "false",
+        "description": "If set, switches the position of content and opposite",
+        "name": "alternate",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "bullet": {
         "defaultValue": null,
         "description": "React node that should be rendered inside the bullet – icon, image, avatar, etc. By default, large white dot is displayed.",
@@ -43638,6 +45343,15 @@
               "value": "\"solid\""
             }
           ]
+        }
+      },
+      "opposite": {
+        "defaultValue": null,
+        "description": "Content displayed on the opposite side of the timeline item",
+        "name": "opposite",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
         }
       },
       "radius": {
@@ -43951,6 +45665,27 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "keepMountedMode": {
+        "defaultValue": "'activity'",
+        "description": "Controls how the modal/drawer is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> - hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> - hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
         }
       },
       "limit": {
@@ -44485,6 +46220,27 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "keepMountedMode": {
+        "defaultValue": "'activity'",
+        "description": "Controls how the modal/drawer is hidden when <code>keepMounted</code> is set:\n<code>'activity'</code> - hidden with React 19 <code>Activity</code> component,\n<code>'display-none'</code> - hidden with <code>display: none</code> styles",
+        "name": "keepMountedMode",
+        "required": false,
+        "type": {
+          "name": "\"activity\" | \"display-none\"",
+          "raw": "\"activity\" | \"display-none\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"activity\""
+            },
+            {
+              "value": "\"display-none\""
+            }
+          ]
         }
       },
       "lockScroll": {
@@ -46805,7 +48561,7 @@
       },
       "intervalMinutes": {
         "defaultValue": "15",
-        "description": "Number of minutes for each time slot",
+        "description": "Number of minutes for each time slot. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours (e.g. <code>120</code>, <code>240</code>)",
         "name": "intervalMinutes",
         "required": false,
         "type": {
@@ -47737,7 +49493,7 @@
       },
       "intervalMinutes": {
         "defaultValue": "60",
-        "description": "Number of minutes for each interval in the day view",
+        "description": "Number of minutes for each interval in the day view. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours (e.g. <code>120</code>, <code>240</code>)",
         "name": "intervalMinutes",
         "required": false,
         "type": {
@@ -49161,6 +50917,15 @@
           "name": "ScheduleEventData[]"
         }
       },
+      "getCurrentTime": {
+        "defaultValue": "() => dayjs()",
+        "description": "A function to get the current time, called on every tick. Can be used to display the current time indicator in a different timezone.",
+        "name": "getCurrentTime",
+        "required": false,
+        "type": {
+          "name": "() => AnyDateValue"
+        }
+      },
       "groupLabelWidth": {
         "defaultValue": "80px",
         "description": "Width of the group label column",
@@ -49199,7 +50964,7 @@
       },
       "intervalMinutes": {
         "defaultValue": "60",
-        "description": "Number of minutes for each interval in the day view",
+        "description": "Number of minutes for each interval in the day view. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours (e.g. <code>120</code>, <code>240</code>)",
         "name": "intervalMinutes",
         "required": false,
         "type": {
@@ -49228,6 +50993,15 @@
         "defaultValue": "2",
         "description": "Maximum number of events visible per time slot before \"+more\" indicator shows, minimum value is 1",
         "name": "maxEventsPerTimeSlot",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "minEventSize": {
+        "defaultValue": "1",
+        "description": "Minimum on-screen size of an event along the time axis, in px. Prevents very short events from collapsing. Larger values make brief events easier to see but extend them past their real start time.",
+        "name": "minEventSize",
         "required": false,
         "type": {
           "name": "number"
@@ -49654,6 +51428,15 @@
           ]
         }
       },
+      "getCurrentTime": {
+        "defaultValue": "() => dayjs()",
+        "description": "A function to get the current time, called on every tick. Can be used to display the current time indicator in a different timezone.",
+        "name": "getCurrentTime",
+        "required": false,
+        "type": {
+          "name": "() => AnyDateValue"
+        }
+      },
       "groupLabelWidth": {
         "defaultValue": "80px",
         "description": "Width of the group label column",
@@ -49691,8 +51474,8 @@
         }
       },
       "intervalMinutes": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": "60",
+        "description": "Number of minutes for each interval in the week view. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours (e.g. <code>120</code>, <code>240</code>)",
         "name": "intervalMinutes",
         "required": false,
         "type": {
@@ -49721,6 +51504,15 @@
         "defaultValue": "2",
         "description": "Maximum number of events visible per time slot before \"+more\" indicator shows, minimum value is 1",
         "name": "maxEventsPerTimeSlot",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "minEventSize": {
+        "defaultValue": "1",
+        "description": "Minimum on-screen size of an event along the time axis, in px. Prevents very short events from collapsing. Larger values make brief events easier to see but extend them past their real start time.",
+        "name": "minEventSize",
         "required": false,
         "type": {
           "name": "number"

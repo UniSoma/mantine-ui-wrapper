@@ -37,7 +37,7 @@ and imperative API. Each package is a ClojureScript namespace; load the matching
 
 ```clojure
 ;; deps.edn
-io.github.unisoma/mantine-ui-wrapper {:mvn/version "9.4.1.0-SNAPSHOT"}
+io.github.unisoma/mantine-ui-wrapper {:mvn/version "9.5.0.0-SNAPSHOT"}
 ```
 
 Versions are `<mantine-version>.N`: the wrapped Mantine version plus a wrapper revision, so
@@ -49,7 +49,7 @@ packages. It does not declare `react`/`react-dom`: your app owns React. With oth
 tooling, install the npm deps manually:
 
 ```
-npm install @mantine/core@^9.4.1 @mantine/hooks@^9.4.1 @mantine/notifications@^9.4.1 @mantine/modals@^9.4.1 @mantine/form@^9.4.1 @mantine/spotlight@^9.4.1 @mantine/dates@^9.4.1 @mantine/charts@^9.4.1 @mantine/dropzone@^9.4.1 @mantine/schedule@^9.4.1 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
+npm install @mantine/core@^9.5.0 @mantine/hooks@^9.5.0 @mantine/notifications@^9.5.0 @mantine/modals@^9.5.0 @mantine/form@^9.5.0 @mantine/spotlight@^9.5.0 @mantine/dates@^9.5.0 @mantine/charts@^9.5.0 @mantine/dropzone@^9.5.0 @mantine/schedule@^9.5.0 dayjs@^1.11.21 recharts@^3.9.2 react react-dom
 ```
 
 ### CSS
