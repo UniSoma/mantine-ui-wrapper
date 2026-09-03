@@ -26,4 +26,7 @@ tags otherwise.
   `knot list --tag needs-info`.
 - **wontfix** — `knot update <id> --add-tag wontfix` then
   `knot close <id> --summary "wontfix: <reason>"`. The tag keeps it queryable in
-  the archive via `knot list --tag wontfix`.
+  the archive via `knot list --tag wontfix`. Closing an `in_progress` ticket
+  with unchecked acceptance criteria or open children is refused
+  (`acceptance_incomplete` / `open_children`); a wontfix is the case where
+  `--force` alongside the `--summary` is the right override.

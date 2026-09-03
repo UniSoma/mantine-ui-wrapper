@@ -42,14 +42,24 @@ Do **not** use `--description` / `-d` for this: those replace only a
 `## Description` *sub-section*, and if the body has none, knot **appends** a
 `## Description` section — duplicating the content instead of replacing it.
 `--description` / `--design` are for their named sub-sections only; `--body`
-owns the whole thing (it's destructive — git is the undo path).
+owns the whole thing (it's destructive — git is the undo path). A section ends
+at the next `## ` line, so headings nested inside `-d` / `--design` text must be
+`###` or deeper. `knot check --code duplicate_section` finds bodies where this
+went wrong.
+
+`--body` refuses five headings that `knot show` renders from frontmatter:
+`## Acceptance Criteria`, `## Blockers`, `## Blocking`, `## Children`,
+`## Linked`. Keep them out of the body you write and put the content through
+the owning field instead — `--add-ac`, `knot dep`, `--parent`, `knot link`.
 
 ## For decision logic, use --json
 
 Every read and write command accepts `--json` and emits a stable envelope
 (`{schema_version, ok, data}`). Prefer `knot list --json | jq …` over parsing
 tables. Mutating commands return the touched ticket under `.data` — no
-read-after-write round-trip needed.
+read-after-write round-trip needed. `knot show <id> --json` adds `.data.sections`,
+the body split by `## ` heading, so one section reads as
+`jq -r '.data.sections.description'`.
 
 ## Valid values (from `.knot.edn`)
 
