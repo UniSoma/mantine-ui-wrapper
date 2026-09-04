@@ -1,6 +1,8 @@
 ;; Single shadow-cljs project: src/main = wrapper (ships source), demo/ = dev-only
 ;; harness, src/test = behavioral tests (node).
 {:source-paths ["src/main" "demo" "src/test"]
+ ;; JDK 24+ warns about sun.misc.Unsafe on every shadow-cljs run; silence it so CI output stays legible.
+ :jvm-opts ["--sun-misc-unsafe-memory-access=allow"]
  :dependencies []
  :dev-http {8090 {:root "public"}}
  :builds {:demo {:target :browser

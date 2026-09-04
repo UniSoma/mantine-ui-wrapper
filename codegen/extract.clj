@@ -12,7 +12,7 @@
 ;;
 ;;   git clone --depth 1 --branch 9.4.1 https://github.com/mantinedev/mantine <dir>
 ;;   cd <dir> && yarn install && yarn tsx scripts/docgen
-;;   bb extract <dir>
+;;   bb extract <dir>            (or `bb clone-anchor`, which does all of the above)
 ;;
 ;; Writes (all committed):
 ;;   codegen/input/docgen.json         — verbatim copy of the docgen output

@@ -14,6 +14,10 @@ Five canonical triage roles, mapped onto knot's native dimensions: `ready-for-ag
 
 Single-context: one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
 
+### Mantine version bump
+
+Bumping the wrapped Mantine version: `docs/version-bump.md`.
+
 # Behavioral guidelines
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.

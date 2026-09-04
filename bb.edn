@@ -3,9 +3,12 @@
  {generate {:doc "Regenerate src/main/mantine/*.cljc from the committed codegen inputs"
             :requires ([plan])
             :task (plan/write-plan! (plan/build (plan/read-sources)))}
-  extract {:doc "Refresh committed codegen inputs from a Mantine 9.6.0 checkout: bb extract <clone-dir>"
+  extract {:doc "Refresh committed codegen inputs from a Mantine checkout at the anchor: bb extract <clone-dir>"
            :requires ([extract])
            :task (apply extract/-main *command-line-args*)}
+  clone-anchor {:doc "Version bump: clone the anchor tag into target/, run its docgen, refresh inputs (bump package.json first)"
+                :requires ([clone-anchor])
+                :task (clone-anchor/-main)}
 
   ;; ---- Release (source-only jar -> Clojars; see build.clj, docs/release.md) ----
   jar {:doc "Build the source-only jar into target/"
@@ -27,10 +30,10 @@
                          "-d" (str "version=" version)))}
 
   ;; ---- CI checks (same command locally and in .github/workflows/ci.yml) ----
-  drift {:doc "Regenerate and FAIL on any drift vs committed generated sources"
+  drift {:doc "Regenerate and FAIL on any drift vs the INDEX (stage generated sources before running)"
          :depends [generate]
          :task (do (shell "git" "add" "--intent-to-add" "--" "src/main/mantine")
-                   (shell "git" "diff" "--exit-code" "--" "src/main/mantine")
+                   (shell "git" "diff" "--stat" "--exit-code" "--" "src/main/mantine")
                    (println "DRIFT OK — generated sources match `bb generate`."))}
 
   build {:doc "Release-build the demo; FAIL on any shadow-cljs warning"
