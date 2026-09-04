@@ -2,6 +2,7 @@
 ;; harness, src/test = behavioral tests (node).
 {:source-paths ["src/main" "demo" "src/test"]
  ;; JDK 24+ warns about sun.misc.Unsafe on every shadow-cljs run; silence it so CI output stays legible.
+ ;; The flag only exists on JDK 23+, so the CI java-version pin must stay at or above that.
  :jvm-opts ["--sun-misc-unsafe-memory-access=allow"]
  :dependencies []
  :dev-http {8090 {:root "public"}}
