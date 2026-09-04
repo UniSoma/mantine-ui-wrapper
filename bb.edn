@@ -3,7 +3,7 @@
  {generate {:doc "Regenerate src/main/mantine/*.cljc from the committed codegen inputs"
             :requires ([plan])
             :task (plan/write-plan! (plan/build (plan/read-sources)))}
-  extract {:doc "Refresh committed codegen inputs from a Mantine 9.5.0 checkout: bb extract <clone-dir>"
+  extract {:doc "Refresh committed codegen inputs from a Mantine 9.6.0 checkout: bb extract <clone-dir>"
            :requires ([extract])
            :task (apply extract/-main *command-line-args*)}
 

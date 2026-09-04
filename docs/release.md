@@ -5,7 +5,7 @@ source-only jar (the generated `.cljc` namespaces, `mantine/impl/`, and `deps.cl
 AOT or JS compilation). Rationale and the full set of decisions are in
 [`docs/adr/0001-clojars-release-process.md`](adr/0001-clojars-release-process.md).
 
-## Version scheme: `9.5.0.N`
+## Version scheme: `9.6.0.N`
 
 Four segments: the **first three are the wrapped Mantine version**, `N` is the wrapper's
 own revision against that Mantine release.
@@ -13,11 +13,11 @@ own revision against that Mantine release.
 - Wrapper-only change (generator fix, `impl/` fix, scope widening) against the same
   Mantine → bump `N`: `9.4.1.0` → `9.4.1.1`.
 - Mantine version bump (see [`version-bump.md`](version-bump.md)) → new anchor, reset
-  `N`: `9.4.1.3` → `9.5.2.0`.
+  `N`: `9.5.0.3` → `9.6.0.0`.
 
 The version lives in one place: `version` in [`build.clj`](../build.clj). Clojars
 **release** versions are immutable; while the design churns we stay on the mutable
-`9.5.0.0-SNAPSHOT`.
+`9.6.0.0-SNAPSHOT`.
 
 ## Build tasks
 
@@ -44,7 +44,7 @@ Verify the round-trip from a scratch CLJS project that has only the Clojars dep:
 
 ```clojure
 ;; deps.edn
-{:deps {io.github.unisoma/mantine-ui-wrapper {:mvn/version "9.5.0.0-SNAPSHOT"}}}
+{:deps {io.github.unisoma/mantine-ui-wrapper {:mvn/version "9.6.0.0-SNAPSHOT"}}}
 ```
 
 `:require` a generated namespace (e.g. `mantine.core`) and render a component; shadow-cljs
@@ -63,9 +63,9 @@ exact version at <https://cljdoc.org/> (or `POST https://cljdoc.org/api/request-
 
 When the surface is stable, cut the immutable release:
 
-1. Change `version` in `build.clj` from `"9.5.0.0-SNAPSHOT"` to `"9.5.0.0"`.
+1. Change `version` in `build.clj` from `"9.6.0.0-SNAPSHOT"` to `"9.6.0.0"`.
 2. `bb ci` green, then `bb deploy`.
-3. Tag the commit `v9.5.0.0` and push.
+3. Tag the commit `v9.6.0.0` and push.
 
 Once there are official cuts, the paved path for automating this is a **tag-triggered**
 GitHub Actions workflow (runs only on `v*` tag pushes, so it stays dormant on normal

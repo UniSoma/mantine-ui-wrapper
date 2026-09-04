@@ -16,7 +16,8 @@
   (:require
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/core" :as mantine-core
-               :refer [AccordionChevron AccordionPanel ActionIconGroupSection AppShellMain
+               :refer [AccordionChevron AccordionPanel ActionBarCloseButton ActionBarDivider
+                       ActionIconGroupSection AppShellMain
                        Box ComboboxChevron ComboboxClearButton ComboboxEmpty
                        ComboboxFooter ComboboxHeader ComboboxHiddenInput ComboboxOptions
                        ComboboxPopoverTarget ComboboxSearch DataListItem DataListItemLabel
@@ -107,6 +108,18 @@
   leading props map; remaining args are children."
   #?(:cljs (f/factory AccordionPanel)
      :clj (f/not-implemented "mantine.core/accordion-panel")))
+
+(def action-bar-close-button
+  "ActionBar.CloseButton — compound part of ActionBar (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory ActionBarCloseButton)
+     :clj (f/not-implemented "mantine.core/action-bar-close-button")))
+
+(def action-bar-divider
+  "ActionBar.Divider — compound part of ActionBar (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory ActionBarDivider)
+     :clj (f/not-implemented "mantine.core/action-bar-divider")))
 
 (def action-icon-group-section
   "ActionIcon.GroupSection — compound part of ActionIcon (docgen omits it). Optional

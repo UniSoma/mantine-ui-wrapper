@@ -192,6 +192,127 @@
       }
     }
   },
+  "ActionBar": {
+    "props": {
+      "aria-label": {
+        "defaultValue": null,
+        "description": "<code>aria-label</code> of the actions group, <code>'Actions'</code> by default",
+        "name": "aria-label",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "closeOnEscape": {
+        "defaultValue": null,
+        "description": "Determines whether the action bar should be closed when <code>Escape</code> key is pressed, <code>false</code> by default",
+        "name": "closeOnEscape",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "keepMounted": {
+        "defaultValue": null,
+        "description": "If set, the component uses <code>display: none</code> to hide the root element instead of removing the DOM node, <code>false</code> by default",
+        "name": "keepMounted",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Called when close button is clicked or Escape is pressed",
+        "name": "onClose",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "opened": {
+        "defaultValue": null,
+        "description": "Controls visibility",
+        "name": "opened",
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "portalProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Portal</code> component. Ignored when <code>withinPortal</code> is <code>false</code>.",
+        "name": "portalProps",
+        "required": false,
+        "type": {
+          "name": "BasePortalProps"
+        }
+      },
+      "position": {
+        "defaultValue": "{ bottom: 0, right: 0 }",
+        "description": "Affix position on screen",
+        "name": "position",
+        "required": false,
+        "type": {
+          "name": "AffixPosition"
+        }
+      },
+      "radius": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "MantineRadius | number"
+        }
+      },
+      "shadow": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.shadows</code> or any valid CSS <code>box-shadow</code> value",
+        "name": "shadow",
+        "required": false,
+        "type": {
+          "name": "MantineShadow"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Transition</code> component, <code>{ transition: 'pop', duration: 200 }</code> by default",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      },
+      "withBorder": {
+        "defaultValue": null,
+        "description": "Adds border to the root element",
+        "name": "withBorder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withinPortal": {
+        "defaultValue": "true",
+        "description": "Determines whether the component is rendered within <code>Portal</code>",
+        "name": "withinPortal",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "zIndex": {
+        "defaultValue": "200",
+        "description": "Root element <code>z-index</code> property",
+        "name": "zIndex",
+        "required": false,
+        "type": {
+          "name": "React.CSSProperties[\"zIndex\"]"
+        }
+      }
+    }
+  },
   "ActionIcon": {
     "props": {
       "autoContrast": {
@@ -918,7 +1039,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -954,7 +1075,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "filter": {
@@ -1026,7 +1147,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -1389,7 +1510,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -2196,7 +2317,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -2232,7 +2353,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "expandTrigger": {
@@ -2325,7 +2446,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -2682,6 +2803,15 @@
           "name": "React.CSSProperties[\"width\"]"
         }
       },
+      "safeAreaPolygon": {
+        "defaultValue": "true",
+        "description": "Determines whether the next column stays open while the cursor moves toward it, applicable only when <code>expandTrigger=\"hover\"</code>. Pass an object to configure safe polygon behavior.",
+        "name": "safeAreaPolygon",
+        "required": false,
+        "type": {
+          "name": "boolean | CascaderSafeAreaPolygonOptions"
+        }
+      },
       "scrollAreaProps": {
         "defaultValue": null,
         "description": "Props passed down to the dropdown <code>ScrollArea</code>",
@@ -2742,7 +2872,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -3361,7 +3491,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -3397,7 +3527,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "eyeDropperButtonProps": {
@@ -3460,6 +3590,15 @@
           ]
         }
       },
+      "fullWidth": {
+        "defaultValue": "false",
+        "description": "If set, the component takes 100% width of its container",
+        "name": "fullWidth",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "inputContainer": {
         "defaultValue": "React.Fragment",
         "description": "Render function to wrap the input element. Useful for adding tooltips, popovers, or other wrappers around the input.",
@@ -3502,7 +3641,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -3793,7 +3932,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "swatches": {
@@ -6569,7 +6708,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -6596,7 +6735,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "fileInputProps": {
@@ -6659,7 +6798,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -6977,7 +7116,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -7272,6 +7411,33 @@
         "required": false,
         "type": {
           "name": "(pos: FloatingWindowPosition) => void"
+        }
+      },
+      "onResizeEnd": {
+        "defaultValue": null,
+        "description": "Called when the resize with <code>FloatingWindow.ResizeHandle</code> stops. Not called for keyboard resize.",
+        "name": "onResizeEnd",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onResizeStart": {
+        "defaultValue": null,
+        "description": "Called when the resize with <code>FloatingWindow.ResizeHandle</code> starts. Not called for keyboard resize.",
+        "name": "onResizeStart",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onSizeChange": {
+        "defaultValue": null,
+        "description": "Called when the window is resized with <code>FloatingWindow.ResizeHandle</code>",
+        "name": "onSizeChange",
+        "required": false,
+        "type": {
+          "name": "(size: FloatingWindowSize) => void"
         }
       },
       "portalProps": {
@@ -8899,7 +9065,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -8926,7 +9092,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -8971,7 +9137,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -9244,7 +9410,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAria": {
@@ -9347,7 +9513,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "deserialize": {
@@ -9383,7 +9549,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "formatOnBlur": {
@@ -9446,7 +9612,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -9797,7 +9963,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "validationError": {
@@ -10293,7 +10459,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -10320,7 +10486,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -10365,7 +10531,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -10701,7 +10867,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "tokens": {
@@ -12101,7 +12267,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -12137,7 +12303,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "filter": {
@@ -12236,7 +12402,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -12680,7 +12846,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -12792,7 +12958,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -12819,7 +12985,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -12864,7 +13030,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -13119,7 +13285,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAsterisk": {
@@ -13343,7 +13509,7 @@
         "name": "closeButtonProps",
         "required": false,
         "type": {
-          "name": "ElementProps<\"button\"> & DataAttributes"
+          "name": "__CloseButtonProps & ElementProps<\"button\"> & DataAttributes"
         }
       },
       "color": {
@@ -13636,7 +13802,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -13663,7 +13829,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "fixedDecimalScale": {
@@ -13744,7 +13910,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -14107,7 +14273,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "suffix": {
@@ -14769,7 +14935,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -14796,7 +14962,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -14841,7 +15007,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -15105,7 +15271,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "visibilityToggleButtonProps": {
@@ -15115,6 +15281,15 @@
         "required": false,
         "type": {
           "name": "Record<string, any>"
+        }
+      },
+      "visibilityToggleFocusable": {
+        "defaultValue": "`false`",
+        "description": "If set, the visibility toggle button is focusable with keyboard",
+        "name": "visibilityToggleFocusable",
+        "required": false,
+        "type": {
+          "name": "boolean"
         }
       },
       "visibilityToggleIcon": {
@@ -15269,7 +15444,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -15296,7 +15471,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -15341,7 +15516,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -15605,7 +15780,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAsterisk": {
@@ -17811,7 +17986,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -17847,7 +18022,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "filter": {
@@ -17928,7 +18103,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -18336,7 +18511,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -19057,7 +19232,7 @@
       },
       "iconPosition": {
         "defaultValue": "'left'",
-        "description": "Icon position relative to the step body",
+        "description": "Icon position relative to the step body. Ignored if <code>labelPosition=\"bottom\"</code> is set – with the label below the icon there is no left/right to place it on.",
         "name": "iconPosition",
         "required": false,
         "type": {
@@ -19092,6 +19267,27 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "labelPosition": {
+        "defaultValue": "'right'",
+        "description": "Controls position of the step label and description relative to the step icon. Takes precedence over <code>iconPosition</code>. Ignored if <code>orientation=\"vertical\"</code> is set.",
+        "name": "labelPosition",
+        "required": false,
+        "type": {
+          "name": "\"right\" | \"bottom\"",
+          "raw": "\"right\" | \"bottom\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"right\""
+            },
+            {
+              "value": "\"bottom\""
+            }
+          ]
         }
       },
       "onStepClick": {
@@ -19915,7 +20111,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -19951,7 +20147,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "filter": {
@@ -20050,7 +20246,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -20494,7 +20690,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -20676,7 +20872,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -20703,7 +20899,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -20748,7 +20944,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -21012,7 +21208,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAsterisk": {
@@ -21097,7 +21293,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -21124,7 +21320,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -21169,7 +21365,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -21502,7 +21698,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAsterisk": {
@@ -21924,6 +22120,15 @@
         "defaultValue": null,
         "description": "Must be set if the tooltip target is an inline element",
         "name": "inline",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "interactive": {
+        "defaultValue": "false",
+        "description": "If set, the tooltip stays open while the pointer moves from the target to the tooltip and remains over it. Required by [WCAG 1.4.13](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html) if the tooltip contains interactive content. Note that an interactive tooltip intercepts pointer events of the content it overlaps",
+        "name": "interactive",
         "required": false,
         "type": {
           "name": "boolean"
@@ -22598,7 +22803,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -22634,7 +22839,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "expandOnClick": {
@@ -22724,7 +22929,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -23165,7 +23370,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -23560,12 +23765,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextIcon": {
@@ -23824,12 +24029,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -24194,7 +24399,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -24221,7 +24426,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "excludeDate": {
@@ -24410,7 +24615,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -24618,12 +24823,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextDisabled": {
@@ -24986,7 +25191,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -24999,12 +25204,12 @@
         }
       },
       "valueFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format to display input value, <code>\"MMMM D, YYYY\"</code> by default",
+        "defaultValue": "\"MMMM D, YYYY\"",
+        "description": "<code>dayjs</code> format to display input value, or a function that receives the value as a <code>YYYY-MM-DD</code> string and returns the formatted value. A function cannot be used to parse user input – set <code>dateParser</code> prop to support formats other than <code>YYYY-MM-DD</code>.",
         "name": "valueFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "weekdayFormat": {
@@ -25125,12 +25330,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -25462,12 +25667,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextIcon": {
@@ -25768,12 +25973,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -25951,7 +26156,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -26008,7 +26213,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "excludeDate": {
@@ -26179,7 +26384,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "labelSeparator": {
@@ -26405,12 +26610,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextIcon": {
@@ -26800,7 +27005,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "type": {
@@ -26945,12 +27150,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -27119,7 +27324,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -27176,7 +27381,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "excludeDate": {
@@ -27347,7 +27552,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "labelSeparator": {
@@ -27573,12 +27778,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextIcon": {
@@ -27959,7 +28164,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "timePickerProps": {
@@ -28113,12 +28318,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -28513,12 +28718,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -28745,12 +28950,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -29170,12 +29375,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextIcon": {
@@ -29521,12 +29726,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "yearsSelectRange": {
@@ -29640,12 +29845,12 @@
         }
       },
       "monthLabelFormat": {
-        "defaultValue": "MMM",
-        "description": "Dayjs format string for month label",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for month label or a function that returns month label based on the date value",
         "name": "monthLabelFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextControlProps": {
@@ -30919,12 +31124,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextLabel": {
@@ -31126,12 +31331,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       }
     }
@@ -31300,7 +31505,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -31348,7 +31553,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "fullWidth": {
@@ -31420,7 +31625,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "labelSeparator": {
@@ -31637,12 +31842,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextLabel": {
@@ -31951,7 +32156,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "type": {
@@ -32069,12 +32274,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       }
     }
@@ -32127,12 +32332,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "size": {
@@ -32350,7 +32555,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -32416,7 +32621,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "formattedValue": {
@@ -32470,7 +32675,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "labelSeparator": {
@@ -32836,7 +33041,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "type": {
@@ -33226,7 +33431,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -33253,7 +33458,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "inputContainer": {
@@ -33298,7 +33503,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -33580,7 +33785,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAsterisk": {
@@ -33743,7 +33948,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -33770,7 +33975,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "form": {
@@ -33899,7 +34104,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "leftSection": {
@@ -34379,7 +34584,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "type": {
@@ -34713,12 +34918,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextDisabled": {
@@ -34972,12 +35177,12 @@
         }
       },
       "monthsListFormat": {
-        "defaultValue": null,
-        "description": "<code>dayjs</code> format for months list",
+        "defaultValue": "\"MMM\"",
+        "description": "<code>dayjs</code> format for months list or a function that returns month label based on the date value",
         "name": "monthsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       },
       "nextDisabled": {
@@ -35429,12 +35634,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       }
     }
@@ -35579,7 +35784,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -35627,7 +35832,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "fullWidth": {
@@ -35690,7 +35895,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "labelSeparator": {
@@ -36137,7 +36342,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "type": {
@@ -36246,12 +36451,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       }
     }
@@ -36352,12 +36557,12 @@
         }
       },
       "yearsListFormat": {
-        "defaultValue": "'YYYY'",
-        "description": "dayjs format for years list",
+        "defaultValue": "\"YYYY\"",
+        "description": "<code>dayjs</code> format for years list or a function that returns year label based on the date value",
         "name": "yearsListFormat",
         "required": false,
         "type": {
-          "name": "string"
+          "name": "string | ((date: string) => string)"
         }
       }
     }
@@ -36574,6 +36779,24 @@
           ]
         }
       },
+      "referenceAreas": {
+        "defaultValue": null,
+        "description": "Reference areas that should be displayed on the chart",
+        "name": "referenceAreas",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceAreaProps[]"
+        }
+      },
+      "referenceDots": {
+        "defaultValue": null,
+        "description": "Reference dots that should be displayed on the chart",
+        "name": "referenceDots",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceDotProps[]"
+        }
+      },
       "referenceLines": {
         "defaultValue": null,
         "description": "Reference lines that should be displayed on the chart",
@@ -36702,7 +36925,7 @@
       },
       "type": {
         "defaultValue": "'default'",
-        "description": "Controls how chart areas are positioned relative to each other",
+        "description": "Controls how chart areas are positioned relative to each other. Set to <code>'stream'</code> to render a streamgraph.",
         "name": "type",
         "required": false,
         "type": {
@@ -36723,6 +36946,9 @@
             },
             {
               "value": "\"percent\""
+            },
+            {
+              "value": "\"stream\""
             }
           ]
         }
@@ -36809,8 +37035,8 @@
         }
       },
       "withXAxis": {
-        "defaultValue": null,
-        "description": "Determines whether x-axis should be displayed, <code>true</code> by default",
+        "defaultValue": "true",
+        "description": "Determines whether x-axis should be displayed. Defaults to <code>false</code> for <code>type=\"stream\"</code> with <code>orientation=\"vertical\"</code> – the floating baseline makes the values not meaningful to read off.",
         "name": "withXAxis",
         "required": false,
         "type": {
@@ -36818,8 +37044,8 @@
         }
       },
       "withYAxis": {
-        "defaultValue": null,
-        "description": "Determines whether y-axis should be displayed, <code>true</code> by default",
+        "defaultValue": "true",
+        "description": "Determines whether y-axis should be displayed. Defaults to <code>false</code> for <code>type=\"stream\"</code> with <code>orientation=\"horizontal\"</code> – the floating baseline makes the values not meaningful to read off.",
         "name": "withYAxis",
         "required": false,
         "type": {
@@ -37056,6 +37282,24 @@
               "value": "\"vertical\""
             }
           ]
+        }
+      },
+      "referenceAreas": {
+        "defaultValue": null,
+        "description": "Reference areas that should be displayed on the chart",
+        "name": "referenceAreas",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceAreaProps[]"
+        }
+      },
+      "referenceDots": {
+        "defaultValue": null,
+        "description": "Reference dots that should be displayed on the chart",
+        "name": "referenceDots",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceDotProps[]"
         }
       },
       "referenceLines": {
@@ -37705,6 +37949,325 @@
       }
     }
   },
+  "CandlestickChart": {
+    "props": {
+      "accessibilityLayer": {
+        "defaultValue": null,
+        "description": "Determines whether the chart should be keyboard-navigable with the recharts accessibility layer, <code>true</code> by default",
+        "name": "accessibilityLayer",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "candleStrokeWidth": {
+        "defaultValue": "1",
+        "description": "Stroke width of the candle wick and body outline",
+        "name": "candleStrokeWidth",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Additional components that are rendered inside recharts <code>ComposedChart</code> component",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "composedChartProps": {
+        "defaultValue": null,
+        "description": "Props passed down to recharts <code>ComposedChart</code> component",
+        "name": "composedChartProps",
+        "required": false,
+        "type": {
+          "name": "(CartesianChartProps<unknown> & { ref?: Ref<SVGSVGElement>; }) | undefined"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Data used to display chart",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "Record<string, any>[]"
+        }
+      },
+      "dataKey": {
+        "defaultValue": null,
+        "description": "Key of the <code>data</code> object for x-axis values",
+        "name": "dataKey",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "dataKeys": {
+        "defaultValue": "`{ open: 'open', high: 'high', low: 'low', close: 'close' }`",
+        "description": "Keys of the <code>data</code> object used to read open, high, low and close values",
+        "name": "dataKeys",
+        "required": false,
+        "type": {
+          "name": "CandlestickChartDataKeys"
+        }
+      },
+      "downColor": {
+        "defaultValue": "'red.6'",
+        "description": "Color of candles with <code>close < open</code>, key of <code>theme.colors</code> or any valid CSS color",
+        "name": "downColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "gridAxis": {
+        "defaultValue": null,
+        "description": "Specifies which lines should be displayed in the grid, <code>'x'</code> by default",
+        "name": "gridAxis",
+        "required": false,
+        "type": {
+          "name": "\"none\" | \"x\" | \"y\" | \"xy\"",
+          "raw": "\"none\" | \"x\" | \"y\" | \"xy\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"x\""
+            },
+            {
+              "value": "\"y\""
+            },
+            {
+              "value": "\"xy\""
+            }
+          ]
+        }
+      },
+      "gridColor": {
+        "defaultValue": null,
+        "description": "Color of the grid and cursor lines, by default depends on color scheme",
+        "name": "gridColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "gridProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>CartesianGrid</code> component",
+        "name": "gridProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
+        }
+      },
+      "labels": {
+        "defaultValue": "`{ open: 'Open', high: 'High', low: 'Low', close: 'Close' }`",
+        "description": "Labels of open, high, low and close values displayed in the tooltip",
+        "name": "labels",
+        "required": false,
+        "type": {
+          "name": "Partial<CandlestickChartLabels>"
+        }
+      },
+      "maxCandleWidth": {
+        "defaultValue": null,
+        "description": "Maximum candle width in px",
+        "name": "maxCandleWidth",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "referenceAreas": {
+        "defaultValue": null,
+        "description": "Reference areas that should be displayed on the chart",
+        "name": "referenceAreas",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceAreaProps[]"
+        }
+      },
+      "referenceDots": {
+        "defaultValue": null,
+        "description": "Reference dots that should be displayed on the chart",
+        "name": "referenceDots",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceDotProps[]"
+        }
+      },
+      "referenceLines": {
+        "defaultValue": null,
+        "description": "Reference lines that should be displayed on the chart",
+        "name": "referenceLines",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceLineProps[]"
+        }
+      },
+      "strokeDasharray": {
+        "defaultValue": null,
+        "description": "Dash array for the grid lines and cursor, <code>'5 5'</code> by default",
+        "name": "strokeDasharray",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "textColor": {
+        "defaultValue": null,
+        "description": "Color of the text displayed inside the chart, <code>'dimmed'</code> by default",
+        "name": "textColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "tickLine": {
+        "defaultValue": null,
+        "description": "Specifies which axis should have tick line, <code>'y'</code> by default",
+        "name": "tickLine",
+        "required": false,
+        "type": {
+          "name": "\"none\" | \"x\" | \"y\" | \"xy\"",
+          "raw": "\"none\" | \"x\" | \"y\" | \"xy\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"none\""
+            },
+            {
+              "value": "\"x\""
+            },
+            {
+              "value": "\"y\""
+            },
+            {
+              "value": "\"xy\""
+            }
+          ]
+        }
+      },
+      "tooltipAnimationDuration": {
+        "defaultValue": null,
+        "description": "Tooltip position animation duration in ms, <code>0</code> by default",
+        "name": "tooltipAnimationDuration",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "tooltipProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Tooltip</code> component",
+        "name": "tooltipProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
+        }
+      },
+      "unit": {
+        "defaultValue": null,
+        "description": "Unit displayed next to each tick in y-axis",
+        "name": "unit",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "upColor": {
+        "defaultValue": "'teal.6'",
+        "description": "Color of candles with <code>close >= open</code>, key of <code>theme.colors</code> or any valid CSS color",
+        "name": "upColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "valueFormatter": {
+        "defaultValue": null,
+        "description": "A function to format values on Y axis and inside the tooltip",
+        "name": "valueFormatter",
+        "required": false,
+        "type": {
+          "name": "(value: number) => string"
+        }
+      },
+      "withTooltip": {
+        "defaultValue": null,
+        "description": "Determines whether chart tooltip should be displayed, <code>true</code> by default",
+        "name": "withTooltip",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withXAxis": {
+        "defaultValue": null,
+        "description": "Determines whether x-axis should be displayed, <code>true</code> by default",
+        "name": "withXAxis",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withYAxis": {
+        "defaultValue": null,
+        "description": "Determines whether y-axis should be displayed, <code>true</code> by default",
+        "name": "withYAxis",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "xAxisLabel": {
+        "defaultValue": null,
+        "description": "A label to display below the x-axis",
+        "name": "xAxisLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "xAxisProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>XAxis</code> recharts component",
+        "name": "xAxisProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
+        }
+      },
+      "yAxisLabel": {
+        "defaultValue": null,
+        "description": "A label to display next to the y-axis",
+        "name": "yAxisLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "yAxisProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>YAxis</code> recharts component",
+        "name": "yAxisProps",
+        "required": false,
+        "type": {
+          "name": "RechartsProps"
+        }
+      }
+    }
+  },
   "ChartBrush": {
     "description": "",
     "props": {}
@@ -38086,6 +38649,24 @@
         "required": false,
         "type": {
           "name": "number"
+        }
+      },
+      "referenceAreas": {
+        "defaultValue": null,
+        "description": "Reference areas that should be displayed on the chart",
+        "name": "referenceAreas",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceAreaProps[]"
+        }
+      },
+      "referenceDots": {
+        "defaultValue": null,
+        "description": "Reference dots that should be displayed on the chart",
+        "name": "referenceDots",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceDotProps[]"
         }
       },
       "referenceLines": {
@@ -38782,6 +39363,154 @@
       }
     }
   },
+  "GaugeChart": {
+    "props": {
+      "endAngle": {
+        "defaultValue": "120",
+        "description": "End angle in degrees,",
+        "name": "endAngle",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "filledColor": {
+        "defaultValue": null,
+        "description": "Color of the filled arc when sections are not provided",
+        "name": "filledColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label displayed in the center of the gauge",
+        "name": "label",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "max": {
+        "defaultValue": "100",
+        "description": "Maximum value of the gauge,",
+        "name": "max",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "min": {
+        "defaultValue": "0",
+        "description": "Minimum value of the gauge,",
+        "name": "min",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "roundCaps": {
+        "defaultValue": "false",
+        "description": "Whether to round arc endpoints. Not applied to <code>sections</code> – rounded caps of adjacent sections would overlap each other.",
+        "name": "roundCaps",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "sections": {
+        "defaultValue": null,
+        "description": "Threshold sections of the gauge arc, each section is filled from the previous section upper bound to its own <code>value</code>. If set, the arc is not filled based on <code>value</code>.",
+        "name": "sections",
+        "required": false,
+        "type": {
+          "name": "GaugeChartSection[]"
+        }
+      },
+      "size": {
+        "defaultValue": "200",
+        "description": "Chart size (width and height),",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "startAngle": {
+        "defaultValue": "-120",
+        "description": "Start angle in degrees,",
+        "name": "startAngle",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "Value marked on the arc with a line marker, use to display a goal or the current value of a gauge with <code>sections</code>",
+        "name": "target",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "targetColor": {
+        "defaultValue": null,
+        "description": "Color of the target marker",
+        "name": "targetColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "targetSize": {
+        "defaultValue": "2",
+        "description": "Thickness of the target marker,",
+        "name": "targetSize",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "thickness": {
+        "defaultValue": "12",
+        "description": "Arc thickness in px,",
+        "name": "thickness",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "trackColor": {
+        "defaultValue": null,
+        "description": "Color of the gauge track (unfilled portion)",
+        "name": "trackColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Current value to display. Fills the arc from <code>min</code> up to <code>value</code>, unless <code>sections</code> is set – then the arc is colored by thresholds and the value is displayed only in the center label.",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "valueFormatter": {
+        "defaultValue": "(v) => String(v)",
+        "description": "Value formatter for default label,",
+        "name": "valueFormatter",
+        "required": false,
+        "type": {
+          "name": "(value: number) => string"
+        }
+      }
+    }
+  },
   "Heatmap": {
     "props": {
       "colors": {
@@ -39271,6 +40000,24 @@
           ]
         }
       },
+      "referenceAreas": {
+        "defaultValue": null,
+        "description": "Reference areas that should be displayed on the chart",
+        "name": "referenceAreas",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceAreaProps[]"
+        }
+      },
+      "referenceDots": {
+        "defaultValue": null,
+        "description": "Reference dots that should be displayed on the chart",
+        "name": "referenceDots",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceDotProps[]"
+        }
+      },
       "referenceLines": {
         "defaultValue": null,
         "description": "Reference lines that should be displayed on the chart",
@@ -39524,6 +40271,220 @@
         "required": false,
         "type": {
           "name": "RechartsProps"
+        }
+      }
+    }
+  },
+  "MatrixChart": {
+    "props": {
+      "cellRadius": {
+        "defaultValue": "2",
+        "description": "Cell border radius,",
+        "name": "cellRadius",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "cellSize": {
+        "defaultValue": "20",
+        "description": "Cell size in px,",
+        "name": "cellSize",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "colors": {
+        "defaultValue": null,
+        "description": "Array of colors for value interpolation, by default 4 shades of green colors are used",
+        "name": "colors",
+        "required": false,
+        "type": {
+          "name": "DefaultMantineColor[]"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Array of cell objects with x, y, and value",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "MatrixChartData"
+        }
+      },
+      "domain": {
+        "defaultValue": null,
+        "description": "Value domain [min, max] for color interpolation, auto-calculated if not set",
+        "name": "domain",
+        "required": false,
+        "type": {
+          "name": "[number, number]"
+        }
+      },
+      "emptyColor": {
+        "defaultValue": null,
+        "description": "Color for empty/null cells",
+        "name": "emptyColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "fontSize": {
+        "defaultValue": "12",
+        "description": "Font size for axis labels,",
+        "name": "fontSize",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "gap": {
+        "defaultValue": "1",
+        "description": "Gap between cells in px,",
+        "name": "gap",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "getCellProps": {
+        "defaultValue": null,
+        "description": "Callback to add custom props to cells",
+        "name": "getCellProps",
+        "required": false,
+        "type": {
+          "name": "(cell: MatrixChartCell) => SVGProps<SVGRectElement>"
+        }
+      },
+      "getTooltipLabel": {
+        "defaultValue": null,
+        "description": "A function to generate tooltip label based on the hovered cell, required for the tooltip to be visible",
+        "name": "getTooltipLabel",
+        "required": false,
+        "type": {
+          "name": "(cell: MatrixChartCell) => ReactNode"
+        }
+      },
+      "legendLabels": {
+        "defaultValue": "['Less', 'More']",
+        "description": "Legend labels,",
+        "name": "legendLabels",
+        "required": false,
+        "type": {
+          "name": "[string, string]"
+        }
+      },
+      "tooltipProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Tooltip.Floating</code> component",
+        "name": "tooltipProps",
+        "required": false,
+        "type": {
+          "name": "Partial<TooltipFloatingProps>"
+        }
+      },
+      "withLegend": {
+        "defaultValue": "false",
+        "description": "Whether to show legend,",
+        "name": "withLegend",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withTooltip": {
+        "defaultValue": "false",
+        "description": "If set, tooltip is displayed on cell hover, requires <code>getTooltipLabel</code> to be set",
+        "name": "withTooltip",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withXLabels": {
+        "defaultValue": "false",
+        "description": "If set, x-axis labels are displayed,",
+        "name": "withXLabels",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withYLabels": {
+        "defaultValue": "false",
+        "description": "If set, y-axis labels are displayed,",
+        "name": "withYLabels",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "xLabels": {
+        "defaultValue": null,
+        "description": "Labels for x-axis (columns), displayed along top or bottom",
+        "name": "xLabels",
+        "required": false,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "xLabelsHeight": {
+        "defaultValue": "60",
+        "description": "Height reserved for x-axis labels,",
+        "name": "xLabelsHeight",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "xLabelsPosition": {
+        "defaultValue": "'bottom'",
+        "description": "X-axis label position,",
+        "name": "xLabelsPosition",
+        "required": false,
+        "type": {
+          "name": "\"bottom\" | \"top\"",
+          "raw": "\"bottom\" | \"top\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"top\""
+            }
+          ]
+        }
+      },
+      "xLabelsRotation": {
+        "defaultValue": "-90",
+        "description": "Rotation angle for x-axis labels in degrees,",
+        "name": "xLabelsRotation",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "yLabels": {
+        "defaultValue": null,
+        "description": "Labels for y-axis (rows), displayed along left side",
+        "name": "yLabels",
+        "required": false,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "yLabelsWidth": {
+        "defaultValue": "60",
+        "description": "Width reserved for y-axis labels,",
+        "name": "yLabelsWidth",
+        "required": false,
+        "type": {
+          "name": "number"
         }
       }
     }
@@ -40468,6 +41429,24 @@
           ]
         }
       },
+      "referenceAreas": {
+        "defaultValue": null,
+        "description": "Reference areas that should be displayed on the chart",
+        "name": "referenceAreas",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceAreaProps[]"
+        }
+      },
+      "referenceDots": {
+        "defaultValue": null,
+        "description": "Reference dots that should be displayed on the chart",
+        "name": "referenceDots",
+        "required": false,
+        "type": {
+          "name": "ChartReferenceDotProps[]"
+        }
+      },
       "referenceLines": {
         "defaultValue": null,
         "description": "Reference lines that should be displayed on the chart",
@@ -41058,6 +42037,163 @@
       }
     }
   },
+  "WaffleChart": {
+    "props": {
+      "cellRadius": {
+        "defaultValue": "0",
+        "description": "Cell border radius,",
+        "name": "cellRadius",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "columns": {
+        "defaultValue": "10",
+        "description": "Number of columns,",
+        "name": "columns",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "data": {
+        "defaultValue": null,
+        "description": "Array of data segments with name, value, and color",
+        "name": "data",
+        "required": true,
+        "type": {
+          "name": "WaffleChartCell[]"
+        }
+      },
+      "emptyColor": {
+        "defaultValue": null,
+        "description": "Color of empty (unfilled) cells",
+        "name": "emptyColor",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "fillDirection": {
+        "defaultValue": "'left-to-right'",
+        "description": "Fill direction,",
+        "name": "fillDirection",
+        "required": false,
+        "type": {
+          "name": "\"right-to-left\" | \"left-to-right\" | \"top-to-bottom\" | \"bottom-to-top\"",
+          "raw": "\"right-to-left\" | \"left-to-right\" | \"top-to-bottom\" | \"bottom-to-top\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"right-to-left\""
+            },
+            {
+              "value": "\"left-to-right\""
+            },
+            {
+              "value": "\"top-to-bottom\""
+            },
+            {
+              "value": "\"bottom-to-top\""
+            }
+          ]
+        }
+      },
+      "gap": {
+        "defaultValue": "2",
+        "description": "Gap between cells in px,",
+        "name": "gap",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "getTooltipLabel": {
+        "defaultValue": null,
+        "description": "Custom tooltip label formatter",
+        "name": "getTooltipLabel",
+        "required": false,
+        "type": {
+          "name": "(cell: WaffleChartCell & { count: number; }) => ReactNode"
+        }
+      },
+      "legendPosition": {
+        "defaultValue": "'bottom'",
+        "description": "Legend position,",
+        "name": "legendPosition",
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\" | \"bottom\" | \"top\"",
+          "raw": "\"left\" | \"right\" | \"bottom\" | \"top\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"top\""
+            }
+          ]
+        }
+      },
+      "rows": {
+        "defaultValue": "10",
+        "description": "Number of rows,",
+        "name": "rows",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Chart size (width), auto-calculated from columns if not set",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "total": {
+        "defaultValue": null,
+        "description": "Total value for the chart, determines how many cells are filled vs empty, sum of all values by default",
+        "name": "total",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "withLegend": {
+        "defaultValue": "true",
+        "description": "Whether to show legend,",
+        "name": "withLegend",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withTooltip": {
+        "defaultValue": "false",
+        "description": "Whether to show tooltip on hover,",
+        "name": "withTooltip",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
   "InputLabel": {
     "props": {
       "labelElement": {
@@ -41118,7 +42254,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "error": {
@@ -41136,7 +42272,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "id": {
@@ -41202,7 +42338,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "required": {
@@ -41238,7 +42374,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "withAsterisk": {
@@ -42199,6 +43335,15 @@
           "name": "boolean"
         }
       },
+      "indeterminate": {
+        "defaultValue": null,
+        "description": "Indeterminate state of the checkbox. If set, <code>checked</code> prop is ignored and <code>aria-checked</code> is set to <code>mixed</code>",
+        "name": "indeterminate",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "onChange": {
         "defaultValue": null,
         "description": "Called when value changes",
@@ -42276,7 +43421,7 @@
         "name": "descriptionProps",
         "required": false,
         "type": {
-          "name": "InputDescriptionProps"
+          "name": "InputDescriptionProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "disabled": {
@@ -42303,7 +43448,7 @@
         "name": "errorProps",
         "required": false,
         "type": {
-          "name": "InputErrorProps"
+          "name": "InputErrorProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "id": {
@@ -42369,7 +43514,7 @@
         "name": "labelProps",
         "required": false,
         "type": {
-          "name": "InputLabelProps"
+          "name": "InputLabelProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "name": {
@@ -42453,7 +43598,7 @@
         "name": "successProps",
         "required": false,
         "type": {
-          "name": "InputSuccessProps & DataAttributes"
+          "name": "InputSuccessProps & DataAttributes & PlaceholderPolymorphicProps"
         }
       },
       "value": {
@@ -47206,7 +48351,7 @@
         "name": "getFilesFromEvent",
         "required": false,
         "type": {
-          "name": "(event: DropEvent) => Promise<(File | DataTransferItem)[]>"
+          "name": "(event: DropEvent | FileSystemFileHandle[]) => Promise<(File | DataTransferItem)[]>"
         }
       },
       "inputProps": {
@@ -47238,7 +48383,7 @@
       },
       "maxFiles": {
         "defaultValue": null,
-        "description": "Maximum number of files that can be picked at once",
+        "description": "Maximum number of files that can be picked at once, files over the limit are rejected",
         "name": "maxFiles",
         "required": false,
         "type": {
@@ -47498,7 +48643,7 @@
         "name": "getFilesFromEvent",
         "required": false,
         "type": {
-          "name": "(event: DropEvent) => Promise<(File | DataTransferItem)[]>"
+          "name": "(event: DropEvent | FileSystemFileHandle[]) => Promise<(File | DataTransferItem)[]>"
         }
       },
       "inputProps": {
@@ -47530,7 +48675,7 @@
       },
       "maxFiles": {
         "defaultValue": null,
-        "description": "Maximum number of files that can be picked at once",
+        "description": "Maximum number of files that can be picked at once, files over the limit are rejected",
         "name": "maxFiles",
         "required": false,
         "type": {
@@ -47874,6 +49019,15 @@
           "name": "boolean"
         }
       },
+      "withFirstLineIndentation": {
+        "defaultValue": "false",
+        "description": "If set, indentation of the first line of the code is preserved. By default, it is removed\nalong with the rest of the leading and trailing whitespace.",
+        "name": "withFirstLineIndentation",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withLineNumbers": {
         "defaultValue": "false",
         "description": "Determines whether line numbers should be displayed",
@@ -48067,6 +49221,15 @@
           "name": "boolean"
         }
       },
+      "withFirstLineIndentation": {
+        "defaultValue": "false",
+        "description": "If set, indentation of the first line of the code is preserved. By default, it is removed\nalong with the rest of the leading and trailing whitespace.",
+        "name": "withFirstLineIndentation",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withLineNumbers": {
         "defaultValue": "false",
         "description": "Determines whether line numbers should be displayed",
@@ -48120,6 +49283,15 @@
         "defaultValue": "false",
         "description": "Adds border to the root element",
         "name": "withBorder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withFirstLineIndentation": {
+        "defaultValue": "false",
+        "description": "If set, indentation of the first line of the code is preserved. By default, it is removed\nalong with the rest of the leading and trailing whitespace.",
+        "name": "withFirstLineIndentation",
         "required": false,
         "type": {
           "name": "boolean"
@@ -48339,6 +49511,27 @@
           "name": "string | number"
         }
       },
+      "layout": {
+        "defaultValue": "'default'",
+        "description": "Controls how notifications are positioned in the stack, <code>'default'</code> – standard vertical list, <code>'stacked'</code> – only first notification is fully visible, rest are stacked behind",
+        "name": "layout",
+        "required": false,
+        "type": {
+          "name": "\"default\" | \"stacked\"",
+          "raw": "\"default\" | \"stacked\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"default\""
+            },
+            {
+              "value": "\"stacked\""
+            }
+          ]
+        }
+      },
       "limit": {
         "defaultValue": "5",
         "description": "Maximum number of notifications displayed at a time, other new notifications will be added to queue",
@@ -48420,6 +49613,15 @@
           ]
         }
       },
+      "renderNotification": {
+        "defaultValue": null,
+        "description": "Custom render function that replaces the default notification, can be overridden per notification",
+        "name": "renderNotification",
+        "required": false,
+        "type": {
+          "name": "(notification: NotificationData) => ReactNode"
+        }
+      },
       "store": {
         "defaultValue": null,
         "description": "Store for notifications state, can be used to create multiple instances of notifications system in your application",
@@ -48454,6 +49656,748 @@
         "required": false,
         "type": {
           "name": "string | number"
+        }
+      }
+    }
+  },
+  "Lightbox": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Custom lightbox layout, overrides the default layout built from compound components",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "closeOnClickOutside": {
+        "defaultValue": "false",
+        "description": "Closes lightbox when the empty space around the slide content is clicked",
+        "name": "closeOnClickOutside",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeOnSwipeDown": {
+        "defaultValue": "true",
+        "description": "Closes lightbox when swiping down on mobile",
+        "name": "closeOnSwipeDown",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "currentIndex": {
+        "defaultValue": null,
+        "description": "Controlled current slide index",
+        "name": "currentIndex",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "emblaOptions": {
+        "defaultValue": null,
+        "description": "Additional Embla carousel options. <code>loop</code> and <code>startIndex</code> are controlled by the\n<code>loop</code> and <code>currentIndex</code> props and cannot be set here, at the top level or in\n<code>breakpoints</code>; a <code>watchDrag</code> option is still honored at both levels, but dragging is\nalways disabled while the image is zoomed.",
+        "name": "emblaOptions",
+        "required": false,
+        "type": {
+          "name": "Partial<OptionsType>"
+        }
+      },
+      "labels": {
+        "defaultValue": null,
+        "description": "Labels used in the component, used for accessibility and localization",
+        "name": "labels",
+        "required": false,
+        "type": {
+          "name": "Partial<LightboxLabels>"
+        }
+      },
+      "loop": {
+        "defaultValue": "false",
+        "description": "Enables infinite loop navigation",
+        "name": "loop",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Called when the lightbox is closed",
+        "name": "onClose",
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onIndexChange": {
+        "defaultValue": null,
+        "description": "Called when the current slide index changes",
+        "name": "onIndexChange",
+        "required": false,
+        "type": {
+          "name": "(index: number) => void"
+        }
+      },
+      "opened": {
+        "defaultValue": null,
+        "description": "Controls whether the lightbox is opened",
+        "name": "opened",
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "returnFocus": {
+        "defaultValue": "true",
+        "description": "Determines whether focus should be returned to the last active element when the lightbox is closed",
+        "name": "returnFocus",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "slides": {
+        "defaultValue": null,
+        "description": "Array of slide data objects",
+        "name": "slides",
+        "required": true,
+        "type": {
+          "name": "LightboxSlideData[]"
+        }
+      },
+      "toolbarItems": {
+        "defaultValue": null,
+        "description": "Custom toolbar items, overrides default toolbar. Can be a function that receives the current lightbox state and handlers.",
+        "name": "toolbarItems",
+        "required": false,
+        "type": {
+          "name": "ToolbarItems"
+        }
+      },
+      "transitionDuration": {
+        "defaultValue": "200",
+        "description": "Transition duration in milliseconds",
+        "name": "transitionDuration",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Transition</code> component that animates the content, the overlay always fades. By default, the content is scaled from 95% to 100% while fading in.",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      },
+      "withDownload": {
+        "defaultValue": "false",
+        "description": "Adds download button to toolbar",
+        "name": "withDownload",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withFullscreen": {
+        "defaultValue": "false",
+        "description": "Adds fullscreen toggle to toolbar",
+        "name": "withFullscreen",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withInitialFocusPlaceholder": {
+        "defaultValue": "true",
+        "description": "Adds a hidden focusable element at the start of the lightbox content – prevents the first toolbar button from receiving visible focus when the lightbox is opened with a pointer. Set to <code>false</code> if you need custom focus management.",
+        "name": "withInitialFocusPlaceholder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withKeyboardEvents": {
+        "defaultValue": "true",
+        "description": "Determines whether keyboard shortcuts (arrows, <code>F</code>/<code>T</code>/<code>Z</code>) are active, <code>Escape</code> always closes the lightbox",
+        "name": "withKeyboardEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withNavigation": {
+        "defaultValue": "true",
+        "description": "Shows previous/next navigation arrows",
+        "name": "withNavigation",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withSlideTransition": {
+        "defaultValue": "false",
+        "description": "Enables animated slide transitions for programmatic navigation",
+        "name": "withSlideTransition",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withThumbnails": {
+        "defaultValue": "false",
+        "description": "Shows bottom thumbnail strip",
+        "name": "withThumbnails",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withZoom": {
+        "defaultValue": "false",
+        "description": "Enables image zoom on click/pinch",
+        "name": "withZoom",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withinPortal": {
+        "defaultValue": "true",
+        "description": "Determines whether the lightbox should be rendered inside <code>Portal</code>",
+        "name": "withinPortal",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "zIndex": {
+        "defaultValue": null,
+        "description": "<code>z-index</code> of the overlay and content elements, <code>400</code> by default",
+        "name": "zIndex",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "zoomMaxScale": {
+        "defaultValue": "3",
+        "description": "Maximum zoom scale",
+        "name": "zoomMaxScale",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  },
+  "LightboxRoot": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Lightbox content (compound components)",
+        "name": "children",
+        "required": true,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "closeOnClickOutside": {
+        "defaultValue": "false",
+        "description": "Closes lightbox when the empty space around the slide content is clicked",
+        "name": "closeOnClickOutside",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeOnSwipeDown": {
+        "defaultValue": "true",
+        "description": "Closes lightbox when swiping down on mobile",
+        "name": "closeOnSwipeDown",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "currentIndex": {
+        "defaultValue": null,
+        "description": "Controlled current slide index",
+        "name": "currentIndex",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "emblaOptions": {
+        "defaultValue": null,
+        "description": "Additional Embla carousel options. <code>loop</code> and <code>startIndex</code> are controlled by the\n<code>loop</code> and <code>currentIndex</code> props and cannot be set here, at the top level or in\n<code>breakpoints</code>; a <code>watchDrag</code> option is still honored at both levels, but dragging is\nalways disabled while the image is zoomed.",
+        "name": "emblaOptions",
+        "required": false,
+        "type": {
+          "name": "Partial<OptionsType>"
+        }
+      },
+      "labels": {
+        "defaultValue": null,
+        "description": "Labels used in the component, used for accessibility and localization",
+        "name": "labels",
+        "required": false,
+        "type": {
+          "name": "Partial<LightboxLabels>"
+        }
+      },
+      "loop": {
+        "defaultValue": "false",
+        "description": "Enables infinite loop navigation",
+        "name": "loop",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Called when the lightbox is closed",
+        "name": "onClose",
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onIndexChange": {
+        "defaultValue": null,
+        "description": "Called when the current slide index changes",
+        "name": "onIndexChange",
+        "required": false,
+        "type": {
+          "name": "(index: number) => void"
+        }
+      },
+      "opened": {
+        "defaultValue": null,
+        "description": "Controls whether the lightbox is opened",
+        "name": "opened",
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "returnFocus": {
+        "defaultValue": "true",
+        "description": "Determines whether focus should be returned to the last active element when the lightbox is closed",
+        "name": "returnFocus",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "slides": {
+        "defaultValue": null,
+        "description": "Array of slide data objects",
+        "name": "slides",
+        "required": true,
+        "type": {
+          "name": "LightboxSlideData[]"
+        }
+      },
+      "transitionDuration": {
+        "defaultValue": "200",
+        "description": "Transition duration in milliseconds",
+        "name": "transitionDuration",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Transition</code> component that animates the content, the overlay always fades. By default, the content is scaled from 95% to 100% while fading in.",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      },
+      "withDownload": {
+        "defaultValue": "false",
+        "description": "Adds download button to toolbar",
+        "name": "withDownload",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withFullscreen": {
+        "defaultValue": "false",
+        "description": "Adds fullscreen toggle to toolbar",
+        "name": "withFullscreen",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withInitialFocusPlaceholder": {
+        "defaultValue": "true",
+        "description": "Adds a hidden focusable element at the start of the lightbox content – prevents the first toolbar button from receiving visible focus when the lightbox is opened with a pointer. Set to <code>false</code> if you need custom focus management.",
+        "name": "withInitialFocusPlaceholder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withKeyboardEvents": {
+        "defaultValue": "true",
+        "description": "Determines whether keyboard shortcuts (arrows, <code>F</code>/<code>T</code>/<code>Z</code>) are active, <code>Escape</code> always closes the lightbox",
+        "name": "withKeyboardEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withSlideTransition": {
+        "defaultValue": "false",
+        "description": "Enables animated slide transitions for programmatic navigation",
+        "name": "withSlideTransition",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withThumbnails": {
+        "defaultValue": "false",
+        "description": "Shows bottom thumbnail strip",
+        "name": "withThumbnails",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withZoom": {
+        "defaultValue": "false",
+        "description": "Enables image zoom on click/pinch",
+        "name": "withZoom",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withinPortal": {
+        "defaultValue": "true",
+        "description": "Determines whether the lightbox should be rendered inside <code>Portal</code>",
+        "name": "withinPortal",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "zIndex": {
+        "defaultValue": null,
+        "description": "<code>z-index</code> of the overlay and content elements, <code>400</code> by default",
+        "name": "zIndex",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "zoomMaxScale": {
+        "defaultValue": "3",
+        "description": "Maximum zoom scale",
+        "name": "zoomMaxScale",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  },
+  "LightboxToolbar": {
+    "props": {
+      "toolbarItems": {
+        "defaultValue": null,
+        "description": "Custom toolbar items, overrides default toolbar actions. Can be a function that receives the current lightbox state and handlers.",
+        "name": "toolbarItems",
+        "required": false,
+        "type": {
+          "name": "ToolbarItems"
+        }
+      }
+    }
+  },
+  "LightboxSlides": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Slide components",
+        "name": "children",
+        "required": true,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "emblaRef": {
+        "defaultValue": null,
+        "description": "Embla carousel ref callback",
+        "name": "emblaRef",
+        "required": false,
+        "type": {
+          "name": "(instance: HTMLDivElement | null) => void | (() => VoidOrUndefinedOnly)"
+        }
+      }
+    }
+  },
+  "LightboxSlide": {
+    "props": {
+      "index": {
+        "defaultValue": null,
+        "description": "Index of the slide in the slides array",
+        "name": "index",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "slide": {
+        "defaultValue": null,
+        "description": "Slide data object",
+        "name": "slide",
+        "required": true,
+        "type": {
+          "name": "LightboxSlideData"
+        }
+      }
+    }
+  },
+  "LightboxThumbnails": {
+    "description": "",
+    "props": {}
+  },
+  "LightboxNavigation": {
+    "description": "",
+    "props": {}
+  },
+  "LightboxCaption": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Custom caption content, overrides slide caption",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      }
+    }
+  },
+  "LightboxCloseButton": {
+    "description": "",
+    "props": {}
+  },
+  "LightboxProvider": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Custom lightbox layout, overrides the default layout built from compound components",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "closeOnClickOutside": {
+        "defaultValue": "false",
+        "description": "Closes lightbox when the empty space around the slide content is clicked",
+        "name": "closeOnClickOutside",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeOnSwipeDown": {
+        "defaultValue": "true",
+        "description": "Closes lightbox when swiping down on mobile",
+        "name": "closeOnSwipeDown",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "emblaOptions": {
+        "defaultValue": null,
+        "description": "Additional Embla carousel options. <code>loop</code> and <code>startIndex</code> are controlled by the\n<code>loop</code> and <code>currentIndex</code> props and cannot be set here, at the top level or in\n<code>breakpoints</code>; a <code>watchDrag</code> option is still honored at both levels, but dragging is\nalways disabled while the image is zoomed.",
+        "name": "emblaOptions",
+        "required": false,
+        "type": {
+          "name": "Partial<OptionsType>"
+        }
+      },
+      "labels": {
+        "defaultValue": null,
+        "description": "Labels used in the component, used for accessibility and localization",
+        "name": "labels",
+        "required": false,
+        "type": {
+          "name": "Partial<LightboxLabels>"
+        }
+      },
+      "loop": {
+        "defaultValue": "false",
+        "description": "Enables infinite loop navigation",
+        "name": "loop",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "returnFocus": {
+        "defaultValue": "true",
+        "description": "Determines whether focus should be returned to the last active element when the lightbox is closed",
+        "name": "returnFocus",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "store": {
+        "defaultValue": "lightboxStore",
+        "description": "Lightbox store, can be used to create multiple instances",
+        "name": "store",
+        "required": false,
+        "type": {
+          "name": "LightboxStore"
+        }
+      },
+      "toolbarItems": {
+        "defaultValue": null,
+        "description": "Custom toolbar items, overrides default toolbar. Can be a function that receives the current lightbox state and handlers.",
+        "name": "toolbarItems",
+        "required": false,
+        "type": {
+          "name": "ToolbarItems"
+        }
+      },
+      "transitionDuration": {
+        "defaultValue": "200",
+        "description": "Transition duration in milliseconds",
+        "name": "transitionDuration",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": null,
+        "description": "Props passed down to the <code>Transition</code> component that animates the content, the overlay always fades. By default, the content is scaled from 95% to 100% while fading in.",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      },
+      "withDownload": {
+        "defaultValue": "false",
+        "description": "Adds download button to toolbar",
+        "name": "withDownload",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withFullscreen": {
+        "defaultValue": "false",
+        "description": "Adds fullscreen toggle to toolbar",
+        "name": "withFullscreen",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withInitialFocusPlaceholder": {
+        "defaultValue": "true",
+        "description": "Adds a hidden focusable element at the start of the lightbox content – prevents the first toolbar button from receiving visible focus when the lightbox is opened with a pointer. Set to <code>false</code> if you need custom focus management.",
+        "name": "withInitialFocusPlaceholder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withKeyboardEvents": {
+        "defaultValue": "true",
+        "description": "Determines whether keyboard shortcuts (arrows, <code>F</code>/<code>T</code>/<code>Z</code>) are active, <code>Escape</code> always closes the lightbox",
+        "name": "withKeyboardEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withNavigation": {
+        "defaultValue": "true",
+        "description": "Shows previous/next navigation arrows",
+        "name": "withNavigation",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withSlideTransition": {
+        "defaultValue": "false",
+        "description": "Enables animated slide transitions for programmatic navigation",
+        "name": "withSlideTransition",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withThumbnails": {
+        "defaultValue": "false",
+        "description": "Shows bottom thumbnail strip",
+        "name": "withThumbnails",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withZoom": {
+        "defaultValue": "false",
+        "description": "Enables image zoom on click/pinch",
+        "name": "withZoom",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withinPortal": {
+        "defaultValue": "true",
+        "description": "Determines whether the lightbox should be rendered inside <code>Portal</code>",
+        "name": "withinPortal",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "zIndex": {
+        "defaultValue": null,
+        "description": "<code>z-index</code> of the overlay and content elements, <code>400</code> by default",
+        "name": "zIndex",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "zoomMaxScale": {
+        "defaultValue": "3",
+        "description": "Maximum zoom scale",
+        "name": "zoomMaxScale",
+        "required": false,
+        "type": {
+          "name": "number"
         }
       }
     }
@@ -48512,6 +50456,24 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "eventDragInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for moving events by drag and drop, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventDragInterval",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "eventResizeInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for resizing events, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventResizeInterval",
+        "required": false,
+        "type": {
+          "name": "number"
         }
       },
       "events": {
@@ -48899,6 +50861,15 @@
         "defaultValue": "true",
         "description": "If set, the header is displayed",
         "name": "withHeader",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
           "name": "boolean"
@@ -49307,6 +51278,15 @@
           "name": "boolean"
         }
       },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "name": "withInteractiveBackgroundEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withOutsideDays": {
         "defaultValue": "true",
         "description": "If set, days from the previous and next months are displayed to fill the weeks",
@@ -49399,6 +51379,24 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "eventDragInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for moving events by drag and drop, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventDragInterval",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "eventResizeInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for resizing events, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventResizeInterval",
+        "required": false,
+        "type": {
+          "name": "number"
         }
       },
       "events": {
@@ -49863,6 +51861,15 @@
           "name": "boolean"
         }
       },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "name": "withInteractiveBackgroundEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withSubHourGridLines": {
         "defaultValue": "true",
         "description": "If set, grid lines are displayed for intervals smaller than one hour, for example 15 and 30 minutes intervals",
@@ -50113,6 +52120,15 @@
           "name": "number"
         }
       },
+      "renderDay": {
+        "defaultValue": null,
+        "description": "A function to replace the entire content of a day cell, called with the day date\nand the events grouped on that day – the same list that is used to render the default\nindicators. When set, default event indicators are not rendered.",
+        "name": "renderDay",
+        "required": false,
+        "type": {
+          "name": "YearViewRenderDay"
+        }
+      },
       "todayControlProps": {
         "defaultValue": null,
         "description": "Props passed to today control",
@@ -50180,6 +52196,15 @@
         "defaultValue": null,
         "description": "If set, show week numbers",
         "name": "withWeekNumbers",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withWeekendDays": {
+        "defaultValue": "true",
+        "description": "If set, weekend days are displayed. When <code>false</code>, weekend columns are hidden and the month grid shrinks.",
+        "name": "withWeekendDays",
         "required": false,
         "type": {
           "name": "boolean"
@@ -50555,6 +52580,15 @@
           "name": "boolean"
         }
       },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Applies to <code>day</code>, <code>week</code> and <code>month</code> views only – <code>YearView</code> and the <code>MobileMonthView</code> used by <code>layout=\"responsive\"</code> on small screens do not render background events at all.",
+        "name": "withInteractiveBackgroundEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "yearViewProps": {
         "defaultValue": null,
         "description": "Props specific to YearView (includes <code>firstDayOfWeek</code>, <code>weekendDays</code>, etc.)",
@@ -50906,6 +52940,24 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "eventDragInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for moving events by drag and drop, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventDragInterval",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "eventResizeInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for resizing events, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventResizeInterval",
+        "required": false,
+        "type": {
+          "name": "number"
         }
       },
       "events": {
@@ -51333,6 +53385,15 @@
         "type": {
           "name": "boolean"
         }
+      },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "name": "withInteractiveBackgroundEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
       }
     }
   },
@@ -51381,6 +53442,24 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "eventDragInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for moving events by drag and drop, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventDragInterval",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "eventResizeInterval": {
+        "defaultValue": "intervalMinutes",
+        "description": "Snap step for resizing events, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
+        "name": "eventResizeInterval",
+        "required": false,
+        "type": {
+          "name": "number"
         }
       },
       "events": {
@@ -51881,6 +53960,15 @@
           "name": "boolean"
         }
       },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "name": "withInteractiveBackgroundEvents",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "withWeekendDays": {
         "defaultValue": null,
         "description": "",
@@ -51898,6 +53986,15 @@
         "defaultValue": null,
         "description": "Function to determine if event can be dragged",
         "name": "canDragEvent",
+        "required": false,
+        "type": {
+          "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEvent": {
+        "defaultValue": null,
+        "description": "Function to determine if event can be resized",
+        "name": "canResizeEvent",
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
@@ -52086,6 +54183,15 @@
           "name": "((data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; resourceId?: string | number; }) => void) | undefined"
         }
       },
+      "onEventResize": {
+        "defaultValue": null,
+        "description": "Called when event is resized",
+        "name": "onEventResize",
+        "required": false,
+        "type": {
+          "name": "(data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; }) => void"
+        }
+      },
       "onExternalEventDrop": {
         "defaultValue": null,
         "description": "Called when an external item is dropped",
@@ -52252,6 +54358,15 @@
         "defaultValue": "false",
         "description": "If set, enables drag-to-select day ranges",
         "name": "withDragSlotSelect",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withEventResize": {
+        "defaultValue": "false",
+        "description": "If true, events can be resized by dragging their start and end edges, resizing snaps to whole days",
+        "name": "withEventResize",
         "required": false,
         "type": {
           "name": "boolean"
@@ -52602,7 +54717,7 @@
       },
       "withEventResize": {
         "defaultValue": "false",
-        "description": "If true, events can be resized",
+        "description": "If true, events can be resized by dragging their edges, resizing snaps to whole days in month view",
         "name": "withEventResize",
         "required": false,
         "type": {
@@ -52613,6 +54728,15 @@
         "defaultValue": "false",
         "description": "Enable drag and drop for events",
         "name": "withEventsDragAndDrop",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withInteractiveBackgroundEvents": {
+        "defaultValue": "false",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Applies to <code>day</code> and <code>week</code> views only – <code>ResourcesMonthView</code> does not render background events separately.",
+        "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
           "name": "boolean"

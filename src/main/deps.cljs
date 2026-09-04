@@ -3,15 +3,15 @@
 ;; NOT shipped — the consuming app owns React (avoids split-context/duplicate React).
 ;; Only PEER deps of the @mantine/* packages are declared here (dayjs, recharts);
 ;; regular deps ride transitively via npm (e.g. rrule via @mantine/schedule).
-{:npm-deps {"@mantine/core" "^9.5.0"
-            "@mantine/hooks" "^9.5.0"
-            "@mantine/notifications" "^9.5.0"
-            "@mantine/schedule" "^9.5.0"
-            "@mantine/modals" "^9.5.0"
-            "@mantine/form" "^9.5.0"
-            "@mantine/spotlight" "^9.5.0"
-            "@mantine/dates" "^9.5.0"
-            "@mantine/charts" "^9.5.0"
-            "@mantine/dropzone" "^9.5.0"
+{:npm-deps {"@mantine/core" "^9.6.0"
+            "@mantine/hooks" "^9.6.0"
+            "@mantine/notifications" "^9.6.0"
+            "@mantine/schedule" "^9.6.0"
+            "@mantine/modals" "^9.6.0"
+            "@mantine/form" "^9.6.0"
+            "@mantine/spotlight" "^9.6.0"
+            "@mantine/dates" "^9.6.0"
+            "@mantine/charts" "^9.6.0"
+            "@mantine/dropzone" "^9.6.0"
             "dayjs" "^1.11.21"
             "recharts" "^3.9.2"}}
