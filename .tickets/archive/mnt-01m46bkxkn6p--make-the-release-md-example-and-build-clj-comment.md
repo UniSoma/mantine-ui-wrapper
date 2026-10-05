@@ -1,12 +1,13 @@
 ---
 id: mnt-01m46bkxkn6p
 title: Make the release.md example and build.clj comment version-free
-status: open
+status: closed
 type: chore
 priority: 1
 mode: afk
 created: '2026-10-05T15:41:16.272736273Z'
-updated: '2026-10-05T15:41:16.272736273Z'
+updated: '2026-10-05T20:41:36.517334991Z'
+closed: '2026-10-05T20:41:36.517334991Z'
 acceptance:
 - title: the release.md N-reset example and the build.clj scheme comment contain no current-anchor version
   done: false
@@ -21,3 +22,9 @@ links:
 Each bump rewrites two lines that are not coordinates: the N-reset example in docs/release.md and the 'Version scheme X.Y.Z.N' comment on line 3 of build.clj. During the 9.7.0 bump a blanket sed turned the example into '9.5.0.3 -> 9.7.0.0' and the build.clj comment was missed at first. bb release-check validates coordinates only, so it caught neither.
 
 Remove the need to edit them. Pin the release.md example to fixed historical numbers (for example 9.4.1.3 -> 9.5.0.0) and write the build.clj comment without a version (M.m.p.N). Leave the real coordinates (README install line, release.md deps and cut steps, build.clj version) as they are, since release-check covers them.
+
+## Notes
+
+**2026-10-05T20:41:36.517334991Z**
+
+docs/release.md: heading now `<anchor>.N`, N-reset example pinned to 9.4.1.3 -> 9.5.0.0. build.clj line 3 was already version-free (<anchor>.N, from 87e8ab5). bb release-check passes.

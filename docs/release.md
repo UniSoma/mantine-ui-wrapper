@@ -5,7 +5,7 @@ source-only jar (the generated `.cljc` namespaces, `mantine/impl/`, and `deps.cl
 AOT or JS compilation). Rationale and the full set of decisions are in
 [`docs/adr/0001-clojars-release-process.md`](adr/0001-clojars-release-process.md).
 
-## Version scheme: `9.7.0.N`
+## Version scheme: `<anchor>.N`
 
 Four segments: the **first three are the Mantine anchor**, and `N` is the wrapper's
 own revision against that Mantine release.
@@ -13,7 +13,7 @@ own revision against that Mantine release.
 - Wrapper-only change (generator fix, `impl/` fix, scope widening) against the same
   Mantine → bump `N`: `9.4.1.0` → `9.4.1.1`.
 - Anchor bump (see [`anchor-bump.md`](anchor-bump.md)) → new anchor, reset
-  `N`: `9.6.0.3` → `9.7.0.0`.
+  `N`: `9.4.1.3` → `9.5.0.0`.
 
 The version lives in one place: `version` in [`build.clj`](../build.clj). Clojars
 **release** versions are immutable; while the design churns we stay on the mutable
