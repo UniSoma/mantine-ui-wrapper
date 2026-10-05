@@ -46,6 +46,9 @@ ENV CLJ_SURGEON_CLJ_KONDO_ADMISSION=/usr/local/bin/clj-kondo-admission
 # <<< clojure (managed) <<<
 
 # >>> knot (managed) >>>
-ARG KNOT_VERSION=0.11.0
-RUN bbin install https://github.com/UniSoma/knot.git --tag "v${KNOT_VERSION}"
+# Prebuilt binary (bundles its own babashka runtime); the installer verifies SHA256SUMS.
+ARG KNOT_VERSION=0.15.0
+RUN curl -fsSL https://raw.githubusercontent.com/UniSoma/knot/main/install.sh \
+      | KNOT_VERSION="${KNOT_VERSION}" KNOT_INSTALL_DIR=/usr/local/bin sh; \
+    knot --version
 # <<< knot (managed) <<<
