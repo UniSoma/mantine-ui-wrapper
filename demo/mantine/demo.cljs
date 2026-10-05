@@ -32,13 +32,14 @@
         ;; @mantine/form: controlled useForm hook (raw JS options; raw JS form
         ;; object read via interop) backing a TextInput below
         form (mfrm/use-form #js {:mode "controlled" :initialValues #js {:name "Ada"}})
+        ;; mantine.core hook: raw JS controller, passed to app-shell's :resize below
+        shell-resize (mc/use-app-shell-resize #js {:header #js {:min 48 :max 120}})
         ;; hooks return-shape split, one sample each (raw JS returns, zero conversion):
         [count counter-handlers] (mh/use-counter 5) ; tuple, destructured positionally
         viewport (mh/use-viewport-size)             ; object, read via interop (^js)
         generated-id (mh/use-id)                    ; scalar (string)
         ;; non-hook barrel utility: plain fn call, raw passthrough (mnt-01kxh6gf6ny3)
-        random-id (mh/random-id "demo-")            ; -> "demo-xxxxx"
-        shell-resize (mc/use-app-shell-resize #js {:header #js {:min 48 :max 120}})]
+        random-id (mh/random-id "demo-")]           ; -> "demo-xxxxx"
     ;; full screen built from backfilled non-docgen core surface: the wrapped
     ;; mantine-provider (app root, in `app`), AppShell page shell (+ app-shell-main),
     ;; its header made resizable by use-app-shell-resize, and a Menu whose

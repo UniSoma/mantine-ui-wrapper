@@ -18,12 +18,12 @@ Releases before the first entry below were SNAPSHOTs only and are not recorded.
 ### Added
 
 - `mantine.core/toggle`.
-- `mantine.core/use-app-shell-resize`.
 - `mantine.core/toolbar` and its parts: `toolbar-toggle`, `toolbar-toggle-group`,
   `toolbar-toggle-item`, `toolbar-group` and `toolbar-divider`.
 - `mantine.core/tour` and its parts: `tour-root`, `tour-step`, `tour-overlay`,
   `tour-tooltip`, `tour-beacon`, `tour-title`, `tour-body`, `tour-close-button` and
   `tour-navigation`.
+- `mantine.core/use-app-shell-resize`.
 
 ### Changed
 
