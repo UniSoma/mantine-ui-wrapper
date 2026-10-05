@@ -1,27 +1,28 @@
 ---
 id: mnt-01m46aqnkbem
 title: Wrap notifications.promise (promiseNotification, new in 9.7.0)
-status: in_progress
+status: closed
 type: feature
 priority: 3
 mode: afk
 created: '2026-10-05T15:25:50.559446265Z'
-updated: '2026-10-05T18:41:41.857192692Z'
+updated: '2026-10-05T18:51:40.798027226Z'
+closed: '2026-10-05T18:51:40.798027226Z'
 links:
 - mnt-01m46ahjn88j
 tags:
 - settled
 acceptance:
 - title: mantine.notifications/promise is generated from the notifications supplement, and bb generate passes the collision guard
-  done: false
+  done: true
 - title: A demo button calls mn/promise on a promise that resolves to a known value, with a :success fn that puts the value in :message, plus :title and :auto-close false; verify-demo.mjs clicks it and asserts one notification shows both the resolved value and the title
-  done: false
+  done: true
 - title: A second demo button calls mn/promise on a rejected promise, with an :error fn that puts the reason in :message and :auto-close false; verify-demo.mjs clicks it and asserts that message renders
-  done: false
+  done: true
 - title: CHANGELOG.md lists mantine.notifications/promise under [Unreleased] / Added
-  done: false
+  done: true
 - title: bb ci passes
-  done: false
+  done: true
 ---
 
 ## Description
@@ -44,3 +45,9 @@ Add `mantine.notifications/promise`, called as `(promise p opts)`. `opts` takes 
 - The docstring covers the options, the fn form, and what is converted versus passed through as-is. It also says Mantine resets `autoClose` when the promise settles, so the success or error notification falls back to the provider's auto-close default unless it sets `:auto-close` itself.
 - Verification through the demo, like `show`. One button resolves a promise to a known value, with a `:success` fn that puts the value in `:message`. A second button rejects a promise, with an `:error` fn that puts the reason in `:message`. Both set `:auto-close false`. `scripts/verify-demo.mjs` waits for the text of the final state, not for any notification, because the loading notification has the same id. The rejected promise does not crash Node: Mantine attaches `.then(ok, err)` to the original promise, so the rejection counts as handled.
 - Changelog: add `mantine.notifications/promise` under `## [Unreleased]` / `### Added` in `CHANGELOG.md`, in the same commit.
+
+## Notes
+
+**2026-10-05T18:51:40.798027226Z**
+
+Shipped mantine.notifications/promise from the notifications supplement. Options convert like show's; a :success or :error fn gets the resolved value or rejection reason raw and its returned map goes through p/convert. The demo has a resolving and a rejecting button, and verify-demo asserts each settled notification shows the fn's message and title. CHANGELOG lists it under Unreleased / Added; bb ci green.

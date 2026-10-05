@@ -79,8 +79,8 @@
                                :auto-close false}))}
         "Show notification")
 
-       ;; notifications/promise: the :success fn gets the resolved value raw and
-       ;; returns a CLJS map, which the wrapper converts
+       ;; notifications/promise: the :success and :error fns get the resolved value or
+       ;; the rejection reason raw and return CLJS maps, which mn/promise converts
        (mc/button
         {:id "btn-notify-promise"
          :on-click (fn [_]

@@ -70,10 +70,13 @@ Optional leading props map; remaining args are children."
   `opts` takes :id (shared by all three states), :loading, :success and :error.
   Each state is a notification options map, converted like `show`'s. :success and
   :error can instead be a fn: it receives the resolved value or the rejection reason
-  raw, and the map it returns is converted. Mantine applies `loading: true` and
-  `autoClose: false` to :loading, and teal / red colors to :success / :error. On
-  settling it resets auto-close, so the final notification uses the provider's
-  default unless its map sets :auto-close."
+  raw, and the map it returns is converted. :loading defaults :loading true and
+  :auto-close false; :success and :error default :color to teal and red.
+
+  The settled state is merged over the :loading map, so keys it does not set (such
+  as :title or :icon) carry over from :loading. :loading and :auto-close do not
+  carry over: the final notification uses the provider's auto-close unless its
+  map sets :auto-close."
   [prom opts]
   #?(:cljs (promiseNotification
             prom

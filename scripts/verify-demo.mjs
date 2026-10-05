@@ -176,8 +176,8 @@ try {
       .find((el) => el.textContent.includes('Sent from mantine.notifications/show')));
   assert(note.textContent.includes('It works'), 'notifications/show data converted (title rendered)');
 
-  // notifications/promise: a :success fn gets the resolved value, and the CLJS map it
-  // returns is converted. Wait for the final text: the loading state shares the id.
+  // notifications/promise updates the loading notification in place (same id), so
+  // poll for the settled text, not for any notification.
   doc.getElementById('btn-notify-promise').click();
   const resolved = await poll('promise success notification appears', () =>
     [...doc.querySelectorAll('[class*="mantine-Notification-root"], [role="alert"]')]
