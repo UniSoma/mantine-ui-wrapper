@@ -1,8 +1,9 @@
-;; One-shot input refresh for an anchor bump: clone the Mantine tag that matches the
-;; package.json anchor, run its docgen with the yarn its package.json pins under
-;; "packageManager" (yarn is not on PATH; corepack, fetched via npx, resolves the pin),
-;; then hand the clone to extract/write-inputs!. Bump the package.json pins first:
-;; extract asserts clone == anchor.
+;; Anchor-bump tasks over a clone of the Mantine tag that matches the package.json
+;; anchor. upstream-diff prints what changed in the upstream contract since HEAD's
+;; anchor. -main is the one-shot input refresh: clone the tag, run its docgen with the
+;; yarn its package.json pins under "packageManager" (yarn is not on PATH; corepack,
+;; fetched via npx, resolves the pin), then hand the clone to extract/write-inputs!.
+;; Bump the package.json pins first: extract asserts clone == anchor.
 ;;
 ;;   bb upstream-diff           ; diff stat of the upstream contract, HEAD's anchor -> the new one
 ;;   bb clone-anchor            ; clones into target/mantine-<anchor>, reuses it if present
@@ -13,17 +14,20 @@
             [extract]))
 
 (def ^:private upstream-contract
-  "The paths of a Mantine checkout that the clone, docgen and extract steps depend on."
+  "The paths of a Mantine checkout whose change can break clone-anchor's yarn install,
+  docgen or extract steps. Not every path those steps read: the docgen output under
+  apps/mantine.dev/src/.docgen is gitignored upstream, so it has no diff between tags, and
+  packages/@mantine/core/package.json changes on every release for its version alone."
   [;; vendored yarn releases, read by `yarn install` through .yarnrc.yml yarnPath
    ;; until 9.7.0
    ".yarn"
    ;; yarn config read by `yarn install`
    ".yarnrc.yml"
-   ;; its packageManager field pins the yarn
+   ;; its packageManager field pins the yarn version corepack runs
    "package.json"
    ;; the docgen run before extract
    "scripts/docgen"
-   ;; the mdx-*-data.ts docs-data files extract parses
+   ;; the mdx-*-data.ts docs-data files extract reads
    "apps/mantine.dev/src/mdx/data"
    ;; not read; a new docs-data file shows up here as a new import
    "apps/mantine.dev/src/mdx/mdx-data.ts"])
@@ -48,9 +52,10 @@
          "npx" "--yes" "corepack@0.36.0" "yarn" args))
 
 (defn upstream-diff
-  "Print the diff stat of the upstream contract between HEAD's anchor and the bumped
-  package.json anchor, in the anchor clone. Runs before clone-anchor's yarn steps, which
-  a toolchain change can break."
+  "Print the diff stat of the upstream contract between HEAD's anchor and package.json's.
+  Clones the new anchor tag into target/mantine-<anchor>, or reuses that clone, and
+  fetches the old tag into it. Prints a notice and clones nothing when the two anchors
+  match. Meant to run before clone-anchor, whose yarn install a toolchain change can break."
   []
   (let [new-v (anchor/anchor-version)
         old-v (anchor/anchor-version

@@ -78,18 +78,18 @@ docgen is roughly a minute of compute.
 
 ## Upstream contract
 
-The upstream contract is the set of paths in a Mantine checkout that the clone,
-docgen and extract steps depend on: the yarn toolchain pins, the docgen scripts
-and the docs-data files. The list lives in `upstream-contract` in
+The upstream contract is the set of paths in a Mantine checkout whose change can
+break the yarn install, docgen or extract steps: the yarn toolchain pins, the
+docgen scripts and the docs-data files. The list lives in `upstream-contract` in
 [`codegen/clone_anchor.clj`](../codegen/clone_anchor.clj), one comment per path
 saying what reads it. `bb upstream-diff` prints the diff stat of those paths
 between the two anchor tags. For 9.6.0 to 9.7.0 it showed the removed vendored
 yarn under `.yarn/releases` and the new CodeHighlight docs-data file, neither of
 which the release notes mention.
 
-When a path in the stat changed, read its diff in the clone
+For each path in the stat, read its diff in the clone
 (`git -C target/mantine-<anchor> diff <old> <new> -- <path>`) before step 3.
-When the pipeline starts to depend on a new upstream path, add it to the list.
+When the pipeline starts to read another file of the clone, add its path to the list.
 
 ## What the pipeline cannot see
 
