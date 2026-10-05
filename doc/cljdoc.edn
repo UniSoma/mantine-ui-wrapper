@@ -4,7 +4,7 @@
 ;; This explicit tree publishes only the README, the concepts doc, and the ADRs.
 {:cljdoc.doc/tree
  [["Readme" {:file "README.md"}]
-  ["Concepts & vocabulary" {:file "CONTEXT.md"}]
+  ["Concepts & vocabulary" {:file "GLOSSARY.md"}]
   ["Architecture decisions"
    ["Releasing to Clojars"           {:file "docs/adr/0001-clojars-release-process.md"}]
    ["Backfilling non-docgen surface" {:file "docs/adr/0002-backfilling-non-docgen-surface.md"}]

@@ -1,6 +1,6 @@
 # The Mantine anchor is single-sourced from the package.json pins
 
-The wrapped Mantine version — the **Mantine anchor** (see `CONTEXT.md`) — appears as a
+The wrapped Mantine version — the **Mantine anchor** (see `GLOSSARY.md`) — appears as a
 literal in at least six machine-consumed places: the exact `@mantine/*` pins in
 `package.json`, the `^`-prefixed consumer ranges in `src/main/deps.cljs`, the
 `mantine-version` `def` in `codegen/plan.clj` (which flows into every generated banner
