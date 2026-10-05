@@ -18,9 +18,9 @@ Single-context: one `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agen
 
 Bumping the Mantine anchor (the wrapped Mantine release): `docs/anchor-bump.md`.
 
-### Changelog
+### Coding standards
 
-A change a consumer can see (a def added, removed or renamed, a behavior change) gets an entry under `## [Unreleased]` in `CHANGELOG.md`, in the same commit.
+Coding standards live in `CODING_STANDARDS.md`. Read it before you commit; `/code-review` checks it.
 
 # Behavioral guidelines
 

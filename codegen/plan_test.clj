@@ -65,7 +65,8 @@
    :pins {"@mantine/core" "9.4.1" "@mantine/hooks" "9.4.1"}
    :deps-ranges {"@mantine/core" "^9.4.1" "@mantine/hooks" "^9.4.1"}
    :build-version "9.4.1.0-SNAPSHOT"
-   :witness "9.4.1"})
+   :witness "9.4.1"
+   :changelog "- The Mantine anchor is now 9.4.1 ([release notes](https://mantine.dev/changelog/9-4-1/))."})
 
 (deftest release-check-clean-input-has-no-violations
   (is (empty? (release-check/violations rc-ok))))
@@ -87,6 +88,12 @@
   (let [probs (release-check/violations (assoc rc-ok :witness "9.4.0"))]
     (is (some #(str/includes? % "witness") probs))
     (is (some #(str/includes? % "9.4.0") probs))))
+
+(deftest release-check-flags-changelog-without-anchor-link
+  (let [probs (release-check/violations
+               (assoc rc-ok :changelog "- The Mantine anchor is now 9.4.0 ([release notes](https://mantine.dev/changelog/9-4-0/))."))]
+    (is (some #(str/includes? % "CHANGELOG.md") probs))
+    (is (some #(str/includes? % "https://mantine.dev/changelog/9-4-1/") probs))))
 
 (deftest prose-renderings-extracts-embedded-coordinates-only
   ;; The version is arbitrary, not the anchor: the extractor only pulls embedded

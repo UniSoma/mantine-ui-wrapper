@@ -9,6 +9,11 @@
 ;; so they are checked too. Only tokens that embed a package or artifact pin match;
 ;; bare version-scheme examples (`9.4.1.0 → 9.4.1.1`) do not.
 ;;
+;; CHANGELOG.md must contain the anchor's release-notes link. Unlike the checks above,
+;; the link is not a rendering: it records the bump, and older anchors' links stay in
+;; the file. It is checked here because a bump without a changelog entry is a bump-time
+;; slip like the stale witness, and the check still passes after a release cut.
+;;
 ;; Pure checker (violations), thin I/O runner (-main). build.clj lives under the
 ;; deps.edn :build alias, which cannot see codegen/, so its version string is regex'd
 ;; out of its text instead of required.
@@ -38,9 +43,10 @@
   "Pure checker: seq of human-readable problem strings (empty = all agree). Every
   @mantine/* deps.cljs range must equal \"^\"+anchor, the build.clj version prefix must
   equal the anchor, the committed provenance witness must equal the anchor, every
-  package.json pin must equal the anchor, and every anchor-embedding prose coordinate
-  (README.md / docs/release.md) must equal the anchor."
-  [{:keys [anchor deps-ranges build-version pins witness prose]}]
+  package.json pin must equal the anchor, every anchor-embedding prose coordinate
+  (README.md / docs/release.md) must equal the anchor, and the CHANGELOG.md text must
+  contain the anchor's release-notes link."
+  [{:keys [anchor deps-ranges build-version pins witness prose changelog]}]
   (concat
    (for [[pkg v] (sort pins)
          :when (not= v anchor)]
@@ -57,12 +63,15 @@
            ", expected " anchor " — re-run `bb extract`")])
    (for [{:keys [file kind version]} prose
          :when (not= version anchor)]
-     (str file " " (name kind) " embeds Mantine " version ", expected " anchor))))
+     (str file " " (name kind) " embeds Mantine " version ", expected " anchor))
+   (let [link (str "https://mantine.dev/changelog/" (str/replace anchor "." "-") "/")]
+     (when-not (str/includes? changelog link)
+       [(str "CHANGELOG.md has no release-notes link " link " for anchor " anchor)]))))
 
 (defn -main
   "Read the real artifacts, assert the package.json pins are uniform (via the anchor
-  module), then check every rendering in `violations` against the anchor. Exits
-  non-zero on any violation."
+  module), then check every rendering and the changelog link in `violations` against
+  the anchor. Exits non-zero on any violation."
   [& _]
   (let [pins (anchor/pins)
         anchor (anchor/anchor-version pins)
@@ -75,10 +84,11 @@
                       ["README.md" "docs/release.md"])
         probs (violations {:anchor anchor :deps-ranges deps-ranges
                            :build-version build-version :pins pins :witness witness
-                           :prose prose})]
+                           :prose prose :changelog (slurp "CHANGELOG.md")})]
     (if (seq probs)
       (do (println "RELEASE-CHECK FAILED — anchor" anchor)
           (doseq [p probs] (println "  •" p))
           (System/exit 1))
       (println "RELEASE-CHECK OK — anchor" anchor
-               "matches deps.cljs ranges, build.clj prefix, package.json pins, and README/release prose."))))
+               "matches deps.cljs ranges, build.clj prefix, package.json pins, provenance witness,"
+               "README/release prose, and the CHANGELOG.md release-notes link."))))

@@ -57,15 +57,17 @@ less target/mantine-<anchor>/apps/mantine.dev/src/pages/changelog/<x-y-z>.mdx
 npm install
 bb generate
 
-# 6. Stage, then run the verify loop. `bb drift` diffs the working tree against
-#    the INDEX, so unstaged regenerated sources read as drift.
+# 6. Stage, then review the generated diff (see below). `bb drift` in step 8
+#    diffs the working tree against the INDEX, so unstaged regenerated sources
+#    read as drift.
 git add -A
-bb ci
-
-# 7. Review the generated diff (see below).
 git diff --cached -- src/main/mantine/
 
-# 8. Record the bump in CHANGELOG.md (see below).
+# 7. Record the bump in CHANGELOG.md (see below). `bb release-check` fails
+#    until the anchor's release-notes link is there.
+
+# 8. Run the verify loop.
+bb ci
 ```
 
 `bb extract <clone-dir>` is the last step of `clone-anchor` on its own, for a clone
@@ -141,7 +143,8 @@ set and regenerate.
 Add the bump under `## [Unreleased]` in [`CHANGELOG.md`](../CHANGELOG.md):
 
 - Under `### Changed`, one line that names the new anchor and links its
-  release notes (`https://mantine.dev/changelog/<x-y-z>/`).
+  release notes (`https://mantine.dev/changelog/<x-y-z>/`). `bb release-check`
+  fails when CHANGELOG.md does not contain that link.
 - Under `### Added` and `### Removed`, the defs that the generated diff adds or
   removes.
 - Under `### Changed`, an `Upstream:` line for each changelog item that can break an

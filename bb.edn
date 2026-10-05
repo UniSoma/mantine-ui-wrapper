@@ -75,7 +75,7 @@
   extract-test {:doc "Extract-level fixture tests for the MDX parsers (no clone, no writes)"
                 :task (load-file "codegen/extract_test.clj")}
 
-  release-check {:doc "Validate deps.cljs ranges, build.clj prefix, package.json pins, provenance witness and README/release.md coordinates against the anchor (ADR 0005)"
+  release-check {:doc "Validate deps.cljs ranges, build.clj prefix, package.json pins, provenance witness, README/release.md coordinates and the CHANGELOG.md release-notes link against the anchor (ADR 0005)"
                  :requires ([release-check])
                  :task (release-check/-main)}
 
