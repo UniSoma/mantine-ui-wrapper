@@ -3,9 +3,9 @@
 ;; Seam: committed inputs + observed exports  ->  build  ->  plan (pure data)  ->  emit-ns
 ;;
 ;;   read-sources  : all I/O (slurp committed EDN/JSON + Node export enumeration)
-;;   build         : THE deep module — pure fn of `sources`; ALL domain decisions
-;;   emit-ns       : thin — one ns-plan -> {:file :text}; owns escaping + templating only
-;;   write-plan!   : thin — the `bb generate` driver (emit-ns + spit + summary)
+;;   build         : the deep module, a pure fn of `sources`; owns every domain decision
+;;   emit-ns       : thin; one ns-plan -> {:file :text}; owns escaping + templating only
+;;   write-plan!   : thin; the `bb generate` driver (emit-ns + spit + summary)
 (ns plan
   (:require [anchor]
             [babashka.fs :as fs]
@@ -17,20 +17,20 @@
 
 ;; ---------------------------------------------------------------- shapes
 ;;
-;; sources — the only thing `build` reads. Separates observation from decision.
+;; sources: the only thing `build` reads. Separates observation from decision.
 ;; {:docgen          {}          ; parsed codegen/input/docgen.json
 ;;  :component-docs  {}          ; parsed codegen/input/component-docs.edn
 ;;  :hook-docs       {}          ; parsed codegen/input/hook-docs.edn
 ;;  :hook-docs-page  {}          ; parsed codegen/input/hook-docs-page.edn (Companion hooks)
-;;  :util-docs       {}          ; parsed codegen/input/util-docs.edn (non-hook barrel utils)
+;;  :util-docs       {}          ; parsed codegen/input/util-docs.edn (Barrel utilities)
 ;;  :controlled      #{}         ; parsed codegen/controlled-inputs.edn
 ;;  :scope           {:components ... :hooks ... :supplement-only-packages ...}
 ;;  :supplements     {"core" "<verbatim .cljc text>" ...}  ; suffix -> file text (unparsed)
-;;  :exports         {"@mantine/core" ["Button" ...]       ; OBSERVED (Node) — injected fact
+;;  :exports         {"@mantine/core" ["Button" ...]       ; observed via Node, injected
 ;;                    "@mantine/hooks" ["useDisclosure" ...]}
 ;;  :mantine-version "9.4.1"}
 ;;
-;; plan — the domain artifact. Entirely data: no text, no I/O, JVM-serializable.
+;; plan: the domain artifact. Entirely data (no text, no I/O), JVM-serializable.
 ;; {:mantine-version "9.4.1"
 ;;  :namespaces [ns-plan ...]    ; sorted by :ns-name
 ;;  :skipped    [{:kind :component|:hook|:barrel :js-name "X" :reason "..."} ...]
@@ -42,26 +42,26 @@
 ;;  :ns-name  "mantine.core"
 ;;  :file     "src/main/mantine/core.cljc"
 ;;  :mantine-version "9.4.1"                  ; stamped into the DO-NOT-EDIT header
-;;  :docstring "Mantine @mantine/core 9.4.1 wrappers (generated...)."  ; UN-escaped
+;;  :docstring "Mantine @mantine/core 9.4.1 wrappers (generated...)."  ; unescaped
 ;;  :refer-clojure-exclude ["range" ...]      ; sorted, pre-computed
 ;;  :requires {:cljs [...] :clj [...] :common [...]}  ; fully merged w/ supplement requires
 ;;  :defs     [def-plan ...]                  ; sorted by :js-name (matches emitter byte-for-byte)
 ;;  :supplement {:suffix "core" :body "<verbatim, satisfied-declares dropped>"}} ; or nil
 ;;
 ;; def-plan
-;; {:kind :component            ; :component | :hook | :util (non-hook @mantine/hooks
-;;                              ;  barrel utility — raw-passthrough alias, same emit
-;;                              ;  shape as :hook; docstring from util-docs.edn)
+;; {:kind :component            ; :component | :hook | :util (a Barrel utility:
+;;                              ;  raw-passthrough alias, same emit shape as :hook;
+;;                              ;  docstring from util-docs.edn)
 ;;  :js-name "Button"
-;;  :symbol  "button"           ; kebab — PRE-COMPUTED (naming is a domain decision)
-;;  :docstring "Button — ..."   ; plain human text, UN-escaped; emit-ns escapes
+;;  :symbol  "button"           ; kebab, pre-computed (naming is a domain decision)
+;;  :docstring "Button — ..."   ; plain human text, unescaped; emit-ns escapes
 ;;  :controlled? false}         ; components only
 
 ;; ---------------------------------------------------------------- read-sources (all I/O)
 
 (defn- assert-installed-versions!
-  "Reality-check (ADR 0005): every installed node_modules/@mantine/*/package.json
-  version must equal the anchor, catching a stray local npm install."
+  "Throw unless every installed node_modules/@mantine/*/package.json version equals
+  the anchor (ADR 0005). Catches a stray local npm install."
   [mantine-packages version]
   (let [mismatches (for [pkg mantine-packages
                          :let [installed (get (json/parse-string
@@ -82,8 +82,9 @@
 
 (defn read-sources
   "All I/O. Slurp the committed codegen inputs and enumerate installed @mantine/*
-  exports via Node. Returns a `sources` map. The sole live adapter over the
-  observation seam — fixtures hand-build the same map with literal :exports."
+  exports via Node. Returns a `sources` map; throws when an installed @mantine/*
+  version differs from the anchor. The sole live adapter over the observation seam:
+  fixtures hand-build the same map with literal :exports."
   []
   (let [mantine-packages (->> (get (json/parse-string (slurp "package.json")) "devDependencies")
                               keys
@@ -139,7 +140,8 @@
 
 (defn- docs-entry
   "Docs-app entry for a docgen component name: direct key match, else the family
-  entry whose :props lists the name (compound sub-components inherit the parent's)."
+  entry whose :props lists the name (family members such as ButtonGroup inherit the
+  parent's)."
   [component-docs nm]
   (or (get component-docs nm)
       (some (fn [[k v]]
@@ -149,10 +151,10 @@
 
 (defn- md-description
   "Sanitize a docgen description for cljdoc's Markdown renderer (ADR 0007).
-  Escape-then-convert: FIRST escape any literal backtick already in the raw text
-  so it can never open a code span, THEN turn Mantine's <code>…</code> into real,
-  balanced backtick code spans. The only active backticks in the output are the
-  ones we emit from balanced <code> pairs."
+  Escape, then convert: first escape any literal backtick already in the raw text so
+  it can never open a code span, then turn Mantine's <code>…</code> into balanced
+  backtick code spans. The only active backticks in the output come from balanced
+  <code> pairs."
   [d]
   (-> (squash-ws d)
       (str/replace "`" "\\`")
@@ -194,10 +196,10 @@
          (str/join "\n"))))
 
 (defn- util-docstring
-  "Docstring for a non-hook barrel utility. Fails the build (drift guard) when the
-  utility has no codegen/input/util-docs.edn entry — every enumerated barrel util
-  must be documented. The anchored URL is derived from the JS name (lowercased,
-  separators stripped) under the entry's :page."
+  "Docstring for a Barrel utility. Throws ex-info when the utility has no
+  codegen/input/util-docs.edn entry, so every enumerated barrel utility must be
+  documented or excluded in codegen/scope.edn. The URL fragment is the JS name
+  (lowercased, separators stripped) under the entry's :page."
   [{:keys [util-docs]} nm]
   (let [{:keys [desc page]} (or (get util-docs nm)
                                 (throw (ex-info (str "barrel utility " nm
@@ -216,9 +218,10 @@
 ;; ---------------------------------------------------------------- supplements (pure parse)
 
 (defn- drop-satisfied-declares
-  "Remove top-level (declare ...) lines whose every symbol is among satisfied-names —
-  they exist only to make the standalone supplement compile and are redundant once
-  hoisted after the generated defs. Collapses the blank line left behind."
+  "Remove top-level (declare ...) lines whose every symbol is among satisfied-names.
+  Such declares exist only to make the standalone supplement compile and are
+  redundant once hoisted after the generated defs. Also drops the blank line each
+  removed form leaves behind."
   [lines body-start-row body-forms satisfied-names]
   (let [rows-to-drop (set (mapcat (fn [form]
                                     (let [{:keys [row end-row]} (meta form)]
@@ -370,14 +373,15 @@
      :supplement (when supplement {:suffix suffix :body (:body supplement)})}))
 
 (defn- hooks-ns-plan
-  "Plan for the mantine.hooks ns. `barrel-names` mixes use* hooks and non-hook
-  plain utilities (randomId, clamp, mergeRefs, ...); each def is routed by name —
-  use* -> :hook (hook-docstring), else -> :util (util-docstring, drift-guarded)."
+  "Plan for the mantine.hooks ns. `barrel-names` mixes use* hooks and Barrel
+  utilities (randomId, clamp, mergeRefs, ...). Each def is routed by name: use* ->
+  :hook (hook-docstring), else :util (util-docstring, which throws on an
+  undocumented utility)."
   [{:keys [mantine-version] :as sources} barrel-names]
   (let [ns-name "mantine.hooks"
         _ (check-collisions! ns-name barrel-names)
         names (sort barrel-names)
-        ;; a single-word util kebabs to its own JS name (clamp, range): :refer-ing it
+        ;; a single-word utility kebabs to its own JS name (clamp, range): :refer-ing it
         ;; while def-ing the same symbol would shadow the refer, so reach those via a
         ;; module alias (hooks-js/clamp) and keep them out of the :refer list.
         alias-sym 'hooks-js
@@ -414,7 +418,7 @@
 ;; ---------------------------------------------------------------- build
 
 (defn build
-  "THE deep module. Pure fn of `sources` -> `plan`. Owns every domain decision:
+  "The deep module: a pure fn of `sources` -> `plan`. Owns every domain decision:
   scope resolution, package assignment (core-precedence + multi-package note),
   component/hook/supplement-only classification, kebab naming + refer-clojure
   excludes, docstring composition (incl. Companion-hook page mapping), supplement
@@ -424,12 +428,13 @@
   def colliding with a generated def). Unresolvable names -> :skipped data;
   controlled-input rot -> :notes data. Never shells out; never writes.
 
-  The compound-part Drift audit is intentionally NOT here — it needs component
-  statics the emitter never uses; it stays in the observation/Coverage layer."
+  The compound-part Drift audit lives in the observation/Coverage layer
+  (scripts/coverage-check.clj), not here: it needs component statics the emitter
+  never uses."
   [{:keys [docgen scope controlled exports] :as sources}]
   (let [idx (exports-index exports)
         ;; every docgen entry exported by a wrapped @mantine/* package other than
-        ;; @mantine/hooks — the universe the :components dimension draws from when {:all true}
+        ;; @mantine/hooks; the :components dimension draws from it when {:all true}
         component-universe (filter (fn [nm]
                                      (and (get docgen nm)
                                           (some #(not= % "@mantine/hooks") (get idx nm []))))
@@ -439,7 +444,7 @@
         resolved (keep :resolved resolutions)
         by-pkg (group-by second resolved)
         ;; the barrel is enumerated as everything-minus-excludes: every export
-        ;; (use* hooks AND non-hook utilities) flows through hooks-ns-plan, which
+        ;; (use* hooks and Barrel utilities) flows through hooks-ns-plan, which
         ;; routes each by name. Undocumented exports must be excluded in scope.edn.
         hook-exports (set (get exports "@mantine/hooks"))
         barrel-names (sort (dimension-names (:hooks scope) hook-exports))
@@ -493,8 +498,8 @@
          "  #?(:cljs (f/factory " (if controlled? (str "(f/controlled " js-name ")") js-name) ")\n"
          "     :clj (f/not-implemented \"" ns-name "/" sym "\")))\n")
 
-    ;; hooks and plain utilities share the raw-passthrough alias shape; a
-    ;; single-word util reaches its JS export via :cljs-ref (hooks-js/clamp) to
+    ;; hooks and Barrel utilities share the raw-passthrough alias shape; a
+    ;; single-word utility reaches its JS export via :cljs-ref (hooks-js/clamp) to
     ;; avoid shadowing its own :refer.
     (:hook :util)
     (str "(def " sym "\n"
@@ -507,11 +512,11 @@
        mantine-version ") — DO NOT EDIT.\n"))
 
 (defn emit-ns
-  "Thin. One ns-plan -> {:file <path> :text <cljc source>}. Pure templating +
-  escaping over pre-computed fields — no kebab, no docstring lookup, no
-  controlled-inputs, no merge-requires, no derive-exclude. Exactly two text rules:
-  escape docstrings here; splice the supplement body VERBATIM (it is already valid
-  .cljc — re-escaping would corrupt it)."
+  "Thin. One ns-plan -> {:file <path> :text <cljc source>}. Pure templating and
+  escaping over pre-computed fields: no kebab, no docstring lookup, no
+  controlled-inputs, no merge-requires. Two text rules: escape docstrings, and
+  splice the supplement body verbatim (it is already valid .cljc, so re-escaping
+  would corrupt it)."
   [{:keys [ns-name file mantine-version defs supplement] :as ns-plan}]
   {:file file
    :text (str (header mantine-version)
@@ -525,8 +530,8 @@
 ;; ---------------------------------------------------------------- write-plan! (thin)
 
 (defn write-plan!
-  "Thin. The `bb generate` driver: emit-ns every namespace, create dirs, spit,
-  then print the summary plus :skipped / :notes. Returns a summary map."
+  "Thin. The `bb generate` driver: print :skipped and :notes, emit-ns and spit every
+  namespace (creating dirs), then print the summary. Returns the summary counts map."
   [{:keys [namespaces skipped notes]}]
   (doseq [{:keys [kind js-name reason]} skipped]
     (println "SKIP" (name kind) js-name "—" reason))

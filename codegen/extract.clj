@@ -1,37 +1,37 @@
-;; Per-version-bump input refresh (ADR 0004 pattern): the fragile upstream-MDX
-;; parsers live in a PURE, requirable core (parse-inputs) with a thin I/O driver.
+;; Input refresh for an anchor bump (ADR 0004 pattern): the fragile upstream-MDX
+;; parsers live in a pure, requirable core (parse-inputs) with a thin I/O driver.
 ;;
-;;   parse-inputs   : PURE — corpus-keyed texts -> {:hook-docs :component-docs};
-;;                    owns parsing, the component corpus merge, the collision guard,
-;;                    and sorted-map determinism. THE test surface.
-;;   write-inputs!  : thin — slurp clone texts, assert clone == anchor, copy
-;;                    docgen.json, call parse-inputs, spit the two EDN maps + witness.
-;;   -main          : reads the clone-dir arg (usage-throw if missing).
+;;   parse-inputs   pure: corpus-keyed texts -> {:hook-docs :component-docs};
+;;                  owns parsing, the component corpus merge, the corpus collision
+;;                  guard, and sorted-map determinism. The test surface.
+;;   write-inputs!  thin: slurp clone texts, assert clone == anchor, copy
+;;                  docgen.json, call parse-inputs, spit the two EDN maps + witness.
+;;   -main          reads the clone-dir arg (usage-throw if missing).
 ;;
-;; Run AFTER the clone has run docgen:
+;; Run after the clone has run docgen:
 ;;
-;;   git clone --depth 1 --branch 9.4.1 https://github.com/mantinedev/mantine <dir>
+;;   git clone --depth 1 --branch <anchor> https://github.com/mantinedev/mantine <dir>
 ;;   cd <dir> && npx corepack yarn install && npx corepack yarn tsx scripts/docgen
 ;;   bb extract <dir>            (or `bb clone-anchor`, which does all of the above)
 ;;
 ;; Writes (all committed):
-;;   codegen/input/docgen.json         — verbatim copy of the docgen output
-;;   codegen/input/hook-docs.edn       — {"useX" "description"} from mdx-hooks-data.ts
-;;   codegen/input/component-docs.edn  — {"Button" {:description ... :slug ... :polymorphic ...}}
-;;                                       (extension packages are keyed by docs-entry name;
-;;                                        join via :props, which lists the docgen keys)
-;;   codegen/input/mantine-version.edn — {:mantine-version ...} provenance witness (ADR 0005)
+;;   codegen/input/docgen.json          verbatim copy of the docgen output
+;;   codegen/input/hook-docs.edn        {"useX" "description"} from mdx-hooks-data.ts
+;;   codegen/input/component-docs.edn   {"Button" {:description ... :slug ... :polymorphic ...}}
+;;                                      (extension packages are keyed by docs-entry name;
+;;                                       join via :props, which lists the docgen keys)
+;;   codegen/input/mantine-version.edn  {:mantine-version ...} provenance witness (ADR 0005)
 (ns extract
   (:require [anchor]
             [babashka.fs :as fs]
             [cheshire.core :as json]
             [clojure.string :as str]))
 
-;; --- hooks: hDocs('useX', 'description') calls + inline-object exceptions ------------
-
+;; mdx-hooks-data.ts builds most entries with hDocs('useX', 'description') calls; a
+;; few are inline objects instead.
 (defn extract-hook-docs [text]
   (let [hdocs (re-seq #"(?s)(use\w+): hDocs\(\s*'use\w+',\s*'([^']*)'\s*\)" text)
-        ;; inline-object entries (e.g. useElementSize) — no nested braces in this file
+        ;; inline-object entries (e.g. useElementSize); none nests braces
         inline (for [[_ nm block] (re-seq #"(?s)(use\w+): \{([^{}]*)\}" text)
                      :let [d (second (re-find #"description: '([^']*)'" block))]
                      :when d]
@@ -41,9 +41,8 @@
                     [nm (str/replace d #"\s+" " ")])
                   inline))))
 
-;; --- components: inline object literals keyed by exact PascalCase docgen name --------
-;; A regex over the data files' object literals; regex-safe because no entry nests
-;; braces more than one level deep.
+;; The component data files are inline object literals. A regex parses them because
+;; no entry nests braces more than one level deep.
 
 (defn extract-component-docs [text]
   (into (sorted-map)
@@ -63,14 +62,12 @@
                        :props props}
                 (re-find #"polymorphic: true" block) (assoc :polymorphic true))])))
 
-;; --- pure core -----------------------------------------------------------------------
-
 (defn parse-inputs
-  "PURE. Given the raw MDX texts — {:hooks-text \"...\" :component-texts {:core ... :dates
-  ... :charts ... :others ...}} — returns {:hook-docs {\"useX\" \"...\"} :component-docs
-  {\"Button\" {...}}}. Parses each corpus, unions the component maps, and guards against a
-  cross-corpus PascalCase key collision (ADR-0004: a wrong/ambiguous artifact throws, not
-  a silent last-wins merge). Determinism comes from the sorted-maps."
+  "Pure. Parse the raw MDX texts, {:hooks-text \"...\" :component-texts {corpus text}},
+  into {:hook-docs {\"useX\" \"...\"} :component-docs {\"Button\" {...}}}. Unions the
+  per-corpus component maps; throws ex-info when a PascalCase key appears in more than
+  one corpus instead of letting the merge keep the last one (ADR 0004: a wrong or
+  ambiguous artifact throws). Output maps are sorted, so the result is deterministic."
   [{:keys [hooks-text component-texts]}]
   (let [per-corpus (into {} (for [[corpus text] component-texts]
                               [corpus (extract-component-docs text)]))
@@ -88,8 +85,6 @@
     {:hook-docs (extract-hook-docs hooks-text)
      :component-docs (into (sorted-map) (apply merge (vals per-corpus)))}))
 
-;; --- thin I/O driver -----------------------------------------------------------------
-
 (def ^:private component-corpora
   "Logical corpus name -> the MDX data file it is parsed from."
   {:core "mdx-core-data.ts"
@@ -99,8 +94,8 @@
    :others "mdx-others-data.ts"})
 
 (defn- clone-mantine-version
-  "The Mantine version the fed clone actually is — @mantine/core's package.json version,
-  falling back to the clone-dir root package.json."
+  "The Mantine version of the fed clone: @mantine/core's package.json version, falling
+  back to the clone-dir root package.json."
   [clone-dir]
   (let [core-pkg (fs/path clone-dir "packages/@mantine/core/package.json")
         pkg (if (fs/exists? core-pkg) core-pkg (fs/path clone-dir "package.json"))]

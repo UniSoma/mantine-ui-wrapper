@@ -4,7 +4,7 @@
 
 ### Issue tracker
 
-Issues are tracked with the `knot` CLI (file-based, under `.tickets/`). Use `knot` commands only — never hand-edit ticket files. See `docs/agents/issue-tracker.md`.
+Issues are tracked with the `knot` CLI (file-based, under `.tickets/`). Use `knot` commands only; never hand-edit ticket files. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
@@ -14,9 +14,9 @@ Five canonical triage roles, mapped onto knot's native dimensions: `ready-for-ag
 
 Single-context: one `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
 
-### Mantine version bump
+### Mantine anchor bump
 
-Bumping the wrapped Mantine version: `docs/version-bump.md`.
+Bumping the Mantine anchor (the wrapped Mantine release): `docs/version-bump.md`.
 
 ### Changelog
 
@@ -26,17 +26,17 @@ A change a consumer can see (a def added, removed or renamed, a behavior change)
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
-## 1. Think Before Coding
+## 1. Think before coding
 
 **Don't assume. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
 - State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
+- If multiple interpretations exist, present them. Don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
-## 2. Simplicity First
+## 2. Simplicity first
 
 **Minimum code that solves the problem. Nothing speculative.**
 
@@ -48,7 +48,7 @@ Before implementing:
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-## 3. Surgical Changes
+## 3. Surgical changes
 
 **Touch only what you must. Clean up only your own mess.**
 
@@ -56,7 +56,7 @@ When editing existing code:
 - Don't "improve" adjacent code, comments, or formatting.
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
+- If you notice unrelated dead code, mention it. Don't delete it.
 
 When your changes create orphans:
 - Remove imports/variables/functions that YOUR changes made unused.
@@ -64,7 +64,7 @@ When your changes create orphans:
 
 The test: Every changed line should trace directly to the user's request.
 
-## 4. Goal-Driven Execution
+## 4. Goal-driven execution
 
 **Define success criteria. Loop until verified.**
 

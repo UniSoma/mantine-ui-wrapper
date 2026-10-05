@@ -1,8 +1,8 @@
-;; JVM-loadability guard: requires every generated mantine.* namespace on the JVM
-;; (the :clj reader-conditional branch — no @mantine JS, only the not-implemented
-;; stubs) and samples, per namespace, that calling a wrapper throws the named
-;; ClojureScript-only error. Generated code that fails to load, or a stub that no
-;; longer names itself, fails the build.
+;; JVM-loadability guard: requires every mantine.* namespace in src/main/mantine (the
+;; generated ones plus interop) on the JVM, through the :clj reader-conditional branch
+;; (no @mantine JS, only the not-implemented stubs), and samples, per namespace, that
+;; calling a factory throws the named ClojureScript-only error. Generated code that
+;; fails to load, or a stub that no longer names itself, fails the build.
 ;;
 ;; Run with: clojure -M -e '(load-file "scripts/jvm-load.clj")'
 (require '[clojure.java.io :as io]
@@ -19,7 +19,7 @@
 
 (defn sample-named-throw
   "Call public vars of ns-sym until one throws an ExceptionInfo naming itself as a
-  ClojureScript-only wrapper. Arity-N supplement fns that reject a 0-arg call are
+  ClojureScript-only factory. Arity-N supplement fns that reject a 0-arg call are
   skipped. Returns [var-sym message] or nil."
   [ns-sym]
   (some (fn [[sym v]]

@@ -9,8 +9,8 @@ Framework-agnostic ClojureScript wrapper of [Mantine](https://mantine.dev). It w
 from Fulcro, Reagent/re-frame, UIx, Helix, or raw React interop, and depends only on
 `react/createElement`, never on a rendering framework. It wraps the complete Mantine
 surface (generated from Mantine's `docgen.json`), and every factory's docstring carries the
-component's Mantine.dev URL and full prop table, so you can read it from your editor or via
-`(clojure.repl/doc mc/button)`.
+component's full prop table, plus its Mantine.dev URL when it has its own docs page, so you
+can read it from your editor or via `(clojure.repl/doc mc/button)`.
 
 Available on Clojars as SNAPSHOT builds while the API settles. There is no stable release yet.
 
@@ -40,8 +40,8 @@ and imperative API. Each package is a ClojureScript namespace; load the matching
 io.github.unisoma/mantine-ui-wrapper {:mvn/version "9.7.0.0-SNAPSHOT"}
 ```
 
-Versions are `<mantine-version>.N`: the wrapped Mantine version plus a wrapper revision, so
-the coordinate tells you exactly which Mantine you get (see
+Versions are `<anchor>.N`: the Mantine anchor (the wrapped Mantine release) plus a
+wrapper revision, so the coordinate tells you exactly which Mantine you get (see
 [ADR 0001](docs/adr/0001-clojars-release-process.md)).
 
 The jar ships `deps.cljs` (`:npm-deps` on `@mantine/*`), so shadow-cljs auto-installs the npm
@@ -72,31 +72,32 @@ Conventions:
 
 - A factory takes an optional leading props map, then children.
 - Props are kebab-case keywords converted to camelCase (`:left-section` → `leftSection`).
-- Keyword prop *values* stringify via `name` (`:size :sm` → `size: "sm"`, `:position :top-start`
-  → `"top-start"` — values are never camelized), so keyword-style call sites work as they
-  do under `clj->js`-based wrappers.
+- Keyword prop *values* stringify via `name` and are never camelized (`:size :sm` →
+  `size: "sm"`, `:position :top-start` → `"top-start"`), so keyword-style call sites work as
+  they do under `clj->js`-based wrappers.
 - Conversion is deep by default: nested maps and vectors of maps (`:styles`, modal
   `:confirm-props`, spotlight `:actions`, …) convert the same way at every depth.
   Two opt-outs keep a value as untouched CLJS: `:inner-props` (handed raw to your
   context modal) and `(mantine.interop/no-convert v)` for anything else.
-- Conversion camelizes map **keys** everywhere — including maps whose keys you name
+- Conversion camelizes map **keys** everywhere, including in maps whose keys you name
   yourself. Two slots hold such maps: chart `:data` row fields (the paired
   `:data-key` / `:series` strings are *values* and stay verbatim) and the
   `ModalsProvider` `:modals` registry (looked up by `open-context-modal`'s string
   `:modal`). A kebab-case name there camelizes on one side only and silently
-  mismatches — the series plots nothing, the modal isn't found. Prefer dash-free
+  mismatches, so the series plots nothing or the modal isn't found. Prefer dash-free
   names (`:sales`, not `:total-sales`); to keep hyphens, pass the map raw with
   `(mantine.interop/no-convert (clj->js m))` or the `:&` escape hatch (plain `clj->js`, hyphens
   preserved).
 - Hooks return raw JS, unconverted; destructure tuples positionally.
 - Polymorphic components accept `:component` (`{:component "a" :href …}`). To pass the
-  underlying Mantine component of another wrapper into such a slot (or for interop a
-  wrapper does not cover), use `(mantine.interop/raw-component mc/anchor)` — it returns
-  the raw React component from any wrapper var, reading through the controlled-input
+  underlying Mantine component of another factory into such a slot (or for interop a
+  factory does not cover), use `(mantine.interop/raw-component mc/anchor)`. It returns
+  the raw React component from any factory, reading through the controlled-input
   shim so curated inputs (e.g. `mc/text-input`) yield the true component.
 - Imperative packages (`notifications`, `modals`, `spotlight`) expose both a provider and
   call functions (`mn/show`, `mm/open`/`mm/close`, `ms/toggle`).
-- Every `def`'s docstring carries the Mantine.dev URL and full prop table.
+- Every docgen-generated factory's docstring carries the full prop table, plus the
+  Mantine.dev URL when the component has its own docs page.
 
 ```clojure
 (ns my-app

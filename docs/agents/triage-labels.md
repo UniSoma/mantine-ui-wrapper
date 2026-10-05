@@ -1,7 +1,7 @@
-# Triage Labels
+# Triage labels
 
 The skills speak in terms of five canonical triage roles. This repo tracks
-issues with `knot`, which has no free-form "labels" — instead these roles map
+issues with `knot`, which has no free-form "labels". These roles map instead
 onto knot's native dimensions (`mode`, `status`) where one exists, and onto
 tags otherwise.
 
@@ -15,18 +15,18 @@ tags otherwise.
 
 ## How skills apply each role
 
-- **ready-for-agent / ready-for-human** — set the mode:
+- **ready-for-agent / ready-for-human**: set the mode with
   `knot update <id> --mode afk` (or `--mode hitl`). Query agent-runnable work
   with `knot ready --mode afk`. Mode is the contract: don't autonomously pick up
   `hitl` tickets.
-- **needs-triage** — `knot update <id> --add-tag needs-triage`. Remove it once
+- **needs-triage**: `knot update <id> --add-tag needs-triage`. Remove it once
   the ticket has been assessed (mode set, priority set):
   `knot update <id> --remove-tag needs-triage`.
-- **needs-info** — `knot update <id> --add-tag needs-info`. List with
+- **needs-info**: `knot update <id> --add-tag needs-info`. List with
   `knot list --tag needs-info`.
-- **wontfix** — `knot update <id> --add-tag wontfix` then
+- **wontfix**: `knot update <id> --add-tag wontfix`, then
   `knot close <id> --summary "wontfix: <reason>"`. The tag keeps it queryable in
-  the archive via `knot list --tag wontfix`. Closing an `in_progress` ticket
-  with unchecked acceptance criteria or open children is refused
+  the archive via `knot list --tag wontfix`. knot refuses to close an `in_progress`
+  ticket with unchecked acceptance criteria or open children
   (`acceptance_incomplete` / `open_children`); a wontfix is the case where
   `--force` alongside the `--summary` is the right override.

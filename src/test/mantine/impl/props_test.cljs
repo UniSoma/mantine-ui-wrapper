@@ -1,14 +1,10 @@
 (ns mantine.impl.props-test
   "Behavioral lock on the prop converter's compatibility invariants (mnt-01kxr60b7xe8).
   These make consumer migration a namespace rename, so they must not silently regress.
-  See the mantine.impl.props docstring + gaps.md for the semantics each test pins."
+  See the mantine.impl.props docstring for the semantics each test pins."
   (:require [cljs.test :refer-macros [deftest is testing]]
             [goog.object :as gobj]
             [mantine.impl.props :as p]))
-
-;; ---------------------------------------------------------------------------
-;; Keys: camelCase passthrough + kebab->camel, with data-*/aria-*/--* exempt.
-;; ---------------------------------------------------------------------------
 
 (deftest camelcase-props-pass-through-as-identity
   (testing "dash-free keywords are untouched (existing camelCase call sites work)"
@@ -29,10 +25,6 @@
     (is (= "v" (gobj/get o "--my-var")) "--* verbatim")
     (is (nil? (gobj/get o "dataFooBar")))))
 
-;; ---------------------------------------------------------------------------
-;; Class: :class alias, vector space-join, :class + :className merge.
-;; ---------------------------------------------------------------------------
-
 (deftest class-aliases-classname
   (let [o (p/convert {:class "foo"})]
     (is (= "foo" (gobj/get o "className")))
@@ -45,10 +37,6 @@
 (deftest class-and-classname-merge-when-both-present
   (let [o (p/convert {:class "a" :className "b"})]
     (is (= "a b" (gobj/get o "className")))))
-
-;; ---------------------------------------------------------------------------
-;; Children: prune nil, flatten nested seqs, pass through everything else.
-;; ---------------------------------------------------------------------------
 
 (deftest children-prune-nil
   (is (= ["a" "b"] (vec (p/convert-children ["a" nil "b"])))))
@@ -66,10 +54,6 @@
     (is (= "s" (nth out 0)))
     (is (= 42 (nth out 1)))
     (is (identical? f (nth out 2)) "render-prop fn survives by identity")))
-
-;; ---------------------------------------------------------------------------
-;; Deep-convert set: :style / :styles / :classNames / :vars.
-;; ---------------------------------------------------------------------------
 
 (deftest style-keys-camelized-css-vars-verbatim-values-passthrough
   (let [o (p/convert {:style {:font-weight 900 :--my-var "on"}})
@@ -100,11 +84,9 @@
     (let [o (p/convert {:class-names {:input "x"}})]
       (is (= "x" (gobj/getValueByKeys o "classNames" "input"))))))
 
-;; ---------------------------------------------------------------------------
-;; Keyword leaf values stringify like clj->js — Mantine enum/color/size props
-;; are strings, and migrating consumers pass keywords (:sm, :red, :dimmed)
+;; Keyword leaf values stringify like clj->js because Mantine enum/color/size
+;; props are strings and migrating consumers pass keywords (:sm, :red, :dimmed)
 ;; everywhere (mnt-01ky03rej0tx).
-;; ---------------------------------------------------------------------------
 
 (deftest keyword-values-stringify-at-top-level
   (let [o (p/convert {:size :sm :color :red :label-position :top-start})]
@@ -124,10 +106,7 @@
     (is (= "auto" (gobj/getValueByKeys o "style" "overflowY")))
     (is (= "center" (gobj/getValueByKeys o "styles" "root" "textAlign")))))
 
-;; ---------------------------------------------------------------------------
-;; Deep-by-default (ADR 0006): nested maps and vectors-of-maps convert at every
-;; depth; :inner-props denylisted; `no-convert` wrapper opts any value out.
-;; ---------------------------------------------------------------------------
+;; Deep-by-default conversion: ADR 0006.
 
 (deftest nested-maps-convert-recursively
   (let [f (fn [])
@@ -157,14 +136,14 @@
     (is (identical? payload (gobj/get o "innerProps")) "value is the untouched CLJS map")
     (is (= 7 (:app/id (gobj/get o "innerProps"))) "qualified keyword lookup still works")))
 
-(deftest no-convert-wrapper-skips-conversion-at-any-depth
+(deftest no-convert-skips-conversion-at-any-depth
   (let [payload {:qualified/key 1}
         o (p/convert {:payload (p/no-convert payload)
                       :nested {:inner (p/no-convert payload)}})]
     (is (identical? payload (gobj/get o "payload")) "top-level raw value untouched")
     (is (identical? payload (gobj/getValueByKeys o "nested" "inner")) "raw honored below top level")))
 
-(deftest raw-wrapper-survives-merge-and-select-keys
+(deftest no-convert-tag-survives-merge-and-select-keys
   (let [payload {:qualified/key 1}
         assembled (-> (merge {:payload (p/no-convert payload)} {:other 2})
                       (select-keys [:payload]))
@@ -175,10 +154,6 @@
 (deftest escape-hatch-merges-last-inside-nested-maps
   (let [o (p/convert {:confirm-props {:color "red" :& #js {:color "blue"}}})]
     (is (= "blue" (gobj/getValueByKeys o "confirmProps" "color")) ":& wins at depth too")))
-
-;; ---------------------------------------------------------------------------
-;; Escape hatch :& — merged LAST, hyphens preserved, wins over normal conversion.
-;; ---------------------------------------------------------------------------
 
 (deftest escape-hatch-raw-js-merges-in
   (let [o (p/convert {:foo 1 :& #js {:bar 2}})]
@@ -193,10 +168,6 @@
 (deftest escape-hatch-merges-last-and-overrides
   (let [o (p/convert {:color "red" :& #js {:color "blue"}})]
     (is (= "blue" (gobj/get o "color")) "escape hatch wins over normal conversion")))
-
-;; ---------------------------------------------------------------------------
-;; nil handling.
-;; ---------------------------------------------------------------------------
 
 (deftest nil-props-yield-empty-object
   (let [o (p/convert nil)]

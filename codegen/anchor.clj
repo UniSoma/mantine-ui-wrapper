@@ -1,10 +1,11 @@
-;; The Mantine anchor — the one canonical wrapped Mantine version (ADR 0005).
+;; The Mantine anchor (ADR 0005).
 ;;
 ;; The exact @mantine/* pins in package.json are the anchor. Every other appearance
-;; of the version (generator constant, banners, deps.cljs ranges, build.clj prefix)
-;; is a rendering that derives from or validates against it.
+;; of the version (generated banners, deps.cljs ranges, build.clj prefix, the extract
+;; provenance witness, the README and docs/release.md coordinates) is a rendering that
+;; derives from or validates against it.
 ;;
-;; PURE core + thin I/O: the arity-1 fns are unit-testable over a passed pins map.
+;; Each fn's arity-1 is pure over its argument; arity-0 reads package.json.
 (ns anchor
   (:require [cheshire.core :as json]
             [clojure.string :as str]))
@@ -19,9 +20,8 @@
         (into {}))))
 
 (defn anchor-version
-  "The single Mantine anchor version. Asserts the pins map is non-empty and every
-  pin agrees; throws ex-info listing the disagreeing pins otherwise. Arity-1 is
-  pure over the passed map."
+  "The single Mantine anchor version. Throws ex-info when the pins map is empty, or
+  when the pins disagree (listing them)."
   ([] (anchor-version (pins)))
   ([pins-map]
    (when (empty? pins-map)

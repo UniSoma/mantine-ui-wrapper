@@ -6,16 +6,17 @@
   Semantics (deep-by-default conversion, ADR 0006; key-casing/:&/children locked
   by mnt-01kxe8gzn6bt):
   - Keys: hybrid kebab->camel (:label-position -> labelPosition); data-*/aria-*/--* exempt.
-  - Values: DEEP conversion by default — nested maps and sequential collections
+  - Values: DEEP conversion by default. Nested maps and sequential collections
     recurse, applying the same rules at every depth (so *Props config maps and
     vectors-of-maps like spotlight :actions work in plain CLJS). Keyword VALUES
-    stringify via `name` (:sm -> \"sm\", :top-start -> \"top-start\" — never
+    stringify via `name` (:sm -> \"sm\", :top-start -> \"top-start\", never
     camelized), matching clj->js: Mantine enum/color/size props are strings
     (mnt-01ky03rej0tx). Everything else (React elements, fns, primitives,
     #js values) passes through untouched.
   - Raw passthrough opt-outs: keys in `raw-value-keys` (:inner-props) camelize but
     their VALUES stay untouched CLJS; `(no-convert v)` tags any value to skip conversion
-    at any depth — a wrapper VALUE, so it survives merge/select-keys/map rebuilds.
+    at any depth. The tag is a VALUE, not metadata, so it survives
+    merge/select-keys/map rebuilds.
   - :style / inner style maps: keys camelCased, --* verbatim, values passthrough
     (keywords stringify, numbers stay numeric).
   - class values (top-level :class/:className + classNames members): string or
@@ -23,9 +24,9 @@
   - :class accepted as alias of :className; merged when both present.
   - Event handlers receive the RAW JS SyntheticEvent; refs/component/renderRoot/section
     props are pure passthrough.
-  - Escape hatch: the reserved key :& — raw JS object or CLJS map through plain
-    clj->js (hyphens preserved) — merged LAST, overrides normal conversion; applies
-    at every depth, since nested maps go through `convert`."
+  - Escape hatch: the reserved key :& takes a raw JS object or a CLJS map (run
+    through plain clj->js, hyphens preserved). It merges LAST and overrides normal
+    conversion, at every depth, since nested maps go through `convert`."
   (:require [clojure.string :as str]
             [goog.object :as gobj]))
 
@@ -38,8 +39,8 @@
 
 (defn no-convert
   "Tag a value so `convert` emits it untouched (kept as-is, e.g. a raw CLJS map)
-  instead of deep-converting it. Honored at any depth. A wrapper VALUE, not
-  metadata — it survives merge/select-keys/map rebuilds. Delegated to by
+  instead of deep-converting it. Honored at any depth. The tag is a VALUE, not
+  metadata, so it survives merge/select-keys/map rebuilds. Delegated to by
   mantine.interop/no-convert for consumers."
   [x]
   (->Raw x))
@@ -58,7 +59,7 @@
 
 (def ^:private camelize
   "\"label-position\" -> \"labelPosition\"; data-*/aria-*/--* pass verbatim.
-  Memoized — the prop vocabulary is bounded."
+  Memoized because the prop vocabulary is bounded."
   (memoize
    (fn [s]
      (if (or (not (str/includes? s "-"))
@@ -82,7 +83,7 @@
 
 (defn- style-leaf
   "Style map: keys camelCased (--* verbatim), values passthrough (numbers stay
-  numeric — React appends px; keywords stringify). Non-map values (raw JS
+  numeric and React appends px; keywords stringify). Non-map values (raw JS
   objects) pass through."
   [v]
   (if (map? v)
@@ -118,7 +119,7 @@
 (defn- convert-value
   "Deep default for a plain prop value: Raw unwraps untouched, maps recurse through
   `convert`, sequential collections become JS arrays with members recursed,
-  keywords stringify via `name` (never camelized — Mantine enum values keep their
+  keywords stringify via `name` (never camelized, so Mantine enum values keep their
   hyphens); everything else passes through untouched."
   [v]
   (cond

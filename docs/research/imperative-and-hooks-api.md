@@ -1,6 +1,6 @@
 > Research for ticket mnt-01kxe8gzj38z (imperative + hooks API surface)
 
-Scope: the non-component API surface of Mantine v9 NOT captured by component docgen — the imperative
+Scope: the non-component API surface of Mantine v9 that component docgen does NOT capture. That means the imperative
 singletons of `@mantine/notifications`, `@mantine/modals`, `@mantine/spotlight`, plus the `@mantine/hooks`
 export list and return-shape conventions. Facts taken from mantinedev/mantine source (shallow clone).
 
@@ -8,15 +8,15 @@ export list and return-shape conventions. Facts taken from mantinedev/mantine so
 
 ## 0. Common shape across the 3 imperative packages
 
-All three follow the same architecture that the CLJS wrapper must mirror:
+All three share one architecture, and the CLJS wrapper must mirror it:
 
-1. A **singleton object** of functions is exported (`notifications`, `modals`, `spotlight`) — these are
-   callable from anywhere, no React context needed at the call site.
+1. A **singleton object** of functions is exported (`notifications`, `modals`, `spotlight`). Its functions are
+   callable from anywhere, with no React context needed at the call site.
 2. State lives in a **store / event bus**, not React state:
    - notifications + spotlight use `@mantine/store` (`createStore` / `useStore`), exposed via a
      `useNotifications` / `useSpotlight` hook.
-   - modals uses a DOM CustomEvent bus (`createUseExternalEvents('mantine-modals')`) — the imperative
-     functions dispatch events; the provider subscribes.
+   - modals uses a DOM CustomEvent bus (`createUseExternalEvents('mantine-modals')`): the imperative
+     functions dispatch events and the provider subscribes.
 3. A **provider/renderer component must be mounted once** for the imperative calls to render anything:
    `<Notifications />`, `<ModalsProvider>`, `<Spotlight />` (or `<Spotlight.Root>`). Calling the
    imperative API without the component mounted silently no-ops (notifications/spotlight) or throws for
@@ -24,7 +24,7 @@ All three follow the same architecture that the CLJS wrapper must mirror:
 4. `open`-style functions **return a string id** (auto-generated via `randomId()` if not supplied) usable
    for later `update`/`close`.
 5. Every store factory has a `create*` variant (`createNotificationsStore`, `createSpotlight`,
-   store `store` prop) so multiple independent instances are possible — the default singleton is the
+   store `store` prop) so multiple independent instances are possible. The default singleton is the
    common case.
 
 ---
@@ -39,8 +39,8 @@ Also exported as standalone functions and as static methods on the `Notification
 | `notifications.show(data, store?)`      | `showNotification`        | `id: string` |
 | `notifications.hide(id, store?)`        | `hideNotification`        | `id: string` |
 | `notifications.update(data, store?)`    | `updateNotification` (matches by `data.id`) | `id` |
-| `notifications.clean(store?)`           | `cleanNotifications` — removes all (active + queue) | void |
-| `notifications.cleanQueue(store?)`      | `cleanNotificationsQueue` — drops only queued | void |
+| `notifications.clean(store?)`           | `cleanNotifications`: removes all (active + queue) | void |
+| `notifications.cleanQueue(store?)`      | `cleanNotificationsQueue`: drops only queued | void |
 | `notifications.updateState(store, fn)`  | low-level state updater | void |
 
 Standalone exports: `showNotification`, `hideNotification`, `updateNotification`, `cleanNotifications`,
@@ -50,7 +50,7 @@ Standalone exports: `showNotification`, `hideNotification`, `updateNotification`
 Reactive hook: `useNotifications(store = notificationsStore)` → the whole `NotificationsState`:
 `{ notifications: NotificationData[], queue: NotificationData[], defaultPosition, limit }`.
 
-### Options object passed to `show`/`update` — `NotificationData`
+### Options object passed to `show`/`update`: `NotificationData`
 Extends `NotificationProps` (the `Notification` component props: `title`, `color`, `icon`, `loading`,
 `withBorder`, `withCloseButton`, `radius`, `className`, `style`, etc.), minus `onClose`, plus:
 - `id?: string`
@@ -89,7 +89,7 @@ Dispatches CustomEvents on the `mantine-modals` bus. Open functions return a str
 | `modals.updateModal(payload)`      | `{ modalId, ...Partial<ModalSettings> }` | void |
 | `modals.updateContextModal(payload)` | `{ modalId, ...Partial<OpenContextModal> }` | void |
 
-Note: on the singleton `openContextModal` takes a **single object** with `modal` key
+On the singleton, `openContextModal` takes a **single object** with `modal` key
 (`{ modal: 'myModal', innerProps: {...}, title, ... }`); the context-hook version takes `(modalKey, props)`
 as two args. Also exported standalone: `openModal`, `closeModal`, `closeAllModals`, `openConfirmModal`,
 `openContextModal`, `updateModal`, `updateContextModal`.
@@ -99,7 +99,7 @@ Reactive hook: `useModals()` (uses React context; **throws** if `ModalsProvider`
 closeModal, closeContextModal, closeAll, updateModal, updateContextModal }`.
 
 ### Option shapes
-- `ModalSettings = Partial<Omit<ModalProps,'opened'>> & { modalId?: string }` — i.e. any `Modal` prop
+- `ModalSettings = Partial<Omit<ModalProps,'opened'>> & { modalId?: string }`, i.e. any `Modal` prop
   (`title`, `children`, `size`, `centered`, `fullScreen`, `withCloseButton`, `onClose`, ...) plus `modalId`.
 - `OpenConfirmModal = ModalSettings & ConfirmModalProps`, where `ConfirmModalProps` =
   `{ id?, children?, onCancel?(), onConfirm?(), closeOnConfirm?=true, closeOnCancel?=true,
@@ -109,11 +109,11 @@ closeModal, closeContextModal, closeAll, updateModal, updateContextModal }`.
 ### Provider / context-modal registration
 Mount `<ModalsProvider>` wrapping the app. Props (`ModalsProviderProps`):
 - `children`
-- `modals?: Record<string, React.FC<ContextModalProps<any>>>` — **this is how context modals are
-  registered**: a name→component map. `openContextModal({ modal: 'deleteAccount', ... })` looks the
+- `modals?: Record<string, React.FC<ContextModalProps<any>>>`: **this is how context modals are
+  registered**, as a name→component map. `openContextModal({ modal: 'deleteAccount', ... })` looks the
   component up by key.
-- `modalProps?: ModalSettings` — shared props applied to every modal.
-- `labels?: { confirm, cancel }` — default confirm/cancel button labels.
+- `modalProps?: ModalSettings`: shared props applied to every modal.
+- `labels?: { confirm, cancel }`: default confirm/cancel button labels.
 
 A context modal component receives `ContextModalProps<T> = { context: ModalsContextProps, innerProps: T, id: string }`.
 Type augmentation of `MantineModalsOverride` gives type-safe modal keys. The provider renders a **single**
@@ -128,31 +128,31 @@ Type augmentation of `MantineModalsOverride` gives type-safe modal keys. The pro
 
 | method | effect |
 |---|---|
-| `spotlight.open()`   | `openSpotlight`  — sets `opened:true, selected:-1` |
-| `spotlight.close()`  | `closeSpotlight` — sets `opened:false` |
+| `spotlight.open()`   | `openSpotlight`: sets `opened:true, selected:-1` |
+| `spotlight.close()`  | `closeSpotlight`: sets `opened:false` |
 | `spotlight.toggle()` | `toggleSpotlight` |
 
 Also exported standalone: `openSpotlight`, `closeSpotlight`, `toggleSpotlight`, `createSpotlight`,
-`createSpotlightStore`, `useSpotlight`. (The `spotlightActions` object with the full low-level action set —
-`setQuery`, `selectNextAction`, `triggerSelectedAction`, `registerAction`, etc. — is internal, not exported.)
+`createSpotlightStore`, `useSpotlight`. (The `spotlightActions` object with the full low-level action set, such as
+`setQuery`, `selectNextAction`, `triggerSelectedAction` and `registerAction`, is internal, not exported.)
 
 Reactive hook: `useSpotlight(store)` → `SpotlightState`.
 
-### Store data shape — `SpotlightState`
+### Store data shape: `SpotlightState`
 `{ opened: boolean, selected: number (-1 = none), listId: string, query: string, empty: boolean,
 registeredActions: Set<string> }`.
 
 ### Component surface
 `Spotlight` is a compound component AND carries static imperative methods:
 - Static methods: `Spotlight.open`, `Spotlight.close`, `Spotlight.toggle` (= the singleton).
-- Sub-components: `Spotlight.Root`, `Spotlight.Search`, `Spotlight.ActionsList`, `Spotlight.Action`,
+- Compound parts: `Spotlight.Root`, `Spotlight.Search`, `Spotlight.ActionsList`, `Spotlight.Action`,
   `Spotlight.ActionsGroup`, `Spotlight.Empty`, `Spotlight.Footer`.
 
 Two usage modes:
-1. **Declarative data** — `<Spotlight actions={...} />` (`SpotlightProps extends SpotlightRootProps`):
+1. **Declarative data:** `<Spotlight actions={...} />` (`SpotlightProps extends SpotlightRootProps`):
    `actions: SpotlightActions[]`, `filter?`, `nothingFound?`, `highlightQuery?=false`, `limit?=Infinity`,
    `searchProps?`, `scrollAreaProps?`.
-2. **Composable** — build with `<Spotlight.Root>` + sub-components manually.
+2. **Composable:** build manually with `<Spotlight.Root>` + compound parts.
 
 Action data shapes (for mode 1):
 - `SpotlightActionData extends SpotlightActionProps { id: string; group?: string }` where
@@ -167,7 +167,7 @@ Action data shapes (for mode 1):
 `shortcut?='mod + K'` (`string | string[] | null`), `tagsToIgnore?=['input','textarea','select']`,
 `triggerOnContentEditable?=false`, `disabled?`, `onSpotlightOpen?`, `onSpotlightClose?`, `forceOpened?`,
 `closeOnActionTrigger?=true`, `maxHeight?=400`, `scrollable?=false`. The `shortcut` prop wires the global
-hotkey that toggles the store — no external hotkey wiring needed.
+hotkey that toggles the store, so no external hotkey wiring is needed.
 
 ---
 
@@ -176,7 +176,7 @@ hotkey that toggles the store — no external hotkey wiring needed.
 ### Enumerating the full list programmatically
 The canonical source is the package index `packages/@mantine/hooks/src/index.ts` (barrel of re-exports)
 plus `src/utils/index.ts`. Programmatic enumeration options:
-- Parse the `export { ... } from './...'` lines in `index.ts` (79 `use*` symbols + non-hook helpers).
+- Parse the `export { ... } from './...'` lines in `index.ts` (79 `use*` symbols + barrel utilities).
 - Or at runtime: `Object.keys(require('@mantine/hooks'))` and filter `^use`.
 - Non-hook exports also live here: `randomId`, `clamp`, `range`, `upperFirst`, `lowerFirst`,
   `shallowEqual`, `useCallbackRef` (utils); plus `mergeRefs`, `assignRef`, `readLocalStorageValue`,
@@ -221,9 +221,9 @@ useFocusTrap, useFocusReturn, useFocusWithin (also above)
 **Refs / utilities**
 useMergedRef, useCallbackRef, usePagination, useMask, useFloatingWindow
 
-### Representative return shapes — TUPLE vs OBJECT (the CLJS-conversion split)
+### Representative return shapes: TUPLE vs OBJECT (the CLJS-conversion split)
 
-This is the critical distinction: a tuple must become a positional CLJS vector `[v handlers]` (destructure by
+The distinction that matters: a tuple must become a positional CLJS vector `[v handlers]` (destructure by
 position), whereas an object return becomes a map with keyword keys.
 
 | hook | signature | return | kind |
@@ -243,14 +243,14 @@ position), whereas an object return becomes a map with keyword keys.
 General rule observed in v9: **state-mutation hooks return tuples** `[value, handlersObjOrSetter]`
 (useDisclosure, useToggle, useCounter, useListState, useSetState, useSet, useMap, useQueue,
 useStateHistory, useDebouncedState/Value, useThrottledState/Value, useInputState, useValidatedState,
-useUncontrolled, useHash, useWindowScroll — and the storage hooks are the 3-element outlier
+useUncontrolled, useHash, useWindowScroll; the storage hooks are the 3-element outlier
 `[value, set, remove]`). **DOM/element and status hooks return objects** (useHover, useElementSize,
 useClipboard, useMouse, useMove, useNetwork, useIntersection, useInViewport, useFocusWithin, useOs,
 useScrollIntoView, ...). Some return a bare **scalar/ref** (useMediaQuery→boolean, usePrevious→value,
 useFocusTrap→refCallback, useViewportSize→`{width,height}`, useDocumentVisibility→string).
 
-The wrapper must special-case tuple hooks (positional) vs object hooks (map) — a blanket
-JS-object→CLJS-map conversion would break the tuple hooks, which are the majority of the commonly-used ones.
+The wrapper must special-case tuple hooks (positional) vs object hooks (map). A blanket
+JS-object→CLJS-map conversion would break the tuple hooks, which are most of the commonly used ones.
 
 ### `useLocalStorage` options (`UseStorageOptions<T>`)
 `{ key (required), defaultValue?, getInitialValueInEffect?=true, sync?=true (cross-tab),

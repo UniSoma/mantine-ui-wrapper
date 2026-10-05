@@ -1,8 +1,8 @@
 (ns mantine.interop-test
   "Behavioral lock on mantine.interop/raw-component and the factory tag it reads
   (mnt-01ky00nnhfcv). raw-component must reach the underlying Mantine component
-  through any wrapper — including the controlled input shim — and console.error +
-  return nil on a non-wrapper argument."
+  through any factory, including one over the controlled input shim, and must
+  console.error and return nil on any other argument."
   (:require [cljs.test :refer-macros [deftest is testing]]
             [mantine.impl.factory :as f]
             [mantine.interop :as mi]))
@@ -19,7 +19,7 @@
     (is (identical? component (mi/raw-component wrapper))
         "returns the real Mantine component, not the controlled shim")))
 
-(deftest raw-component-on-non-wrapper-errors-and-returns-nil
+(deftest raw-component-on-non-factory-errors-and-returns-nil
   (testing "a plain fn, map, nil, and string are all misuse"
     (let [calls (atom [])
           orig js/console.error]

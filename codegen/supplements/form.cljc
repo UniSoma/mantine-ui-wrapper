@@ -1,13 +1,14 @@
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.form
-  "Hand-written supplement HOISTED by the generator into the generated
-  mantine.form ns. Committed generator INPUT — compilable for editor/
-  clj-kondo support, but never shipped as-is: its :require entries are merged into
-  the generated ns and its top-level forms are appended after the codegen'd defs.
+  "Hand-written supplement the generator HOISTS into the generated
+  mantine.form ns. A committed generator INPUT: it compiles for editor and
+  clj-kondo support but never ships as-is. The generator merges its :require
+  entries into the generated ns and appends its top-level forms after the
+  generated defs.
 
   @mantine/form has no docgen entries, so mantine.form is a supplement-only package
   (see codegen/scope.edn :supplement-only-packages). Everything here is a RAW
-  passthrough of the JS export: no js<->clj conversion accessors — consumers layer
+  passthrough of the JS export: no js<->clj conversion accessors. Consumers layer
   interop themselves. The package is aliased (not :refer'd) so the `matches`
   validator doesn't clash with the `matches` def below."
   (:require
@@ -20,8 +21,6 @@
   e.g. (.getInputProps form \"name\"), (.-values form), (.onSubmit form handler))."
   #?(:cljs mf/useForm
      :clj (f/not-implemented "mantine.form/use-form")))
-
-;; ---- validators (pure functions, raw passthrough) ----
 
 (def has-length
   "hasLength — validator: value length within the given bounds. Raw passthrough."

@@ -1,7 +1,7 @@
 ;; Source-only jar build + Clojars deploy for io.github.unisoma/mantine-ui-wrapper.
 ;; Driven by `bb jar` / `bb install` / `bb deploy` (see bb.edn, docs/release.md).
-;; Version scheme 9.7.0.N — first three segments ARE the wrapped Mantine version,
-;; N is the wrapper revision against it (see docs/adr/0001-clojars-release-process.md).
+;; Version scheme <anchor>.N: the first three segments are the Mantine anchor, N is
+;; the wrapper revision against it (docs/adr/0001-clojars-release-process.md).
 (ns build
   (:require [clojure.java.shell :as sh]
             [clojure.string :as str]
@@ -15,10 +15,10 @@
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 
 (defn- pom-basis
-  "The deployed pom's dependency list. The published artifact is CLJS source only —
-  consumers bring their own ClojureScript/Clojure — so it has NO runtime deps. The
-  org.clojure/clojure in deps.edn is for local JVM tooling only (clj-kondo, cljdoc,
-  jvm-load); keep it OUT of the pom so we don't pin consumers to a Clojure version."
+  "The deployed pom's dependency list, which is empty. The artifact is CLJS source
+  only and consumers bring their own ClojureScript and Clojure. The
+  org.clojure/clojure in deps.edn serves local JVM tooling (clj-kondo, cljdoc,
+  jvm-load); keeping it out of the pom avoids pinning consumers to a Clojure version."
   []
   (b/create-basis {:root nil :user nil :project {:deps {}}}))
 
@@ -34,8 +34,8 @@
 (defn- expand-empty-elements!
   "tools.build writes empty pom containers as self-closing tags (<dependencies/>,
   <repositories/>). cljdoc parses poms with Jsoup in HTML mode, which ignores XML
-  self-closing on unknown tags and re-parents every following sibling — including
-  our <scm> block — INSIDE the empty container. Its `project > scm > url` selector
+  self-closing on unknown tags and re-parents every following sibling, our <scm>
+  block among them, inside the empty container. Its `project > scm > url` selector
   then matches nothing, so cljdoc links no git repo (SCM URL/Commit SHA show nil).
   Expanding them to explicit open/close pairs is semantically identical XML and
   keeps <scm> a direct child of <project>."

@@ -6,11 +6,11 @@
   extract {:doc "Refresh committed codegen inputs from a Mantine checkout at the anchor: bb extract <clone-dir>"
            :requires ([extract])
            :task (apply extract/-main *command-line-args*)}
-  clone-anchor {:doc "Version bump: clone the anchor tag into target/, run its docgen, refresh inputs (bump package.json first)"
+  clone-anchor {:doc "Anchor bump: clone the anchor tag into target/, run its docgen, refresh inputs (bump package.json first)"
                 :requires ([clone-anchor])
                 :task (clone-anchor/-main)}
 
-  ;; ---- Release (source-only jar -> Clojars; see build.clj, docs/release.md) ----
+  ;; Release: source-only jar to Clojars (see build.clj, docs/release.md).
   jar {:doc "Build the source-only jar into target/"
        :task (shell "clojure" "-T:build" "jar")}
   install {:doc "Install the jar into local ~/.m2 (for local consumer verification)"
@@ -23,13 +23,14 @@
                                    (re-find (re-pattern "\\(def version \"([^\"]+)\"\\)"))
                                    second)]
                   (println "Requesting cljdoc build for io.github.unisoma/mantine-ui-wrapper" version)
-                  ;; -d implies POST; NO -X POST — cljdoc replies 303 to the build page and
-                  ;; -X would force curl to re-POST to that GET-only URL (→ 404). -L follows it.
+                  ;; -d implies POST; NO -X POST. cljdoc replies 303 to the build page and
+                  ;; -X would force curl to re-POST to that GET-only URL (404). -L follows it.
                   (shell "curl" "-fsSL" "https://cljdoc.org/api/request-build2"
                          "-d" "project=io.github.unisoma/mantine-ui-wrapper"
                          "-d" (str "version=" version)))}
 
-  ;; ---- CI checks (same command locally and in .github/workflows/ci.yml) ----
+  ;; CI checks. .github/workflows/ci.yml runs each as the same command, except
+  ;; plan-test and release-check, which only `bb ci` runs.
   drift {:doc "Regenerate and FAIL on any drift vs the INDEX (stage generated sources before running)"
          :depends [generate]
          :task (do (shell "git" "add" "--intent-to-add" "--" "src/main/mantine")
@@ -71,11 +72,11 @@
   extract-test {:doc "Extract-level fixture tests for the MDX parsers (no clone, no writes)"
                 :task (load-file "codegen/extract_test.clj")}
 
-  release-check {:doc "Validate deps.cljs ranges + build.clj prefix + package.json pins agree with the anchor (ADR 0005)"
+  release-check {:doc "Validate deps.cljs ranges, build.clj prefix, package.json pins, provenance witness and README/release.md coordinates against the anchor (ADR 0005)"
                  :requires ([release-check])
                  :task (release-check/-main)}
 
-  ci {:doc "Run the full CI pipeline locally (mirrors .github/workflows/ci.yml)"
+  ci {:doc "Run every CI check locally: the .github/workflows/ci.yml steps plus plan-test and release-check"
       :task (do (shell "npm" "ci")
                 (shell "bb" "drift")
                 (shell "bb" "build")

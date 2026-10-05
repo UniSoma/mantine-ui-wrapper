@@ -1,5 +1,6 @@
-;; Plan-level fixture tests (ADR 0004): exercise plan/build and plan/emit-ns on
-;; hand-built `sources` maps — no Node, no writes. The plan IS the test surface.
+;; Plan-level fixture tests (ADR 0004) for plan/build and plan/emit-ns on hand-built
+;; `sources` maps, with no Node and no writes. The plan is the test surface. Also
+;; covers anchor/anchor-version and release-check.
 ;;
 ;; Run with: bb plan-test
 (ns plan-test
@@ -44,13 +45,11 @@
   (some #(when (= sym (:symbol %)) %) (:defs np)))
 
 ;; Add a barrel export to both the observed :exports and the explicit :hooks scope
-;; set — the two must agree for a name to flow through hooks-ns-plan.
+;; set; a name flows through hooks-ns-plan only when both list it.
 (defn- add-barrel [sources nm]
   (-> sources
       (update-in [:exports "@mantine/hooks"] conj nm)
       (update-in [:scope :hooks] conj nm)))
-
-;; ---------------------------------------------------------------- anchor
 
 (deftest anchor-version-from-uniform-pins
   (let [pins {"@mantine/core" "9.4.1" "@mantine/hooks" "9.4.1" "@mantine/charts" "9.4.1"}]
@@ -60,8 +59,6 @@
   (let [pins {"@mantine/core" "9.4.1" "@mantine/hooks" "9.4.2"}]
     (is (thrown-with-msg? Exception #"pins disagree"
                           (anchor/anchor-version pins)))))
-
-;; ---------------------------------------------------------------- release-check
 
 (def rc-ok
   {:anchor "9.4.1"
@@ -92,13 +89,13 @@
     (is (some #(str/includes? % "9.4.0") probs))))
 
 (deftest prose-renderings-extracts-embedded-coordinates-only
-  ;; Hermetic mechanics test: an arbitrary version (NOT the anchor) proves the extractor
-  ;; is anchor-agnostic — it pulls embedded coordinates out of text and nothing else.
+  ;; The version is arbitrary, not the anchor: the extractor only pulls embedded
+  ;; coordinates out of the text and never compares them.
   (let [text (str "npm install @mantine/core@^1.2.3 @mantine/dates@^1.2.3\n"
                   "{:mvn/version} scheme 1.2.3.0 → 1.2.3.1 examples stay illustrative\n"
                   "io.github.unisoma/mantine-ui-wrapper {:mvn/version \"1.2.3.0-SNAPSHOT\"}")
         found (release-check/prose-renderings "README.md" text)]
-    ;; two npm floors + one mvn coord; the bare scheme examples are NOT matched
+    ;; two npm floors + one mvn coord; the bare scheme examples are not matched
     (is (= 3 (count found)))
     (is (= #{:npm-floor :mvn-coord} (set (map :kind found))))
     (is (every? #(= "1.2.3" (:version %)) found))))
@@ -113,8 +110,6 @@
   (is (empty? (release-check/violations
                (assoc rc-ok :prose [{:file "README.md" :kind :npm-floor :version "9.4.1"}
                                     {:file "docs/release.md" :kind :mvn-coord :version "9.4.1"}])))))
-
-;; ---------------------------------------------------------------- classification
 
 (deftest classification-and-resolution
   (let [plan (plan/build base-sources)
@@ -143,7 +138,7 @@
     (is (= "not present in docgen.json" (:reason (skip "NotInDocgen"))))
     (is (= "no installed @mantine package exports it" (:reason (skip "Ghost"))))
     (is (nil? (def-plan (ns-plan plan "mantine.core") "ghost")))
-    (testing "a non-use* barrel export is now a generated :util def, not a skip"
+    (testing "a non-use* barrel export is a generated :util def, not a skip"
       (is (nil? (skip "randomId")))
       (let [rid (def-plan (ns-plan plan "mantine.hooks") "random-id")]
         (is (= :util (:kind rid)))
@@ -168,8 +163,6 @@
     (is (thrown-with-msg? Exception #"kebab collision alert"
                           (plan/build sources)))))
 
-;; ---------------------------------------------------------------- hooks
-
 (deftest hook-docstrings-and-page-mapping
   (let [plan (plan/build base-sources)
         hooks (ns-plan plan "mantine.hooks")]
@@ -181,7 +174,7 @@
     (testing "Companion hook maps to its shared docs page via hook-docs-page"
       (is (str/includes? (:docstring (def-plan hooks "use-mouse-position"))
                          "https://mantine.dev/hooks/use-mouse")))
-    (testing "hooks ns requires: cljs refer (hooks + utils) + clj-only factory"
+    (testing "hooks ns requires: cljs refer (hooks + barrel utilities) + clj-only factory"
       (is (= [["@mantine/hooks" :refer '[randomId useDisclosure useMousePosition]]]
              (get-in hooks [:requires :cljs])))
       (is (= '[[mantine.impl.factory :as f]] (get-in hooks [:requires :clj]))))))
@@ -189,11 +182,11 @@
 (deftest util-docstrings-and-routing
   (let [plan (plan/build base-sources)
         hooks (ns-plan plan "mantine.hooks")]
-    (testing "a functions-reference util links to the guide with a stripped anchor"
+    (testing "a functions-reference barrel utility links to the guide at its lowercased URL fragment"
       (let [ds (:docstring (def-plan hooks "random-id"))]
         (is (str/includes? ds "randomId — Generates a random id"))
         (is (str/includes? ds "https://mantine.dev/guides/functions-reference/#randomid"))))
-    (testing "a util documented on a sibling hook page links to that page"
+    (testing "a barrel utility documented on a sibling hook page links to that page"
       (let [plan (plan/build (add-barrel base-sources "getHotkeyHandler"))
             ds (:docstring (def-plan (ns-plan plan "mantine.hooks") "get-hotkey-handler"))]
         (is (str/includes? ds "https://mantine.dev/hooks/use-hotkeys/#gethotkeyhandler"))))))
@@ -211,7 +204,7 @@
     (is (some #{"range"} (:refer-clojure-exclude hooks)))))
 
 (deftest single-word-util-reached-via-alias
-  ;; clamp kebabs to itself; :refer-ing AND def-ing "clamp" would shadow the refer,
+  ;; clamp kebabs to itself; :refer-ing and def-ing "clamp" would shadow the refer,
   ;; so it is reached via the hooks-js alias and dropped from the :refer list.
   (let [sources (-> (add-barrel base-sources "clamp")
                     (assoc-in [:util-docs "clamp"] {:desc "Clamp" :page "guides/functions-reference"}))
@@ -230,8 +223,6 @@
     (testing "emitted text uses the alias-qualified RHS"
       (is (str/includes? (:text (plan/emit-ns hooks))
                          "#?(:cljs hooks-js/clamp\n     :clj (f/not-implemented \"mantine.hooks/clamp\")))")))))
-
-;; ---------------------------------------------------------------- supplements
 
 (def core-supplement
   (str "(ns mantine.supplements.core\n"
@@ -293,12 +284,10 @@
     (testing "zero generated defs; body is entirely the hoisted supplement"
       (is (= [] (:defs form)))
       (is (str/starts-with? (get-in form [:supplement :body]) "(def use-form")))
-    (testing "requires come entirely from the supplement — no empty base refer, no injected factory"
+    (testing "requires come entirely from the supplement: no empty base refer, no injected factory"
       (is (= [["@mantine/form" :as 'mf]] (get-in form [:requires :cljs])))
       (is (= '[[mantine.impl.factory :as f]] (get-in form [:requires :clj])))
       (is (= [] (get-in form [:requires :common]))))))
-
-;; ---------------------------------------------------------------- emit-ns
 
 (deftest emit-escapes-docstrings
   (let [sources (assoc-in base-sources
@@ -336,7 +325,7 @@
   (let [sources (assoc base-sources :supplements {"core" core-supplement})
         plan (plan/build sources)
         text (:text (plan/emit-ns (ns-plan plan "mantine.core")))]
-    (testing "already-escaped supplement text is NOT re-escaped"
+    (testing "already-escaped supplement text is not re-escaped"
       (is (str/includes? text "say \\\"hi\\\"")))
     (is (str/includes? text ";; ---- hoisted from codegen/supplements/core.cljc ----"))))
 
@@ -345,13 +334,11 @@
         text (:text (plan/emit-ns (ns-plan plan "mantine.hooks")))]
     (is (str/includes? text "(def use-disclosure\n"))
     (is (str/includes? text "#?(:cljs useDisclosure\n     :clj (f/not-implemented \"mantine.hooks/use-disclosure\")))"))
-    (testing "a util emits the same raw-passthrough alias shape"
+    (testing "a barrel utility emits the same raw-passthrough alias shape"
       (is (str/includes? text "(def random-id\n"))
       (is (str/includes? text "#?(:cljs randomId\n     :clj (f/not-implemented \"mantine.hooks/random-id\")))")))
     (testing "clj-only require block for the hooks ns"
       (is (str/includes? text "#?@(:clj [[mantine.impl.factory :as f]])")))))
-
-;; ----------------------------------------------------------------
 
 (let [{:keys [fail error]} (run-tests 'plan-test)]
   (when (pos? (+ fail error))

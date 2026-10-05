@@ -1,7 +1,10 @@
 // Executes the :advanced demo bundle (public/js/main.js) inside jsdom and asserts
 // the four wrapping patterns behave: codegen'd components (kebab props, sections,
-// styles/classNames, polymorphic component=), the controlled-input shim, a hook
-// (use-disclosure), and the imperative notifications API.
+// styles/classNames, polymorphic component=), the controlled-input shim, hooks
+// (use-disclosure and one hook per return shape) plus a barrel utility, and the
+// imperative notifications API. It also covers the
+// backfilled core surface, @mantine/dates, charts, schedule, dropzone and form, and
+// the imperative modals and spotlight APIs.
 //
 //   npx shadow-cljs release demo && node scripts/verify-demo.mjs
 import { JSDOM } from 'jsdom';
@@ -97,7 +100,7 @@ try {
     && menuDropdown.querySelector('#menu-divider').className.includes('mantine-Menu-divider'),
     'menu-divider (supplement compound part) renders inside Menu.Dropdown');
   assert(menuDropdown.textContent.includes('Settings') && menuDropdown.textContent.includes('Log out'),
-    'Menu.Dropdown children (menu-item) render — a full Menu is usable');
+    'Menu.Dropdown children (menu-item) render, so a full Menu is usable');
 
   // -------------------------------------------------- 2. controlled input (shim)
   const input = doc.getElementById('input-name');
@@ -106,18 +109,18 @@ try {
   await poll('echo updates', () => doc.getElementById('input-echo').textContent === 'Echo: world');
   assert(input.value === 'world', 'typing flows shim -> onChange -> state -> back into input');
 
-  // -------------------------------------------------- 2b. widened core surface
+  // -------------------------------------------------- 2b. generated core components
   const alert = doc.getElementById('alert');
   assert(alert.className.includes('mantine-Alert-root') && alert.textContent.includes('Widened core coverage'),
-    'newly-generated mc/alert renders with Mantine classes');
+    'generated mc/alert renders with Mantine classes');
   const anchorEl = doc.getElementById('anchor');
   assert(anchorEl.tagName === 'A' && anchorEl.className.includes('mantine-Anchor-root'),
-    'newly-generated mc/anchor renders an <a> with Mantine classes');
+    'generated mc/anchor renders an <a> with Mantine classes');
   const kbd = doc.getElementById('kbd');
   assert(kbd.tagName === 'KBD' && kbd.textContent.includes('Ctrl'),
-    'newly-generated mc/kbd renders a <kbd>');
+    'generated mc/kbd renders a <kbd>');
 
-  // -------------------------------------------------- 2c. newly-curated controlled input
+  // -------------------------------------------------- 2c. controlled input: NativeSelect
   const select = doc.getElementById('fruit-select');
   assert(select.tagName === 'SELECT' && select.value === 'apple',
     'controlled NativeSelect renders external :value');
@@ -162,7 +165,7 @@ try {
   // non-hook barrel utility: random-id plain fn call, raw passthrough (mnt-01kxh6gf6ny3).
   const randomId = doc.getElementById('random-id');
   assert(/^RandomId: demo-.+/.test(randomId.textContent),
-    'mh/random-id utility called (raw passthrough) — honors the "demo-" prefix arg');
+    'mh/random-id barrel utility called (raw passthrough) and honors the "demo-" prefix arg');
 
   // -------------------------------------------------- 4. imperative notifications
   btn.click();
@@ -174,7 +177,7 @@ try {
   const styleTags = doc.querySelectorAll('style[data-mantine-styles]');
   assert(styleTags.length > 0, 'MantineProvider injected its style/CSS-variable tags');
 
-  // -------------------------------------------------- 5. @mantine/dates + @mantine/charts
+  // ------------------------- 5. @mantine/dates, charts, schedule, dropzone + form
   // Selector sets for the stylesheets public/index.html links (core first, packages after).
   const pkgSelectors = (pkg) =>
     new Set((fs.readFileSync(`node_modules/@mantine/${pkg}/styles.css`, 'utf8')
@@ -252,7 +255,7 @@ try {
 
   // @mantine/form: controlled useForm backs a TextInput through the :& escape hatch.
   // The initial value flows getInputProps -> :& -> input, and the echo reads form
-  // state via interop — proves the form hook is wired end-to-end, not just compiled.
+  // state via interop, which proves the form hook runs end-to-end.
   const formInput = doc.getElementById('form-name');
   assert(formInput && formInput.value === 'Ada',
     'mantine.form/use-form initial value reaches the input via getInputProps + :& escape hatch');
@@ -292,11 +295,11 @@ try {
   assert(true, 'confirm modal :on-confirm fired and the modal closed');
 
   // :inner-props denylist: the registered CLJS context modal receives the CLJS map
-  // untouched — qualified-keyword lookup works and the fn round-trips.
+  // untouched, so qualified-keyword lookup works and the fn round-trips.
   doc.getElementById('btn-open-ctx-modal').click();
   const ctxLabel = await poll('context modal opens', () => doc.getElementById('ctx-modal-label'));
   assert(ctxLabel.textContent === 'Inner: qualified-data',
-    ':inner-props passed RAW — qualified keyword read from the CLJS map');
+    ':inner-props passed raw: qualified keyword read from the CLJS map');
   doc.getElementById('ctx-modal-done').click();
   await poll('ctx echo updates', () =>
     doc.getElementById('ctx-echo').textContent === 'Ctx: qualified-data');
@@ -304,7 +307,7 @@ try {
   assert(true, ':inner-props fn round-tripped CLJS->CLJS and the modal closed');
 
   // spotlight: its component is the UI; toggle opens it. :actions is a plain CLJS
-  // vector-of-maps deep-converted through the GENERATED factory; clicking the action
+  // vector-of-maps deep-converted through the generated factory; clicking the action
   // fires its CLJS :on-click and closes the Spotlight.
   doc.getElementById('btn-toggle-spotlight').click();
   const spotlightAction = await poll('spotlight opens', () =>

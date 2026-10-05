@@ -1,5 +1,6 @@
 (ns mantine.demo
-  "Dev-only harness proving the four wrapping patterns end-to-end:
+  "Dev-only harness that exercises every wrapped package; scripts/verify-demo.mjs
+  asserts on the rendered result. It proves the four wrapping patterns end-to-end:
   1. codegen'd core components (kebab props, sections, styles/classNames, polymorphic :component)
   2. controlled input (mantine.impl.factory/controlled shim on TextInput)
   3. hooks (mantine.hooks) sampled across the return-shape split: tuple
@@ -39,7 +40,8 @@
         random-id (mh/random-id "demo-")]           ; -> "demo-xxxxx"
     ;; full screen built from backfilled non-docgen core surface: the wrapped
     ;; mantine-provider (app root, in `app`), AppShell page shell (+ app-shell-main),
-    ;; and a Menu whose Menu.Dropdown / Label / Divider are supplement-backfilled parts.
+    ;; and a Menu whose Menu.Dropdown / Label / Divider are compound parts backfilled
+    ;; in the core supplement.
     (mc/app-shell
      {:id "app-shell" :header #js {:height 60} :padding "md"}
      (mc/app-shell-header
@@ -79,9 +81,9 @@
         {:id "btn-anchor" :component "a" :href "https://mantine.dev" :variant "outline"}
         "Polymorphic anchor button")
 
-       ;; interop: raw-component recovers a wrapper's underlying Mantine component for
-       ;; slot props. Here Button renders as Mantine's Anchor (real core component,
-       ;; not our factory fn) via the :component slot.
+       ;; interop: raw-component recovers a factory's underlying Mantine component for
+       ;; slot props. Here Button renders as Mantine's Anchor (the real core component,
+       ;; not our factory) via the :component slot.
        (mc/button
         {:id "btn-raw-component"
          :component (mi/raw-component mc/anchor)
@@ -105,13 +107,13 @@
          :on-change (fn [e] (set-value (.. ^js e -target -value)))})
        (mc/text {:id "input-echo"} (str "Echo: " value))
 
-       ;; widened core surface: newly-generated components render as kebab factories
+       ;; more generated core components, each a kebab-named factory
        (mc/alert {:id "alert" :title "Heads up" :color "blue"} "Widened core coverage")
        (mc/anchor {:id "anchor" :href "https://mantine.dev"} "Docs link")
        (mc/kbd {:id "kbd"} "Ctrl")
 
-       ;; newly-curated controlled input: NativeSelect through the controlled shim
-       ;; (real <select>, DOM-event onChange — same shim, shape-agnostic value read)
+       ;; curated controlled input: NativeSelect through the controlled shim (real
+       ;; <select>, DOM-event onChange; the shim reads the value from either onChange shape)
        (mc/native-select
         {:id "fruit-select"
          :label "Fruit"
@@ -138,10 +140,10 @@
          :data-key "month"
          :series #js [#js {:name "sales" :color "blue.6"}]})
 
-       ;; @mantine/schedule: minimal MonthView with hard-coded events — the one
+       ;; @mantine/schedule: minimal MonthView with hard-coded events. The one
        ;; end-to-end path that cljs-compiles mantine.schedule and resolves the
-       ;; @mantine/schedule + rrule JS imports (events need a stable reference,
-       ;; hence #js literals like the chart :data above)
+       ;; @mantine/schedule + rrule JS imports. Events need a stable reference,
+       ;; hence #js literals like the chart :data above.
        (msch/month-view
         {:id "schedule-month"
          :date "2026-07-14"
@@ -152,7 +154,7 @@
                            :start "2026-07-15 14:00:00" :end "2026-07-15 15:00:00"
                            :color "blue"}]})
 
-       ;; @mantine/dropzone: minimal mount — the one end-to-end path that
+       ;; @mantine/dropzone: minimal mount. The one end-to-end path that
        ;; cljs-compiles mantine.dropzone and resolves the @mantine/dropzone JS
        ;; import. :on-drop (required) reports the dropped file count.
        (mdz/dropzone

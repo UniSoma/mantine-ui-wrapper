@@ -1,15 +1,12 @@
-;; Extract-level fixture tests (ADR 0004): exercise the PURE extract parsers and
-;; parse-inputs on hand-written MDX snippets — no clone, no writes. The two regex
-;; parsers are the highest-drift code in the repo (they scrape upstream MDX .ts);
-;; parse-inputs IS the test surface. Fixtures are minimal hand-written snippets,
-;; NOT real MDX excerpts.
+;; Extract-level fixture tests (ADR 0004) for the pure extract parsers and
+;; parse-inputs, with no clone and no writes. The two regex parsers scrape upstream
+;; MDX .ts, which makes them the highest-drift code in the repo; parse-inputs is the
+;; test surface. Fixtures are minimal hand-written snippets, not real MDX excerpts.
 ;;
 ;; Run with: bb extract-test
 (ns extract-test
   (:require [clojure.test :refer [deftest is testing run-tests]]
             [extract]))
-
-;; ---------------------------------------------------------------- hooks
 
 (deftest hook-hdocs-form
   (is (= {"useDisclosure" "Manages boolean state"}
@@ -26,8 +23,6 @@
   (is (= {"useFoo" "does a thing"}
          (extract/extract-hook-docs
           "useFoo: hDocs('useFoo', 'does   a\n  thing'),"))))
-
-;; ---------------------------------------------------------------- components
 
 (deftest component-happy-path
   (is (= {"Button" {:description "A button"
@@ -58,8 +53,6 @@
            (extract/extract-component-docs
             "Grid: {\n  description: 'grid',\n  package: '@mantine/core',\n  slug: '/core/grid',\n  vars: { root: 1 },\n  props: ['Grid'],\n},")))))
 
-;; ---------------------------------------------------------------- parse-inputs
-
 (def button-core
   "Button: {\n  description: 'A button',\n  package: '@mantine/core',\n  slug: '/core/button',\n  props: ['Button'],\n},")
 
@@ -83,8 +76,6 @@
          (extract/parse-inputs
           {:hooks-text ""
            :component-texts {:core button-core :dates "" :charts "" :others dup-in-others}})))))
-
-;; ----------------------------------------------------------------
 
 (let [{:keys [fail error]} (run-tests 'extract-test)]
   (when (pos? (+ fail error))

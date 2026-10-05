@@ -38,7 +38,7 @@ Optional leading props map; remaining args are children."
 ;; ---- hoisted from codegen/supplements/notifications.cljc ----
 
 (def provider
-  "Alias for `notifications` — the renderer component that must be mounted once
+  "Alias for `notifications`, the renderer component that must be mounted once
   (inside MantineProvider) for the imperative notification fns to display anything."
   notifications)
 
@@ -64,7 +64,7 @@ Optional leading props map; remaining args are children."
      :clj ((f/not-implemented "mantine.notifications/update") data)))
 
 (defn clean
-  "Remove all notifications — active and queued."
+  "Remove all notifications, active and queued."
   []
   #?(:cljs (cleanNotifications)
      :clj ((f/not-implemented "mantine.notifications/clean"))))

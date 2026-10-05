@@ -1,16 +1,16 @@
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.core
-  "Hand-written supplement HOISTED by the generator into the generated
-  mantine.core ns. Committed generator INPUT — compilable for editor/clj-kondo
-  support, but never shipped as-is: its :require entries are merged into the
-  generated ns and its top-level forms are appended after the codegen'd defs.
+  "Hand-written supplement the generator HOISTS into the generated mantine.core
+  ns. A committed generator INPUT: it compiles for editor and clj-kondo support
+  but never ships as-is. The generator merges its :require entries into the
+  generated ns and appends its top-level forms after the generated defs.
 
   Backfills the @mantine/core surface docgen omits: provider/primitive
   components (MantineProvider, Box, DirectionProvider), the create-theme / rem
   functions, the package-local color-scheme hooks, and the dot-notation compound
   parts docgen does not list (Menu.Dropdown, AppShell.Main, Modal.Body, ...).
   The compound-part coverage check in scripts/coverage-check.clj is the source of
-  truth for this list — it fails if any wrapped component grows a static part that
+  truth for this list. It fails if any wrapped component grows a static part that
   is neither generated from docgen nor defined here."
   (:refer-clojure :exclude [rem])
   (:require
@@ -37,8 +37,6 @@
                        TourNavigation TourTitle
                        createTheme useComputedColorScheme useMantineColorScheme useMantineTheme]]])))
 
-;; ---- providers / primitives ----
-
 (def mantine-provider
   "MantineProvider — application root; supplies theme, color scheme and CSS
   variables. Nothing Mantine renders without it. Optional leading props map;
@@ -58,26 +56,22 @@
   #?(:cljs (f/factory DirectionProvider)
      :clj (f/not-implemented "mantine.core/direction-provider")))
 
-;; ---- functions ----
-
 (defn create-theme
   "Build a Mantine theme object from a Clojure map.
 
   Wraps clj->js, so theme keys are CAMELCASE-ONLY: clj->js does NOT camelize
   kebab-case, so write :fontFamily / :primaryColor / :defaultRadius (not
-  :font-family). Freeform nested maps (:colors, :other) pass straight through —
-  their keys are user data, not Mantine prop names."
+  :font-family). Freeform nested maps (:colors, :other) pass straight through.
+  Their keys are user data, not Mantine prop names."
   [theme]
   #?(:cljs (createTheme (clj->js theme))
      :clj ((f/not-implemented "mantine.core/create-theme") theme)))
 
 (def rem
-  "rem — Mantine px->rem helper. Raw passthrough of the JS fn (pass a number
-  or string; returns a rem string)."
+  "rem — Mantine's px-to-rem converter. Raw passthrough of the JS fn: pass a
+  number or string, get a rem string back."
   #?(:cljs mantine-core/rem
      :clj (f/not-implemented "mantine.core/rem")))
-
-;; ---- hooks (raw passthrough) ----
 
 (def use-mantine-theme
   "useMantineTheme — read the resolved Mantine theme. Raw passthrough: returns
@@ -96,8 +90,6 @@
   Raw passthrough: returns the raw JS string."
   #?(:cljs useComputedColorScheme
      :clj (f/not-implemented "mantine.core/use-computed-color-scheme")))
-
-;; ---- compound parts (dot-notation subcomponents docgen omits) ----
 
 (def accordion-chevron
   "Accordion.Chevron — compound part of Accordion (docgen omits it). Optional

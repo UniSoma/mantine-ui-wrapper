@@ -1,13 +1,14 @@
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.notifications
-  "Hand-written supplement HOISTED by the generator into the generated
-  mantine.notifications ns. Committed generator INPUT — compilable for editor/
-  clj-kondo support, but never shipped as-is: its :require entries are merged into
-  the generated ns and its top-level forms are appended after the codegen'd defs."
+  "Hand-written supplement the generator HOISTS into the generated
+  mantine.notifications ns. A committed generator INPUT: it compiles for editor and
+  clj-kondo support but never ships as-is. The generator merges its :require
+  entries into the generated ns and appends its top-level forms after the
+  generated defs."
   (:refer-clojure :exclude [update])
   (:require
    ;; f is :clj-branch-only HERE, but the generated ns also uses it on :cljs
-   ;; (f/factory for its component defs) — so the require stays unconditional.
+   ;; (f/factory for its component defs), so the require stays unconditional.
    #_{:clj-kondo/ignore [:unused-namespace]}
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/notifications" :refer [showNotification hideNotification
@@ -18,7 +19,7 @@
 (declare notifications)
 
 (def provider
-  "Alias for `notifications` — the renderer component that must be mounted once
+  "Alias for `notifications`, the renderer component that must be mounted once
   (inside MantineProvider) for the imperative notification fns to display anything."
   notifications)
 
@@ -44,7 +45,7 @@
      :clj ((f/not-implemented "mantine.notifications/update") data)))
 
 (defn clean
-  "Remove all notifications — active and queued."
+  "Remove all notifications, active and queued."
   []
   #?(:cljs (cleanNotifications)
      :clj ((f/not-implemented "mantine.notifications/clean"))))

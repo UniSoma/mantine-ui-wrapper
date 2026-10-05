@@ -1,9 +1,10 @@
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.spotlight
-  "Hand-written supplement HOISTED by the generator into the generated
-  mantine.spotlight ns. Committed generator INPUT — compilable for editor/
-  clj-kondo support, but never shipped as-is: its :require entries are merged into
-  the generated ns and its top-level forms are appended after the codegen'd defs."
+  "Hand-written supplement the generator HOISTS into the generated
+  mantine.spotlight ns. A committed generator INPUT: it compiles for editor and
+  clj-kondo support but never ships as-is. The generator merges its :require
+  entries into the generated ns and appends its top-level forms after the
+  generated defs."
   (:require
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/spotlight" :refer [openSpotlight closeSpotlight
@@ -34,8 +35,6 @@
   JS spotlight store value (read via interop: .-opened, .-open, ...)."
   #?(:cljs useSpotlight
      :clj (f/not-implemented "mantine.spotlight/use-spotlight")))
-
-;; ---- compound parts (dot-notation subcomponents docgen omits) ----
 
 (def spotlight-actions-list
   "Spotlight.ActionsList — compound part of Spotlight (docgen omits it). Optional

@@ -1,6 +1,6 @@
 > Destination proof for ticket mnt-01kxe8h04teh (Build the four-pattern PoC)
 
-# Four-pattern PoC — the pipeline, built and verified
+# Four-pattern PoC: the pipeline, built and verified
 
 Unlike the throwaway build-tooling PoC, this one **is** the repo: the real generator,
 impl namespaces, committed inputs, and demo harness, all landed on the locked design
@@ -16,7 +16,7 @@ Verified against Mantine 9.4.1, shadow-cljs 2.28.x, React 19, node 24, Java 25.
 - **Generator** (`bb generate`, plain-Clojure babashka): scope-filtered docgen entries →
   one `.cljc` ns per package (`mantine.core`, `mantine.hooks`, `mantine.notifications`).
   Kebab defs, collision hard-error, auto `(:refer-clojure :exclude ...)` (sees supplement
-  names — `update` is excluded in `mantine.notifications`), rich docstrings
+  names: `update` is excluded in `mantine.notifications`), rich docstrings
   (description + mantine.dev URL + docgen prop table), controlled-input curation with
   rot-logging, supplement require-merge + verbatim form hoisting (edamame with
   `:read-cond :preserve`), package/export resolution via `node -e Object.keys(require(...))`.
@@ -46,7 +46,7 @@ Verified against Mantine 9.4.1, shadow-cljs 2.28.x, React 19, node 24, Java 25.
 - **CSS pairing confirmed**: every hashed class the bundle renders (`m_87cf2631` … on
   Button, `m_5ed0edd0` … on Notification) exists as a selector in the linked
   `@mantine/core/styles.css` / `@mantine/notifications/styles.css`.
-- **Pixel paint still not browser-verified** (no Chromium in this sandbox — same caveat
+- **Pixel paint still not browser-verified** (no Chromium in this sandbox; same caveat
   as the build-tooling PoC). `npx shadow-cljs watch demo` + a real browser is the
   remaining eyeball check.
 
@@ -55,16 +55,16 @@ Verified against Mantine 9.4.1, shadow-cljs 2.28.x, React 19, node 24, Java 25.
 1. **Input refresh is cheap, not heavy.** The docgen research called a full monorepo
    install "heavy/slow"; in practice `yarn install` took ~44 s and `tsx scripts/docgen`
    under a minute. Version bumps are a low-cost scripted step (`bb extract`).
-2. **Singleton `:refer` collides with the provider def — use the standalone exports.**
+2. **Singleton `:refer` collides with the provider def: use the standalone exports.**
    The build-tooling require-sugar (`:refer [notifications useNotifications]`) collides
    with the generated `notifications` component def inside the merged ns. The supplement
-   refers the standalone fns instead (`showNotification`, `hideNotification`, …) — 1:1,
-   no `:rename` needed. Pattern for modals/spotlight supplements too.
+   refers the standalone fns instead (`showNotification`, `hideNotification`, …), 1:1,
+   with no `:rename` needed. Pattern for modals/spotlight supplements too.
 3. **Provider alias via `(declare notifications)` + `(def provider notifications)`**
    compiles warning-free standalone and hoisted (CLJS `declare` after `def` is a no-op).
 4. **The controlled shim reads change values shape-agnostically** (DOM-event `.target`
    vs bare value) so the same shim covers TextInput-style and Select/NumberInput-style
    `onChange` signatures.
 5. **Extension-package MDX data lives in `mdx-others-data.ts`** (not just
-   core/dates/charts) and keys `Notifications` directly — extraction now includes it,
+   core/dates/charts) and keys `Notifications` directly. Extraction now includes it,
    so provider components get real descriptions.

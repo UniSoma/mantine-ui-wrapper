@@ -1,17 +1,17 @@
 ;; release-check (ADR 0005): the src/main/deps.cljs @mantine/* ranges, the build.clj
-;; version prefix, and the package.json pins are all *renderings* of the anchor. This
-;; validates their agreement against the one canonical anchor; it READS them as data
-;; and NEVER regenerates the hand-authored, shipped artifacts.
+;; version prefix, the package.json pins and the extract provenance witness are all
+;; *renderings* of the anchor. This checks each against the anchor. It reads them as
+;; data and never regenerates the hand-authored, shipped artifacts.
 ;;
 ;; The consumer-facing prose in README.md and docs/release.md also embeds the anchor in
-;; live, copy-pasteable coordinates — the `@mantine/*@^X.Y.Z` install command and the
+;; copy-pasteable coordinates: the `@mantine/*@^X.Y.Z` install command and the
 ;; `mantine-ui-wrapper {:mvn/version "X.Y.Z..."}` dep. Those go silently wrong on a bump,
-;; so we flag them too. Only tokens that literally embed a package/artifact pin are
-;; matched; illustrative bare version-scheme examples (`9.4.1.0 → 9.4.1.1`) are left alone.
+;; so they are checked too. Only tokens that embed a package or artifact pin match;
+;; bare version-scheme examples (`9.4.1.0 → 9.4.1.1`) do not.
 ;;
-;; PURE checker (violations) + thin I/O runner (-main). build.clj is a read TARGET —
-;; it lives under the deps.edn :build alias which cannot see codegen/, so its version
-;; string is regex'd out of its text, never required.
+;; Pure checker (violations), thin I/O runner (-main). build.clj lives under the
+;; deps.edn :build alias, which cannot see codegen/, so its version string is regex'd
+;; out of its text instead of required.
 (ns release-check
   (:require [anchor]
             [clojure.edn :as edn]
@@ -24,9 +24,9 @@
 
 (defn prose-renderings
   "Pure: extract anchor-embedding coordinates from one prose file's text. Returns a seq of
-  {:file :kind :version} — :npm-floor for each `@mantine/pkg@^X.Y.Z` install token (the
-  ^-stripped version) and :mvn-coord for each `mantine-ui-wrapper {:mvn/version \"X.Y.Z...`
-  dep (its first three segments). Bare version-scheme examples are deliberately not matched."
+  {:file :kind :version}: :npm-floor for each `@mantine/pkg@^X.Y.Z` install token (the
+  ^-stripped version), :mvn-coord for each `mantine-ui-wrapper {:mvn/version \"X.Y.Z...`
+  dep (its first three segments). Bare version-scheme examples do not match."
   [file text]
   (concat
    (for [[_ v] (re-seq #"@mantine/[\w.-]+@\^(\d+\.\d+\.\d+)" text)]
@@ -61,8 +61,8 @@
 
 (defn -main
   "Read the real artifacts, assert the package.json pins are uniform (via the anchor
-  module), then check deps.cljs + build.clj against the anchor. Non-zero exit on any
-  violation."
+  module), then check every rendering in `violations` against the anchor. Exits
+  non-zero on any violation."
   [& _]
   (let [pins (anchor/pins)
         anchor (anchor/anchor-version pins)

@@ -1,11 +1,11 @@
-;; Core components wrapped with mantine.impl.factory/controlled — the value/onChange
-;; input family, where local-state buffering keeps the cursor from jumping when the
-;; owner re-renders. The shim is shape-agnostic (DOM-event .target OR bare value), so
+;; Components wrapped with mantine.impl.factory/controlled: the value/onChange input
+;; family, where local-state buffering keeps the cursor from jumping when the owner
+;; re-renders. The shim is shape-agnostic (DOM-event .target OR bare value), so
 ;; text, select/combobox, numeric, slider, color and rating inputs all fit. Deliberately
 ;; excludes checked-based toggles (Checkbox/Switch/Radio/Chip) and value-as-navigation
 ;; controls (Tabs/Accordion/Stepper/Pagination), whose controlled interface is not
-;; value/onChange. Names absent from the resolved components are logged by the generator
-;; so this set can't silently rot.
+;; value/onChange. The generator logs names absent from the resolved components, so
+;; this set can't silently rot.
 #{;; text-editing
   "TextInput" "Textarea" "PasswordInput" "JsonInput" "MaskInput" "NumberInput" "PinInput"
   ;; select / combobox family
@@ -16,7 +16,7 @@
   "Slider" "RangeSlider" "AngleSlider" "HueSlider" "AlphaSlider"
   ;; other value/onChange inputs
   "Rating" "SegmentedControl"
-  ;; @mantine/dates — the date/time value/onChange picker family (bare-value onChange,
+  ;; @mantine/dates: the date/time value/onChange picker family (bare-value onChange,
   ;; handled by the same shape-agnostic shim)
   "DateInput" "DatePicker" "DatePickerInput" "DateTimePicker" "InlineDateTimePicker"
   "MiniCalendar" "MonthPicker" "MonthPickerInput" "TimeGrid" "TimePicker"

@@ -1,12 +1,13 @@
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns mantine.supplements.modals
-  "Hand-written supplement HOISTED by the generator into the generated
-  mantine.modals ns. Committed generator INPUT — compilable for editor/
-  clj-kondo support, but never shipped as-is: its :require entries are merged into
-  the generated ns and its top-level forms are appended after the codegen'd defs."
+  "Hand-written supplement the generator HOISTS into the generated
+  mantine.modals ns. A committed generator INPUT: it compiles for editor and
+  clj-kondo support but never ships as-is. The generator merges its :require
+  entries into the generated ns and appends its top-level forms after the
+  generated defs."
   (:require
    ;; f is :clj-branch-only HERE, but the generated ns also uses it on :cljs
-   ;; (f/factory for its component defs) — so the require stays unconditional.
+   ;; (f/factory for its component defs), so the require stays unconditional.
    #_{:clj-kondo/ignore [:unused-namespace]}
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/modals" :refer [openModal openConfirmModal openContextModal
@@ -17,7 +18,7 @@
 (declare modals-provider)
 
 (def provider
-  "Alias for `modals-provider` — the ModalsProvider that must be mounted once
+  "Alias for `modals-provider`, the ModalsProvider that must be mounted once
   (inside MantineProvider) for the imperative modal fns to display anything."
   modals-provider)
 

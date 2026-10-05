@@ -221,8 +221,6 @@ Optional leading props map; remaining args are children."
   #?(:cljs useSpotlight
      :clj (f/not-implemented "mantine.spotlight/use-spotlight")))
 
-;; ---- compound parts (dot-notation subcomponents docgen omits) ----
-
 (def spotlight-actions-list
   "Spotlight.ActionsList — compound part of Spotlight (docgen omits it). Optional
   leading props map; remaining args are children."

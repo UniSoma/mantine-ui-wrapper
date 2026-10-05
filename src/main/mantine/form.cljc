@@ -15,8 +15,6 @@
   #?(:cljs mf/useForm
      :clj (f/not-implemented "mantine.form/use-form")))
 
-;; ---- validators (pure functions, raw passthrough) ----
-
 (def has-length
   "hasLength — validator: value length within the given bounds. Raw passthrough."
   #?(:cljs mf/hasLength

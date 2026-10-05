@@ -25,7 +25,7 @@ Optional leading props map; remaining args are children."
 ;; ---- hoisted from codegen/supplements/modals.cljc ----
 
 (def provider
-  "Alias for `modals-provider` — the ModalsProvider that must be mounted once
+  "Alias for `modals-provider`, the ModalsProvider that must be mounted once
   (inside MantineProvider) for the imperative modal fns to display anything."
   modals-provider)
 

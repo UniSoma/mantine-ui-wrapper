@@ -1,7 +1,7 @@
-;; One-shot input refresh for a version bump: clone the Mantine tag that matches the
+;; One-shot input refresh for an anchor bump: clone the Mantine tag that matches the
 ;; package.json anchor, run its docgen with the yarn its package.json pins under
 ;; "packageManager" (yarn is not on PATH; corepack, fetched via npx, resolves the pin),
-;; then hand the clone to extract/write-inputs!. Bump the package.json pins FIRST —
+;; then hand the clone to extract/write-inputs!. Bump the package.json pins first:
 ;; extract asserts clone == anchor.
 ;;
 ;;   bb clone-anchor            ; clones into target/mantine-<anchor>, reuses it if present

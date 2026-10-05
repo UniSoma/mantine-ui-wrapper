@@ -1,6 +1,6 @@
 ;; Consumer-facing npm-dep declaration shipped in the jar: shadow-cljs auto-installs
-;; these (npm install --save --save-exact) when absent. react/react-dom deliberately
-;; NOT shipped — the consuming app owns React (avoids split-context/duplicate React).
+;; these (npm install --save --save-exact) when absent. react/react-dom are deliberately
+;; NOT shipped: the consuming app owns React (avoids split-context/duplicate React).
 ;; Only PEER deps of the @mantine/* packages are declared here (dayjs, recharts);
 ;; regular deps ride transitively via npm (e.g. rrule via @mantine/schedule).
 {:npm-deps {"@mantine/core" "^9.7.0"

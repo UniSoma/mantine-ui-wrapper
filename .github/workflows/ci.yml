@@ -3,9 +3,9 @@
 # behavioral seam; the generator-side checks are bb tasks. The converter invariants
 # are locked by a cljs/node test suite (bb test).
 #
-# NOTE: pixel paint (that the linked Mantine stylesheets visually apply) is NOT
-# asserted here — jsdom has no layout/paint engine. It stays a manual caveat,
-# checked in a real browser via `npx shadow-cljs watch demo` (see README).
+# Pixel paint (that the linked Mantine stylesheets visually apply) is NOT asserted
+# here: jsdom has no layout/paint engine. Check it by hand in a real browser via
+# `npx shadow-cljs watch demo`.
 name: CI
 
 on:

@@ -4,10 +4,10 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versions follow the wrapper's own scheme, not Semantic Versioning: the first three
-segments are the wrapped Mantine version and the fourth is the wrapper's revision
-against it (`9.7.0.0`, `9.7.0.1`, ...).
+segments are the Mantine anchor (the wrapped Mantine release) and the fourth is the
+wrapper's revision against it (`9.7.0.0`, `9.7.0.1`, ...).
 
-This file records changes to the wrapper. Each Mantine bump gets one line that links
+This file records changes to the wrapper. Each anchor bump gets one line that links
 to Mantine's release notes, which cover the upstream changes. An upstream change
 appears here only when it can break an app that does not change its code.
 
@@ -26,7 +26,7 @@ Releases before the first entry below were SNAPSHOTs only and are not recorded.
 
 ### Changed
 
-- The wrapped Mantine version is now 9.7.0
+- The Mantine anchor is now 9.7.0
   ([release notes](https://mantine.dev/changelog/9-7-0/)). The prop tables in the
   generated docstrings show the 9.7.0 props.
 - Upstream: `tooltip` now hides when its target is detached from the page

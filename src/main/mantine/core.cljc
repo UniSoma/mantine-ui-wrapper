@@ -4918,26 +4918,22 @@ Optional leading props map; remaining args are children."
   #?(:cljs (f/factory DirectionProvider)
      :clj (f/not-implemented "mantine.core/direction-provider")))
 
-;; ---- functions ----
-
 (defn create-theme
   "Build a Mantine theme object from a Clojure map.
 
   Wraps clj->js, so theme keys are CAMELCASE-ONLY: clj->js does NOT camelize
   kebab-case, so write :fontFamily / :primaryColor / :defaultRadius (not
-  :font-family). Freeform nested maps (:colors, :other) pass straight through —
-  their keys are user data, not Mantine prop names."
+  :font-family). Freeform nested maps (:colors, :other) pass straight through.
+  Their keys are user data, not Mantine prop names."
   [theme]
   #?(:cljs (createTheme (clj->js theme))
      :clj ((f/not-implemented "mantine.core/create-theme") theme)))
 
 (def rem
-  "rem — Mantine px->rem helper. Raw passthrough of the JS fn (pass a number
-  or string; returns a rem string)."
+  "rem — Mantine's px-to-rem converter. Raw passthrough of the JS fn: pass a
+  number or string, get a rem string back."
   #?(:cljs mantine-core/rem
      :clj (f/not-implemented "mantine.core/rem")))
-
-;; ---- hooks (raw passthrough) ----
 
 (def use-mantine-theme
   "useMantineTheme — read the resolved Mantine theme. Raw passthrough: returns
@@ -4956,8 +4952,6 @@ Optional leading props map; remaining args are children."
   Raw passthrough: returns the raw JS string."
   #?(:cljs useComputedColorScheme
      :clj (f/not-implemented "mantine.core/use-computed-color-scheme")))
-
-;; ---- compound parts (dot-notation subcomponents docgen omits) ----
 
 (def accordion-chevron
   "Accordion.Chevron — compound part of Accordion (docgen omits it). Optional

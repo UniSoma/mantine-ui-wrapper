@@ -1,5 +1,5 @@
 ;; Curated cljdoc articles tree (mnt-01kxw0esqg67). Without this file cljdoc
-;; auto-discovers the entire docs/ folder — including reader-irrelevant internals
+;; auto-discovers the entire docs/ folder, including maintainer-only internals
 ;; (docs/agents, docs/prototypes, docs/research, release.md, version-bump.md).
 ;; This explicit tree publishes only the README, the changelog, the concepts doc, and
 ;; the ADRs.

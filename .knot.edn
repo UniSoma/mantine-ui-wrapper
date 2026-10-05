@@ -1,5 +1,5 @@
-;; Knot project config. All keys are optional; sensible defaults apply.
-;; See the project README for the full schema.
+;; Knot project config. All keys are optional; each has a default.
+;; See knot's README for the full schema.
 {
  ;; Where ticket files live, relative to this file.
  :tickets-dir ".tickets"
@@ -18,7 +18,7 @@
  ;; Default ticket type on `knot create` (must be in :types below).
  :default-type "task"
 
- ;; Default priority on `knot create` — integer 0..4 (0 = highest).
+ ;; Default priority on `knot create`: integer 0..4 (0 = highest).
  :default-priority 2
 
  ;; Status workflow, in display order. Edit to add e.g. "review".
@@ -28,8 +28,8 @@
  ;; remaining entries render uncolored.
  :statuses ["open" "in_progress" "closed"]
 
- ;; Statuses that are terminal — files of tickets in these statuses
- ;; auto-move to <tickets-dir>/archive/.
+ ;; Terminal statuses. Ticket files in these statuses auto-move to
+ ;; <tickets-dir>/archive/.
  :terminal-statuses #{"closed"}
 
  ;; The active lane: status `knot start` transitions to, and the one
@@ -41,10 +41,10 @@
  ;; Allowed values for the :type field on each ticket.
  :types ["bug" "feature" "task" "epic" "chore"]
 
- ;; Allowed values for the :mode field — `afk` is agent-runnable,
+ ;; Allowed values for the :mode field. `afk` is agent-runnable,
  ;; `hitl` requires a human. Set the mode on `knot create` with
  ;; --mode <value> always; do not add per-mode shortcut flags
- ;; (--<mode-name>) — they bake the values of `:modes` into CLI
+ ;; (--<mode-name>). They bake the values of `:modes` into CLI
  ;; parsing and break projects that customize this list.
  :modes ["afk" "hitl"]
 

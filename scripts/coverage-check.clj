@@ -1,8 +1,9 @@
 ;; Coverage guard: independently recomputes the scoped surface per package from the
 ;; committed codegen inputs (docgen.json + scope.edn + installed @mantine exports) and
 ;; asserts every intended def landed in the generated source. Catches a scope/resolution
-;; bug that silently drops components — the recount here is deliberately separate from
-;; plan/build's classification, so a regression in the generator diverges from this check.
+;; bug that silently drops components. The recount is separate from plan/build's
+;; classification on purpose, so a regression in the generator diverges from this check.
+;; Also runs the compound-part Drift audit (check-compound-parts).
 ;;
 ;; Run with: bb coverage
 (ns coverage-check
@@ -11,11 +12,11 @@
             [clojure.string :as str]
             [plan]))
 
-;; LOAD-BEARING BOUNDARY (ADR 0004): this check shares plan/read-sources — the
-;; OBSERVED facts (docgen, scope, exports) — so any divergence from the generator
+;; LOAD-BEARING BOUNDARY (ADR 0004): this check shares plan/read-sources, the
+;; observed facts (docgen, scope, exports), so any divergence from the generator
 ;; is provably a classification bug, not an artifact of two separate Node
 ;; enumerations. It MUST re-derive the scoped surface itself and MUST NOT consume
-;; plan/build's :namespaces — DRYing the classification through the plan would
+;; plan/build's :namespaces: DRYing the classification through the plan would
 ;; silently destroy the guard.
 (def sources (plan/read-sources))
 
@@ -47,12 +48,12 @@
 
 (defn pkg-suffix [pkg] (subs pkg (count "@mantine/")))
 
-;; {pkg -> #{export-name ...}} — the real top-level export surface of each package.
+;; {pkg -> #{export-name ...}}: each package's real top-level exports.
 (def pkg-export-set
   (reduce (fn [m [nm pkgs]] (reduce #(update %1 %2 (fnil conj #{}) nm) m pkgs))
           {} exports-index))
 
-;; Static keys on a component that are Mantine machinery, not compound subcomponents.
+;; Static keys on a component that are Mantine machinery, not compound parts.
 (def compound-machinery #{"extend" "withProps" "displayName" "classes" "varsResolver"})
 
 (defn component-statics
@@ -73,7 +74,7 @@
        (keep (fn [nm] (when-let [pkg (resolve-package nm)] [(pkg-suffix pkg) (kebab nm)])))
        (reduce (fn [m [suffix kb]] (update m suffix (fnil conj #{}) kb)) {})))
 
-;; {pkg-suffix -> #{JS-component-name ...}} — the wrapped docgen components per package,
+;; {pkg-suffix -> #{JS-component-name ...}}: the wrapped docgen components per package,
 ;; the roots whose Capitalized static parts the compound-part check enumerates.
 (def js-names-by-suffix
   (->> (dimension-names (:components scope) wrapped-component-universe)
@@ -97,9 +98,9 @@
 
 (defn check-compound-parts
   "Every Capitalized static part of a wrapped component (minus machinery) that is a
-  real package export must land as a def — via docgen or a supplement. A miss is a
-  silently-unwrapped compound part (e.g. Menu.Dropdown); fail loud so it gets wrapped
-  in a supplement or explicitly removed from scope."
+  real package export must land as a def, via docgen or a supplement. A miss is a
+  silently-unwrapped compound part (e.g. Menu.Dropdown): print it and return false,
+  so it gets wrapped in a supplement or removed from scope."
   [suffix comps]
   (let [pkg (str "@mantine/" suffix)
         exports (get pkg-export-set pkg #{})
