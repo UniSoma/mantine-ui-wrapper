@@ -12,7 +12,7 @@ own revision against that Mantine release.
 
 - Wrapper-only change (generator fix, `impl/` fix, scope widening) against the same
   Mantine → bump `N`: `9.4.1.0` → `9.4.1.1`.
-- Anchor bump (see [`version-bump.md`](version-bump.md)) → new anchor, reset
+- Anchor bump (see [`anchor-bump.md`](anchor-bump.md)) → new anchor, reset
   `N`: `9.6.0.3` → `9.7.0.0`.
 
 The version lives in one place: `version` in [`build.clj`](../build.clj). Clojars

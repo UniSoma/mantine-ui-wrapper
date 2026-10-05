@@ -18,7 +18,7 @@ release (`9.4.1.0`, `9.4.1.1`, … then `9.5.2.0` on the next Mantine bump). The
 question a consumer has is "which Mantine does this wrap?", and this scheme puts that
 answer in the coordinate itself. It also follows from the existing version-bump
 model, which already treats the Mantine version as the anchor pin (see
-`docs/version-bump.md`).
+`docs/anchor-bump.md`).
 
 The dotted `.N` form is deliberate over a dashed `-N`. Maven reads a trailing `-N` as a
 pre-release qualifier that sorts *before* `9.4.1`, which would be backwards and dangerous.

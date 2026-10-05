@@ -9,14 +9,14 @@
 
 (deftest raw-component-returns-the-tagged-component
   (let [component #js {:name "Fake"}
-        wrapper (f/factory component)]
-    (is (identical? component (mi/raw-component wrapper))
+        factory-fn (f/factory component)]
+    (is (identical? component (mi/raw-component factory-fn))
         "factory tags the wrapper with its underlying component")))
 
 (deftest raw-component-reads-through-the-controlled-shim
   (let [component #js {:name "Input"}
-        wrapper (f/factory (f/controlled component))]
-    (is (identical? component (mi/raw-component wrapper))
+        factory-fn (f/factory (f/controlled component))]
+    (is (identical? component (mi/raw-component factory-fn))
         "returns the real Mantine component, not the controlled shim")))
 
 (deftest raw-component-on-non-factory-errors-and-returns-nil

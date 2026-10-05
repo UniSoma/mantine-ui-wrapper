@@ -16,7 +16,7 @@ Single-context: one `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agen
 
 ### Mantine anchor bump
 
-Bumping the Mantine anchor (the wrapped Mantine release): `docs/version-bump.md`.
+Bumping the Mantine anchor (the wrapped Mantine release): `docs/anchor-bump.md`.
 
 ### Changelog
 

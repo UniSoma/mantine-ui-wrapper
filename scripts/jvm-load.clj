@@ -9,7 +9,7 @@
          '[clojure.string :as str])
 (import '[clojure.lang ExceptionInfo ArityException])
 
-(def generated-nses
+(def mantine-nses
   (->> (.listFiles (io/file "src/main/mantine"))
        (filter #(.isFile %))
        (map #(.getName %))
@@ -31,11 +31,11 @@
                  (catch ArityException _ nil))))
         (sort-by key (ns-publics ns-sym))))
 
-(println "JVM-loading" (count generated-nses) "generated namespaces:")
-(doseq [ns-sym generated-nses] (require ns-sym))
-(println "  loaded:" (str/join " " (map str generated-nses)))
+(println "JVM-loading" (count mantine-nses) "generated namespaces:")
+(doseq [ns-sym mantine-nses] (require ns-sym))
+(println "  loaded:" (str/join " " (map str mantine-nses)))
 
-(let [results (for [ns-sym generated-nses] [ns-sym (sample-named-throw ns-sym)])
+(let [results (for [ns-sym mantine-nses] [ns-sym (sample-named-throw ns-sym)])
       unnamed (remove (comp second) results)]
   (doseq [[ns-sym [sym _]] results
           :when sym]
@@ -45,5 +45,5 @@
                  (str/join " " (map first unnamed)))
         (System/exit 1))
     (do (println (format "JVM-LOAD OK — %d namespaces load; each samples a named throw."
-                         (count generated-nses)))
+                         (count mantine-nses)))
         (System/exit 0))))

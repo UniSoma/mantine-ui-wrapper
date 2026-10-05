@@ -206,10 +206,10 @@
                                                      " has no codegen/input/util-docs.edn entry"
                                                      " — document it or exclude it in codegen/scope.edn")
                                                 {:js-name nm})))
-        anchor (str/lower-case (str/replace nm #"[^A-Za-z0-9]" ""))]
+        fragment (str/lower-case (str/replace nm #"[^A-Za-z0-9]" ""))]
     (->> [(str nm " — " desc)
           ""
-          (str "https://mantine.dev/" page "/#" anchor)
+          (str "https://mantine.dev/" page "/#" fragment)
           ""
           "Raw passthrough of the JS function: pass JS-shaped args (#js {...}); returns"
           "the raw JS value (read object returns via interop — use ^js under :advanced)."]

@@ -10,12 +10,12 @@
                      [mantine.impl.props :as p])))
 
 (defn not-implemented
-  "Returns a fn that throws when called, naming `wrapper-name`. The :clj branch of
+  "Returns a fn that throws when called, naming `def-name`. The :clj branch of
   every generated def."
-  [wrapper-name]
+  [def-name]
   (fn [& _]
-    (throw (ex-info (str wrapper-name " is ClojureScript-only; the Mantine wrapper cannot be invoked on the JVM.")
-                    {:wrapper wrapper-name}))))
+    (throw (ex-info (str def-name " is ClojureScript-only; the Mantine wrapper cannot be invoked on the JVM.")
+                    {:wrapper def-name}))))
 
 #?(:cljs
    (def ^:private raw-key
@@ -25,11 +25,11 @@
 
 #?(:cljs
    (defn component-of
-     "Returns the raw Mantine component tagged on `wrapper` by `factory` or
-     `controlled`, or nil when `wrapper` carries no tag. Backs
+     "Returns the raw Mantine component tagged on `factory-fn` by `factory` or
+     `controlled`, or nil when `factory-fn` carries no tag. Backs
      mantine.interop/raw-component."
-     [wrapper]
-     (when (fn? wrapper) (unchecked-get wrapper raw-key))))
+     [factory-fn]
+     (when (fn? factory-fn) (unchecked-get factory-fn raw-key))))
 
 #?(:cljs
    (defn factory
