@@ -50,7 +50,7 @@
   "Print the diff stat of the upstream contract between HEAD's anchor and the bumped
   package.json anchor, in the anchor clone. Runs before clone-anchor's yarn steps, which
   a toolchain change can break."
-  [& _]
+  []
   (let [new-v (anchor/anchor-version)
         old-v (anchor/anchor-version
                (anchor/pins (:out (shell {:out :string} "git" "show" "HEAD:package.json"))))]
