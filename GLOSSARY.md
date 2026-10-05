@@ -78,6 +78,6 @@ into a loud "wrap it or explicitly exclude it."
 **Corpus collision guard**:
 An extract-time assertion that no PascalCase component key appears in more than one
 component corpus (`:core` / `:dates` / `:charts` / `:schedule` / `:others`). It replaces the old silent
-last-wins `apply merge` over the corpora with a loud throw. Component inputs stay
-corpus-keyed (not flattened) so this guard can fire; a future review must not
-collapse the map back into a silent merge.
+last-wins `apply merge` over the corpora with a loud throw. Parsed component docs
+stay grouped by corpus until the guard has run, so it can fire; a future review must
+not collapse them back into a silent merge.
