@@ -6,7 +6,7 @@ type: chore
 priority: 1
 mode: afk
 created: '2026-10-05T15:41:16.100031175Z'
-updated: '2026-10-05T19:33:07.666313569Z'
+updated: '2026-10-05T19:33:57.856430150Z'
 closed: '2026-10-05T19:21:29.952981666Z'
 acceptance:
 - title: bb extract throws, naming the file, on an mdx-*-data.ts that is neither parsed nor ignored
@@ -20,6 +20,7 @@ acceptance:
 links:
 - mnt-01m46ahjn88j
 - mnt-01m46rweyqb2
+- mnt-01m46rxzzaxp
 tags:
 - settled
 ---
