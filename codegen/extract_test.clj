@@ -100,7 +100,7 @@
     (is (= {:unknown ["mdx-another-data.ts" "mdx-new-package-data.ts"]} (ex-data e)))))
 
 (deftest parse-inputs-ignored-files-skipped
-  (testing "the ignored docs-data files at 9.7.0 neither throw nor add components"
+  (testing "ignored docs-data files neither throw nor add components"
     (is (= ["Button"]
            (keys (:component-docs
                   (extract/parse-inputs
@@ -122,7 +122,7 @@
     (is (= {:missing ["mdx-hooks-data.ts" "mdx-others-data.ts"]} (ex-data e)))))
 
 (deftest parsed-and-ignored-files-disjoint
-  (testing "a file moved into component-corpora also leaves ignored-files"
+  (testing "no docs-data file is both parsed and ignored"
     (is (empty? (filter @#'extract/ignored-files
                         (conj (vals @#'extract/component-corpora) @#'extract/hooks-file))))))
 

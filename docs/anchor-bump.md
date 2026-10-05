@@ -63,9 +63,10 @@ git diff --cached -- src/main/mantine/
 
 `bb extract <clone-dir>` is the last step of `clone-anchor` on its own, for a clone
 you already have. It reads the clone's `apps/mantine.dev/src/.docgen/docgen.json`
-and every `mdx-*-data.ts` docs-app data file under `apps/mantine.dev/src/mdx/data/`,
-and fails on a file it neither parses nor ignores, or on a parsed file that is gone;
-the error says what to edit in `codegen/extract.clj`. The whole clone +
+and every `mdx-*-data.ts` docs-data file under `apps/mantine.dev/src/mdx/data/`.
+It fails on a docs-data file it neither parses nor ignores, and on a parsed one the
+clone no longer has. The error names the files and what to edit in
+`codegen/extract.clj`. The whole clone +
 docgen is roughly a minute of compute.
 
 ## What the pipeline cannot see

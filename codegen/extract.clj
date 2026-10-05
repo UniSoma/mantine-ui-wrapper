@@ -74,7 +74,8 @@
 (def ^:private hooks-file "mdx-hooks-data.ts")
 
 (def ^:private ignored-files
-  "Docs-data files that carry no wrapped component or hook docs."
+  "Docs-data files parse-inputs accepts and skips. An entry that moves into one of
+  them drops without an error."
   #{"mdx-guides-data.ts"
     "mdx-meta-data.ts"
     "mdx-styles-data.ts"
@@ -85,8 +86,9 @@
 (defn parse-inputs
   "Pure. Parse the raw MDX texts, {\"mdx-core-data.ts\" \"...\" ...} keyed by file name,
   into {:hook-docs {\"useX\" \"...\"} :component-docs {\"Button\" {...}}}. Throws
-  ex-info when a file is neither parsed nor in ignored-files, or a parsed file is
-  absent, so a docs move upstream cannot silently drop entries. Unions the
+  ex-info when texts holds a file in none of component-corpora, hooks-file and
+  ignored-files, or lacks a file from component-corpora or hooks-file, so a new
+  docs-data file upstream, or a parsed one removed, fails the extract. Unions the
   per-corpus component maps; throws ex-info when a PascalCase key appears in more than
   one corpus instead of letting the merge keep the last one (ADR 0004: a wrong or
   ambiguous artifact throws). Output maps are sorted, so the result is deterministic."
