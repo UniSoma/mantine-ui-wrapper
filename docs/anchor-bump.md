@@ -79,7 +79,7 @@ docgen is roughly a minute of compute.
 ## Upstream contract
 
 The upstream contract is the set of paths in a Mantine checkout whose change can
-break the yarn install, docgen or extract steps: the yarn toolchain pins, the
+break the yarn install, docgen or extract steps: the yarn toolchain, the
 docgen scripts and the docs-data files. The list lives in `upstream-contract` in
 [`codegen/clone_anchor.clj`](../codegen/clone_anchor.clj), one comment per path
 saying what reads it. `bb upstream-diff` prints the diff stat of those paths

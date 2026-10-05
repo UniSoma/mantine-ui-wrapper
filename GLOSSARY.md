@@ -19,9 +19,8 @@ must agree with the anchor, and the installed version in `node_modules` must equ
 _Avoid_: Mantine version (ambiguous: pin, floor and artifact prefix are distinct renderings).
 
 **Upstream contract**:
-The paths of the Mantine source repository whose change can break the input refresh
-without any mention in the release notes: the toolchain pins, the docgen scripts and
-the docs-data files.
+The paths of the Mantine source repository whose change can break the input refresh:
+the yarn toolchain, the docgen scripts and the docs-data files.
 _Avoid_: upstream paths, contract paths.
 
 **Factory**:
