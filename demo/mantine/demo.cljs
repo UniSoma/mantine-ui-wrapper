@@ -79,6 +79,29 @@
                                :auto-close false}))}
         "Show notification")
 
+       ;; notifications/promise: the :success fn gets the resolved value raw and
+       ;; returns a CLJS map, which the wrapper converts
+       (mc/button
+        {:id "btn-notify-promise"
+         :on-click (fn [_]
+                     (mn/promise (js/Promise.resolve 42)
+                                 {:loading {:message "Waiting for the promise"}
+                                  :success (fn [v] {:title "Promise settled"
+                                                    :message (str "Resolved: " v)
+                                                    :auto-close false})
+                                  :error {:message "Rejected"}}))}
+        "Promise notification")
+       (mc/button
+        {:id "btn-notify-promise-reject"
+         :on-click (fn [_]
+                     (mn/promise (js/Promise.reject "nope")
+                                 {:loading {:message "Waiting for the promise"}
+                                  :success {:message "Resolved"}
+                                  :error (fn [reason] {:title "Promise failed"
+                                                       :message (str "Rejected: " reason)
+                                                       :auto-close false})}))}
+        "Rejected promise notification")
+
        ;; polymorphic component= -> renders an <a>
        (mc/button
         {:id "btn-anchor" :component "a" :href "https://mantine.dev" :variant "outline"}

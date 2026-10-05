@@ -24,6 +24,7 @@ Releases before the first entry below were SNAPSHOTs only and are not recorded.
   `tour-tooltip`, `tour-beacon`, `tour-title`, `tour-body`, `tour-close-button` and
   `tour-navigation`.
 - `mantine.core/use-app-shell-resize`.
+- `mantine.notifications/promise`.
 
 ### Changed
 

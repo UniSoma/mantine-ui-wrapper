@@ -176,6 +176,21 @@ try {
       .find((el) => el.textContent.includes('Sent from mantine.notifications/show')));
   assert(note.textContent.includes('It works'), 'notifications/show data converted (title rendered)');
 
+  // notifications/promise: a :success fn gets the resolved value, and the CLJS map it
+  // returns is converted. Wait for the final text: the loading state shares the id.
+  doc.getElementById('btn-notify-promise').click();
+  const resolved = await poll('promise success notification appears', () =>
+    [...doc.querySelectorAll('[class*="mantine-Notification-root"], [role="alert"]')]
+      .find((el) => el.textContent.includes('Resolved: 42')));
+  assert(resolved.textContent.includes('Promise settled'),
+    'notifications/promise :success fn got the resolved value and its map was converted');
+  doc.getElementById('btn-notify-promise-reject').click();
+  const rejected = await poll('promise error notification appears', () =>
+    [...doc.querySelectorAll('[class*="mantine-Notification-root"], [role="alert"]')]
+      .find((el) => el.textContent.includes('Rejected: nope')));
+  assert(rejected.textContent.includes('Promise failed'),
+    'notifications/promise :error fn got the rejection reason and its map was converted');
+
   const styleTags = doc.querySelectorAll('style[data-mantine-styles]');
   assert(styleTags.length > 0, 'MantineProvider injected its style/CSS-variable tags');
 

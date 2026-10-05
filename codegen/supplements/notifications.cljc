@@ -5,15 +5,16 @@
   clj-kondo support but never ships as-is. The generator merges its :require
   entries into the generated ns and appends its top-level forms after the
   generated defs."
-  (:refer-clojure :exclude [update])
+  (:refer-clojure :exclude [update promise])
   (:require
    ;; f is :clj-branch-only HERE, but the generated ns also uses it on :cljs
    ;; (f/factory for its component defs), so the require stays unconditional.
    #_{:clj-kondo/ignore [:unused-namespace]}
    [mantine.impl.factory :as f]
    #?@(:cljs [["@mantine/notifications" :refer [showNotification hideNotification
-                                                updateNotification cleanNotifications
-                                                cleanNotificationsQueue useNotifications]]
+                                                updateNotification promiseNotification
+                                                cleanNotifications cleanNotificationsQueue
+                                                useNotifications]]
               [mantine.impl.props :as p]])))
 
 (declare notifications)
@@ -43,6 +44,25 @@
   [data]
   #?(:cljs (updateNotification (p/convert data))
      :clj ((f/not-implemented "mantine.notifications/update") data)))
+
+(defn promise
+  "Show a loading notification while the promise `prom` is pending, then update it to
+  a success or error state. Returns `prom`.
+
+  `opts` takes :id (shared by all three states), :loading, :success and :error.
+  Each state is a notification options map, converted like `show`'s. :success and
+  :error can instead be a fn: it receives the resolved value or the rejection reason
+  raw, and the map it returns is converted. Mantine applies `loading: true` and
+  `autoClose: false` to :loading, and teal / red colors to :success / :error. On
+  settling it resets auto-close, so the final notification uses the provider's
+  default unless its map sets :auto-close."
+  [prom opts]
+  #?(:cljs (promiseNotification
+            prom
+            (p/convert (cond-> opts
+                         (fn? (:success opts)) (assoc :success (comp p/convert (:success opts)))
+                         (fn? (:error opts)) (assoc :error (comp p/convert (:error opts))))))
+     :clj ((f/not-implemented "mantine.notifications/promise") prom opts)))
 
 (defn clean
   "Remove all notifications, active and queued."
