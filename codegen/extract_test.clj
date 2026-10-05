@@ -121,6 +121,17 @@
     (is (re-find #"mdx-hooks-data\.ts, mdx-others-data\.ts" (ex-message e)))
     (is (= {:missing ["mdx-hooks-data.ts" "mdx-others-data.ts"]} (ex-data e)))))
 
+(deftest parse-inputs-renamed-file-reports-both
+  (testing "a parsed file renamed upstream shows as unknown and missing in one error"
+    (let [e (try (extract/parse-inputs
+                  (-> empty-parsed-files
+                      (dissoc "mdx-others-data.ts")
+                      (assoc "mdx-extensions-data.ts" "")))
+                 nil
+                 (catch clojure.lang.ExceptionInfo e e))]
+      (is (re-find #"unknown.*mdx-extensions-data\.ts.*missing.*mdx-others-data\.ts" (ex-message e)))
+      (is (= {:unknown ["mdx-extensions-data.ts"] :missing ["mdx-others-data.ts"]} (ex-data e))))))
+
 (deftest parsed-and-ignored-files-disjoint
   (testing "no docs-data file is both parsed and ignored"
     (is (empty? (filter @#'extract/ignored-files

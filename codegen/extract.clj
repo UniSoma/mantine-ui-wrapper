@@ -96,15 +96,19 @@
   (let [parsed-files (conj (set (vals component-corpora)) hooks-file)
         unknown (sort (remove (into parsed-files ignored-files) (keys texts)))
         missing (sort (remove (set (keys texts)) parsed-files))]
-    (when (seq unknown)
-      (throw (ex-info (str "unknown docs-data file(s): " (str/join ", " unknown)
-                           " — add each to component-corpora or ignored-files in codegen/extract.clj.")
-                      {:unknown (vec unknown)})))
-    (when (seq missing)
-      (throw (ex-info (str "missing docs-data file(s): " (str/join ", " missing)
-                           " — the clone no longer has them; find where their entries moved and"
-                           " update component-corpora or hooks-file in codegen/extract.clj.")
-                      {:missing (vec missing)}))))
+    (when (or (seq unknown) (seq missing))
+      (throw (ex-info (str/join "; "
+                                (cond-> []
+                                  (seq unknown)
+                                  (conj (str "unknown docs-data file(s): " (str/join ", " unknown)
+                                             " — add each to component-corpora or ignored-files in codegen/extract.clj."))
+                                  (seq missing)
+                                  (conj (str "missing docs-data file(s): " (str/join ", " missing)
+                                             " — the clone no longer has them; find where their entries moved and"
+                                             " update component-corpora or hooks-file in codegen/extract.clj."))))
+                      (cond-> {}
+                        (seq unknown) (assoc :unknown (vec unknown))
+                        (seq missing) (assoc :missing (vec missing)))))))
   (let [per-corpus (into {} (for [[corpus f] component-corpora]
                               [corpus (extract-component-docs (get texts f))]))
         collisions (->> (for [[corpus m] per-corpus, k (keys m)] [k corpus])
