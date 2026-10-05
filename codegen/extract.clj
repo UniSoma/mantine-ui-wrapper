@@ -1,10 +1,11 @@
 ;; Input refresh for an anchor bump (ADR 0004 pattern): the fragile upstream-MDX
 ;; parsers live in a pure, requirable core (parse-inputs) with a thin I/O driver.
 ;;
-;;   parse-inputs   pure: corpus-keyed texts -> {:hook-docs :component-docs};
-;;                  owns parsing, the component corpus merge, the corpus collision
+;;   parse-inputs   pure: docs-data texts keyed by file name -> {:hook-docs :component-docs};
+;;                  owns which file is parsed or ignored, the unknown- and missing-file
+;;                  throws, parsing, the component corpus merge, the corpus collision
 ;;                  guard, and sorted-map determinism. The test surface.
-;;   write-inputs!  thin: slurp clone texts, assert clone == anchor, copy
+;;   write-inputs!  thin: slurp every mdx-*-data.ts, assert clone == anchor, copy
 ;;                  docgen.json, call parse-inputs, spit the two EDN maps + witness.
 ;;   -main          reads the clone-dir arg (usage-throw if missing).
 ;;
@@ -62,15 +63,48 @@
                        :props props}
                 (re-find #"polymorphic: true" block) (assoc :polymorphic true))])))
 
+(def ^:private component-corpora
+  "Logical corpus name -> the MDX data file it is parsed from."
+  {:core "mdx-core-data.ts"
+   :dates "mdx-dates-data.ts"
+   :charts "mdx-charts-data.ts"
+   :schedule "mdx-schedule-data.ts"
+   :others "mdx-others-data.ts"})
+
+(def ^:private hooks-file "mdx-hooks-data.ts")
+
+(def ^:private ignored-files
+  "Docs-data files that carry no wrapped component or hook docs."
+  #{"mdx-guides-data.ts"
+    "mdx-meta-data.ts"
+    "mdx-styles-data.ts"
+    "mdx-theming-data.ts"
+    "mdx-form-data.ts"
+    "mdx-code-highlight-data.ts"})
+
 (defn parse-inputs
-  "Pure. Parse the raw MDX texts, {:hooks-text \"...\" :component-texts {corpus text}},
-  into {:hook-docs {\"useX\" \"...\"} :component-docs {\"Button\" {...}}}. Unions the
+  "Pure. Parse the raw MDX texts, {\"mdx-core-data.ts\" \"...\" ...} keyed by file name,
+  into {:hook-docs {\"useX\" \"...\"} :component-docs {\"Button\" {...}}}. Throws
+  ex-info when a file is neither parsed nor in ignored-files, or a parsed file is
+  absent, so a docs move upstream cannot silently drop entries. Unions the
   per-corpus component maps; throws ex-info when a PascalCase key appears in more than
   one corpus instead of letting the merge keep the last one (ADR 0004: a wrong or
   ambiguous artifact throws). Output maps are sorted, so the result is deterministic."
-  [{:keys [hooks-text component-texts]}]
-  (let [per-corpus (into {} (for [[corpus text] component-texts]
-                              [corpus (extract-component-docs text)]))
+  [texts]
+  (let [parsed-files (conj (set (vals component-corpora)) hooks-file)
+        unknown (sort (remove (into parsed-files ignored-files) (keys texts)))]
+    (when (seq unknown)
+      (throw (ex-info (str "unknown docs-data file(s): " (str/join ", " unknown)
+                           " — add each to component-corpora or ignored-files in codegen/extract.clj.")
+                      {:unknown (vec unknown)})))
+    (let [missing (sort (remove (set (keys texts)) parsed-files))]
+      (when (seq missing)
+        (throw (ex-info (str "missing docs-data file(s): " (str/join ", " missing)
+                             " — the clone no longer has them; find where their entries moved and"
+                             " update component-corpora or hooks-file in codegen/extract.clj.")
+                        {:missing (vec missing)})))))
+  (let [per-corpus (into {} (for [[corpus f] component-corpora]
+                              [corpus (extract-component-docs (get texts f))]))
         collisions (->> (for [[corpus m] per-corpus, k (keys m)] [k corpus])
                         (group-by first)
                         (filter (fn [[_ pairs]] (> (count pairs) 1)))
@@ -82,16 +116,8 @@
                                             (str k " in " (str/join ", " (sort (map second pairs)))))))
                       {:collisions (into {} (for [[k pairs] collisions]
                                               [k (vec (sort (map second pairs)))]))})))
-    {:hook-docs (extract-hook-docs hooks-text)
+    {:hook-docs (extract-hook-docs (get texts hooks-file))
      :component-docs (into (sorted-map) (apply merge (vals per-corpus)))}))
-
-(def ^:private component-corpora
-  "Logical corpus name -> the MDX data file it is parsed from."
-  {:core "mdx-core-data.ts"
-   :dates "mdx-dates-data.ts"
-   :charts "mdx-charts-data.ts"
-   :schedule "mdx-schedule-data.ts"
-   :others "mdx-others-data.ts"})
 
 (defn- clone-mantine-version
   "The Mantine version of the fed clone: @mantine/core's package.json version, falling
@@ -114,9 +140,8 @@
                            " — extract the clone pinned to the anchor, or bump package.json first.")
                       {:clone clone-v :anchor anchor-v})))
     (let [{:keys [hook-docs component-docs]}
-          (parse-inputs {:hooks-text (slurp (str (fs/path mdx-dir "mdx-hooks-data.ts")))
-                         :component-texts (into {} (for [[corpus f] component-corpora]
-                                                     [corpus (slurp (str (fs/path mdx-dir f)))]))})]
+          (parse-inputs (into {} (for [f (fs/glob mdx-dir "mdx-*-data.ts")]
+                                   [(str (fs/file-name f)) (slurp (str f))])))]
       (fs/create-dirs out)
       (fs/copy (fs/path clone-dir "apps/mantine.dev/src/.docgen/docgen.json")
                (fs/path out "docgen.json")

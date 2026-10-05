@@ -59,11 +59,22 @@
 (def calendar-dates
   "Calendar: {\n  description: 'A calendar',\n  package: '@mantine/dates',\n  slug: '/dates/calendar',\n  props: ['Calendar'],\n},")
 
+(def empty-parsed-files
+  "Every docs-data file extract parses, each with empty text."
+  {"mdx-core-data.ts" ""
+   "mdx-dates-data.ts" ""
+   "mdx-charts-data.ts" ""
+   "mdx-schedule-data.ts" ""
+   "mdx-others-data.ts" ""
+   "mdx-hooks-data.ts" ""})
+
 (deftest parse-inputs-unions-corpora
   (let [{:keys [hook-docs component-docs]}
         (extract/parse-inputs
-         {:hooks-text "useDisclosure: hDocs('useDisclosure', 'Manages boolean state'),"
-          :component-texts {:core button-core :dates calendar-dates :charts "" :others ""}})]
+         (assoc empty-parsed-files
+                "mdx-hooks-data.ts" "useDisclosure: hDocs('useDisclosure', 'Manages boolean state'),"
+                "mdx-core-data.ts" button-core
+                "mdx-dates-data.ts" calendar-dates))]
     (is (= {"useDisclosure" "Manages boolean state"} hook-docs))
     (is (= ["Button" "Calendar"] (keys component-docs)))
     (is (= "@mantine/dates" (get-in component-docs ["Calendar" :package])))))
@@ -74,8 +85,46 @@
     (is (thrown-with-msg?
          Exception #"corpus collision.*Button"
          (extract/parse-inputs
-          {:hooks-text ""
-           :component-texts {:core button-core :dates "" :charts "" :others dup-in-others}})))))
+          (assoc empty-parsed-files
+                 "mdx-core-data.ts" button-core
+                 "mdx-others-data.ts" dup-in-others))))))
+
+(deftest parse-inputs-unknown-file-throws
+  (let [e (try (extract/parse-inputs
+                (assoc empty-parsed-files
+                       "mdx-new-package-data.ts" button-core
+                       "mdx-another-data.ts" ""))
+               nil
+               (catch clojure.lang.ExceptionInfo e e))]
+    (is (re-find #"mdx-another-data\.ts, mdx-new-package-data\.ts" (ex-message e)))
+    (is (= {:unknown ["mdx-another-data.ts" "mdx-new-package-data.ts"]} (ex-data e)))))
+
+(deftest parse-inputs-ignored-files-skipped
+  (testing "the ignored docs-data files at 9.7.0 neither throw nor add components"
+    (is (= ["Button"]
+           (keys (:component-docs
+                  (extract/parse-inputs
+                   (assoc empty-parsed-files
+                          "mdx-core-data.ts" button-core
+                          "mdx-code-highlight-data.ts" calendar-dates
+                          "mdx-form-data.ts" ""
+                          "mdx-guides-data.ts" ""
+                          "mdx-meta-data.ts" ""
+                          "mdx-styles-data.ts" ""
+                          "mdx-theming-data.ts" ""))))))))
+
+(deftest parse-inputs-missing-file-throws
+  (let [e (try (extract/parse-inputs
+                (dissoc empty-parsed-files "mdx-others-data.ts" "mdx-hooks-data.ts"))
+               nil
+               (catch clojure.lang.ExceptionInfo e e))]
+    (is (re-find #"mdx-hooks-data\.ts, mdx-others-data\.ts" (ex-message e)))
+    (is (= {:missing ["mdx-hooks-data.ts" "mdx-others-data.ts"]} (ex-data e)))))
+
+(deftest parsed-and-ignored-files-disjoint
+  (testing "a file moved into component-corpora also leaves ignored-files"
+    (is (empty? (filter @#'extract/ignored-files
+                        (conj (vals @#'extract/component-corpora) @#'extract/hooks-file))))))
 
 (let [{:keys [fail error]} (run-tests 'extract-test)]
   (when (pos? (+ fail error))
