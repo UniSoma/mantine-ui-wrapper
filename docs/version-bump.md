@@ -34,8 +34,9 @@ is a rendering of it, and `bb release-check` fails if any rendering disagrees:
 #    anchor from package.json, so this comes first.
 
 # 2. Refresh the committed generator inputs. Clones the anchor tag into
-#    target/mantine-<anchor>, runs its docgen with the yarn the clone vendors
-#    (yarn is not on PATH), then extracts:
+#    target/mantine-<anchor>, runs its docgen with the yarn the clone's
+#    package.json pins under "packageManager" (yarn is not on PATH; corepack,
+#    fetched via npx, resolves the pin), then extracts:
 bb clone-anchor
 #   -> codegen/input/docgen.json        (verbatim copy of the docgen output)
 #   -> codegen/input/component-docs.edn (descriptions + slugs + polymorphic flags)

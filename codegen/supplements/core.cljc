@@ -32,7 +32,9 @@
                        ModalStack ModalTitle PaginationLabel ProgressLabel
                        SplitterPane StepperCompleted TableCaption TableScrollContainer
                        TableTbody TableTd TableTfoot TableTh
-                       TableThead TableTr TooltipFloating TooltipGroup
+                       TableThead TableTr ToolbarDivider ToolbarGroup
+                       TooltipFloating TooltipGroup TourBody TourCloseButton
+                       TourNavigation TourTitle
                        createTheme useComputedColorScheme useMantineColorScheme useMantineTheme]]])))
 
 ;; ---- providers / primitives ----
@@ -463,6 +465,18 @@
   #?(:cljs (f/factory TableTr)
      :clj (f/not-implemented "mantine.core/table-tr")))
 
+(def toolbar-divider
+  "Toolbar.Divider — compound part of Toolbar (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory ToolbarDivider)
+     :clj (f/not-implemented "mantine.core/toolbar-divider")))
+
+(def toolbar-group
+  "Toolbar.Group — compound part of Toolbar (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory ToolbarGroup)
+     :clj (f/not-implemented "mantine.core/toolbar-group")))
+
 (def tooltip-floating
   "Tooltip.Floating — compound part of Tooltip (docgen omits it). Optional
   leading props map; remaining args are children."
@@ -474,3 +488,27 @@
   leading props map; remaining args are children."
   #?(:cljs (f/factory TooltipGroup)
      :clj (f/not-implemented "mantine.core/tooltip-group")))
+
+(def tour-body
+  "Tour.Body — compound part of Tour (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory TourBody)
+     :clj (f/not-implemented "mantine.core/tour-body")))
+
+(def tour-close-button
+  "Tour.CloseButton — compound part of Tour (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory TourCloseButton)
+     :clj (f/not-implemented "mantine.core/tour-close-button")))
+
+(def tour-navigation
+  "Tour.Navigation — compound part of Tour (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory TourNavigation)
+     :clj (f/not-implemented "mantine.core/tour-navigation")))
+
+(def tour-title
+  "Tour.Title — compound part of Tour (docgen omits it). Optional
+  leading props map; remaining args are children."
+  #?(:cljs (f/factory TourTitle)
+     :clj (f/not-implemented "mantine.core/tour-title")))

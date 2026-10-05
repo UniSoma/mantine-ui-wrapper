@@ -214,7 +214,7 @@
       },
       "keepMounted": {
         "defaultValue": null,
-        "description": "If set, the component uses <code>display: none</code> to hide the root element instead of removing the DOM node, <code>false</code> by default",
+        "description": "If set, the action bar is kept in the DOM when closed. React <code>Activity</code> is used to preserve its state while it is hidden, <code>false</code> by default",
         "name": "keepMounted",
         "required": false,
         "type": {
@@ -884,6 +884,15 @@
           "name": "MantineSpacing | AppShellResponsiveSize"
         }
       },
+      "resize": {
+        "defaultValue": null,
+        "description": "<code>useAppShellResize</code> hook instance, enables resizing of the sections configured in the hook",
+        "name": "resize",
+        "required": false,
+        "type": {
+          "name": "AppShellResizeController"
+        }
+      },
       "transitionDuration": {
         "defaultValue": "200",
         "description": "Duration of all transitions in ms",
@@ -1281,7 +1290,7 @@
       },
       "maxDropdownHeight": {
         "defaultValue": null,
-        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default",
+        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>220</code> by default",
         "name": "maxDropdownHeight",
         "required": false,
         "type": {
@@ -5547,7 +5556,7 @@
         }
       },
       "maxDropdownHeight": {
-        "defaultValue": "250",
+        "defaultValue": "220",
         "description": "max-height of the dropdown",
         "name": "maxDropdownHeight",
         "required": false,
@@ -7974,7 +7983,7 @@
       },
       "clickOutsideEvents": {
         "defaultValue": null,
-        "description": "Events that trigger outside clicks",
+        "description": "Not supported by <code>HoverCard</code>: outside press is always detected with the <code>pointerdown</code> event. Use <code>closeOnClickOutside</code> to disable it.",
         "name": "clickOutsideEvents",
         "required": false,
         "type": {
@@ -7992,7 +8001,7 @@
       },
       "closeOnClickOutside": {
         "defaultValue": "true",
-        "description": "Determines whether dropdown should be closed on outside clicks",
+        "description": "Determines whether the dropdown should be closed when the user presses outside of the target and the dropdown",
         "name": "closeOnClickOutside",
         "required": false,
         "type": {
@@ -8024,6 +8033,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "events": {
+        "defaultValue": "{ hover: true, focus: true, touch: false }",
+        "description": "Determines which events open the dropdown. Fields that are not specified keep their default values.",
+        "name": "events",
+        "required": false,
+        "type": {
+          "name": "HoverCardEvents"
         }
       },
       "floatingStrategy": {
@@ -8069,6 +8087,15 @@
         "defaultValue": null,
         "description": "Initial opened state",
         "name": "initiallyOpened",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "interactive": {
+        "defaultValue": "false",
+        "description": "If set, the dropdown stays open while the pointer travels from the target to the dropdown\nand remains over it. Set it if the dropdown contains interactive content.",
+        "name": "interactive",
         "required": false,
         "type": {
           "name": "boolean"
@@ -8133,7 +8160,7 @@
       },
       "onDismiss": {
         "defaultValue": null,
-        "description": "Called when the popover is dismissed by clicking outside or by pressing escape",
+        "description": "Called when the dropdown is closed with <code>Escape</code> key or with a press outside of the target and the dropdown",
         "name": "onDismiss",
         "required": false,
         "type": {
@@ -8274,11 +8301,32 @@
       },
       "returnFocus": {
         "defaultValue": "false",
-        "description": "Determines whether focus should be automatically returned to control when dropdown closes",
+        "description": "Determines whether focus should be returned to the target when the dropdown closes.\nIgnored when focus activation is enabled (<code>events.focus</code>, the default), otherwise moving\nfocus away from the target would return it and reopen the dropdown.\n<code>Escape</code> pressed inside the dropdown always returns focus to the target.",
         "name": "returnFocus",
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "role": {
+        "defaultValue": "'dialog'",
+        "description": "Accessible relation between the target and the dropdown. <code>dialog</code> sets <code>aria-haspopup</code>,\n<code>aria-expanded</code> and <code>aria-controls</code> on the target, <code>tooltip</code> sets <code>aria-describedby</code> instead\nand should be used if the dropdown contains only descriptive content.",
+        "name": "role",
+        "required": false,
+        "type": {
+          "name": "\"dialog\" | \"tooltip\"",
+          "raw": "\"dialog\" | \"tooltip\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"dialog\""
+            },
+            {
+              "value": "\"tooltip\""
+            }
+          ]
         }
       },
       "shadow": {
@@ -10321,7 +10369,7 @@
         }
       },
       "duration": {
-        "defaultValue": "40000",
+        "defaultValue": "100000",
         "description": "Animation duration in ms",
         "name": "duration",
         "required": false,
@@ -12536,7 +12584,7 @@
       },
       "maxDropdownHeight": {
         "defaultValue": null,
-        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default",
+        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>220</code> by default",
         "name": "maxDropdownHeight",
         "required": false,
         "type": {
@@ -15878,7 +15926,7 @@
         }
       },
       "gap": {
-        "defaultValue": "'md'",
+        "defaultValue": "'sm'",
         "description": "Key of <code>theme.spacing</code> or any valid CSS value to set <code>gap</code> between inputs, numbers are converted to rem",
         "name": "gap",
         "required": false,
@@ -18237,7 +18285,7 @@
       },
       "maxDropdownHeight": {
         "defaultValue": null,
-        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default",
+        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>220</code> by default",
         "name": "maxDropdownHeight",
         "required": false,
         "type": {
@@ -20380,7 +20428,7 @@
       },
       "maxDropdownHeight": {
         "defaultValue": null,
-        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>250</code> by default",
+        "description": "<code>max-height</code> of the dropdown, only applicable when <code>withScrollArea</code> prop is <code>true</code>, <code>220</code> by default",
         "name": "maxDropdownHeight",
         "required": false,
         "type": {
@@ -21979,6 +22027,179 @@
       }
     }
   },
+  "Toggle": {
+    "props": {
+      "active": {
+        "defaultValue": null,
+        "description": "Controlled active state",
+        "name": "active",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "autoContrast": {
+        "defaultValue": null,
+        "description": "Determines whether icon color with filled variant should be changed based on the given <code>color</code> prop",
+        "name": "autoContrast",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "autoWidth": {
+        "defaultValue": null,
+        "description": "If set, the toggle width adjusts to content instead of being square, <code>false</code> by default",
+        "name": "autoWidth",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.colors</code> or any valid CSS color, <code>theme.primaryColor</code> by default",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "defaultActive": {
+        "defaultValue": null,
+        "description": "Uncontrolled default active state",
+        "name": "defaultActive",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "If set, the toggle is disabled",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onActiveChange": {
+        "defaultValue": null,
+        "description": "Called when active state changes",
+        "name": "onActiveChange",
+        "required": false,
+        "type": {
+          "name": "(active: boolean) => void"
+        }
+      },
+      "radius": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, <code>theme.defaultRadius</code> by default",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "MantineRadius | number"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Controls toggle height and min-width, <code>'md'</code> by default",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "MantineSize"
+        }
+      }
+    }
+  },
+  "Toolbar": {
+    "props": {
+      "autoContrast": {
+        "defaultValue": null,
+        "description": "Determines whether icon color with filled variant should be changed based on the given <code>color</code> prop",
+        "name": "autoContrast",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Toolbar content",
+        "name": "children",
+        "required": true,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.colors</code> or any valid CSS color, controls color of child toggle components",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "loop": {
+        "defaultValue": null,
+        "description": "Whether arrow key navigation wraps from last to first item, <code>true</code> by default",
+        "name": "loop",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "orientation": {
+        "defaultValue": null,
+        "description": "Toolbar orientation, <code>'horizontal'</code> by default",
+        "name": "orientation",
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\"",
+          "raw": "\"horizontal\" | \"vertical\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"horizontal\""
+            },
+            {
+              "value": "\"vertical\""
+            }
+          ]
+        }
+      },
+      "radius": {
+        "defaultValue": null,
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, propagated to all children, <code>theme.defaultRadius</code> by default",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "MantineRadius | number"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Controls size of toggle components, padding, and gap, <code>'md'</code> by default",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "MantineSize"
+        }
+      },
+      "withBorder": {
+        "defaultValue": null,
+        "description": "Determines whether the toolbar has a border, <code>true</code> by default",
+        "name": "withBorder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
   "Tooltip": {
     "props": {
       "arrowOffset": {
@@ -22116,6 +22337,15 @@
           ]
         }
       },
+      "hideDetached": {
+        "defaultValue": "true",
+        "description": "If set, the tooltip is hidden when the target element is removed from the DOM, hidden with <code>display: none</code> or scrolled out of the visible area. Has no effect on <code>Tooltip.Floating</code>",
+        "name": "hideDetached",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "inline": {
         "defaultValue": null,
         "description": "Must be set if the tooltip target is an inline element",
@@ -22127,7 +22357,7 @@
       },
       "interactive": {
         "defaultValue": "false",
-        "description": "If set, the tooltip stays open while the pointer moves from the target to the tooltip and remains over it. Required by [WCAG 1.4.13](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html) if the tooltip contains interactive content. Note that an interactive tooltip intercepts pointer events of the content it overlaps",
+        "description": "If set, the tooltip stays open while the pointer is over it",
         "name": "interactive",
         "required": false,
         "type": {
@@ -22323,6 +22553,283 @@
       "zIndex": {
         "defaultValue": null,
         "description": "Tooltip z-index, <code>300</code> by default",
+        "name": "zIndex",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      }
+    }
+  },
+  "Tour": {
+    "props": {
+      "active": {
+        "defaultValue": "false",
+        "description": "Whether the tour is active",
+        "name": "active",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tour steps – <code>Tour.Step</code> elements must be direct children (arrays are supported, Fragments and wrapper components are not)",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "closeOnEscape": {
+        "defaultValue": "true",
+        "description": "Whether pressing Escape closes the tour",
+        "name": "closeOnEscape",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeOnOverlayClick": {
+        "defaultValue": "false",
+        "description": "Whether clicking the overlay closes the tour, with <code>withOverlayInteraction</code> only clicks outside the spotlight cutout close it",
+        "name": "closeOnOverlayClick",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "color": {
+        "defaultValue": "theme.primaryColor",
+        "description": "Key of <code>theme.colors</code> or any valid CSS color, controls beacon color and <code>Tour.Navigation</code> next button color",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "defaultStep": {
+        "defaultValue": "0",
+        "description": "Uncontrolled default step index",
+        "name": "defaultStep",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "labels": {
+        "defaultValue": null,
+        "description": "Labels for tour UI elements",
+        "name": "labels",
+        "required": false,
+        "type": {
+          "name": "Partial<TourLabels>"
+        }
+      },
+      "maxWidth": {
+        "defaultValue": "360",
+        "description": "Max width of the tooltip, tooltip always takes this width if viewport allows",
+        "name": "maxWidth",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "mode": {
+        "defaultValue": "\"guided\"",
+        "description": "Tour mode",
+        "name": "mode",
+        "required": false,
+        "type": {
+          "name": "\"beacon\" | \"guided\"",
+          "raw": "\"beacon\" | \"guided\" | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"beacon\""
+            },
+            {
+              "value": "\"guided\""
+            }
+          ]
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Called when the tour is closed",
+        "name": "onClose",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onStepChange": {
+        "defaultValue": null,
+        "description": "Called when step changes",
+        "name": "onStepChange",
+        "required": false,
+        "type": {
+          "name": "(step: number) => void"
+        }
+      },
+      "onStepClose": {
+        "defaultValue": null,
+        "description": "Called when a step closes",
+        "name": "onStepClose",
+        "required": false,
+        "type": {
+          "name": "(step: number) => void"
+        }
+      },
+      "onStepOpen": {
+        "defaultValue": null,
+        "description": "Called when a step opens",
+        "name": "onStepOpen",
+        "required": false,
+        "type": {
+          "name": "(step: number) => void"
+        }
+      },
+      "overlayColor": {
+        "defaultValue": "\"rgba(0, 0, 0, 0.5)\"",
+        "description": "Tour step overlay color",
+        "name": "overlayColor",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "portalProps": {
+        "defaultValue": null,
+        "description": "Props passed to the Portal component",
+        "name": "portalProps",
+        "required": false,
+        "type": {
+          "name": "Omit<PortalProps, \"children\">"
+        }
+      },
+      "scrollToHandler": {
+        "defaultValue": null,
+        "description": "Custom scroll handler",
+        "name": "scrollToHandler",
+        "required": false,
+        "type": {
+          "name": "(element: HTMLElement) => void"
+        }
+      },
+      "spotlightPadding": {
+        "defaultValue": "8",
+        "description": "Padding around the spotlight cutout in px",
+        "name": "spotlightPadding",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "spotlightRadius": {
+        "defaultValue": "4",
+        "description": "Border radius of the spotlight cutout in px",
+        "name": "spotlightRadius",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "step": {
+        "defaultValue": null,
+        "description": "Controlled current step index",
+        "name": "step",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "stepTransitionDuration": {
+        "defaultValue": "300",
+        "description": "Duration of the tooltip position transition between steps in ms",
+        "name": "stepTransitionDuration",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "tooltipShadow": {
+        "defaultValue": "'md'",
+        "description": "Key of <code>theme.shadows</code> or any valid CSS box-shadow value, controls the tooltip shadow",
+        "name": "tooltipShadow",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": "{ duration: 200, transition: 'pop' }",
+        "description": "Transition props for the tooltip",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      },
+      "withCloseButton": {
+        "defaultValue": "true",
+        "description": "Whether to display the close button",
+        "name": "withCloseButton",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withKeyboardNavigation": {
+        "defaultValue": "true",
+        "description": "Whether keyboard navigation is enabled in guided mode",
+        "name": "withKeyboardNavigation",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withOverlay": {
+        "defaultValue": "true",
+        "description": "Whether to display the overlay",
+        "name": "withOverlay",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withOverlayInteraction": {
+        "defaultValue": "false",
+        "description": "Whether pointer events pass through the spotlight cutout to the target element, the rest of the overlay keeps blocking clicks",
+        "name": "withOverlayInteraction",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withScrollIntoView": {
+        "defaultValue": "true",
+        "description": "Whether to scroll target elements into view",
+        "name": "withScrollIntoView",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withinPortal": {
+        "defaultValue": "true",
+        "description": "Whether to render inside a portal",
+        "name": "withinPortal",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "zIndex": {
+        "defaultValue": "10000",
+        "description": "z-index of the tour",
         "name": "zIndex",
         "required": false,
         "type": {
@@ -23218,6 +23725,15 @@
         "required": false,
         "type": {
           "name": "(payload: TreeSelectRenderNodePayload) => ReactNode"
+        }
+      },
+      "renderPill": {
+        "defaultValue": null,
+        "description": "Custom pill rendering in <code>multiple</code> and <code>checkbox</code> modes. Not called for the overflow pill displayed when <code>maxDisplayedValues</code> is exceeded.",
+        "name": "renderPill",
+        "required": false,
+        "type": {
+          "name": "(payload: TreeSelectRenderPillPayload) => ReactNode"
         }
       },
       "required": {
@@ -37631,7 +38147,7 @@
         }
       },
       "minBarSize": {
-        "defaultValue": "100",
+        "defaultValue": "0",
         "description": "Minimum bar width",
         "name": "minBarSize",
         "required": false,
@@ -39040,7 +39556,7 @@
         }
       },
       "size": {
-        "defaultValue": "80",
+        "defaultValue": "160",
         "description": "Controls chart width and height, height is increased by 40 if <code>withLabels</code> prop is set. Cannot be less than <code>thickness</code>.",
         "name": "size",
         "required": false,
@@ -39412,7 +39928,7 @@
       },
       "roundCaps": {
         "defaultValue": "false",
-        "description": "Whether to round arc endpoints. Not applied to <code>sections</code> – rounded caps of adjacent sections would overlap each other.",
+        "description": "Whether to round arc endpoints. With <code>sections</code>, only the outer ends of the first and last sections are rounded.",
         "name": "roundCaps",
         "required": false,
         "type": {
@@ -39661,7 +40177,7 @@
         }
       },
       "monthsLabelsHeight": {
-        "defaultValue": "30",
+        "defaultValue": "14",
         "description": "Height of month labels row",
         "name": "monthsLabelsHeight",
         "required": false,
@@ -40627,7 +41143,7 @@
         }
       },
       "size": {
-        "defaultValue": "80",
+        "defaultValue": "160",
         "description": "Controls chart width and height, height is increased by 40 if <code>withLabels</code> prop is set. Cannot be less than <code>thickness</code>.",
         "name": "size",
         "required": false,
@@ -40738,7 +41254,7 @@
         }
       },
       "withTooltip": {
-        "defaultValue": "true",
+        "defaultValue": "false",
         "description": "Determines whether the tooltip should be displayed when one of the section is hovered",
         "name": "withTooltip",
         "required": false,
@@ -43879,6 +44395,653 @@
       }
     }
   },
+  "ToolbarToggle": {
+    "props": {
+      "active": {
+        "defaultValue": null,
+        "description": "If set, the toggle is displayed in active state",
+        "name": "active",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "autoWidth": {
+        "defaultValue": null,
+        "description": "If set, the toggle width adjusts to content instead of being square, <code>false</code> by default",
+        "name": "autoWidth",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "If set, the toggle is disabled",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Size passed from parent component, sets <code>data-size</code> if value is not number like",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      }
+    }
+  },
+  "ToolbarToggleGroup": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "<code>Toolbar.ToggleItem</code> components",
+        "name": "children",
+        "required": true,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "Uncontrolled default value",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string | string[] | null"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Disables all toggle items within this group",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Called with the new value when an item is toggled, <code>null</code> when the active item is deselected\nCalled with the array of active item values when an item is toggled",
+        "name": "onChange",
+        "required": false,
+        "type": {
+          "name": "(value: string | null) => void) | ((value: string[]) => void"
+        }
+      },
+      "type": {
+        "defaultValue": null,
+        "description": "Selection mode: <code>'single'</code> allows at most one active item, <code>'multiple'</code> allows any number of active items",
+        "name": "type",
+        "required": true,
+        "type": {
+          "name": "\"multiple\" | \"single\"",
+          "raw": "\"multiple\" | \"single\"",
+          "value": [
+            {
+              "value": "\"multiple\""
+            },
+            {
+              "value": "\"single\""
+            }
+          ]
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Controlled value, <code>null</code> when no item is active\nControlled value, array of active item values",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string | string[] | null"
+        }
+      }
+    }
+  },
+  "ToolbarToggleItem": {
+    "props": {
+      "autoWidth": {
+        "defaultValue": null,
+        "description": "If set, the toggle item width adjusts to content instead of being square, <code>false</code> by default",
+        "name": "autoWidth",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "If set, the toggle item is disabled",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Value used to identify the item in ToggleGroup",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      }
+    }
+  },
+  "TourStep": {
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Step body content",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "onStepClose": {
+        "defaultValue": null,
+        "description": "Called when this step is deactivated",
+        "name": "onStepClose",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onStepOpen": {
+        "defaultValue": null,
+        "description": "Called when this step becomes active",
+        "name": "onStepOpen",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "position": {
+        "defaultValue": "'bottom'",
+        "description": "Tooltip position relative to the target element",
+        "name": "position",
+        "required": false,
+        "type": {
+          "name": "FloatingPosition",
+          "raw": "FloatingPosition | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"top\""
+            },
+            {
+              "value": "\"left-end\""
+            },
+            {
+              "value": "\"left-start\""
+            },
+            {
+              "value": "\"right-end\""
+            },
+            {
+              "value": "\"right-start\""
+            },
+            {
+              "value": "\"bottom-end\""
+            },
+            {
+              "value": "\"bottom-start\""
+            },
+            {
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
+            }
+          ]
+        }
+      },
+      "spotlightPadding": {
+        "defaultValue": null,
+        "description": "Padding around the spotlight cutout in px (per-step override)",
+        "name": "spotlightPadding",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "spotlightRadius": {
+        "defaultValue": null,
+        "description": "Border radius of the spotlight cutout in px (per-step override)",
+        "name": "spotlightRadius",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "CSS selector or ref to the target element. Selectors are resolved again when the element mounts later, refs are resolved once when the step activates – use a selector for elements that are not mounted yet.",
+        "name": "target",
+        "required": false,
+        "type": {
+          "name": "string | RefObject<HTMLElement | null>"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Step title",
+        "name": "title",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "withBeacon": {
+        "defaultValue": null,
+        "description": "Whether to display a beacon for this step (per-step override)",
+        "name": "withBeacon",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withOverlay": {
+        "defaultValue": null,
+        "description": "Whether to display the overlay for this step (per-step override)",
+        "name": "withOverlay",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
+  "TourRoot": {
+    "props": {
+      "active": {
+        "defaultValue": "false",
+        "description": "Whether the tour is active",
+        "name": "active",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tour content: <code>Tour.Overlay</code>, <code>Tour.Tooltip</code>, <code>Tour.Beacon</code> and other compound components",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "React.ReactNode"
+        }
+      },
+      "closeOnEscape": {
+        "defaultValue": "true",
+        "description": "Whether pressing Escape closes the tour",
+        "name": "closeOnEscape",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeOnOverlayClick": {
+        "defaultValue": "false",
+        "description": "Whether clicking the overlay closes the tour, with <code>withOverlayInteraction</code> only clicks outside the spotlight cutout close it",
+        "name": "closeOnOverlayClick",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "color": {
+        "defaultValue": "theme.primaryColor",
+        "description": "Key of <code>theme.colors</code> or any valid CSS color, controls <code>Tour.Beacon</code> color and <code>Tour.Navigation</code> next button color",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "MantineColor"
+        }
+      },
+      "defaultStep": {
+        "defaultValue": "0",
+        "description": "Uncontrolled default step index",
+        "name": "defaultStep",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "labels": {
+        "defaultValue": null,
+        "description": "Labels for tour UI elements",
+        "name": "labels",
+        "required": false,
+        "type": {
+          "name": "Partial<TourLabels>"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Called when the tour is closed",
+        "name": "onClose",
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onStepChange": {
+        "defaultValue": null,
+        "description": "Called when step changes",
+        "name": "onStepChange",
+        "required": false,
+        "type": {
+          "name": "(step: number) => void"
+        }
+      },
+      "onStepClose": {
+        "defaultValue": null,
+        "description": "Called when a step closes",
+        "name": "onStepClose",
+        "required": false,
+        "type": {
+          "name": "(step: number) => void"
+        }
+      },
+      "onStepOpen": {
+        "defaultValue": null,
+        "description": "Called when a step opens",
+        "name": "onStepOpen",
+        "required": false,
+        "type": {
+          "name": "(step: number) => void"
+        }
+      },
+      "overlayColor": {
+        "defaultValue": "\"rgba(0, 0, 0, 0.5)\"",
+        "description": "Tour step overlay color",
+        "name": "overlayColor",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "portalProps": {
+        "defaultValue": null,
+        "description": "Props passed to the Portal component",
+        "name": "portalProps",
+        "required": false,
+        "type": {
+          "name": "Omit<PortalProps, \"children\">"
+        }
+      },
+      "spotlightPadding": {
+        "defaultValue": "8",
+        "description": "Padding around the spotlight cutout in px",
+        "name": "spotlightPadding",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "spotlightRadius": {
+        "defaultValue": "4",
+        "description": "Border radius of the spotlight cutout in px",
+        "name": "spotlightRadius",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "step": {
+        "defaultValue": null,
+        "description": "Controlled current step index",
+        "name": "step",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "stepsCount": {
+        "defaultValue": null,
+        "description": "Total number of steps, used by <code>Tour.Navigation</code> and keyboard navigation to detect the last step",
+        "name": "stepsCount",
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "tooltipShadow": {
+        "defaultValue": "'md'",
+        "description": "Key of <code>theme.shadows</code> or any valid CSS box-shadow value, controls the tooltip shadow",
+        "name": "tooltipShadow",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": "{ duration: 200, transition: 'fade' }",
+        "description": "Default transition props of <code>Tour.Tooltip</code>",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      },
+      "withCloseButton": {
+        "defaultValue": "true",
+        "description": "Whether <code>Tour.CloseButton</code> is rendered",
+        "name": "withCloseButton",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withKeyboardNavigation": {
+        "defaultValue": "true",
+        "description": "Whether arrow keys navigate between steps",
+        "name": "withKeyboardNavigation",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withOverlay": {
+        "defaultValue": "true",
+        "description": "Whether <code>Tour.Overlay</code> is rendered",
+        "name": "withOverlay",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withOverlayInteraction": {
+        "defaultValue": "false",
+        "description": "Whether pointer events pass through the spotlight cutout to the target element, the rest of the overlay keeps blocking clicks",
+        "name": "withOverlayInteraction",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withinPortal": {
+        "defaultValue": "true",
+        "description": "Whether to render inside a portal",
+        "name": "withinPortal",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "zIndex": {
+        "defaultValue": "10000",
+        "description": "z-index of the tour",
+        "name": "zIndex",
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      }
+    }
+  },
+  "TourTooltip": {
+    "props": {
+      "mounted": {
+        "defaultValue": null,
+        "description": "Whether the tooltip is visible",
+        "name": "mounted",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "position": {
+        "defaultValue": "'bottom'",
+        "description": "Tooltip position",
+        "name": "position",
+        "required": false,
+        "type": {
+          "name": "FloatingPosition",
+          "raw": "FloatingPosition | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"left\""
+            },
+            {
+              "value": "\"right\""
+            },
+            {
+              "value": "\"bottom\""
+            },
+            {
+              "value": "\"top\""
+            },
+            {
+              "value": "\"left-end\""
+            },
+            {
+              "value": "\"left-start\""
+            },
+            {
+              "value": "\"right-end\""
+            },
+            {
+              "value": "\"right-start\""
+            },
+            {
+              "value": "\"bottom-end\""
+            },
+            {
+              "value": "\"bottom-start\""
+            },
+            {
+              "value": "\"top-end\""
+            },
+            {
+              "value": "\"top-start\""
+            }
+          ]
+        }
+      },
+      "targetElement": {
+        "defaultValue": null,
+        "description": "Target element to position against",
+        "name": "targetElement",
+        "required": false,
+        "type": {
+          "name": "HTMLElement | null"
+        }
+      },
+      "transitionProps": {
+        "defaultValue": null,
+        "description": "Transition props for the tooltip, merged with <code>transitionProps</code> of <code>Tour.Root</code>",
+        "name": "transitionProps",
+        "required": false,
+        "type": {
+          "name": "TransitionProps"
+        }
+      }
+    }
+  },
+  "TourOverlay": {
+    "props": {
+      "color": {
+        "defaultValue": null,
+        "description": "Overlay fill color",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Called when the overlay is clicked",
+        "name": "onClick",
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<SVGSVGElement>"
+        }
+      },
+      "targetRect": {
+        "defaultValue": null,
+        "description": "Rectangle describing the target element position",
+        "name": "targetRect",
+        "required": false,
+        "type": {
+          "name": "{ top: number; left: number; width: number; height: number; } | null"
+        }
+      },
+      "withInteraction": {
+        "defaultValue": null,
+        "description": "Whether pointer events pass through the spotlight cutout to the target element, the rest of the overlay keeps blocking clicks",
+        "name": "withInteraction",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
+  "TourBeacon": {
+    "props": {
+      "onClick": {
+        "defaultValue": null,
+        "description": "Called when the beacon is clicked",
+        "name": "onClick",
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLButtonElement>"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "CSS selector or ref to the target element",
+        "name": "target",
+        "required": false,
+        "type": {
+          "name": "string | RefObject<HTMLElement | null>"
+        }
+      }
+    }
+  },
   "AccordionItem": {
     "props": {
       "value": {
@@ -45740,15 +46903,6 @@
           "name": "OverlayProps & ElementProps<\"div\">"
         }
       },
-      "portalProps": {
-        "defaultValue": null,
-        "description": "Props to pass down to the <code>Portal</code> when <code>withinPortal</code> is true",
-        "name": "portalProps",
-        "required": false,
-        "type": {
-          "name": "BasePortalProps"
-        }
-      },
       "position": {
         "defaultValue": "'right-start'",
         "description": "Dropdown position relative to the target element",
@@ -45876,15 +47030,6 @@
         "defaultValue": "false",
         "description": "Determines whether the overlay should be displayed when the dropdown is opened",
         "name": "withOverlay",
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "withinPortal": {
-        "defaultValue": "true",
-        "description": "Determines whether dropdown should be rendered within the <code>Portal</code>",
-        "name": "withinPortal",
         "required": false,
         "type": {
           "name": "boolean"
@@ -49299,6 +50444,275 @@
       }
     }
   },
+  "serializePath": {
+    "description": "",
+    "props": {}
+  },
+  "JsonViewer": {
+    "props": {
+      "allExpanded": {
+        "defaultValue": "false",
+        "description": "When true, all nodes are expanded and expand/collapse is disabled",
+        "name": "allExpanded",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "collapseAllLabel": {
+        "defaultValue": "'Collapse all'",
+        "description": "Label for collapse all button",
+        "name": "collapseAllLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "collapseStringsAfterLength": {
+        "defaultValue": "false",
+        "description": "Collapse strings longer than this value",
+        "name": "collapseStringsAfterLength",
+        "required": false,
+        "type": {
+          "name": "number | false"
+        }
+      },
+      "copiedLabel": {
+        "defaultValue": "'Copied'",
+        "description": "Label for copied state",
+        "name": "copiedLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "copyLabel": {
+        "defaultValue": "'Copy'",
+        "description": "Label for copy button",
+        "name": "copyLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "defaultExpandDepth": {
+        "defaultValue": "1",
+        "description": "Number of levels to expand by default. Applied only to the <code>value</code> present on mount; pass a <code>key</code> or use controlled <code>expandedPaths</code> to re-apply it after <code>value</code> changes.",
+        "name": "defaultExpandDepth",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "expandAllLabel": {
+        "defaultValue": "'Expand all'",
+        "description": "Label for expand all button",
+        "name": "expandAllLabel",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "expandedPaths": {
+        "defaultValue": null,
+        "description": "Controlled expanded paths",
+        "name": "expandedPaths",
+        "required": false,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "fontSize": {
+        "defaultValue": "'13px'",
+        "description": "Font size",
+        "name": "fontSize",
+        "required": false,
+        "type": {
+          "name": "MantineSize | number"
+        }
+      },
+      "groupArraysAfterLength": {
+        "defaultValue": "false",
+        "description": "Group arrays into chunks when array length exceeds this value",
+        "name": "groupArraysAfterLength",
+        "required": false,
+        "type": {
+          "name": "number | false"
+        }
+      },
+      "highlightItems": {
+        "defaultValue": null,
+        "description": "Map of JSON paths to highlight type ('added' or 'removed'), use serializeJsonViewerPath to build keys",
+        "name": "highlightItems",
+        "required": false,
+        "type": {
+          "name": "Record<string, JsonViewerHighlightType>"
+        }
+      },
+      "indentWidth": {
+        "defaultValue": "16",
+        "description": "Indent width in px",
+        "name": "indentWidth",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "maxDisplayLength": {
+        "defaultValue": "100",
+        "description": "Max number of items to show before truncation",
+        "name": "maxDisplayLength",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "onExpandedPathsChange": {
+        "defaultValue": null,
+        "description": "Called when expanded paths change",
+        "name": "onExpandedPathsChange",
+        "required": false,
+        "type": {
+          "name": "(paths: string[]) => void"
+        }
+      },
+      "onValueSelect": {
+        "defaultValue": null,
+        "description": "Called when a value is selected/clicked",
+        "name": "onValueSelect",
+        "required": false,
+        "type": {
+          "name": "(path: string[], value: any) => void"
+        }
+      },
+      "radius": {
+        "defaultValue": "'sm'",
+        "description": "Key of <code>theme.radius</code> or any valid CSS value to set border-radius",
+        "name": "radius",
+        "required": false,
+        "type": {
+          "name": "MantineRadius | number"
+        }
+      },
+      "rootName": {
+        "defaultValue": "false",
+        "description": "Label displayed for the root node",
+        "name": "rootName",
+        "required": false,
+        "type": {
+          "name": "string | false"
+        }
+      },
+      "sortKeys": {
+        "defaultValue": "false",
+        "description": "Sort object keys",
+        "name": "sortKeys",
+        "required": false,
+        "type": {
+          "name": "boolean | ((a: string, b: string) => number)"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "JSON data to display",
+        "name": "value",
+        "required": true,
+        "type": {
+          "name": "any"
+        }
+      },
+      "withBorder": {
+        "defaultValue": "false",
+        "description": "Adds border to the root element",
+        "name": "withBorder",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withChevrons": {
+        "defaultValue": "false",
+        "description": "Whether to show expand/collapse chevrons",
+        "name": "withChevrons",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withControls": {
+        "defaultValue": "false",
+        "description": "Whether to show expand all / collapse all controls",
+        "name": "withControls",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withCopy": {
+        "defaultValue": "false",
+        "description": "Whether to show copy button on hover for individual nodes",
+        "name": "withCopy",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withCopyButton": {
+        "defaultValue": "false",
+        "description": "Whether to show a copy button to copy the entire JSON",
+        "name": "withCopyButton",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withKeyQuotes": {
+        "defaultValue": "false",
+        "description": "Whether to show quotes around keys",
+        "name": "withKeyQuotes",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withLineNumbers": {
+        "defaultValue": "false",
+        "description": "Whether to show line numbers",
+        "name": "withLineNumbers",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withQuotes": {
+        "defaultValue": "true",
+        "description": "Whether to show quotes around string values",
+        "name": "withQuotes",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withSize": {
+        "defaultValue": "false",
+        "description": "Whether to show item count for objects/arrays",
+        "name": "withSize",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "withTypes": {
+        "defaultValue": "false",
+        "description": "Whether to show type badges next to values",
+        "name": "withTypes",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  },
   "NavigationProgress": {
     "props": {
       "color": {
@@ -49442,6 +50856,24 @@
         "required": false,
         "type": {
           "name": "Partial<RichTextEditorLabels>"
+        }
+      },
+      "onImageUpload": {
+        "defaultValue": null,
+        "description": "Called when an image file is picked with <code>RichTextEditor.ImageUpload</code> control, must return a promise that resolves to the uploaded image URL or to an object with <code>src</code> and optional <code>alt</code> and <code>title</code>. Takes precedence over <code>onImageUpload</code> option of the extension created with <code>getUploadImageExtension</code>.",
+        "name": "onImageUpload",
+        "required": false,
+        "type": {
+          "name": "(file: File) => Promise<string | ImageUploadResult>"
+        }
+      },
+      "onImageUploadError": {
+        "defaultValue": null,
+        "description": "Called when an image picked with <code>RichTextEditor.ImageUpload</code> control fails to upload. Takes precedence over <code>onImageUploadError</code> option of the extension created with <code>getUploadImageExtension</code>.",
+        "name": "onImageUploadError",
+        "required": false,
+        "type": {
+          "name": "(file: File, error: unknown) => void"
         }
       },
       "onSourceCodeTextSwitch": {
@@ -49638,6 +51070,15 @@
         "required": false,
         "type": {
           "name": "number"
+        }
+      },
+      "withAutoCloseProgress": {
+        "defaultValue": "false",
+        "description": "Determines whether a progress line that fills up until the notification auto closes is displayed at the bottom of every notification, can be overwritten for individual notifications in <code>notifications.show</code> and <code>notifications.update</code> functions",
+        "name": "withAutoCloseProgress",
+        "required": false,
+        "type": {
+          "name": "boolean"
         }
       },
       "withinPortal": {
@@ -50431,6 +51872,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -50438,6 +51897,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -50462,6 +51930,36 @@
         "defaultValue": "intervalMinutes",
         "description": "Snap step for moving events by drag and drop, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
         "name": "eventDragInterval",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "eventOverlapMode": {
+        "defaultValue": "'columns'",
+        "description": "Determines how events that overlap in time are laid out: <code>columns</code> splits the available width between them, <code>cascade</code> indents each event and stacks it over the previous one",
+        "name": "eventOverlapMode",
+        "required": false,
+        "type": {
+          "name": "ScheduleEventOverlapMode",
+          "raw": "ScheduleEventOverlapMode | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"columns\""
+            },
+            {
+              "value": "\"cascade\""
+            }
+          ]
+        }
+      },
+      "eventOverlapRaiseDelay": {
+        "defaultValue": "600",
+        "description": "Time in ms the pointer must rest on an event before it is raised above the events covering it, only used with <code>eventOverlapMode=\"cascade\"</code>",
+        "name": "eventOverlapRaiseDelay",
         "required": false,
         "type": {
           "name": "number"
@@ -50641,6 +52139,15 @@
           "name": "(data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; }) => void"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -50684,6 +52191,15 @@
         "required": false,
         "type": {
           "name": "(view: ScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "previousControlProps": {
@@ -50868,7 +52384,7 @@
       },
       "withInteractiveBackgroundEvents": {
         "defaultValue": "false",
-        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Combined with <code>withEventResize</code>, timed background events can also be resized by dragging their edges.",
         "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
@@ -50895,6 +52411,24 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
         }
       },
       "consistentWeeks": {
@@ -51116,6 +52650,15 @@
           "name": "(data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; }) => void"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onExternalEventDrop": {
         "defaultValue": null,
         "description": "Called when an external item is dropped onto the schedule. Receives the <code>DataTransfer</code> object and the drop target datetime.",
@@ -51150,6 +52693,15 @@
         "required": false,
         "type": {
           "name": "(date: string, event: MouseEvent<HTMLButtonElement, MouseEvent>) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "previousControlProps": {
@@ -51354,6 +52906,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -51361,6 +52931,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -51385,6 +52964,36 @@
         "defaultValue": "intervalMinutes",
         "description": "Snap step for moving events by drag and drop, in minutes. Must divide evenly into an hour (e.g. <code>15</code>, <code>30</code>) or be a whole number of hours. When not set, <code>intervalMinutes</code> is used.",
         "name": "eventDragInterval",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "eventOverlapMode": {
+        "defaultValue": "'columns'",
+        "description": "Determines how events that overlap in time are laid out: <code>columns</code> splits the available width between them, <code>cascade</code> indents each event and stacks it over the previous one",
+        "name": "eventOverlapMode",
+        "required": false,
+        "type": {
+          "name": "ScheduleEventOverlapMode",
+          "raw": "ScheduleEventOverlapMode | undefined",
+          "value": [
+            {
+              "value": "undefined"
+            },
+            {
+              "value": "\"columns\""
+            },
+            {
+              "value": "\"cascade\""
+            }
+          ]
+        }
+      },
+      "eventOverlapRaiseDelay": {
+        "defaultValue": "600",
+        "description": "Time in ms the pointer must rest on an event before it is raised above the events covering it, only used with <code>eventOverlapMode=\"cascade\"</code>",
+        "name": "eventOverlapRaiseDelay",
         "required": false,
         "type": {
           "name": "number"
@@ -51600,6 +53209,15 @@
           "name": "(data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; }) => void"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -51643,6 +53261,15 @@
         "required": false,
         "type": {
           "name": "(view: ScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "previousControlProps": {
@@ -51863,7 +53490,7 @@
       },
       "withInteractiveBackgroundEvents": {
         "defaultValue": "false",
-        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Combined with <code>withEventResize</code>, timed background events can also be resized by dragging their edges.",
         "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
@@ -52223,6 +53850,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -52230,6 +53875,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -52436,6 +54090,15 @@
           "name": "(data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; }) => void"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -52479,6 +54142,15 @@
         "required": false,
         "type": {
           "name": "(view: ScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "radius": {
@@ -52582,7 +54254,7 @@
       },
       "withInteractiveBackgroundEvents": {
         "defaultValue": "false",
-        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Applies to <code>day</code>, <code>week</code> and <code>month</code> views only – <code>YearView</code> and the <code>MobileMonthView</code> used by <code>layout=\"responsive\"</code> on small screens do not render background events at all.",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Applies to <code>day</code>, <code>week</code> and <code>month</code> views only – <code>YearView</code> and the <code>MobileMonthView</code> used by <code>layout=\"responsive\"</code> on small screens do not render background events at all. Combined with <code>withEventResize</code>, timed background events in <code>day</code> and <code>week</code> views can also be resized by dragging their edges.",
         "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
@@ -52915,6 +54587,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -52922,6 +54612,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -53143,6 +54842,15 @@
           "name": "((data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; resourceId?: string | number; }) => void) | undefined"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -53186,6 +54894,15 @@
         "required": false,
         "type": {
           "name": "(view: ScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "previousControlProps": {
@@ -53388,7 +55105,7 @@
       },
       "withInteractiveBackgroundEvents": {
         "defaultValue": "false",
-        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Combined with <code>withEventResize</code>, timed background events can also be resized by dragging their edges.",
         "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
@@ -53417,6 +55134,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -53424,6 +55159,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -53681,6 +55425,15 @@
           "name": "((data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; resourceId?: string | number; }) => void) | undefined"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -53724,6 +55477,15 @@
         "required": false,
         "type": {
           "name": "(view: ScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "previousControlProps": {
@@ -53962,7 +55724,7 @@
       },
       "withInteractiveBackgroundEvents": {
         "defaultValue": "false",
-        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Combined with <code>withEventResize</code>, timed background events can also be resized by dragging their edges.",
         "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {
@@ -53991,6 +55753,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -53998,6 +55778,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -54183,6 +55972,15 @@
           "name": "((data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; resourceId?: string | number; }) => void) | undefined"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -54217,6 +56015,15 @@
         "required": false,
         "type": {
           "name": "(view: ScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "previousControlProps": {
@@ -54412,6 +56219,24 @@
           "name": "(event: ScheduleEventData) => boolean"
         }
       },
+      "canDropEvent": {
+        "defaultValue": null,
+        "description": "Called while an event is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap.",
+        "name": "canDropEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropEventData) => boolean"
+        }
+      },
+      "canDropExternalEvent": {
+        "defaultValue": null,
+        "description": "Called while an external item is dragged over a target to compute live feedback and again before the drop is committed, return <code>false</code> to reject the drop. Must be pure and cheap. Only <code>dataTransfer.types</code> can be read while the drag is in progress.",
+        "name": "canDropExternalEvent",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanDropExternalEventData) => boolean"
+        }
+      },
       "canResizeEvent": {
         "defaultValue": null,
         "description": "Function to determine if event can be resized",
@@ -54419,6 +56244,15 @@
         "required": false,
         "type": {
           "name": "(event: ScheduleEventData) => boolean"
+        }
+      },
+      "canResizeEventTo": {
+        "defaultValue": null,
+        "description": "Called on every pointer move while an event is resized to compute live feedback and again before the resize is committed, return <code>false</code> to reject the new size. Must be pure and cheap.",
+        "name": "canResizeEventTo",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleCanResizeEventToData) => boolean"
         }
       },
       "date": {
@@ -54583,6 +56417,15 @@
           "name": "((data: { eventId: string | number; newStart: string; newEnd: string; event: ScheduleEventData; resourceId?: string | number; }) => void) | undefined"
         }
       },
+      "onEventPlacementRejected": {
+        "defaultValue": null,
+        "description": "Called when a drop or resize is rejected",
+        "name": "onEventPlacementRejected",
+        "required": false,
+        "type": {
+          "name": "(data: ScheduleEventPlacementRejectedData) => void"
+        }
+      },
       "onEventResize": {
         "defaultValue": null,
         "description": "Called when event is resized",
@@ -54626,6 +56469,15 @@
         "required": false,
         "type": {
           "name": "(view: ResourcesScheduleViewLevel) => void"
+        }
+      },
+      "preventEventOverlap": {
+        "defaultValue": "false",
+        "description": "If set, drops and resizes that would make the event overlap another event are rejected. Pass a function to decide per pair of events: return <code>true</code> to forbid the overlap. The function runs while dragging and resizing to compute live feedback, it must be pure and cheap.",
+        "name": "preventEventOverlap",
+        "required": false,
+        "type": {
+          "name": "PreventEventOverlap"
         }
       },
       "radius": {
@@ -54735,7 +56587,7 @@
       },
       "withInteractiveBackgroundEvents": {
         "defaultValue": "false",
-        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Applies to <code>day</code> and <code>week</code> views only – <code>ResourcesMonthView</code> does not render background events separately.",
+        "description": "If set, background events (<code>display: 'background'</code>) can be clicked and trigger <code>onEventClick</code>. Applies to <code>day</code> and <code>week</code> views only – <code>ResourcesMonthView</code> does not render background events separately. Combined with <code>withEventResize</code>, timed background events can also be resized by dragging their edges.",
         "name": "withInteractiveBackgroundEvents",
         "required": false,
         "type": {

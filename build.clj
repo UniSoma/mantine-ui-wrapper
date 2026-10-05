@@ -1,6 +1,6 @@
 ;; Source-only jar build + Clojars deploy for io.github.unisoma/mantine-ui-wrapper.
 ;; Driven by `bb jar` / `bb install` / `bb deploy` (see bb.edn, docs/release.md).
-;; Version scheme 9.6.0.N — first three segments ARE the wrapped Mantine version,
+;; Version scheme 9.7.0.N — first three segments ARE the wrapped Mantine version,
 ;; N is the wrapper revision against it (see docs/adr/0001-clojars-release-process.md).
 (ns build
   (:require [clojure.java.shell :as sh]
@@ -9,7 +9,7 @@
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'io.github.unisoma/mantine-ui-wrapper)
-(def version "9.6.0.0-SNAPSHOT")
+(def version "9.7.0.0-SNAPSHOT")
 (def class-dir "target/classes")
 (def basis (delay (b/create-basis {:project "deps.edn"})))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))

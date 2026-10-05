@@ -11,7 +11,7 @@
 ;; Run AFTER the clone has run docgen:
 ;;
 ;;   git clone --depth 1 --branch 9.4.1 https://github.com/mantinedev/mantine <dir>
-;;   cd <dir> && yarn install && yarn tsx scripts/docgen
+;;   cd <dir> && npx corepack yarn install && npx corepack yarn tsx scripts/docgen
 ;;   bb extract <dir>            (or `bb clone-anchor`, which does all of the above)
 ;;
 ;; Writes (all committed):
@@ -42,7 +42,8 @@
                   inline))))
 
 ;; --- components: inline object literals keyed by exact PascalCase docgen name --------
-;; Same parse Mantine's own scripts/llm/compile-mcp-data.ts uses (verified regex-safe).
+;; A regex over the data files' object literals; regex-safe because no entry nests
+;; braces more than one level deep.
 
 (defn extract-component-docs [text]
   (into (sorted-map)
