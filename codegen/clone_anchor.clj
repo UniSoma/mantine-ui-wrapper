@@ -16,7 +16,7 @@
   .yarn/releases in 9.7.0; corepack reads the packageManager pin instead."
   [clone-dir & args]
   (apply shell {:dir clone-dir :extra-env {"COREPACK_ENABLE_DOWNLOAD_PROMPT" "0"}}
-         "npx" "--yes" "corepack" "yarn" args))
+         "npx" "--yes" "corepack@0.36.0" "yarn" args))
 
 (defn -main [& _]
   (let [version (anchor/anchor-version)
