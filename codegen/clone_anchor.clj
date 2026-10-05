@@ -14,7 +14,8 @@
 
 (def ^:private upstream-contract
   "The paths of a Mantine checkout that the clone, docgen and extract steps depend on."
-  [;; vendored yarn releases, dropped in 9.7.0
+  [;; vendored yarn releases, read by `yarn install` through .yarnrc.yml yarnPath
+   ;; until 9.7.0
    ".yarn"
    ;; yarn config read by `yarn install`
    ".yarnrc.yml"
@@ -24,7 +25,7 @@
    "scripts/docgen"
    ;; the mdx-*-data.ts docs-data files extract parses
    "apps/mantine.dev/src/mdx/data"
-   ;; imports every docs-data file
+   ;; not read; a new docs-data file shows up here as a new import
    "apps/mantine.dev/src/mdx/mdx-data.ts"])
 
 (defn- clone!
@@ -55,7 +56,7 @@
         old-v (anchor/anchor-version
                (anchor/pins (:out (shell {:out :string} "git" "show" "HEAD:package.json"))))]
     (if (= old-v new-v)
-      (println "HEAD's anchor is already" new-v "- nothing to diff. Bump the package.json pins first.")
+      (println "HEAD and package.json both anchor at" new-v "- nothing to diff.")
       (let [clone-dir (clone! new-v)]
         (shell {:dir clone-dir} "git" "fetch" "--depth" "1" "origin" "tag" old-v)
         (println (str "Upstream contract, " old-v " -> " new-v ":"))
