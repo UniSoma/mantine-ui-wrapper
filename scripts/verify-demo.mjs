@@ -89,6 +89,8 @@ try {
   assert(doc.getElementById('app-shell-header')
     && doc.getElementById('app-shell-header').className.includes('mantine-AppShell-header'),
     'app-shell + app-shell-header render inside the wrapped mantine-provider');
+  assert(doc.querySelector('#app-shell [aria-label="Resize header"]'),
+    'use-app-shell-resize controller via :resize renders the header resize handle');
   const menuDropdown = await poll('menu dropdown rendered', () => {
     const el = doc.getElementById('menu-dropdown');
     return el && el.className.includes('mantine-Menu-dropdown') ? el : null;

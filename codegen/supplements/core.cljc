@@ -35,7 +35,8 @@
                        TableThead TableTr ToolbarDivider ToolbarGroup
                        TooltipFloating TooltipGroup TourBody TourCloseButton
                        TourNavigation TourTitle
-                       createTheme useComputedColorScheme useMantineColorScheme useMantineTheme]]])))
+                       createTheme useAppShellResize useComputedColorScheme useMantineColorScheme
+                       useMantineTheme]]])))
 
 (def mantine-provider
   "MantineProvider — application root; supplies theme, color scheme and CSS
@@ -90,6 +91,19 @@
   Raw passthrough: returns the raw JS string."
   #?(:cljs useComputedColorScheme
      :clj (f/not-implemented "mantine.core/use-computed-color-scheme")))
+
+(def use-app-shell-resize
+  "useAppShellResize — makes AppShell sections resizable. Pass its return value
+  to app-shell's :resize prop; only the sections configured in the options get a
+  resize handle.
+
+  https://mantine.dev/core/app-shell/#resizable-sections
+
+  Raw passthrough: pass JS-shaped options (#js {:navbar #js {:min 200 :max 500}});
+  returns the raw JS controller (.-sizes, .resetAll, .-navbar ...), read via
+  interop (^js under :advanced)."
+  #?(:cljs useAppShellResize
+     :clj (f/not-implemented "mantine.core/use-app-shell-resize")))
 
 (def accordion-chevron
   "Accordion.Chevron — compound part of Accordion (docgen omits it). Optional

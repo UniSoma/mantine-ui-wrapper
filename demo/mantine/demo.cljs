@@ -37,13 +37,15 @@
         viewport (mh/use-viewport-size)             ; object, read via interop (^js)
         generated-id (mh/use-id)                    ; scalar (string)
         ;; non-hook barrel utility: plain fn call, raw passthrough (mnt-01kxh6gf6ny3)
-        random-id (mh/random-id "demo-")]           ; -> "demo-xxxxx"
+        random-id (mh/random-id "demo-")            ; -> "demo-xxxxx"
+        shell-resize (mc/use-app-shell-resize #js {:header #js {:min 48 :max 120}})]
     ;; full screen built from backfilled non-docgen core surface: the wrapped
     ;; mantine-provider (app root, in `app`), AppShell page shell (+ app-shell-main),
-    ;; and a Menu whose Menu.Dropdown / Label / Divider are compound parts backfilled
-    ;; in the core supplement.
+    ;; its header made resizable by use-app-shell-resize, and a Menu whose
+    ;; Menu.Dropdown / Label / Divider are compound parts backfilled in the core
+    ;; supplement.
     (mc/app-shell
-     {:id "app-shell" :header #js {:height 60} :padding "md"}
+     {:id "app-shell" :header #js {:height 60} :padding "md" :resize shell-resize}
      (mc/app-shell-header
       {:id "app-shell-header"}
       (mc/menu
