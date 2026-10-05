@@ -18,6 +18,12 @@ prefix of the `<anchor>.N` artifact, and the literal stamped into every generate
 must agree with the anchor, and the installed version in `node_modules` must equal it too.
 _Avoid_: Mantine version (ambiguous: pin, floor and artifact prefix are distinct renderings).
 
+**Upstream contract**:
+The files of the Mantine source repository that the input refresh depends on to clone,
+run docgen and extract: the toolchain pins, the docgen scripts and the docs-data files.
+A change to one can break the refresh without any mention in the release notes.
+_Avoid_: upstream paths, contract paths.
+
 **Factory**:
 A thin `React.createElement` closure over a Mantine component, with clj→js prop
 conversion and Fulcro-style child handling. The unit a wrapper is made of.

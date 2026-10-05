@@ -4,12 +4,40 @@
 ;; then hand the clone to extract/write-inputs!. Bump the package.json pins first:
 ;; extract asserts clone == anchor.
 ;;
+;;   bb upstream-diff           ; diff stat of the upstream contract, HEAD's anchor -> the new one
 ;;   bb clone-anchor            ; clones into target/mantine-<anchor>, reuses it if present
 (ns clone-anchor
   (:require [anchor]
             [babashka.fs :as fs]
             [babashka.process :refer [shell]]
             [extract]))
+
+(def ^:private upstream-contract
+  "The paths of a Mantine checkout that the clone, docgen and extract steps depend on."
+  [;; vendored yarn releases, dropped in 9.7.0
+   ".yarn"
+   ;; yarn config read by `yarn install`
+   ".yarnrc.yml"
+   ;; its packageManager field pins the yarn
+   "package.json"
+   ;; the docgen run before extract
+   "scripts/docgen"
+   ;; the mdx-*-data.ts docs-data files extract parses
+   "apps/mantine.dev/src/mdx/data"
+   ;; imports every docs-data file
+   "apps/mantine.dev/src/mdx/mdx-data.ts"])
+
+(defn- clone!
+  "Clone the Mantine tag `version` into target/mantine-<version>, or reuse the clone
+  already there. Returns the clone dir."
+  [version]
+  (let [clone-dir (str (fs/path "target" (str "mantine-" version)))]
+    (if (fs/exists? (fs/path clone-dir ".git"))
+      (println "Reusing clone at" clone-dir)
+      (do (fs/create-dirs "target")
+          (shell "git" "clone" "--depth" "1" "--branch" version
+                 "https://github.com/mantinedev/mantine" clone-dir)))
+    clone-dir))
 
 (defn- yarn
   "Run the clone's pinned yarn in clone-dir. Mantine stopped vendoring yarn under
@@ -18,14 +46,23 @@
   (apply shell {:dir clone-dir :extra-env {"COREPACK_ENABLE_DOWNLOAD_PROMPT" "0"}}
          "npx" "--yes" "corepack@0.36.0" "yarn" args))
 
+(defn upstream-diff
+  "Print the diff stat of the upstream contract between HEAD's anchor and the bumped
+  package.json anchor, in the anchor clone. Runs before clone-anchor's yarn steps, which
+  a toolchain change can break."
+  [& _]
+  (let [new-v (anchor/anchor-version)
+        old-v (anchor/anchor-version
+               (anchor/pins (:out (shell {:out :string} "git" "show" "HEAD:package.json"))))]
+    (if (= old-v new-v)
+      (println "HEAD's anchor is already" new-v "- nothing to diff. Bump the package.json pins first.")
+      (let [clone-dir (clone! new-v)]
+        (shell {:dir clone-dir} "git" "fetch" "--depth" "1" "origin" "tag" old-v)
+        (println (str "Upstream contract, " old-v " -> " new-v ":"))
+        (apply shell {:dir clone-dir} "git" "diff" "--stat" old-v new-v "--" upstream-contract)))))
+
 (defn -main [& _]
-  (let [version (anchor/anchor-version)
-        clone-dir (str (fs/path "target" (str "mantine-" version)))]
-    (if (fs/exists? (fs/path clone-dir ".git"))
-      (println "Reusing clone at" clone-dir)
-      (do (fs/create-dirs "target")
-          (shell "git" "clone" "--depth" "1" "--branch" version
-                 "https://github.com/mantinedev/mantine" clone-dir)))
+  (let [clone-dir (clone! (anchor/anchor-version))]
     (yarn clone-dir "install")
     (yarn clone-dir "tsx" "scripts/docgen")
     (extract/write-inputs! clone-dir)))

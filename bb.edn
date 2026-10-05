@@ -6,6 +6,9 @@
   extract {:doc "Refresh committed codegen inputs from a Mantine checkout at the anchor: bb extract <clone-dir>"
            :requires ([extract])
            :task (apply extract/-main *command-line-args*)}
+  upstream-diff {:doc "Anchor bump: diff stat of the upstream contract between HEAD's anchor and package.json's (run before clone-anchor)"
+                 :requires ([clone-anchor])
+                 :task (clone-anchor/upstream-diff)}
   clone-anchor {:doc "Anchor bump: clone the anchor tag into target/, run its docgen, refresh inputs (bump package.json first)"
                 :requires ([clone-anchor])
                 :task (clone-anchor/-main)}

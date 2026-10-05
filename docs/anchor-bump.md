@@ -33,8 +33,14 @@ is a rendering of it, and `bb release-check` fails if any rendering disagrees:
 # 1. Bump EVERY pin in one pass (the locations above). The next step reads the
 #    anchor from package.json, so this comes first.
 
-# 2. Refresh the committed generator inputs. Clones the anchor tag into
-#    target/mantine-<anchor>, runs its docgen with the yarn the clone's
+# 2. Diff the upstream contract (below) between HEAD's anchor and the new one.
+#    Clones the anchor tag into target/mantine-<anchor> (step 3 reuses it) and
+#    prints the diff stat. Run it before step 3: a toolchain change can break
+#    clone-anchor's yarn install, and the release notes rarely mention one.
+bb upstream-diff
+
+# 3. Refresh the committed generator inputs. Reuses the step 2 clone in
+#    target/mantine-<anchor> (cloning the anchor tag if absent), runs its docgen with the yarn the clone's
 #    package.json pins under "packageManager" (yarn is not on PATH; corepack,
 #    fetched via npx, resolves the pin), then extracts:
 bb clone-anchor
@@ -43,22 +49,22 @@ bb clone-anchor
 #   -> codegen/input/hook-docs.edn      (hook descriptions)
 #   -> codegen/input/mantine-version.edn (provenance witness)
 
-# 3. Read the release notes for anything the pipeline cannot see (below).
+# 4. Read the release notes for anything the pipeline cannot see (below).
 less target/mantine-<anchor>/apps/mantine.dev/src/pages/changelog/<x-y-z>.mdx
 
-# 4. Reinstall so node_modules matches the new pins, then regenerate.
+# 5. Reinstall so node_modules matches the new pins, then regenerate.
 npm install
 bb generate
 
-# 5. Stage, then run the verify loop. `bb drift` diffs the working tree against
+# 6. Stage, then run the verify loop. `bb drift` diffs the working tree against
 #    the INDEX, so unstaged regenerated sources read as drift.
 git add -A
 bb ci
 
-# 6. Review the generated diff (see below).
+# 7. Review the generated diff (see below).
 git diff --cached -- src/main/mantine/
 
-# 7. Record the bump in CHANGELOG.md (see below).
+# 8. Record the bump in CHANGELOG.md (see below).
 ```
 
 `bb extract <clone-dir>` is the last step of `clone-anchor` on its own, for a clone
@@ -69,10 +75,25 @@ clone no longer has. The error names the files and what to edit in
 `codegen/extract.clj`. The whole clone +
 docgen is roughly a minute of compute.
 
+## Upstream contract
+
+The upstream contract is the set of paths in a Mantine checkout that the clone,
+docgen and extract steps depend on: the yarn toolchain pins, the docgen scripts
+and the docs-data files. The list lives in `upstream-contract` in
+[`codegen/clone_anchor.clj`](../codegen/clone_anchor.clj), one comment per path
+saying what reads it. `bb upstream-diff` prints the diff stat of those paths
+between the two anchor tags. For 9.6.0 to 9.7.0 it showed the removed vendored
+yarn under `.yarn/releases` and the new CodeHighlight docs-data file, neither of
+which the release notes mention.
+
+When a path in the stat changed, read its diff in the clone
+(`git -C target/mantine-<anchor> diff <old> <new> -- <path>`) before step 3.
+When the pipeline starts to depend on a new upstream path, add it to the list.
+
 ## What the pipeline cannot see
 
 Two kinds of change never show up in the generated diff or in `bb coverage`, so
-the changelog read in step 3 is where you catch them:
+the changelog read in step 4 is where you catch them:
 
 - **A new first-party `@mantine/*` package.** The pipeline only enumerates
   packages already pinned, so a new package is invisible until it is installed
