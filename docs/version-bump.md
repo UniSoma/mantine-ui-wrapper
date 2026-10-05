@@ -57,6 +57,8 @@ bb ci
 
 # 6. Review the generated diff (see below).
 git diff --cached -- src/main/mantine/
+
+# 7. Record the bump in CHANGELOG.md (see below).
 ```
 
 `bb extract <clone-dir>` is the last step of `clone-anchor` on its own, for a clone
@@ -109,6 +111,18 @@ that shares another hook's docs page and so carries no standalone description
 (the current hook excludes are exactly those doc-less companions). If the bump's
 diff shows a new entry you don't want shipped, add it to the relevant `:exclude`
 set and regenerate.
+
+## Recording the bump in CHANGELOG.md
+
+Add the bump under `## [Unreleased]` in [`CHANGELOG.md`](../CHANGELOG.md):
+
+- Under `### Changed`, one line that names the new Mantine version and links its
+  release notes (`https://mantine.dev/changelog/<x-y-z>/`).
+- Under `### Added` and `### Removed`, the defs that the generated diff adds or
+  removes.
+- Under `### Changed`, an `Upstream:` line for each changelog item that can break an
+  app with no code change, such as a new default. Skip the rest; the release notes
+  link covers them.
 
 ## Refreshing the inputs: needed vs. skippable
 

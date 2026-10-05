@@ -1,9 +1,11 @@
 ;; Curated cljdoc articles tree (mnt-01kxw0esqg67). Without this file cljdoc
 ;; auto-discovers the entire docs/ folder — including reader-irrelevant internals
 ;; (docs/agents, docs/prototypes, docs/research, release.md, version-bump.md).
-;; This explicit tree publishes only the README, the concepts doc, and the ADRs.
+;; This explicit tree publishes only the README, the changelog, the concepts doc, and
+;; the ADRs.
 {:cljdoc.doc/tree
  [["Readme" {:file "README.md"}]
+  ["Changelog" {:file "CHANGELOG.md"}]
   ["Concepts & vocabulary" {:file "GLOSSARY.md"}]
   ["Architecture decisions"
    ["Releasing to Clojars"           {:file "docs/adr/0001-clojars-release-process.md"}]

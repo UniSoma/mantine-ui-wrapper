@@ -64,8 +64,10 @@ exact version at <https://cljdoc.org/> (or `POST https://cljdoc.org/api/request-
 When the surface is stable, cut the immutable release:
 
 1. Change `version` in `build.clj` from `"9.7.0.0-SNAPSHOT"` to `"9.7.0.0"`.
-2. `bb ci` green, then `bb deploy`.
-3. Tag the commit `v9.7.0.0` and push.
+2. In [`CHANGELOG.md`](../CHANGELOG.md), rename `## [Unreleased]` to
+   `## [9.7.0.0] - YYYY-MM-DD` and add an empty `## [Unreleased]` above it.
+3. `bb ci` green, then `bb deploy`.
+4. Tag the commit `v9.7.0.0` and push.
 
 Once there are official cuts, the paved path for automating this is a **tag-triggered**
 GitHub Actions workflow (runs only on `v*` tag pushes, so it stays dormant on normal

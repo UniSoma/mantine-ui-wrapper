@@ -18,6 +18,10 @@ Single-context: one `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agen
 
 Bumping the wrapped Mantine version: `docs/version-bump.md`.
 
+### Changelog
+
+A change a consumer can see (a def added, removed or renamed, a behavior change) gets an entry under `## [Unreleased]` in `CHANGELOG.md`, in the same commit.
+
 # Behavioral guidelines
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
