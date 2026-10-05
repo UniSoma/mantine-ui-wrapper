@@ -25,10 +25,10 @@
 
   On misuse (the argument is not a factory) `js/console.error`s the offending value
   and returns nil."
-  #?(:cljs (fn [wrapper]
-             (if-some [component (f/component-of wrapper)]
+  #?(:cljs (fn [factory-fn]
+             (if-some [component (f/component-of factory-fn)]
                component
                (do (js/console.error
-                    "mantine.interop/raw-component: not a Mantine wrapper —" wrapper)
+                    "mantine.interop/raw-component: not a Mantine wrapper —" factory-fn)
                    nil)))
      :clj (f/not-implemented "mantine.interop/raw-component")))

@@ -7,8 +7,8 @@ namespaces, the hand-written `mantine/impl/`, and `src/main/deps.cljs` (which la
 the jar root and drives shadow-cljs's `:npm-deps` auto-install). Consumers compile the
 `.cljc` themselves; we do no AOT or CLJS→JS compilation. React/react-dom are deliberately
 absent from `deps.cljs` (the consuming app owns React), and the `@mantine/*` packages are
-npm deps in `deps.cljs`, **not** Maven dependencies in the pom. The pom lists no
-dependencies at all, so it doesn't pin consumers to a Clojure version.
+npm deps in `deps.cljs`, **not** Maven dependencies in the pom. The only pom dependency
+is `org.clojure/clojure`. (Revised in fbff014: the pom now lists no dependencies.)
 
 ## Version scheme: `9.4.1.N`
 
@@ -16,7 +16,7 @@ The version is Mantine-anchored and four-segment: the first three segments **are
 wrapped Mantine version, and `N` is the wrapper's own revision against that Mantine
 release (`9.4.1.0`, `9.4.1.1`, … then `9.5.2.0` on the next Mantine bump). The first
 question a consumer has is "which Mantine does this wrap?", and this scheme puts that
-answer in the coordinate itself. It also follows from the existing version-bump
+answer in the coordinate itself. It also follows from the existing anchor-bump
 model, which already treats the Mantine version as the anchor pin (see
 `docs/anchor-bump.md`).
 

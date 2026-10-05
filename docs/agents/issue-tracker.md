@@ -10,7 +10,7 @@ root (prefix `mnt`).
 Read tickets only via `knot show` / `knot list` / `knot ready` / `knot blocked`
 / `knot closed` / `knot prime`. Write only via `knot create` / `knot start` /
 `knot status` / `knot close` / `knot add-note` / `knot update` / `knot dep` /
-`knot link`. Never `cat`, `grep`, `ls`, or hand-edit files under `.tickets/`:
+`knot link` / `knot document`. Never `cat`, `grep`, `ls`, or hand-edit files under `.tickets/`:
 `knot show <id>` resolves partial ids across live + archive, and the write
 commands keep frontmatter consistent.
 

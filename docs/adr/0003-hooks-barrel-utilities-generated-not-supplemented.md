@@ -38,7 +38,7 @@ This draws the boundary ADR 0002 left implicit:
   entry). Upstream has no machine-readable source: the functions-reference page is
   hand-written MDX and the functions carry no JSDoc. The doc *URL* is derived from the JS
   name (lowercase, separators stripped: `.../guides/functions-reference/#randomid`,
-  `.../hooks/use-hotkeys/#gethotkeyhandler`), so only the description must be written by hand.
+  `.../hooks/use-hotkeys/#gethotkeyhandler`), so only the description and the `:page` are written by hand.
 - **A barrel utility included by the filter but missing a `util-docs.edn` entry fails the
   build.** This is the same enumerate-and-guard discipline as the collision and drift
   checks, and it keeps everything-minus-excludes safe across version bumps.

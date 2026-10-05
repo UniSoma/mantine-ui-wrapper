@@ -11,7 +11,7 @@
   (let [component #js {:name "Fake"}
         factory-fn (f/factory component)]
     (is (identical? component (mi/raw-component factory-fn))
-        "factory tags the wrapper with its underlying component")))
+        "factory tags the returned fn with its underlying component")))
 
 (deftest raw-component-reads-through-the-controlled-shim
   (let [component #js {:name "Input"}

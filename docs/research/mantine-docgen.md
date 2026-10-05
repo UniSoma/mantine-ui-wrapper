@@ -34,7 +34,7 @@ apps/mantine.dev/src/.docgen/docgen.json
 
 ### How generation was inspected
 
-A full monorepo `yarn install` + docgen run is slow, so I took the **source-inference path** (permitted by the task): I `npm pack`-ed `mantine-docgen-script@1.6.0` and read its compiled implementation (`dist/esm/index.mjs`), its `.d.ts` types, and its **committed sample output** `tests/.docgen/docgen.json`. The transform is deterministic and readable, so the schema below is authoritative.
+A full monorepo `yarn install` + docgen run is heavy/slow, so I took the **source-inference path** (permitted by the task): I `npm pack`-ed `mantine-docgen-script@1.6.0` and read its compiled implementation (`dist/esm/index.mjs`), its `.d.ts` types, and its **committed sample output** `tests/.docgen/docgen.json`. The transform is deterministic and readable, so the schema below is authoritative.
 
 ## 2. Inputs: what gets scanned (`scripts/docgen/docgen-paths.ts`)
 
@@ -44,7 +44,7 @@ A full monorepo `yarn install` + docgen run is slow, so I took the **source-infe
   - `packages/@mantine/core/src/components` → **113** components matched
   - `packages/@mantine/dates/src/components` → **33** components matched
   - `packages/@mantine/charts/src` → **19** components matched
-- **`type: 'file'`** is an explicit list (~90 files) of compound parts and other-package components: Input parts, Button/ActionIcon/Avatar groups, Popover/Menu/Tabs/Accordion/Combobox/AppShell parts, plus whole components from `@mantine/spotlight`, `@mantine/carousel`, `@mantine/dropzone`, `@mantine/code-highlight`, `@mantine/nprogress`, `@mantine/modals`, `@mantine/tiptap`, `@mantine/notifications`, `@mantine/schedule`.
+- **`type: 'file'`** is an explicit list (~90 files) of family members and other-package components: Input parts, Button/ActionIcon/Avatar groups, Popover/Menu/Tabs/Accordion/Combobox/AppShell parts, plus whole components from `@mantine/spotlight`, `@mantine/carousel`, `@mantine/dropzone`, `@mantine/code-highlight`, `@mantine/nprogress`, `@mantine/modals`, `@mantine/tiptap`, `@mantine/notifications`, `@mantine/schedule`.
 
 ## 3. `docgen.json` SCHEMA (precise)
 
@@ -67,7 +67,7 @@ Prop `type.name` post-processing: enums are expanded to their `raw` union; `type
 ### Prop filtering (what is EXCLUDED from every component)
 
 `getPropsFilter` drops a prop when:
-- name is in `DEFAULT_EXCLUDE_PROPS` (all the style/system props: `className`, `classNames`, `styles`, `unstyled`, `component`, `ref`, `style`, `sx`, `mod`, `variant`, `renderRoot`, `vars`, `attributes`, spacing/sizing shorthands (`m*`, `p*`, `w`, `h`, `bg*`, `c`, `fz`, `fw`, `ff`, `ta`, `bd`, `bdrs`, `pos`, `inset`, `top/left/...`, `hiddenFrom`, `visibleFrom`, `lightHidden`, `darkHidden`, `flex`, …) or in the caller's `excludeProps` (`mie`, `mis`, `pie`, `pis`);
+- name is in `DEFAULT_EXCLUDE_PROPS` (all the style/system props: `className`, `classNames`, `styles`, `unstyled`, `component`, `ref`, `style`, `sx`, `mod`, `variant`, `renderRoot`, `vars`, `attributes`, spacing/sizing shorthands (`m*`, `p*`, `w`, `h`, `bg*`, `c`, `fz`, `fw`, `ff`, `ta`, `bd`, `bdrs`, `pos`, `inset`, `top/left/...`, `hiddenFrom`, `visibleFrom`, `lightHidden`, `darkHidden`, `flex`, …)) or in the caller's `excludeProps` (`mie`, `mis`, `pie`, `pis`);
 - name starts with `__` or `data-`;
 - name is `variant` **and** type is `string`;
 - the prop's declaration originates only from `node_modules` (inherited DOM/library props are excluded; only props declared in Mantine source survive).
@@ -110,7 +110,7 @@ The package README's example shows the same shape for a Mantine-style component 
 
 ## 4. Coverage & notable gaps
 
-- **Included:** core (113), `@mantine/dates` (33) and `@mantine/charts` (19) components are **confirmed present** (all three are `type:'package'` scans), plus ~90 explicit compound parts / other-package components (spotlight, carousel, dropzone, code-highlight, nprogress, modals, tiptap, notifications, schedule). Roughly ~250 component entries total.
+- **Included:** core (113), `@mantine/dates` (33) and `@mantine/charts` (19) components are **confirmed present** (all three are `type:'package'` scans), plus ~90 explicit family members / other-package components (spotlight, carousel, dropzone, code-highlight, nprogress, modals, tiptap, notifications, schedule). Roughly ~250 component entries total.
 - **Missing by design:**
   - **Hooks:** `@mantine/hooks` is not scanned at all; docgen is components-only (hooks are documented via MDX, counted separately in `count.ts`).
   - **`.extend` factory helpers:** explicitly filtered out.

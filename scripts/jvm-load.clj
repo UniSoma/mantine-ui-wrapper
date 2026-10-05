@@ -31,7 +31,7 @@
                  (catch ArityException _ nil))))
         (sort-by key (ns-publics ns-sym))))
 
-(println "JVM-loading" (count mantine-nses) "generated namespaces:")
+(println "JVM-loading" (count mantine-nses) "namespaces:")
 (doseq [ns-sym mantine-nses] (require ns-sym))
 (println "  loaded:" (str/join " " (map str mantine-nses)))
 

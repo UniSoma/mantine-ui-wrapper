@@ -43,15 +43,15 @@
      not the shim."
      [component]
      (let [raw (or (component-of component) component)
-           wrapper (fn [& args]
-                     (let [[props children] (if (map? (first args))
-                                              [(first args) (rest args)]
-                                              [nil args])]
-                       (.apply react/createElement nil
-                               (.concat #js [component (p/convert props)]
-                                        (p/convert-children children)))))]
-       (unchecked-set wrapper raw-key raw)
-       wrapper)))
+           factory-fn (fn [& args]
+                        (let [[props children] (if (map? (first args))
+                                                 [(first args) (rest args)]
+                                                 [nil args])]
+                          (.apply react/createElement nil
+                                  (.concat #js [component (p/convert props)]
+                                           (p/convert-children children)))))]
+       (unchecked-set factory-fn raw-key raw)
+       factory-fn)))
 
 #?(:cljs
    (defn- change-event-value

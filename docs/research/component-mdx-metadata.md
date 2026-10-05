@@ -4,7 +4,7 @@
 
 **Question:** Can component codegen pull prose descriptions (and metadata that `docgen.json` drops) out of the docs-app MDX data files, the same way hook codegen already pulls descriptions from `mdx-hooks-data.ts`?
 
-**Short answer:** Yes, and it is a near-automatic extension of the hooks approach. The component data files are as clean as the hooks file (plain single-quoted, single-line description strings), Mantine's own tooling already parses them with a simple regex, and every real component carries a one-line `description` keyed by the exact component name that matches `docgen.json`. Two caveats: (a) compound parts (e.g. `ButtonGroup`, `AccordionItem`) get **no** description of their own, and (b) the real Styles API selectors and CSS variables live in a *different*, less regex-friendly source, not in these files.
+**Short answer:** Yes, and it is a near-automatic extension of the hooks approach. The component data files are as clean as the hooks file (plain single-quoted, single-line description strings), Mantine's own tooling already parses them with a simple regex, and every real component carries a one-line `description` keyed by the exact component name that matches `docgen.json`. Two caveats: (a) family members (e.g. `ButtonGroup`, `AccordionItem`) get **no** description of their own, and (b) the real Styles API selectors and CSS variables live in a *different*, less regex-friendly source, not in these files.
 
 All paths below are inside the pinned Mantine 9.4.1 checkout at `/tmp/mantine-inv`.
 
@@ -147,7 +147,7 @@ Recoverable from the MDX data files:
 
 - **~140+ real component entries** across the three files (core 111 with `props`, dates ~15, charts ~16). Every entry that has a `props` array is a documented component and carries a `description`.
 - **Every top-level documented component has a data entry with a description.** The gap is granularity below the component level, not missing top-level components.
-- **Compound parts are NOT top-level keys.** `ButtonGroup`, `ButtonGroupSection`, `AccordionItem`, `AccordionControl`, `Table.Tr`/`TableTr` and the like do **not** exist as their own object keys (confirmed: `grep '^  ButtonGroup:|^  AccordionItem:'` → no matches). They appear only inside the parent's `props: [...]` / `styles: [...]` arrays. Consequence: `docgen.json` has separate entries like `ButtonGroup`, but the MDX data gives **one description for the whole family** (`Button`) and no per-part prose. You can attribute the parent's description (or nothing) to compound parts; no dedicated compound-part sentence exists to pull.
+- **Family members are NOT top-level keys.** `ButtonGroup`, `ButtonGroupSection`, `AccordionItem`, `AccordionControl`, `Table.Tr`/`TableTr` and the like do **not** exist as their own object keys (confirmed: `grep '^  ButtonGroup:|^  AccordionItem:'` → no matches). They appear only inside the parent's `props: [...]` / `styles: [...]` arrays. Consequence: `docgen.json` has separate entries like `ButtonGroup`, but the MDX data gives **one description for the whole family** (`Button`) and no per-member prose. You can attribute the parent's description (or nothing) to family members; no dedicated per-member sentence exists to pull.
 - The mapping is **one MDX entry → many `docgen.json` keys**, and the `props` array is the explicit list of those keys.
 
 ---
@@ -209,7 +209,7 @@ Practical implication: Mantine maintainers curate these descriptions, and they t
 Mirror the hooks flow. At codegen prep, parse the component `mdx-*-data.ts` files into a committed `{component-name → {description, polymorphic?, props-refs, styles-groups, source}}` input. Then merge `description` into the generated component docstring (filling the prose gap `docgen.json` leaves), and optionally surface `polymorphic` and the Styles API group names. The parse is a small, proven regex; Mantine ships the reference implementation in `scripts/llm/compile-mcp-data.ts`.
 
 **Bounded complications to decide on (not blockers):**
-1. **Compound parts inherit nothing.** `ButtonGroup`, `AccordionItem`, `Table.Tr` and the like have `docgen.json` entries but no MDX description. Decide: attach the parent family's description, or leave compound-part docstrings without prose. Use the parent's `props: [...]` array as the authoritative parent→compound-part map.
+1. **Family members inherit nothing.** `ButtonGroup`, `AccordionItem`, `Table.Tr` and the like have `docgen.json` entries but no MDX description. Decide: attach the parent family's description, or leave family-member docstrings without prose. Use the parent's `props: [...]` array as the authoritative parent→member map.
 2. **Real Styles API selectors and CSS vars are outside these files.** If docstrings should list actual selectors/`--css-vars`, that is a **second, harder extraction** from `packages/@docs/styles-api/src/data/*.styles-api.ts` (backtick-laden values need a proper parse). Treat that as a separate follow-up ticket; don't couple it to the description work, which is easy.
 3. **No category/group data** to recover from these files (the type has the fields, but no entry sets them). Any category grouping would have to come from elsewhere (e.g. the navbar data).
 

@@ -122,7 +122,7 @@ The entire prop transformation on the `:cljs` path is **`(clj->js props)`**: Ful
 - **Event handlers / refs / children:** untouched. `children` are passed as trailing varargs straight to `createElement` without conversion, so children must already be React elements / strings, which the nested `ui-*` factories produce. No render-prop or function-child special handling.
 - `wrap-form-element` (Fulcro built-in) is the one behavioral add-on: it makes text inputs behave as controlled components so cursor position isn't lost. It applies only to the hard-coded input set.
 
-Takeaway: SUIW pushes *all* naming responsibility onto the caller and does no prop massaging. A Mantine wrapper will want *more* here (at least a documented convention; possibly kebab->camel and `:style`/`:className` conveniences).
+Takeaway: SUIW pushes *all* naming responsibility onto the caller and does essentially zero prop massaging. A Mantine wrapper will almost certainly want *more* here (at least a documented convention; possibly kebab->camel and `:style`/`:className` conveniences).
 
 ## 5. How the JS component is referenced (interop)
 

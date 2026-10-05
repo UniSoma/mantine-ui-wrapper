@@ -8,8 +8,8 @@
 Framework-agnostic ClojureScript wrapper of [Mantine](https://mantine.dev). It works
 from Fulcro, Reagent/re-frame, UIx, Helix, or raw React interop, and depends only on
 `react/createElement`, never on a rendering framework. It wraps the complete Mantine
-surface (generated from Mantine's `docgen.json`), and every factory's docstring carries the
-component's full prop table, plus its Mantine.dev URL when it has its own docs page, so you
+surface (generated from Mantine's `docgen.json`), and every docgen-generated factory's docstring
+carries the component's full prop table, plus its Mantine.dev URL when it has a docs page, so you
 can read it from your editor or via `(clojure.repl/doc mc/button)`.
 
 Available on Clojars as SNAPSHOT builds while the API settles. There is no stable release yet.
@@ -97,7 +97,7 @@ Conventions:
 - Imperative packages (`notifications`, `modals`, `spotlight`) expose both a provider and
   call functions (`mn/show`, `mm/open`/`mm/close`, `ms/toggle`).
 - Every docgen-generated factory's docstring carries the full prop table, plus the
-  Mantine.dev URL when the component has its own docs page.
+  Mantine.dev URL when the component has a docs page.
 
 ```clojure
 (ns my-app
