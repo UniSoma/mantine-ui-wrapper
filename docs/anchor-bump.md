@@ -128,6 +128,12 @@ That is where you review the version's API change, and what to look for:
   dot-notation static parts (`ActionBar.Divider`) that docgen omits. Wrap each one
   in `codegen/supplements/<pkg>.cljc`, following the entries already there, and
   regenerate.
+- **`UNCOVERED use* exports`** from `bb coverage` means a wrapped package other
+  than `@mantine/hooks` exports a new hook that no def covers. A context hook
+  (`use<X>Context`, where `X` is an export of the same package) never shows up
+  here. Wrap a documented hook in `codegen/supplements/<pkg>.cljc` and regenerate;
+  add an undocumented one to `unwrapped-hooks` in `scripts/coverage-check.clj`,
+  with the reason.
 
 The **exclude list in `codegen/scope.edn` is the escape hatch.** Because scope is
 "everything minus excludes", you never add a name to opt a new component/hook *in*.

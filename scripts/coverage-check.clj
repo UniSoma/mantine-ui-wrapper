@@ -3,7 +3,8 @@
 ;; asserts every intended def landed in the generated source. Catches a scope/resolution
 ;; bug that silently drops components. The recount is separate from plan/build's
 ;; classification on purpose, so a regression in the generator diverges from this check.
-;; Also runs the compound-part Drift audit (check-compound-parts).
+;; Also runs the two Drift audits: compound parts (check-compound-parts) and the
+;; use* exports of each package (check-package-hooks).
 ;;
 ;; Run with: bb coverage
 (ns coverage-check
@@ -118,6 +119,46 @@
       (println (format "  %-14s UNCOVERED compound parts: %s" suffix (str/join ", " missing))))
     (empty? missing)))
 
+;; {JS name -> reason} for the use* exports check-package-hooks lets stay unwrapped.
+;; Context hooks need no entry: the context-hook? rule excludes them.
+(def unwrapped-hooks
+  (zipmap ["useComboboxTargetProps" "useDelayedHover" "useHovered" "useInputProps"
+           "useMantineClassNamesPrefix" "useMantineContext"
+           "useMantineCssVariablesResolver" "useMantineDeduplicateInlineStyles"
+           "useMantineEnv" "useMantineIsHeadless" "useMantineStyleNonce"
+           "useMantineStylesTransform" "useMantineSxTransform"
+           "useMantineWithStaticClasses" "usePillsReorder" "useProviderColorScheme"
+           "useRandomClassName" "useResolvedStylesApi" "useSafeMantineTheme"
+           "useDatesContext"]
+          (repeat "undocumented upstream")))
+
+(defn context-hook?
+  "True for use<X>Context where X is an export of the same package. Such a hook
+  reads the context of X's compound tree, so it only works inside X's children and
+  is not wrapped. Requiring X to be an export keeps the rule from hiding a hook
+  with no component behind it (useMantineContext)."
+  [exports nm]
+  (boolean (when-let [[_ x] (re-matches #"use(.+)Context" nm)]
+             (contains? exports x))))
+
+(defn check-package-hooks
+  "Every use* export of the package must land as a def (from a supplement) or be
+  excluded, by unwrapped-hooks or context-hook?. A miss is a silently-unwrapped
+  hook (e.g. useAppShellResize in 9.7.0): print it and return false, so it gets
+  wrapped in the package's supplement or excluded with a reason."
+  [suffix]
+  (let [exports (get pkg-export-set (str "@mantine/" suffix) #{})
+        present (def-lines (str "src/main/mantine/" suffix ".cljc"))
+        missing (sort (for [nm exports
+                            :when (str/starts-with? nm "use")
+                            :when (not (present (kebab nm)))
+                            :when (not (unwrapped-hooks nm))
+                            :when (not (context-hook? exports nm))]
+                        nm))]
+    (when (seq missing)
+      (println (format "  %-14s UNCOVERED use* exports: %s" suffix (str/join ", " missing))))
+    (empty? missing)))
+
 (defn check-package [suffix expected]
   (let [file (str "src/main/mantine/" suffix ".cljc")
         present (def-lines file)
@@ -136,9 +177,13 @@
                         (count expected-hooks))
       _ (println "\nCompound-part coverage (Capitalized static subcomponents vs generated defs):")
       compound-ok (doall (for [[suffix comps] (sort-by key js-names-by-suffix)]
-                           (check-compound-parts suffix comps)))]
-  (if (every? true? (concat component-ok [hooks-ok] compound-ok))
-    (do (println (format "COVERAGE OK — %d scoped entries all present; all compound parts wrapped." total-expected))
+                           (check-compound-parts suffix comps)))
+      _ (println "\nHook coverage (use* exports of each package but @mantine/hooks vs generated defs):")
+      package-hooks-ok (doall (for [pkg (sort (keys (:exports sources)))
+                                    :when (not= pkg "@mantine/hooks")]
+                                (check-package-hooks (pkg-suffix pkg))))]
+  (if (every? true? (concat component-ok [hooks-ok] compound-ok package-hooks-ok))
+    (do (println (format "COVERAGE OK — %d scoped entries all present; all compound parts and use* exports wrapped or excluded." total-expected))
         (System/exit 0))
-    (do (println "COVERAGE FAILED — scoped entries or compound parts missing from generated source.")
+    (do (println "COVERAGE FAILED — scoped entries, compound parts or use* exports missing from generated source.")
         (System/exit 1))))

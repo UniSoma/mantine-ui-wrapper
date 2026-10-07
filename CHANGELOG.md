@@ -24,6 +24,10 @@ Releases before the first entry below were SNAPSHOTs only and are not recorded.
   `tour-tooltip`, `tour-beacon`, `tour-title`, `tour-body`, `tour-close-button` and
   `tour-navigation`.
 - `mantine.core/use-app-shell-resize`.
+- `mantine.core/use-combobox`, `use-virtualized-combobox`, `use-tree`, `use-matches`,
+  `use-props`, `use-styles`, `use-direction`, `use-drawers-stack` and
+  `use-modals-stack`.
+- `mantine.form/use-field`.
 - `mantine.notifications/promise`.
 
 ### Changed

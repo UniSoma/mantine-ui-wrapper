@@ -76,9 +76,15 @@ a name docgen now generates. It turns a silent redefinition into a loud "docgen
 now covers this, delete the supplement entry."
 
 **Drift audit**:
-A `bb coverage` assertion that every real compound part of every wrapped component
-is covered by either docgen or a supplement. It turns a silently-unwrapped part
-into a loud "wrap it or explicitly exclude it."
+A `bb coverage` assertion that every real compound part, and every `use*` export, of a
+wrapped package is covered by docgen or a supplement, or is explicitly excluded. It
+turns a silently-unwrapped export into a loud "wrap it or explicitly exclude it."
+
+**Context hook**:
+A `use<Component>Context` export that reads the React context of a compound
+component's tree (`useComboboxContext`, `useTabsContext`), so it only works inside
+that component's children. The wrapper does not wrap it.
+_Avoid_: compound hook, context accessor.
 
 **Corpus collision guard**:
 An extract-time assertion that no PascalCase component key appears in more than one

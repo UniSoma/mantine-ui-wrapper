@@ -15,6 +15,17 @@
   #?(:cljs mf/useForm
      :clj (f/not-implemented "mantine.form/use-form")))
 
+(def use-field
+  "useField — a single-field alternative to useForm: one value with its own
+  validation, touched and dirty state.
+
+  https://mantine.dev/form/use-field/
+
+  Raw passthrough: pass JS-shaped options (#js {:initialValue \"\"}); returns the
+  raw JS field object (.getInputProps, .getValue, .validate ...)."
+  #?(:cljs mf/useField
+     :clj (f/not-implemented "mantine.form/use-field")))
+
 (def has-length
   "hasLength — validator: value length within the given bounds. Raw passthrough."
   #?(:cljs mf/hasLength

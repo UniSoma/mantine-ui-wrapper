@@ -7,11 +7,12 @@
 
   Backfills the @mantine/core surface docgen omits: provider/primitive
   components (MantineProvider, Box, DirectionProvider), the create-theme / rem
-  functions, the package-local color-scheme hooks, and the dot-notation compound
-  parts docgen does not list (Menu.Dropdown, AppShell.Main, Modal.Body, ...).
-  The compound-part coverage check in scripts/coverage-check.clj is the source of
-  truth for this list. It fails if any wrapped component grows a static part that
-  is neither generated from docgen nor defined here."
+  functions, the package-local hooks (color scheme, useCombobox, useTree, ...),
+  and the dot-notation compound parts docgen does not list (Menu.Dropdown,
+  AppShell.Main, Modal.Body, ...). The coverage checks in
+  scripts/coverage-check.clj are the source of truth for this list. They fail if
+  any wrapped component grows a static part, or the package grows a use* export,
+  that is neither generated from docgen, defined here, nor excluded there."
   (:refer-clojure :exclude [rem])
   (:require
    [mantine.impl.factory :as f]
@@ -35,8 +36,10 @@
                        TableThead TableTr ToolbarDivider ToolbarGroup
                        TooltipFloating TooltipGroup TourBody TourCloseButton
                        TourNavigation TourTitle
-                       createTheme useAppShellResize useComputedColorScheme useMantineColorScheme
-                       useMantineTheme]]])))
+                       createTheme useAppShellResize useCombobox useComputedColorScheme
+                       useDirection useDrawersStack useMantineColorScheme useMantineTheme
+                       useMatches useModalsStack useProps useStyles useTree
+                       useVirtualizedCombobox]]])))
 
 (def mantine-provider
   "MantineProvider — application root; supplies theme, color scheme and CSS
@@ -104,6 +107,101 @@
   interop (^js under :advanced)."
   #?(:cljs useAppShellResize
      :clj (f/not-implemented "mantine.core/use-app-shell-resize")))
+
+(def use-combobox
+  "useCombobox — creates the store that controls a Combobox's dropdown and option
+  selection. Pass its return value to combobox's :store prop.
+
+  https://mantine.dev/core/combobox/#usecombobox-hook
+
+  Raw passthrough: pass JS-shaped options (#js {:onDropdownClose f}); returns the
+  raw JS store (.openDropdown, .closeDropdown, .selectFirstOption ...)."
+  #?(:cljs useCombobox
+     :clj (f/not-implemented "mantine.core/use-combobox")))
+
+(def use-virtualized-combobox
+  "useVirtualizedCombobox — the useCombobox store for a virtualized option list.
+  Option indexing reads the values you keep in state, not the DOM. Pass its return
+  value to combobox's :store prop.
+
+  https://mantine.dev/core/combobox/#virtualization
+
+  Raw passthrough: pass JS-shaped options; returns the raw JS store."
+  #?(:cljs useVirtualizedCombobox
+     :clj (f/not-implemented "mantine.core/use-virtualized-combobox")))
+
+(def use-tree
+  "useTree — creates the controller for a Tree's expanded, selected and checked
+  state. Pass its return value to tree's :tree prop.
+
+  https://mantine.dev/core/tree/#usetree-hook
+
+  Raw passthrough: pass JS-shaped options (#js {:initialExpandedState ...});
+  returns the raw JS controller (.expand, .collapse, .checkNode ...)."
+  #?(:cljs useTree
+     :clj (f/not-implemented "mantine.core/use-tree")))
+
+(def use-matches
+  "useMatches — returns the value for the current theme breakpoint.
+
+  https://mantine.dev/styles/responsive/#use-matches-hook
+
+  Raw passthrough: pass a JS object keyed by breakpoint
+  (#js {:base \"blue\" :sm \"red\"}); returns the matching value as is."
+  #?(:cljs useMatches
+     :clj (f/not-implemented "mantine.core/use-matches")))
+
+(def use-props
+  "useProps — merges a component's props with the default props set on the theme
+  for that component name.
+
+  https://mantine.dev/theming/default-props/#useprops-hook
+
+  Raw passthrough: (use-props \"MyComponent\" js-defaults js-props) takes and
+  returns raw JS props objects."
+  #?(:cljs useProps
+     :clj (f/not-implemented "mantine.core/use-props")))
+
+(def use-styles
+  "useStyles — adds Styles API support (classNames, styles, unstyled ...) to a
+  custom component.
+
+  https://mantine.dev/guides/custom-components/#usestyles-hook
+
+  Raw passthrough: pass JS-shaped options; returns the raw JS getStyles fn."
+  #?(:cljs useStyles
+     :clj (f/not-implemented "mantine.core/use-styles")))
+
+(def use-direction
+  "useDirection — reads and sets the text direction that direction-provider
+  supplies.
+
+  https://mantine.dev/styles/rtl/#usedirection-hook
+
+  Raw passthrough: returns the raw JS value (.-dir, .setDirection,
+  .toggleDirection)."
+  #?(:cljs useDirection
+     :clj (f/not-implemented "mantine.core/use-direction")))
+
+(def use-drawers-stack
+  "useDrawersStack — creates the controller for the drawers inside drawer-stack.
+
+  https://mantine.dev/core/drawer/#usedrawersstack-hook
+
+  Raw passthrough: pass a JS array of drawer ids (#js [\"first\" \"second\"]);
+  returns the raw JS controller (.open, .close, .toggle, .register ...)."
+  #?(:cljs useDrawersStack
+     :clj (f/not-implemented "mantine.core/use-drawers-stack")))
+
+(def use-modals-stack
+  "useModalsStack — creates the controller for the modals inside modal-stack.
+
+  https://mantine.dev/core/modal/#usemodalsstack-hook
+
+  Raw passthrough: pass a JS array of modal ids (#js [\"first\" \"second\"]);
+  returns the raw JS controller (.open, .close, .toggle, .register ...)."
+  #?(:cljs useModalsStack
+     :clj (f/not-implemented "mantine.core/use-modals-stack")))
 
 (def accordion-chevron
   "Accordion.Chevron — compound part of Accordion (docgen omits it). Optional
