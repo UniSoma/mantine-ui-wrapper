@@ -9,10 +9,10 @@
   components (MantineProvider, Box, DirectionProvider), the create-theme / rem
   functions, the package-local hooks (color scheme, useCombobox, useTree, ...),
   and the dot-notation compound parts docgen does not list (Menu.Dropdown,
-  AppShell.Main, Modal.Body, ...). The coverage checks in
-  scripts/coverage-check.clj are the source of truth for this list. They fail if
-  any wrapped component grows a static part, or the package grows a use* export,
-  that is neither generated from docgen, defined here, nor excluded there."
+  AppShell.Main, Modal.Body, ...). The Drift audits in
+  scripts/coverage-check.clj fail when this list falls behind: when a wrapped
+  component grows a static part, or the package grows a use* export, that is
+  neither generated from docgen, defined here, nor excluded there."
   (:refer-clojure :exclude [rem])
   (:require
    [mantine.impl.factory :as f]

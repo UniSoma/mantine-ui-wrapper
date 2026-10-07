@@ -4,7 +4,7 @@
 ;; bug that silently drops components. The recount is separate from plan/build's
 ;; classification on purpose, so a regression in the generator diverges from this check.
 ;; Also runs the two Drift audits: compound parts (check-compound-parts) and the
-;; use* exports of each package (check-package-hooks).
+;; use* exports of each package but @mantine/hooks (check-package-hooks).
 ;;
 ;; Run with: bb coverage
 (ns coverage-check
@@ -58,7 +58,8 @@
 (def compound-machinery #{"extend" "withProps" "displayName" "classes" "varsResolver"})
 
 ;; {JS name -> reason} for the use* exports check-package-hooks lets stay unwrapped.
-;; Context hooks need no entry: the context-hook? rule excludes them.
+;; Context hooks need no entry: the context-hook? rule excludes them. useDatesContext
+;; and useMantineContext are not Context hooks (no Dates or Mantine export), so they do.
 (def unwrapped-hooks
   (zipmap ["useComboboxTargetProps" "useDelayedHover" "useHovered" "useInputProps"
            "useMantineClassNamesPrefix" "useMantineContext"
@@ -133,10 +134,10 @@
     (empty? missing)))
 
 (defn context-hook?
-  "True for use<X>Context where X is an export of the same package. Such a hook
-  reads the context of X's compound tree, so it only works inside X's children and
-  is not wrapped. Requiring X to be an export keeps the rule from hiding a hook
-  with no component behind it (useMantineContext)."
+  "True for a Context hook: use<X>Context where X is an export of the same package.
+  Such a hook reads the context of X's compound tree, so it only works inside X's
+  children and is not wrapped. Requiring X to be an export keeps the rule from
+  hiding a hook with no component behind it (useMantineContext)."
   [exports nm]
   (boolean (when-let [[_ x] (re-matches #"use(.+)Context" nm)]
              (contains? exports x))))

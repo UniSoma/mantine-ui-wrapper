@@ -76,9 +76,10 @@ a name docgen now generates. It turns a silent redefinition into a loud "docgen
 now covers this, delete the supplement entry."
 
 **Drift audit**:
-A `bb coverage` assertion that every real compound part, and every `use*` export, of a
-wrapped package is covered by docgen or a supplement, or is explicitly excluded. It
-turns a silently-unwrapped export into a loud "wrap it or explicitly exclude it."
+A `bb coverage` assertion that docgen or a supplement covers every real compound part
+of a wrapped package, and every `use*` export of one other than `@mantine/hooks`,
+unless the check explicitly excludes it. It turns a silently-unwrapped export into a
+loud "wrap it or explicitly exclude it."
 
 **Context hook**:
 A `use<Component>Context` export that reads the React context of a compound
