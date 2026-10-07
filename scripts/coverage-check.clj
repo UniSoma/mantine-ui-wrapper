@@ -57,6 +57,19 @@
 ;; Static keys on a component that are Mantine machinery, not compound parts.
 (def compound-machinery #{"extend" "withProps" "displayName" "classes" "varsResolver"})
 
+;; {JS name -> reason} for the use* exports check-package-hooks lets stay unwrapped.
+;; Context hooks need no entry: the context-hook? rule excludes them.
+(def unwrapped-hooks
+  (zipmap ["useComboboxTargetProps" "useDelayedHover" "useHovered" "useInputProps"
+           "useMantineClassNamesPrefix" "useMantineContext"
+           "useMantineCssVariablesResolver" "useMantineDeduplicateInlineStyles"
+           "useMantineEnv" "useMantineIsHeadless" "useMantineStyleNonce"
+           "useMantineStylesTransform" "useMantineSxTransform"
+           "useMantineWithStaticClasses" "usePillsReorder" "useProviderColorScheme"
+           "useRandomClassName" "useResolvedStylesApi" "useSafeMantineTheme"
+           "useDatesContext"]
+          (repeat "undocumented upstream")))
+
 (defn component-statics
   "{component -> [Capitalized static keys]} for `comps` in `pkg` (one node call)."
   [pkg comps]
@@ -118,19 +131,6 @@
     (when (seq missing)
       (println (format "  %-14s UNCOVERED compound parts: %s" suffix (str/join ", " missing))))
     (empty? missing)))
-
-;; {JS name -> reason} for the use* exports check-package-hooks lets stay unwrapped.
-;; Context hooks need no entry: the context-hook? rule excludes them.
-(def unwrapped-hooks
-  (zipmap ["useComboboxTargetProps" "useDelayedHover" "useHovered" "useInputProps"
-           "useMantineClassNamesPrefix" "useMantineContext"
-           "useMantineCssVariablesResolver" "useMantineDeduplicateInlineStyles"
-           "useMantineEnv" "useMantineIsHeadless" "useMantineStyleNonce"
-           "useMantineStylesTransform" "useMantineSxTransform"
-           "useMantineWithStaticClasses" "usePillsReorder" "useProviderColorScheme"
-           "useRandomClassName" "useResolvedStylesApi" "useSafeMantineTheme"
-           "useDatesContext"]
-          (repeat "undocumented upstream")))
 
 (defn context-hook?
   "True for use<X>Context where X is an export of the same package. Such a hook
