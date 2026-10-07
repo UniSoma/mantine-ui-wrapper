@@ -47,3 +47,10 @@ through raw.
   partial veneer over ~6 of `@mantine/form`'s ~40 methods would be both incomplete and
   inconsistent. Interop conventions are a consumer-layer concern, like the
   field-DSL the wrapper also declines to bake in.
+
+## Addendum: the `use*` export Drift audit
+
+A third guard now covers the package-local hooks. `bb coverage` fails on any `use*`
+export of a wrapped package other than `@mantine/hooks` that no def covers, unless it
+is a Context hook (excluded by rule) or a named exclude with its reason. It closes the
+gap for supplemented hooks that the compound-part check closes for compound parts.

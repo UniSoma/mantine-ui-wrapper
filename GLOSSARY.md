@@ -33,8 +33,9 @@ The property that a wrapper's contents come from Mantine's `docgen.json`. The
 pipeline generates exactly what docgen describes, and nothing docgen omits.
 
 **Coverage**:
-The set of a package's real exports that the wrapper exposes. Gaps in
-coverage are omissions, not decisions: exports docgen didn't describe.
+The set of a package's real exports that the wrapper exposes. A gap is either an
+omission (an export docgen didn't describe) or an exclusion the Drift audit names
+with its reason (a Context hook, a hook the Mantine docs do not describe).
 
 **Compound part**:
 A dot-notation subcomponent (`Menu.Dropdown`, `AppShell.Main`) that lives as a
@@ -76,10 +77,10 @@ a name docgen now generates. It turns a silent redefinition into a loud "docgen
 now covers this, delete the supplement entry."
 
 **Drift audit**:
-A `bb coverage` assertion that docgen or a supplement covers every real compound part
-of a wrapped package, and every `use*` export of one other than `@mantine/hooks`,
-unless the check explicitly excludes it. It turns a silently-unwrapped export into a
-loud "wrap it or explicitly exclude it."
+A `bb coverage` assertion that docgen or a supplement covers every export of one kind
+in the wrapped packages, unless the check explicitly excludes it: one audits compound
+parts, the other the `use*` exports of every package but `@mantine/hooks`. It turns a
+silently-unwrapped export into a loud "wrap it or explicitly exclude it."
 
 **Context hook**:
 A `use<Component>Context` export that reads the React context of a compound
